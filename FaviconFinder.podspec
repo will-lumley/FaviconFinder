@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
   s.name         = "FaviconFinder"
   s.version      = "1.0.0"
   s.summary      = "A macOS Swift library to detect favicons use by a website."
-  s.homepage     = "https://github.com/will-lumley/Favicon-Finder.git"
+  s.homepage     = "https://github.com/will-lumley/FaviconFinder.git"
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
   
   s.description      = <<-DESC
@@ -24,7 +24,7 @@ Pod::Spec.new do |s|
   s.platform      = :osx, "10.15"
   s.swift_version = '5.0'
 
-  s.source       = { :git => "https://github.com/will-lumley/Favicon-Finder.git", :tag => "#{s.version}" }
+  s.source       = { :git => "https://github.com/will-lumley/FaviconFinder.git", :tag => "#{s.version}" }
   
   s.source_files  = "FaviconFinder"
   
