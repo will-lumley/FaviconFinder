@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'FaviconFinder_Example' do
+  pod 'FaviconFinder', :path => '../'
+
+  target 'FaviconFinder_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end

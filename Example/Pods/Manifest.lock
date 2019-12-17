@@ -1,0 +1,23 @@
+PODS:
+  - FaviconFinder (1.0.0):
+    - Kanna (~> 5.0.0)
+  - Kanna (5.0.0)
+
+DEPENDENCIES:
+  - FaviconFinder (from `../`)
+
+SPEC REPOS:
+  trunk:
+    - Kanna
+
+EXTERNAL SOURCES:
+  FaviconFinder:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  FaviconFinder: 30afea288931cd5bd97fa5b1a75119b611102443
+  Kanna: a32875df62975f8f4b871e933b4ea1a5c3b8be0f
+
+PODFILE CHECKSUM: 4cc9a13263bb44524ab5e5f0bf5c065da81ac604
+
+COCOAPODS: 1.8.4
