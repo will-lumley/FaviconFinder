@@ -21,12 +21,13 @@ Pod::Spec.new do |s|
   s.author             = { "William Lumley" => "will@lumley.io" }
   s.social_media_url   = "http://twitter.com/wlumley95"
 
-  s.platform      = :osx, "10.15"
-  s.swift_version = '5.0'
-
-  s.source       = { :git => "https://github.com/will-lumley/FaviconFinder.git", :tag => "#{s.version}" }
+  s.platform              = :osx
+  s.osx.deployment_target = "10.10"
+  s.swift_version         = '5.0'
   
-  s.source_files  = "FaviconFinder"
+  s.source       = { :git => "https://github.com/will-lumley/FaviconFinder.git", :branch => "master" }
+  
+  s.source_files = 'FaviconFinder/Classes/**/*'
   
   s.dependency 'Kanna', '~> 5.0.0'
   s.xcconfig = {

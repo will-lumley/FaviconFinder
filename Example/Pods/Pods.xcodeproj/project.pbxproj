@@ -21,13 +21,13 @@
 		83FD56E96409DA7FA300E4751867DE35 /* FaviconFinder-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E9599739DF19056F7895F10ECB619449 /* FaviconFinder-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A3EC627E34B16689132B3D6680DC4EF4 /* Deprecated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F70E12BF091CD5D90E7B93131A77A90 /* Deprecated.swift */; };
 		A6A779A1BADF2297AF611992FDBE5F17 /* Kanna.h in Headers */ = {isa = PBXBuildFile; fileRef = B665B05D51C2E8EBBF63D60BE235CBF4 /* Kanna.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AA77A51295CE5D434AA7858EED331E40 /* FaviconFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CFEEBB8EF50151588671C3A271E729 /* FaviconFinder.swift */; };
 		B5E44367DA42F45C50A538320D880ED5 /* Pods-FaviconFinder_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C7CC597C325301B491E79E874F111D2 /* Pods-FaviconFinder_Example-dummy.m */; };
 		BE7FB2B623A83F8300BA54EB /* URL+Parsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7FB2B023A83F8300BA54EB /* URL+Parsing.swift */; };
 		BE7FB2B723A83F8300BA54EB /* String+Removals.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7FB2B123A83F8300BA54EB /* String+Removals.swift */; };
-		BE7FB2B823A83F8300BA54EB /* FaviconRelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7FB2B323A83F8300BA54EB /* FaviconRelType.swift */; };
-		BE7FB2B923A83F8300BA54EB /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7FB2B423A83F8300BA54EB /* Regex.swift */; };
-		BE7FB2BA23A83F8300BA54EB /* FaviconError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7FB2B523A83F8300BA54EB /* FaviconError.swift */; };
+		BEF545E423A8776100DAE47B /* FaviconRelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF545E023A8776100DAE47B /* FaviconRelType.swift */; };
+		BEF545E523A8776100DAE47B /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF545E123A8776100DAE47B /* Regex.swift */; };
+		BEF545E623A8776100DAE47B /* FaviconFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF545E223A8776100DAE47B /* FaviconFinder.swift */; };
+		BEF545E723A8776100DAE47B /* FaviconError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF545E323A8776100DAE47B /* FaviconError.swift */; };
 		CC689D2095905F9BA69BCC19D9E11EFE /* Kanna-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F90F805728F40C7FD72D311000C1658 /* Kanna-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D4916B87B782C772ABC8D8DCC7908EA7 /* libxmlParserOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6DF13E6E28276EAE764CD3160D1FBB /* libxmlParserOption.swift */; };
 		D93171C69CA3B2660C60997450BD3DFE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 795E1E60390CEAD441A977B8F2D499C8 /* Cocoa.framework */; };
@@ -107,9 +107,10 @@
 		B94F370E94491A4E037052D421638A94 /* Kanna-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Kanna-prefix.pch"; sourceTree = "<group>"; };
 		BE7FB2B023A83F8300BA54EB /* URL+Parsing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+Parsing.swift"; sourceTree = "<group>"; };
 		BE7FB2B123A83F8300BA54EB /* String+Removals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Removals.swift"; sourceTree = "<group>"; };
-		BE7FB2B323A83F8300BA54EB /* FaviconRelType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaviconRelType.swift; sourceTree = "<group>"; };
-		BE7FB2B423A83F8300BA54EB /* Regex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
-		BE7FB2B523A83F8300BA54EB /* FaviconError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaviconError.swift; sourceTree = "<group>"; };
+		BEF545E023A8776100DAE47B /* FaviconRelType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaviconRelType.swift; sourceTree = "<group>"; };
+		BEF545E123A8776100DAE47B /* Regex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
+		BEF545E223A8776100DAE47B /* FaviconFinder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaviconFinder.swift; sourceTree = "<group>"; };
+		BEF545E323A8776100DAE47B /* FaviconError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaviconError.swift; sourceTree = "<group>"; };
 		C01969ECF8278BFCA93858CE23E84C22 /* Pods-FaviconFinder_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FaviconFinder_Example-Info.plist"; sourceTree = "<group>"; };
 		C12B46058263861C6DD076CCE13FC559 /* Pods-FaviconFinder_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FaviconFinder_Example.release.xcconfig"; sourceTree = "<group>"; };
 		C1FAD5E0B7A33D2CFEAD53921E8D2125 /* FaviconFinder.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = FaviconFinder.modulemap; sourceTree = "<group>"; };
@@ -118,7 +119,6 @@
 		D6F156CBD83F47FA7BCC945FF85DA4A9 /* Pods-FaviconFinder_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FaviconFinder_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		E9599739DF19056F7895F10ECB619449 /* FaviconFinder-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FaviconFinder-umbrella.h"; sourceTree = "<group>"; };
 		EAED69EE5B0C16B65F7507348C1A8105 /* Kanna.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Kanna.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F1CFEEBB8EF50151588671C3A271E729 /* FaviconFinder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FaviconFinder.swift; path = FaviconFinder/FaviconFinder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -229,9 +229,8 @@
 		34FBEB1955AB1FB69725652731691193 /* FaviconFinder */ = {
 			isa = PBXGroup;
 			children = (
-				F1CFEEBB8EF50151588671C3A271E729 /* FaviconFinder.swift */,
+				BEF545DF23A8776100DAE47B /* Classes */,
 				BE7FB2AF23A83F8300BA54EB /* Extensions */,
-				BE7FB2B223A83F8300BA54EB /* Subclasses */,
 				76FB13052AB7CFB667827F2015041727 /* Pod */,
 				1EEFBE5E8275C58C4A63598EED55628F /* Support Files */,
 			);
@@ -312,15 +311,16 @@
 			path = FaviconFinder/Extensions;
 			sourceTree = "<group>";
 		};
-		BE7FB2B223A83F8300BA54EB /* Subclasses */ = {
+		BEF545DF23A8776100DAE47B /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				BE7FB2B323A83F8300BA54EB /* FaviconRelType.swift */,
-				BE7FB2B423A83F8300BA54EB /* Regex.swift */,
-				BE7FB2B523A83F8300BA54EB /* FaviconError.swift */,
+				BEF545E223A8776100DAE47B /* FaviconFinder.swift */,
+				BEF545E023A8776100DAE47B /* FaviconRelType.swift */,
+				BEF545E323A8776100DAE47B /* FaviconError.swift */,
+				BEF545E123A8776100DAE47B /* Regex.swift */,
 			);
-			name = Subclasses;
-			path = FaviconFinder/Subclasses;
+			name = Classes;
+			path = FaviconFinder/Classes;
 			sourceTree = "<group>";
 		};
 		CF1408CF629C7361332E53B88F7BD30C = {
@@ -538,13 +538,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BEF545E623A8776100DAE47B /* FaviconFinder.swift in Sources */,
 				BE7FB2B623A83F8300BA54EB /* URL+Parsing.swift in Sources */,
+				BEF545E523A8776100DAE47B /* Regex.swift in Sources */,
 				03348F7430273A9CD950C1E433CCAD91 /* FaviconFinder-dummy.m in Sources */,
-				BE7FB2B823A83F8300BA54EB /* FaviconRelType.swift in Sources */,
-				AA77A51295CE5D434AA7858EED331E40 /* FaviconFinder.swift in Sources */,
+				BEF545E423A8776100DAE47B /* FaviconRelType.swift in Sources */,
 				BE7FB2B723A83F8300BA54EB /* String+Removals.swift in Sources */,
-				BE7FB2B923A83F8300BA54EB /* Regex.swift in Sources */,
-				BE7FB2BA23A83F8300BA54EB /* FaviconError.swift in Sources */,
+				BEF545E723A8776100DAE47B /* FaviconError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
