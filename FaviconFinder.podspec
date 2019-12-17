@@ -27,7 +27,7 @@ Pod::Spec.new do |s|
   
   s.source       = { :git => "https://github.com/will-lumley/FaviconFinder.git", :branch => "master" }
   
-  s.source_files = 'FaviconFinder/Classes/**/*'
+  s.source_files = 'FaviconFinder/**/*'
   
   s.dependency 'Kanna', '~> 5.0.0'
   s.xcconfig = {
