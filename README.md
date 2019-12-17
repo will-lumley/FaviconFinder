@@ -22,7 +22,7 @@ pod 'FaviconFinder'
 
 ## Author
 
-William Lumley, wlumley95@gmail.com
+William Lumley, will@lumley.io
 
 ## License
 
