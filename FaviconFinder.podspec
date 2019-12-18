@@ -25,7 +25,7 @@ Pod::Spec.new do |s|
   s.osx.deployment_target = "10.10"
   s.swift_version         = '5.0'
   
-  s.source       = { :git => "https://github.com/will-lumley/FaviconFinder.git", :branch => "master" }
+  s.source       = { :git => "https://github.com/will-lumley/FaviconFinder.git", tag => s.version.to_s }
   
   s.source_files = 'FaviconFinder/**/*'
   
