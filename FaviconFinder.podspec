@@ -15,7 +15,8 @@ Pod::Spec.new do |s|
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
   
   s.description      = <<-DESC
-    DESCRIPTION
+    FaviconFinder is a small Swift library designed for macOS applications that allows
+    you to detect favicons used by a website.
                           DESC
 
   s.author             = { "William Lumley" => "will@lumley.io" }
