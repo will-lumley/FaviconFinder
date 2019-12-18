@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
   s.version      = "1.0.0"
   s.summary      = "A macOS Swift library to detect favicons use by a website."
   s.homepage     = "https://github.com/will-lumley/FaviconFinder.git"
-  s.license      = { :type => 'MIT', :file => 'LICENSE' }
+  s.license      = { :type => 'MIT', :file => 'LICENSE.txt' }
   
   s.description      = <<-DESC
     FaviconFinder is a small Swift library designed for macOS applications that allows

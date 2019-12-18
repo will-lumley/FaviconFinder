@@ -34,7 +34,7 @@
 		9C5773D0659DE71F64359322 /* FaviconFinder.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = FaviconFinder.podspec; path = ../FaviconFinder.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		CA7C527B8CAE06B6FAAC37F6 /* Pods_FaviconFinder_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FaviconFinder_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA44D8257B1E35AFC92A0480 /* Pods-FaviconFinder_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FaviconFinder_Tests.debug.xcconfig"; path = "Target Support Files/Pods-FaviconFinder_Tests/Pods-FaviconFinder_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		E43CC0CE153FC238A29BC3B4 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		E43CC0CE153FC238A29BC3B4 /* LICENSE.txt */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE.txt; path = ../LICENSE.txt; sourceTree = "<group>"; };
 		ED83F67820348A760038D96B /* FaviconFinder_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FaviconFinder_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED83F67B20348A760038D96B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED83F67D20348A760038D96B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -136,7 +136,7 @@
 			children = (
 				9C5773D0659DE71F64359322 /* FaviconFinder.podspec */,
 				012C43A70A0346876129F0F6 /* README.md */,
-				E43CC0CE153FC238A29BC3B4 /* LICENSE */,
+				E43CC0CE153FC238A29BC3B4 /* LICENSE.txt */,
 			);
 			name = "Podspec Metadata";
 			sourceTree = "<group>";
