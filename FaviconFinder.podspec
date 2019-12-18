@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
     
   s.name         = "FaviconFinder"
-  s.version      = "1.0.0"
+  s.version      = "1.0.1"
   s.summary      = "A macOS Swift library to detect favicons use by a website."
   s.homepage     = "https://github.com/will-lumley/FaviconFinder.git"
   s.license      = { :type => 'MIT', :file => 'LICENSE.txt' }
