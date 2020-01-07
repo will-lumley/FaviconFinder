@@ -1,5 +1,5 @@
 PODS:
-  - FaviconFinder (1.0.0):
+  - FaviconFinder (1.0.1):
     - Kanna (~> 5.0.0)
   - Kanna (5.0.0)
 
@@ -15,9 +15,9 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  FaviconFinder: 30afea288931cd5bd97fa5b1a75119b611102443
+  FaviconFinder: c6508068a44d82870a2da9601c857097b1e703fe
   Kanna: a32875df62975f8f4b871e933b4ea1a5c3b8be0f
 
-PODFILE CHECKSUM: 4cc9a13263bb44524ab5e5f0bf5c065da81ac604
+PODFILE CHECKSUM: 0ba2ccaae9fba40972c05a044f74524a47590bc5
 
 COCOAPODS: 1.8.4
