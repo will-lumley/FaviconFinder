@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15505" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15505"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="ExampleViewController" customModule="FaviconFinder_Example" customModuleProvider="target">
+            <connections>
+                <outlet property="imageView" destination="Lwd-rv-cOk" id="DFE-y6-vP3"/>
+                <outlet property="textField" destination="cfi-lN-Xz9" id="PLI-bR-pWS"/>
+                <outlet property="view" destination="c22-O7-iKe" id="l0G-Sk-qX7"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="c22-O7-iKe">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yLP-nl-1qW">
+                    <rect key="frame" x="124" y="13" width="232" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="220" id="2KM-jK-BsS"/>
+                        <constraint firstAttribute="height" constant="21" id="Q7o-mm-ey2"/>
+                    </constraints>
+                    <buttonCell key="cell" type="push" title="Download Favicon" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="FE9-QQ-EAV">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="downloadButtonTapped:" target="-2" id="k4B-DJ-OW0"/>
+                    </connections>
+                </button>
+                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cfi-lN-Xz9">
+                    <rect key="frame" x="130" y="67" width="220" height="21"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="UOM-cP-5Rn">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Lwd-rv-cOk">
+                    <rect key="frame" x="180" y="131" width="121" height="121"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="121" id="1oo-Cd-LBf"/>
+                        <constraint firstAttribute="height" constant="121" id="UDg-vd-Zvn"/>
+                    </constraints>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="nQq-bZ-UFc"/>
+                </imageView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="cfi-lN-Xz9" firstAttribute="width" secondItem="yLP-nl-1qW" secondAttribute="width" id="8ff-0O-ZQg"/>
+                <constraint firstItem="yLP-nl-1qW" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="EAw-9a-snX"/>
+                <constraint firstItem="cfi-lN-Xz9" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="EnW-rU-15M"/>
+                <constraint firstAttribute="bottom" secondItem="yLP-nl-1qW" secondAttribute="bottom" constant="20" id="HsS-g3-ru6"/>
+                <constraint firstItem="yLP-nl-1qW" firstAttribute="top" secondItem="cfi-lN-Xz9" secondAttribute="bottom" constant="26" id="Vks-vA-Tcy"/>
+                <constraint firstItem="Lwd-rv-cOk" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="Yqo-uZ-gSR"/>
+                <constraint firstItem="Lwd-rv-cOk" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="20" id="rXE-Jo-Er9"/>
+            </constraints>
+            <point key="canvasLocation" x="139" y="154"/>
+        </customView>
+    </objects>
+</document>
