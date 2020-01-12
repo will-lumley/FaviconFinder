@@ -13,7 +13,7 @@
 FaviconFinder uses simple syntax to allow you to easily download the favicon you need, and get on with your project. Just insert this code into your project:
 ```swift
 FaviconFinder(url: url).downloadFavicon { (image, error) in
-    
+    // Do whatever you'd like with 'image' here
 }
 ```
 
