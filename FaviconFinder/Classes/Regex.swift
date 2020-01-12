@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Regex
+internal class Regex
 {
     fileprivate var expression: NSRegularExpression?
     fileprivate var pattern: String

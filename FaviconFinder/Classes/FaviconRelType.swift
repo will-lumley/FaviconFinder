@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum FaviconRelType: String
+internal enum FaviconRelType: String
 {
     case appleTouchIcon            = "apple-touch-icon"
     case appleTouchIconPrecomposed = "apple-touch-icon-precomposed"

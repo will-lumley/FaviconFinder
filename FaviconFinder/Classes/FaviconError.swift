@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum FaviconError: Error
+internal enum FaviconError: Error
 {
     case emptyData
     case failedToParseHTML
