@@ -1,3 +1,5 @@
+![FaviconFinder: Simple Favicon Finding](https://raw.githubusercontent.com/will-lumley/FaviconFinder/feature/prettyify-readme/FaviconFinder.png)
+
 # FaviconFinder
 
 [![CI Status](https://img.shields.io/travis/will-lumley/FaviconFinder.svg?style=flat)](https://travis-ci.org/will-lumley/FaviconFinder)
