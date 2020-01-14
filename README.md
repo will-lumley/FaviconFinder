@@ -1,4 +1,4 @@
-![FaviconFinder: Simple Favicon Finding](https://raw.githubusercontent.com/will-lumley/FaviconFinder/feature/prettyify-readme/FaviconFinder.png)
+![FaviconFinder: Simple Favicon Finding](https://raw.githubusercontent.com/will-lumley/FaviconFinder/master/FaviconFinder.png)
 
 # FaviconFinder
 
