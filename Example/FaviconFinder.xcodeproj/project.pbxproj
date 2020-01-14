@@ -9,11 +9,16 @@
 /* Begin PBXBuildFile section */
 		732DEED46B3B595E5840601D /* Pods_FaviconFinder_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 630C60C5784DCC190F8E2126 /* Pods_FaviconFinder_Tests.framework */; };
 		880E99F98B30CD2FE6895A11 /* Pods_FaviconFinder_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7C527B8CAE06B6FAAC37F6 /* Pods_FaviconFinder_Example.framework */; };
+		BE52CAF523CAE3BA005F1123 /* StringRemovalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE52CAF223CAE3BA005F1123 /* StringRemovalTests.swift */; };
+		BE52CAF623CAE3BA005F1123 /* RegexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE52CAF323CAE3BA005F1123 /* RegexTests.swift */; };
+		BE52CAF723CAE3BA005F1123 /* URLParsingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE52CAF423CAE3BA005F1123 /* URLParsingTests.swift */; };
+		BE52CB1923CB26C0005F1123 /* ExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE52CB1823CB26C0005F1123 /* ExampleViewController.swift */; };
+		BE52CB3923CB2E56005F1123 /* ExampleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE52CB3823CB2E56005F1123 /* ExampleViewController.xib */; };
+		BEBAE77F23CB2F1F00A60406 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEBAE77D23CB2F1F00A60406 /* MainMenu.xib */; };
 		ED83F67C20348A760038D96B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED83F67B20348A760038D96B /* AppDelegate.swift */; };
 		ED83F67E20348A760038D96B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED83F67D20348A760038D96B /* ContentView.swift */; };
 		ED83F68020348A760038D96B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED83F67F20348A760038D96B /* Assets.xcassets */; };
-		ED83F68320348A760038D96B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED83F68120348A760038D96B /* Main.storyboard */; };
-		ED83F68F20348A760038D96B /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED83F68E20348A760038D96B /* Tests.swift */; };
+		ED83F68F20348A760038D96B /* FaviconFinderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED83F68E20348A760038D96B /* FaviconFinderTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +37,12 @@
 		1B8BB63D6EB800781733BC1D /* Pods-FaviconFinder_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FaviconFinder_Tests.release.xcconfig"; path = "Target Support Files/Pods-FaviconFinder_Tests/Pods-FaviconFinder_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		630C60C5784DCC190F8E2126 /* Pods_FaviconFinder_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FaviconFinder_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C5773D0659DE71F64359322 /* FaviconFinder.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = FaviconFinder.podspec; path = ../FaviconFinder.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		BE52CAF223CAE3BA005F1123 /* StringRemovalTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringRemovalTests.swift; sourceTree = "<group>"; };
+		BE52CAF323CAE3BA005F1123 /* RegexTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegexTests.swift; sourceTree = "<group>"; };
+		BE52CAF423CAE3BA005F1123 /* URLParsingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLParsingTests.swift; sourceTree = "<group>"; };
+		BE52CB1823CB26C0005F1123 /* ExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleViewController.swift; sourceTree = "<group>"; };
+		BE52CB3823CB2E56005F1123 /* ExampleViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExampleViewController.xib; sourceTree = "<group>"; };
+		BEBAE77E23CB2F1F00A60406 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		CA7C527B8CAE06B6FAAC37F6 /* Pods_FaviconFinder_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FaviconFinder_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA44D8257B1E35AFC92A0480 /* Pods-FaviconFinder_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FaviconFinder_Tests.debug.xcconfig"; path = "Target Support Files/Pods-FaviconFinder_Tests/Pods-FaviconFinder_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		E43CC0CE153FC238A29BC3B4 /* LICENSE.txt */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE.txt; path = ../LICENSE.txt; sourceTree = "<group>"; };
@@ -39,11 +50,10 @@
 		ED83F67B20348A760038D96B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED83F67D20348A760038D96B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		ED83F67F20348A760038D96B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		ED83F68220348A760038D96B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		ED83F68420348A760038D96B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ED83F68520348A760038D96B /* FaviconFinder.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FaviconFinder.entitlements; sourceTree = "<group>"; };
 		ED83F68A20348A760038D96B /* FaviconFinder_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FaviconFinder_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		ED83F68E20348A760038D96B /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
+		ED83F68E20348A760038D96B /* FaviconFinderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaviconFinderTests.swift; sourceTree = "<group>"; };
 		ED83F69020348A760038D96B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F466EFBB5FC3E85126D4FC2E /* Pods-FaviconFinder_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FaviconFinder_Example.release.xcconfig"; path = "Target Support Files/Pods-FaviconFinder_Example/Pods-FaviconFinder_Example.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -112,10 +122,12 @@
 		ED83F67A20348A760038D96B /* FaviconFinder */ = {
 			isa = PBXGroup;
 			children = (
+				BEBAE77D23CB2F1F00A60406 /* MainMenu.xib */,
 				ED83F67B20348A760038D96B /* AppDelegate.swift */,
+				BE52CB1823CB26C0005F1123 /* ExampleViewController.swift */,
+				BE52CB3823CB2E56005F1123 /* ExampleViewController.xib */,
 				ED83F67D20348A760038D96B /* ContentView.swift */,
 				ED83F67F20348A760038D96B /* Assets.xcassets */,
-				ED83F68120348A760038D96B /* Main.storyboard */,
 				ED83F68420348A760038D96B /* Info.plist */,
 				ED83F68520348A760038D96B /* FaviconFinder.entitlements */,
 			);
@@ -125,7 +137,10 @@
 		ED83F68D20348A760038D96B /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				ED83F68E20348A760038D96B /* Tests.swift */,
+				ED83F68E20348A760038D96B /* FaviconFinderTests.swift */,
+				BE52CAF323CAE3BA005F1123 /* RegexTests.swift */,
+				BE52CAF223CAE3BA005F1123 /* StringRemovalTests.swift */,
+				BE52CAF423CAE3BA005F1123 /* URLParsingTests.swift */,
 				ED83F69020348A760038D96B /* Info.plist */,
 			);
 			path = Tests;
@@ -171,6 +186,7 @@
 				ED83F68620348A760038D96B /* Sources */,
 				ED83F68720348A760038D96B /* Frameworks */,
 				ED83F68820348A760038D96B /* Resources */,
+				CFD501F3D731E84F86830A3D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -230,7 +246,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED83F68020348A760038D96B /* Assets.xcassets in Resources */,
-				ED83F68320348A760038D96B /* Main.storyboard in Resources */,
+				BE52CB3923CB2E56005F1123 /* ExampleViewController.xib in Resources */,
+				BEBAE77F23CB2F1F00A60406 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,6 +325,26 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FaviconFinder_Example/Pods-FaviconFinder_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		CFD501F3D731E84F86830A3D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FaviconFinder_Tests/Pods-FaviconFinder_Tests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/FaviconFinder/FaviconFinder.framework",
+				"${BUILT_PRODUCTS_DIR}/Kanna/Kanna.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FaviconFinder.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kanna.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FaviconFinder_Tests/Pods-FaviconFinder_Tests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -317,6 +354,7 @@
 			files = (
 				ED83F67E20348A760038D96B /* ContentView.swift in Sources */,
 				ED83F67C20348A760038D96B /* AppDelegate.swift in Sources */,
+				BE52CB1923CB26C0005F1123 /* ExampleViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,7 +362,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ED83F68F20348A760038D96B /* Tests.swift in Sources */,
+				ED83F68F20348A760038D96B /* FaviconFinderTests.swift in Sources */,
+				BE52CAF623CAE3BA005F1123 /* RegexTests.swift in Sources */,
+				BE52CAF723CAE3BA005F1123 /* URLParsingTests.swift in Sources */,
+				BE52CAF523CAE3BA005F1123 /* StringRemovalTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,12 +380,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		ED83F68120348A760038D96B /* Main.storyboard */ = {
+		BEBAE77D23CB2F1F00A60406 /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				ED83F68220348A760038D96B /* Base */,
+				BEBAE77E23CB2F1F00A60406 /* Base */,
 			);
-			name = Main.storyboard;
+			name = MainMenu.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -401,7 +442,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -455,7 +496,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -473,7 +514,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = FaviconFinder/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.williamlumley.faviconfinder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -491,7 +532,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = FaviconFinder/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.williamlumley.faviconfinder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -508,6 +549,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.FaviconFinder-Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -525,6 +567,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.FaviconFinder-Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

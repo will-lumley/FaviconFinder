@@ -85,7 +85,7 @@ extension URL
                     }
                 }
                 
-                print("NewURL: \(newURL) from: \(self)")
+                //print("NewURL: \(newURL) from: \(self)")
                 return URL(string: newURL)
             }
         }
