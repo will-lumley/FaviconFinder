@@ -2,7 +2,7 @@
 
 # FaviconFinder
 
-[![CI Status](https://img.shields.io/travis/will-lumley/FaviconFinder.svg?style=flat)](https://travis-ci.org/will-lumley/FaviconFinder)
+[![CI Status](https://img.shields.io/travis/will-lumley/FaviconFinder/master.svg)](https://travis-ci.org/will-lumley/FaviconFinder)
 [![Version](https://img.shields.io/cocoapods/v/FaviconFinder.svg?style=flat)](https://cocoapods.org/pods/FaviconFinder)
 [![License](https://img.shields.io/cocoapods/l/FaviconFinder.svg?style=flat)](https://cocoapods.org/pods/FaviconFinder)
 [![Platform](https://img.shields.io/cocoapods/p/FaviconFinder.svg?style=flat)](https://cocoapods.org/pods/FaviconFinder)
