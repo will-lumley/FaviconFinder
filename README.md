@@ -30,14 +30,14 @@ FaviconFinder supports macOS 10.10 and above.
 ## Installation
 
 ### Cocoapods
-SwiftSoup is available through [CocoaPods](http://cocoapods.org). To install
+FaviconFinder is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
 pod 'FaviconFinder'
 ```
 ### Carthage
-SwiftSoup is also available through [Carthage](https://github.com/Carthage/Carthage). To install
+FaviconFinder is also available through [Carthage](https://github.com/Carthage/Carthage). To install
 it, simply add the following line to your Cartfile:
 
 ```ruby
