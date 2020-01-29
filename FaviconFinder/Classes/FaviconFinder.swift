@@ -98,7 +98,7 @@ open class FaviconFinder: NSObject
     {
         //Download the web page at our URL
         URLSession.shared.dataTask(with: self.url, completionHandler: {(data, response, error) in
-                 
+            
             //Do some error checking
             if let error = error {
                 self.handleDownloadError(error, onDownload)
@@ -112,13 +112,7 @@ open class FaviconFinder: NSObject
                 return
             }
             
-            //Make sure we can parse the response into a string
-            guard let html = String(data: data, encoding: String.Encoding.utf8) else {
-                print("Could NOT get favicon from url: \(self.url), could not parse HTML.")
-                onDownload(nil, FaviconError.failedToParseHTML)
-                return
-            }
-            
+            /*
             //Make sure we can find a favicon in our retrieved string (at this point we're assuming it's valid HTML)
             guard let url = self.faviconURL(from: html) else {
                 print("Could NOT get favicon from url: \(self.url), failed to parse favicon from HTML.")
@@ -129,6 +123,7 @@ open class FaviconFinder: NSObject
             //We found our favicon, let's download it
             print("Extracted favicon: \(url.absoluteString)")
             self.downloadImage(at: url, onDownload: onDownload)
+            */
             
         }).resume()
     }
