@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
     
   s.name         = "FaviconFinder"
-  s.version      = "1.0.2"
+  s.version      = "1.1.0"
   s.summary      = "A macOS Swift library to detect favicons use by a website."
   s.homepage     = "https://github.com/will-lumley/FaviconFinder.git"
   s.license      = { :type => 'MIT', :file => 'LICENSE.txt' }
@@ -30,9 +30,6 @@ Pod::Spec.new do |s|
   
   s.source_files = 'FaviconFinder/**/*'
   
-  s.dependency 'Kanna', '~> 5.0.0'
-  s.xcconfig = {
-      'HEADER_SEARCH_PATHS' => '$(SDKROOT)/usr/include/libxml2'
-  }
+  s.dependency 'SwiftSoup', '~> 2.3.0'
   
 end

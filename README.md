@@ -4,6 +4,7 @@
 
 [![CI Status](https://img.shields.io/travis/will-lumley/FaviconFinder/master.svg)](https://travis-ci.org/will-lumley/FaviconFinder)
 [![Version](https://img.shields.io/cocoapods/v/FaviconFinder.svg?style=flat)](https://cocoapods.org/pods/FaviconFinder)
+[![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![License](https://img.shields.io/cocoapods/l/FaviconFinder.svg?style=flat)](https://cocoapods.org/pods/FaviconFinder)
 [![Platform](https://img.shields.io/cocoapods/p/FaviconFinder.svg?style=flat)](https://cocoapods.org/pods/FaviconFinder)
 [![Twitter](https://img.shields.io/badge/twitter-@wlumley95-blue.svg?style=flat)](https://twitter.com/wlumley95)
@@ -28,11 +29,19 @@ FaviconFinder supports macOS 10.10 and above.
 
 ## Installation
 
-FaviconFinder is available through [CocoaPods](https://cocoapods.org). To install
+### Cocoapods
+FaviconFinder is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
 pod 'FaviconFinder'
+```
+### Carthage
+FaviconFinder is also available through [Carthage](https://github.com/Carthage/Carthage). To install
+it, simply add the following line to your Cartfile:
+
+```ruby
+github "will-lumley/FaviconFinder"
 ```
 
 ## Author
