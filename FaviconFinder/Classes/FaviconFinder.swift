@@ -8,7 +8,7 @@
 
 import AppKit
 import Cocoa
-import Kanna
+import SwiftSoup
 
 open class FaviconFinder: NSObject
 {
@@ -98,7 +98,7 @@ open class FaviconFinder: NSObject
     {
         //Download the web page at our URL
         URLSession.shared.dataTask(with: self.url, completionHandler: {(data, response, error) in
-                 
+            
             //Do some error checking
             if let error = error {
                 self.handleDownloadError(error, onDownload)
@@ -204,12 +204,12 @@ extension FaviconFinder
     */
     fileprivate func faviconURL(from htmlStr: String) -> URL?
     {
-        var htmlOpt: HTMLDocument?
+        var htmlOpt: Document?
         do {
-            htmlOpt = try HTML(html: htmlStr, encoding: String.Encoding.utf8)
+            htmlOpt = try SwiftSoup.parse(htmlStr)
         }
         catch let error {
-            print("Could NOT parse HTML: \(error) from string: \(htmlStr)")
+            print("Could NOT parse HTML due to error: \(error). HTML: \(htmlStr)")
             return nil
         }
         
@@ -218,28 +218,37 @@ extension FaviconFinder
             return nil
         }
         
-        guard let head = html.head else {
+        guard let head = html.head() else {
             print("Could NOT parse HTML head from string: \(htmlStr)")
             return nil
         }
         
         var possibleIcons = [(rel: String, href: String)]()
         
+        var allLinks = Elements()
+        do {
+            allLinks = try head.select("link")
+        }
+        catch let error {
+            print("Could NOT parse HTML due to error: \(error). HTML: \(htmlStr)")
+            return nil
+        }
+        
         //Iterate over every 'link' tag that's in the head document, and collect them
-        for element in head.xpath("link") {
-            
-            guard var rel = element.xpath("@rel").first?.toXML else { continue }
-            rel = rel.replacingOccurrences(of: " rel=", with: "")
-            rel = rel.replacingOccurrences(of: "\"", with: "")
-            
-            guard var href = element.xpath("@href").first?.toXML else { continue }
-            href = href.replacingOccurrences(of: " href=", with: "")
-            href = href.replacingOccurrences(of: "\"", with: "")
-            
-            //If this is an icon that we deem might be a favicon, add it to our array
-            if FaviconRelType.contains(relTypes: self.acceptableIconTypes, rawRelType: rel) {
-                let possibleIcon = (rel: rel, href: href)
-                possibleIcons.append(possibleIcon)
+        for element in allLinks {
+            do {
+                let rel = try element.attr("rel")
+                let href = try element.attr("href")
+                
+                //If this is an icon that we deem might be a favicon, add it to our array
+                if FaviconRelType.contains(relTypes: self.acceptableIconTypes, rawRelType: rel) {
+                    let possibleIcon = (rel: rel, href: href)
+                    possibleIcons.append(possibleIcon)
+                }
+            }
+            catch let error {
+                print("Could NOT parse HTML due to error: \(error). HTML: \(htmlStr)")
+                continue
             }
         }
         

@@ -30,9 +30,6 @@ Pod::Spec.new do |s|
   
   s.source_files = 'FaviconFinder/**/*'
   
-  s.dependency 'Kanna', '~> 5.0.0'
-  s.xcconfig = {
-      'HEADER_SEARCH_PATHS' => '$(SDKROOT)/usr/include/libxml2'
-  }
+  s.dependency 'SwiftSoup', '~> 2.3.0'
   
 end

@@ -1,22 +1,22 @@
 PODS:
-  - FaviconFinder (1.0.1):
-    - Kanna (~> 5.0.0)
-  - Kanna (5.0.0)
+  - FaviconFinder (1.0.2):
+    - SwiftSoup (~> 2.3.0)
+  - SwiftSoup (2.3.0)
 
 DEPENDENCIES:
   - FaviconFinder (from `../`)
 
 SPEC REPOS:
   trunk:
-    - Kanna
+    - SwiftSoup
 
 EXTERNAL SOURCES:
   FaviconFinder:
     :path: "../"
 
 SPEC CHECKSUMS:
-  FaviconFinder: c6508068a44d82870a2da9601c857097b1e703fe
-  Kanna: a32875df62975f8f4b871e933b4ea1a5c3b8be0f
+  FaviconFinder: 202276d13e45372b56ae5c12cdcecb7a62eea263
+  SwiftSoup: d78683f7ea0ae5733225a9e1d3bee5b256449df4
 
 PODFILE CHECKSUM: 0ba2ccaae9fba40972c05a044f74524a47590bc5
 
