@@ -7,7 +7,6 @@
 //
 
 import XCTest
-import Kanna
 
 @testable import FaviconFinder
 
