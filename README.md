@@ -6,8 +6,11 @@
 [![Version](https://img.shields.io/cocoapods/v/FaviconFinder.svg?style=flat)](https://cocoapods.org/pods/FaviconFinder)
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![License](https://img.shields.io/cocoapods/l/FaviconFinder.svg?style=flat)](https://cocoapods.org/pods/FaviconFinder)
+![Swift 5.0](https://img.shields.io/badge/Swift-5.0-orange.svg)
 [![Platform](https://img.shields.io/cocoapods/p/FaviconFinder.svg?style=flat)](https://cocoapods.org/pods/FaviconFinder)
 [![Twitter](https://img.shields.io/badge/twitter-@wlumley95-blue.svg?style=flat)](https://twitter.com/wlumley95)
+
+FaviconFinder is a tiny, pure Swift library designed for iOS and macOS applications that allows you to detect favicons used by a website.
 
 ## Usage
 
@@ -25,7 +28,7 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Requirements
 
-FaviconFinder supports macOS 10.10 and above.
+FaviconFinder supports iOS 10.0 and above & macOS 10.10 and above.
 
 ## Installation
 
