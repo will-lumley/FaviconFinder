@@ -1,11 +1,16 @@
 use_frameworks!
 
 target 'FaviconFinder_Example' do
+  platform :macos
   pod 'FaviconFinder', :path => '../'
 
   target 'FaviconFinder_Tests' do
     inherit! :search_paths
     pod 'FaviconFinder', :path => '../'
-    
+  end
+  
+  target 'FaviconFinder_iOS_Example' do
+    platform :ios
+    pod 'FaviconFinder', :path => '../'
   end
 end
