@@ -22,10 +22,8 @@ Favicon will:
 
 
 To do:
-- [x] Detect and parse
-
-Discovery of and parsing of Web Application manifest JSON files to obtain lists of icons.
-Discovery of and parsing of Microsoft browser configuration XML files for obtaining lists of icons.
+- [x] Detect and parse web application manifest JSON files
+- [x] Detect and parse web application Microsoft browser configuration XML
 
 ## Usage
 
