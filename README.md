@@ -12,6 +12,14 @@
 
 FaviconFinder is a tiny, pure Swift library designed for iOS and macOS applications that allows you to detect favicons used by a website.
 
+Why not just download the file that exists at `https://site.com/fav.ico`? There are multiple places that a developer can place there favicon, not just at the root directory with the specific filename of `fav.ico`. FaviconFinder handles the dirty work for you and iterates through the numerous locations that the favicon could be located at, and simply delivers the image to you in a closure, once the image is found.
+
+Favicon will:
+Detect the favicon in the root directory # [checkbox:checked]
+Will automatically check if the favicon is located within the root URL if the subdomain failed (Will check `https://site.com/fav.ico` if `https://subdomain.site.com/fav.ico` fails) # [checkbox:checked]
+Detect the favicon when declared within HTML # [checkbox:checked]
+
+
 ## Usage
 
 FaviconFinder uses simple syntax to allow you to easily download the favicon you need, and get on with your project. Just insert this code into your project:
