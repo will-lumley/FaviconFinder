@@ -1,0 +1,6 @@
+framework module SwiftSoup {
+  umbrella header "SwiftSoup-iOS-umbrella.h"
+
+  export *
+  module * { export * }
+}
