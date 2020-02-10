@@ -22,8 +22,8 @@ Favicon will:
 
 
 To do:
-- [x] Detect and parse web application manifest JSON files
-- [x] Detect and parse web application Microsoft browser configuration XML
+- [ ] Detect and parse web application manifest JSON files
+- [ ] Detect and parse web application Microsoft browser configuration XML
 
 ## Usage
 
