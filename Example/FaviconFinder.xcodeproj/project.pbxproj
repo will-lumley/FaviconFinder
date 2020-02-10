@@ -7,8 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6031398A9AE57430E50815BA /* Pods_FaviconFinder_iOS_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73D264E7952AED94626A0755 /* Pods_FaviconFinder_iOS_Example.framework */; };
 		732DEED46B3B595E5840601D /* Pods_FaviconFinder_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 630C60C5784DCC190F8E2126 /* Pods_FaviconFinder_Tests.framework */; };
 		880E99F98B30CD2FE6895A11 /* Pods_FaviconFinder_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7C527B8CAE06B6FAAC37F6 /* Pods_FaviconFinder_Example.framework */; };
+		BE21380A23F0D4FD00DCA2CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE21380923F0D4FD00DCA2CB /* AppDelegate.swift */; };
+		BE21380C23F0D4FD00DCA2CB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE21380B23F0D4FD00DCA2CB /* SceneDelegate.swift */; };
+		BE21380E23F0D4FD00DCA2CB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE21380D23F0D4FD00DCA2CB /* ViewController.swift */; };
+		BE21381123F0D4FD00DCA2CB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE21380F23F0D4FD00DCA2CB /* Main.storyboard */; };
+		BE21381323F0D4FF00DCA2CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE21381223F0D4FF00DCA2CB /* Assets.xcassets */; };
+		BE21381623F0D4FF00DCA2CB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE21381423F0D4FF00DCA2CB /* LaunchScreen.storyboard */; };
 		BE331C0223E1B1EA0005E065 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = BE331C0123E1B1EA0005E065 /* Cartfile */; };
 		BE52CAF523CAE3BA005F1123 /* StringRemovalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE52CAF223CAE3BA005F1123 /* StringRemovalTests.swift */; };
 		BE52CAF623CAE3BA005F1123 /* RegexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE52CAF323CAE3BA005F1123 /* RegexTests.swift */; };
@@ -37,7 +44,18 @@
 		0355A9B752E3E77793ABD3FA /* Pods-FaviconFinder_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FaviconFinder_Example.debug.xcconfig"; path = "Target Support Files/Pods-FaviconFinder_Example/Pods-FaviconFinder_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		1B8BB63D6EB800781733BC1D /* Pods-FaviconFinder_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FaviconFinder_Tests.release.xcconfig"; path = "Target Support Files/Pods-FaviconFinder_Tests/Pods-FaviconFinder_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		630C60C5784DCC190F8E2126 /* Pods_FaviconFinder_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FaviconFinder_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6DCFFFF4C95ECA56DA8C1F91 /* Pods-FaviconFinder_iOS_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FaviconFinder_iOS_Example.release.xcconfig"; path = "Target Support Files/Pods-FaviconFinder_iOS_Example/Pods-FaviconFinder_iOS_Example.release.xcconfig"; sourceTree = "<group>"; };
+		73D264E7952AED94626A0755 /* Pods_FaviconFinder_iOS_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FaviconFinder_iOS_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		81EF860286A33245010DEEED /* Pods-FaviconFinder_iOS_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FaviconFinder_iOS_Example.debug.xcconfig"; path = "Target Support Files/Pods-FaviconFinder_iOS_Example/Pods-FaviconFinder_iOS_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		9C5773D0659DE71F64359322 /* FaviconFinder.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = FaviconFinder.podspec; path = ../FaviconFinder.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		BE21380723F0D4FD00DCA2CB /* FaviconFinder_iOS_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FaviconFinder_iOS_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE21380923F0D4FD00DCA2CB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		BE21380B23F0D4FD00DCA2CB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		BE21380D23F0D4FD00DCA2CB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BE21381023F0D4FD00DCA2CB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BE21381223F0D4FF00DCA2CB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BE21381523F0D4FF00DCA2CB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		BE21381723F0D4FF00DCA2CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BE331C0123E1B1EA0005E065 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Cartfile; path = ../Cartfile; sourceTree = "<group>"; };
 		BE52CAF223CAE3BA005F1123 /* StringRemovalTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringRemovalTests.swift; sourceTree = "<group>"; };
 		BE52CAF323CAE3BA005F1123 /* RegexTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegexTests.swift; sourceTree = "<group>"; };
@@ -46,6 +64,8 @@
 		BE52CB3823CB2E56005F1123 /* ExampleViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExampleViewController.xib; sourceTree = "<group>"; };
 		BEBAE77E23CB2F1F00A60406 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		CA7C527B8CAE06B6FAAC37F6 /* Pods_FaviconFinder_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FaviconFinder_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D126331FEBE93627C20ED818 /* Pods-FaviconFinder_Example-FaviconFinder_iOS_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FaviconFinder_Example-FaviconFinder_iOS_Example.release.xcconfig"; path = "Target Support Files/Pods-FaviconFinder_Example-FaviconFinder_iOS_Example/Pods-FaviconFinder_Example-FaviconFinder_iOS_Example.release.xcconfig"; sourceTree = "<group>"; };
+		D507263EAAFD4C18A4924A31 /* Pods-FaviconFinder_Example-FaviconFinder_iOS_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FaviconFinder_Example-FaviconFinder_iOS_Example.debug.xcconfig"; path = "Target Support Files/Pods-FaviconFinder_Example-FaviconFinder_iOS_Example/Pods-FaviconFinder_Example-FaviconFinder_iOS_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		DA44D8257B1E35AFC92A0480 /* Pods-FaviconFinder_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FaviconFinder_Tests.debug.xcconfig"; path = "Target Support Files/Pods-FaviconFinder_Tests/Pods-FaviconFinder_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		E43CC0CE153FC238A29BC3B4 /* LICENSE.txt */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE.txt; path = ../LICENSE.txt; sourceTree = "<group>"; };
 		ED83F67820348A760038D96B /* FaviconFinder_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FaviconFinder_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -61,6 +81,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		BE21380423F0D4FD00DCA2CB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6031398A9AE57430E50815BA /* Pods_FaviconFinder_iOS_Example.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		ED83F67520348A760038D96B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -85,6 +113,7 @@
 			children = (
 				CA7C527B8CAE06B6FAAC37F6 /* Pods_FaviconFinder_Example.framework */,
 				630C60C5784DCC190F8E2126 /* Pods_FaviconFinder_Tests.framework */,
+				73D264E7952AED94626A0755 /* Pods_FaviconFinder_iOS_Example.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -96,8 +125,26 @@
 				F466EFBB5FC3E85126D4FC2E /* Pods-FaviconFinder_Example.release.xcconfig */,
 				DA44D8257B1E35AFC92A0480 /* Pods-FaviconFinder_Tests.debug.xcconfig */,
 				1B8BB63D6EB800781733BC1D /* Pods-FaviconFinder_Tests.release.xcconfig */,
+				D507263EAAFD4C18A4924A31 /* Pods-FaviconFinder_Example-FaviconFinder_iOS_Example.debug.xcconfig */,
+				D126331FEBE93627C20ED818 /* Pods-FaviconFinder_Example-FaviconFinder_iOS_Example.release.xcconfig */,
+				81EF860286A33245010DEEED /* Pods-FaviconFinder_iOS_Example.debug.xcconfig */,
+				6DCFFFF4C95ECA56DA8C1F91 /* Pods-FaviconFinder_iOS_Example.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		BE21380823F0D4FD00DCA2CB /* FaviconFinder_iOS_Example */ = {
+			isa = PBXGroup;
+			children = (
+				BE21380923F0D4FD00DCA2CB /* AppDelegate.swift */,
+				BE21380B23F0D4FD00DCA2CB /* SceneDelegate.swift */,
+				BE21380D23F0D4FD00DCA2CB /* ViewController.swift */,
+				BE21380F23F0D4FD00DCA2CB /* Main.storyboard */,
+				BE21381223F0D4FF00DCA2CB /* Assets.xcassets */,
+				BE21381423F0D4FF00DCA2CB /* LaunchScreen.storyboard */,
+				BE21381723F0D4FF00DCA2CB /* Info.plist */,
+			);
+			path = FaviconFinder_iOS_Example;
 			sourceTree = "<group>";
 		};
 		ED83F66F20348A760038D96B = {
@@ -106,6 +153,7 @@
 				BE331C0123E1B1EA0005E065 /* Cartfile */,
 				ED83F69A20348B650038D96B /* Podspec Metadata */,
 				ED83F67A20348A760038D96B /* FaviconFinder */,
+				BE21380823F0D4FD00DCA2CB /* FaviconFinder_iOS_Example */,
 				ED83F68D20348A760038D96B /* Tests */,
 				ED83F67920348A760038D96B /* Products */,
 				9B3444C47359C6B680921499 /* Pods */,
@@ -118,6 +166,7 @@
 			children = (
 				ED83F67820348A760038D96B /* FaviconFinder_Example.app */,
 				ED83F68A20348A760038D96B /* FaviconFinder_Tests.xctest */,
+				BE21380723F0D4FD00DCA2CB /* FaviconFinder_iOS_Example.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -162,6 +211,25 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		BE21380623F0D4FD00DCA2CB /* FaviconFinder_iOS_Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BE21381A23F0D4FF00DCA2CB /* Build configuration list for PBXNativeTarget "FaviconFinder_iOS_Example" */;
+			buildPhases = (
+				1134917192D385D86276553B /* [CP] Check Pods Manifest.lock */,
+				BE21380323F0D4FD00DCA2CB /* Sources */,
+				BE21380423F0D4FD00DCA2CB /* Frameworks */,
+				BE21380523F0D4FD00DCA2CB /* Resources */,
+				EDD079974E7192EE54A8BED1 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FaviconFinder_iOS_Example;
+			productName = FaviconFinder_iOS_Example;
+			productReference = BE21380723F0D4FD00DCA2CB /* FaviconFinder_iOS_Example.app */;
+			productType = "com.apple.product-type.application";
+		};
 		ED83F67720348A760038D96B /* FaviconFinder_Example */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = ED83F69320348A760038D96B /* Build configuration list for PBXNativeTarget "FaviconFinder_Example" */;
@@ -207,10 +275,14 @@
 		ED83F67020348A760038D96B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0900;
+				LastSwiftUpdateCheck = 1130;
 				LastUpgradeCheck = 1120;
 				ORGANIZATIONNAME = CocoaPods;
 				TargetAttributes = {
+					BE21380623F0D4FD00DCA2CB = {
+						CreatedOnToolsVersion = 11.3.1;
+						ProvisioningStyle = Manual;
+					};
 					ED83F67720348A760038D96B = {
 						CreatedOnToolsVersion = 9.0;
 						LastSwiftMigration = 1120;
@@ -238,12 +310,23 @@
 			projectRoot = "";
 			targets = (
 				ED83F67720348A760038D96B /* FaviconFinder_Example */,
+				BE21380623F0D4FD00DCA2CB /* FaviconFinder_iOS_Example */,
 				ED83F68920348A760038D96B /* FaviconFinder_Tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		BE21380523F0D4FD00DCA2CB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE21381623F0D4FF00DCA2CB /* LaunchScreen.storyboard in Resources */,
+				BE21381323F0D4FF00DCA2CB /* Assets.xcassets in Resources */,
+				BE21381123F0D4FD00DCA2CB /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		ED83F67620348A760038D96B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -265,6 +348,28 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1134917192D385D86276553B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FaviconFinder_iOS_Example-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		327E63F0435F60FF38B4464F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -316,8 +421,8 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-FaviconFinder_Example/Pods-FaviconFinder_Example-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/FaviconFinder/FaviconFinder.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftSoup/SwiftSoup.framework",
+				"${BUILT_PRODUCTS_DIR}/FaviconFinder-macOS/FaviconFinder.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftSoup-macOS/SwiftSoup.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -336,8 +441,8 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-FaviconFinder_Tests/Pods-FaviconFinder_Tests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/FaviconFinder/FaviconFinder.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftSoup/SwiftSoup.framework",
+				"${BUILT_PRODUCTS_DIR}/FaviconFinder-macOS/FaviconFinder.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftSoup-macOS/SwiftSoup.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -349,9 +454,39 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FaviconFinder_Tests/Pods-FaviconFinder_Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		EDD079974E7192EE54A8BED1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FaviconFinder_iOS_Example/Pods-FaviconFinder_iOS_Example-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/FaviconFinder-iOS/FaviconFinder.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftSoup-iOS/SwiftSoup.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FaviconFinder.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftSoup.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FaviconFinder_iOS_Example/Pods-FaviconFinder_iOS_Example-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		BE21380323F0D4FD00DCA2CB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE21380E23F0D4FD00DCA2CB /* ViewController.swift in Sources */,
+				BE21380A23F0D4FD00DCA2CB /* AppDelegate.swift in Sources */,
+				BE21380C23F0D4FD00DCA2CB /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		ED83F67420348A760038D96B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -384,6 +519,22 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		BE21380F23F0D4FD00DCA2CB /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BE21381023F0D4FD00DCA2CB /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		BE21381423F0D4FF00DCA2CB /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BE21381523F0D4FF00DCA2CB /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
 		BEBAE77D23CB2F1F00A60406 /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -395,6 +546,52 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		BE21381823F0D4FF00DCA2CB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 81EF860286A33245010DEEED /* Pods-FaviconFinder_iOS_Example.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = FaviconFinder_iOS_Example/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.williamlumley.faviconfinder;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BE21381923F0D4FF00DCA2CB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6DCFFFF4C95ECA56DA8C1F91 /* Pods-FaviconFinder_iOS_Example.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = FaviconFinder_iOS_Example/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.williamlumley.faviconfinder;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		ED83F69120348A760038D96B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -582,6 +779,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		BE21381A23F0D4FF00DCA2CB /* Build configuration list for PBXNativeTarget "FaviconFinder_iOS_Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BE21381823F0D4FF00DCA2CB /* Debug */,
+				BE21381923F0D4FF00DCA2CB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		ED83F67320348A760038D96B /* Build configuration list for PBXProject "FaviconFinder" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

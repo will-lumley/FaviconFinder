@@ -7,7 +7,7 @@
 #
 
 Pod::Spec.new do |s|
-    
+
   s.name         = "FaviconFinder"
   s.version      = "1.1.0"
   s.summary      = "A macOS Swift library to detect favicons use by a website."
@@ -22,7 +22,7 @@ Pod::Spec.new do |s|
   s.author             = { "William Lumley" => "will@lumley.io" }
   s.social_media_url   = "http://twitter.com/wlumley95"
 
-  s.platform              = :osx
+  s.ios.deployment_target = "10.0"
   s.osx.deployment_target = "10.10"
   s.swift_version         = '5.0'
   
