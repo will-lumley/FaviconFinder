@@ -1,5 +1,5 @@
 PODS:
-  - FaviconFinder (1.1.0):
+  - FaviconFinder (2.0.0):
     - SwiftSoup (~> 2.3.0)
   - SwiftSoup (2.3.0)
 
@@ -15,7 +15,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  FaviconFinder: 2e5daf7daace7445e02d31768361e12f3cb3931c
+  FaviconFinder: 892d111260e21afa07d46cc99b9b11036eaff462
   SwiftSoup: d78683f7ea0ae5733225a9e1d3bee5b256449df4
 
 PODFILE CHECKSUM: cb75b1ec9eef108df883725f54a1ad31877632dd

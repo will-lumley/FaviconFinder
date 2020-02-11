@@ -6,19 +6,18 @@
 //  Copyright © 2019 William Lumley. All rights reserved.
 //
 
-#if os(OSX)
-
+#if canImport(AppKit)
 import AppKit
-import SwiftSoup
-
 public typealias Image = NSImage
 
-#elseif os(iOS)
-
+#elseif canImport(UIKit)
 import UIKit
-import SwiftSoup
-
 public typealias Image = UIImage
+
+#endif
+
+#if canImport(SwiftSoup)
+import SwiftSoup
 
 #endif
 

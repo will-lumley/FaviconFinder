@@ -5,9 +5,10 @@
 [![CI Status](https://img.shields.io/travis/will-lumley/FaviconFinder/master.svg)](https://travis-ci.org/will-lumley/FaviconFinder)
 [![Version](https://img.shields.io/cocoapods/v/FaviconFinder.svg?style=flat)](https://cocoapods.org/pods/FaviconFinder)
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-[![License](https://img.shields.io/cocoapods/l/FaviconFinder.svg?style=flat)](https://cocoapods.org/pods/FaviconFinder)
+[![SPM Compatible](https://img.shields.io/badge/SPM-compatible-4BC51D.svg?style=flat)](https://github.com/apple/swift-package-manager)
 ![Swift 5.0](https://img.shields.io/badge/Swift-5.0-orange.svg)
 [![Platform](https://img.shields.io/cocoapods/p/FaviconFinder.svg?style=flat)](https://cocoapods.org/pods/FaviconFinder)
+[![License](https://img.shields.io/cocoapods/l/FaviconFinder.svg?style=flat)](https://cocoapods.org/pods/FaviconFinder)
 [![Twitter](https://img.shields.io/badge/twitter-@wlumley95-blue.svg?style=flat)](https://twitter.com/wlumley95)
 
 FaviconFinder is a tiny, pure Swift library designed for iOS and macOS applications that allows you to detect favicons used by a website.
@@ -53,6 +54,7 @@ it, simply add the following line to your Podfile:
 ```ruby
 pod 'FaviconFinder'
 ```
+
 ### Carthage
 FaviconFinder is also available through [Carthage](https://github.com/Carthage/Carthage). To install
 it, simply add the following line to your Cartfile:
@@ -61,9 +63,23 @@ it, simply add the following line to your Cartfile:
 github "will-lumley/FaviconFinder"
 ```
 
+### Swift Package Manager
+FaviconFinder is also available through [Swift Package Manager](https://github.com/apple/swift-package-manager). 
+To install it, simply add the dependency to your Package.Swift file:
+
+```swift
+...
+dependencies: [
+    .package(url: "https://github.com/will-lumley/FaviconFinder.git", from: "2.1.0"),
+],
+targets: [
+    .target( name: "YourTarget", dependencies: ["FaviconFinder"]),
+]
+...
+```
 ## Author
 
-William Lumley, will@lumley.io
+[William Lumley](https://lumley.io/), will@lumley.io
 
 ## License
 

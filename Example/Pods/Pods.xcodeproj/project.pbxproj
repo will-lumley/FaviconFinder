@@ -7,163 +7,156 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		09010E1C37BEDFF2470C8F5558CB5897 /* FaviconFinder-iOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DD39A1D2C65F828B89617483D7331F6 /* FaviconFinder-iOS-dummy.m */; };
-		0C2CDA8CABFF084889D6EABA07C968AC /* FaviconFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B77485428EB3C69E39C707F9D2B8E1 /* FaviconFinder.swift */; };
-		0C7FFE9F2619B0064F12DCEE91D01645 /* Validate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8667D661C13F5A414D1447BD359AC5E9 /* Validate.swift */; };
-		0D5A7FDE315E4EB39343AD0B90E22799 /* Tokeniser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA0573A09AC422877AF058898C48908 /* Tokeniser.swift */; };
-		0E2E27A2C039666F8AC17BA7FE429369 /* StructuralEvaluator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEAB2B65B20E09E9F88D17E454CF83B8 /* StructuralEvaluator.swift */; };
-		0EC67129B0F2F36014D4836C1A6C35DB /* FaviconError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BDBD849BCF4FA9148772AD9025CA9E /* FaviconError.swift */; };
-		11A0EB124FDF97F52C1D5F1E2DCDDD9D /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6331A36DA377CFC7F3BCCE7908903867 /* Token.swift */; };
-		12066E9912392C1F0A54479AD84D87E4 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA5218E337095C7E52A4627DDAB2D06 /* Comment.swift */; };
+		00ABA976068D973981DA80D58CB7274D /* SimpleDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D82713A9CD6F799A76794D22E5FA29E /* SimpleDictionary.swift */; };
+		0153555E20AFDDF607B4C3D8D7F7B207 /* XmlDeclaration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A052C862F2AACEAFBFB02044A6EDAFAD /* XmlDeclaration.swift */; };
+		0278372130DB1FC6A2DDAD374375876D /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA5218E337095C7E52A4627DDAB2D06 /* Comment.swift */; };
+		03A159258E357BC91967B88AEEA9B098 /* HtmlTreeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C72A6333876A7F65F142849EADE0904 /* HtmlTreeBuilder.swift */; };
+		071FA82B93471C50A3137F41B55E11CE /* Entities.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EAB7844FEFB7C5F87F6F541A15E811 /* Entities.swift */; };
+		08F1CF9E4175B687A5B3FCDACB0FE7BD /* StructuralEvaluator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEAB2B65B20E09E9F88D17E454CF83B8 /* StructuralEvaluator.swift */; };
+		0A26803FBA8447F956FF8FFF1622C214 /* FaviconFinder-macOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D05023EE58C0D346B4CBA595B67D4444 /* FaviconFinder-macOS-dummy.m */; };
+		0AC88FE1B4492128392C1B5D0764C8E1 /* SwiftSoup.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD9FEDB323CA9D32C5C44763122EE758 /* SwiftSoup.framework */; };
+		0B83E86D1EFD288B2A6AA628B44B5D57 /* SwiftSoup-macOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 24CD6ACE749D06B3C4FA9B52BE502123 /* SwiftSoup-macOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0F15954199DA44E969E95CC93A15ECFE /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA5218E337095C7E52A4627DDAB2D06 /* Comment.swift */; };
+		1050437A140158AC858D7F18979300E7 /* SimpleDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D82713A9CD6F799A76794D22E5FA29E /* SimpleDictionary.swift */; };
 		12F15CD2EE486B4A391139337A5D343A /* Pods-FaviconFinder_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B09667E52AFB674DA0D8C8CBD5B6C0 /* Pods-FaviconFinder_Example-dummy.m */; };
-		1338BBA8D53D407F74596350DAC6B1E8 /* NodeVisitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67C715036E5FE0BB52EDAAA3916D7D7 /* NodeVisitor.swift */; };
-		13EAE412C28D2B8B1D55610CB31C8B7C /* FaviconFinder-macOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 11C3D4036C2D9BC2599684DE3403CAE9 /* FaviconFinder-macOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		166676C8E7D7CD148E6F994B508976C1 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA5218E337095C7E52A4627DDAB2D06 /* Comment.swift */; };
-		166A89BFD0A27A94EF3E2ED8F9835E4C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68B0BAA0FF92344ABF481B76198A7193 /* Cocoa.framework */; };
-		1773741A62DA6A16D351AEA7B0A9F4F3 /* Pattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C458BAAC2CB687999BB045248E6CFD1 /* Pattern.swift */; };
-		1924B384C320ABA7FD367E25CDF08927 /* Evaluator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB412FD5175BAAC75D754B2238AEBE2 /* Evaluator.swift */; };
-		1B18835346F7700C628C6621A8AD5D8A /* Whitelist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6421A4FFAA7A74D9B196B36F8144D955 /* Whitelist.swift */; };
-		1B4BA972536FF37A0C5A8C65078EE386 /* Validate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8667D661C13F5A414D1447BD359AC5E9 /* Validate.swift */; };
-		1D9683C7CBD84E3ECAC1ADDAAFA9D264 /* Element.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA99DEC244DAC2C6298F61F4FAC35653 /* Element.swift */; };
-		1DD4EBA748FB36EA4B73E0C675140055 /* DocumentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAAC3185A0EA32D313C2EBC4483E4F2 /* DocumentType.swift */; };
-		1DF54694A1503B2D62DB55CA95F74084 /* DataUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EA2C072E9BB38EED0A8F9327E630E7 /* DataUtil.swift */; };
-		2266F050883EE8E5619C84A8751E01AE /* BooleanAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F50800F817C1574E7D6CFBF016FCFE /* BooleanAttribute.swift */; };
-		228018EC0E203FD01FB426BD3DD0D60A /* BinarySearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CCA454DC60F7C4C07C3E02CA3A80DB /* BinarySearch.swift */; };
-		2503D4AF9ABC616BF26FB2CE18831DD4 /* SwiftSoup-macOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B650DD319C2F94342E957D424BBD7B /* SwiftSoup-macOS-dummy.m */; };
-		25EFAE2BFD1024E3343C0B5A2814FE3C /* FaviconRelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F2891ABDB736EC6136D045F329A843 /* FaviconRelType.swift */; };
-		28E87DA1A64E0D3FD5AE11481C6DA4EF /* QueryParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF529112C67D18A76168F07D0000F32D /* QueryParser.swift */; };
-		295044C18A9669FE82E9EBFC1C45E71A /* CharacterExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5671DF6B46DBF9F070E6DA296C870D6A /* CharacterExt.swift */; };
-		2A5253E5D8D971F58436E72A49D9BE0A /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3CA7DDD170466393DCA48AD8BDD296 /* Document.swift */; };
-		2B947F6C198A99446ED77B6F0EED7F6F /* XmlDeclaration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A052C862F2AACEAFBFB02044A6EDAFAD /* XmlDeclaration.swift */; };
-		2BC5043698ED4DBE13467C1DE2CF9FA5 /* SimpleDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D82713A9CD6F799A76794D22E5FA29E /* SimpleDictionary.swift */; };
-		2C61044092B03446262760577C6F3924 /* TreeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB6B7FCE5A5C1C14401231DDB2D9F30 /* TreeBuilder.swift */; };
-		2DCF2EA08964592A355CDBB283A006F9 /* FormElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CFE068E9EC21B9DF5DBBED22AC8C32 /* FormElement.swift */; };
-		2F8CFEA25746317F8C009F7F276AE239 /* TextNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1E6D5A2B3C37B156DAC4994E9D7063 /* TextNode.swift */; };
-		3101356A71E5EC9F4A05C8FAD590D290 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3CA7DDD170466393DCA48AD8BDD296 /* Document.swift */; };
-		310C4C079951C9E8449F20A104D50397 /* StringBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A843541F902172708C58DEF21537516 /* StringBuilder.swift */; };
-		3252F6963E65565E7662E873807542B8 /* NodeTraversor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BDAFF39977B6CC56EAD90FA2257E92 /* NodeTraversor.swift */; };
-		352DD1B1A8B5B932DA4360E86B912474 /* ParseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EAFA65BCDF9C4A838DFDC8971029D9 /* ParseError.swift */; };
-		379641D92DA9F39FFBC1EBF40EA3DE17 /* HtmlTreeBuilderState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26387AFE49A8382CEF96BDCA9648F707 /* HtmlTreeBuilderState.swift */; };
-		38372178147D02A1CFBA2D45B6EE8C48 /* Entities.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EAB7844FEFB7C5F87F6F541A15E811 /* Entities.swift */; };
-		394E0287AA96BB90BF8A72C38BE2B2B5 /* SwiftSoup-iOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B70DF4D0948BF795F8D2D859BB9F4E4C /* SwiftSoup-iOS-dummy.m */; };
-		3A7DA602636F32379901D497F89696CC /* FormElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CFE068E9EC21B9DF5DBBED22AC8C32 /* FormElement.swift */; };
-		3AD47641A05F26C447E586167804EFED /* DataUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EA2C072E9BB38EED0A8F9327E630E7 /* DataUtil.swift */; };
-		3EAF6B1F4316468D706EC088BA53484E /* UnicodeScalar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FCD00BD1A7A2D8C666DB7D5A5A8351 /* UnicodeScalar.swift */; };
-		3FE609350759965E249A585A2093C7C3 /* Attributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDB0E54DED33EECF64EFB8FF830D736 /* Attributes.swift */; };
-		400A8F2F5F4266CC60F55F6A881EEDD0 /* FaviconFinder-iOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = BEA1B4D9F593E0CC512674677792CE3E /* FaviconFinder-iOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		139BBF07E953F321D8E6F3E747A3A59C /* SwiftSoup-iOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C0F6AC2632ABB4644644EB19F23B863D /* SwiftSoup-iOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		13B1D3DFA414386FE3DBBB725EEEE9EE /* Cleaner.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE14A2E5865F2C8568D37794F5BEA5A4 /* Cleaner.swift */; };
+		1846ECB1B218BEF4814E1BE0A1CE6EBE /* Elements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F555F6246F87A2C035A4E9C7943D0E4 /* Elements.swift */; };
+		19547169EFBD56D58086EFA6725929F9 /* UnicodeScalar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FCD00BD1A7A2D8C666DB7D5A5A8351 /* UnicodeScalar.swift */; };
+		1A628812B62340B7024B8223B294388A /* XmlDeclaration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A052C862F2AACEAFBFB02044A6EDAFAD /* XmlDeclaration.swift */; };
+		1D3B1CCB1340CF3D4EC1465AD2BBF28E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68B0BAA0FF92344ABF481B76198A7193 /* Cocoa.framework */; };
+		1D85963F483F44898F0D1EFDF3D09472 /* Element.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA99DEC244DAC2C6298F61F4FAC35653 /* Element.swift */; };
+		1F988DE3B97A0187C1462BF4193AF3F6 /* Tokeniser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA0573A09AC422877AF058898C48908 /* Tokeniser.swift */; };
+		229F9BF1264DA5F69481A9651A5ABE1E /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3CA7DDD170466393DCA48AD8BDD296 /* Document.swift */; };
+		22ADD1E248B3732C228BE7BD380B68B6 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6331A36DA377CFC7F3BCCE7908903867 /* Token.swift */; };
+		234124420E77369B1E2FB00DA5D09818 /* TreeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB6B7FCE5A5C1C14401231DDB2D9F30 /* TreeBuilder.swift */; };
+		23E3DB58DD4D0F6CAEDBCABFF5AD2E54 /* QueryParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF529112C67D18A76168F07D0000F32D /* QueryParser.swift */; };
+		2681138DB1404F1DFA13305C5F42FA4D /* HtmlTreeBuilderState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26387AFE49A8382CEF96BDCA9648F707 /* HtmlTreeBuilderState.swift */; };
+		2A59CEB499CE24763BB44EDACD7B7D10 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6331A36DA377CFC7F3BCCE7908903867 /* Token.swift */; };
+		2AB78EB8D7811CCC3A345C54BAFBC804 /* XmlTreeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9FCA70E6A65B7FAD08D1246710C36B /* XmlTreeBuilder.swift */; };
+		2B4F33D78DBAC1C41FBA8F350A87B081 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1873361EC4F2578791869C71E0A90E /* Parser.swift */; };
+		2B7641CB08F8092E21C5D4D04F1D9BD1 /* StringBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A843541F902172708C58DEF21537516 /* StringBuilder.swift */; };
+		2E76BF952CBD70300A752AC02323FD3B /* CombiningEvaluator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CE8F429E814EFC28DDDB914DE83D07 /* CombiningEvaluator.swift */; };
+		307BC27D690F54F10F1E71032F6EC763 /* TreeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB6B7FCE5A5C1C14401231DDB2D9F30 /* TreeBuilder.swift */; };
+		307F050AA07DD6DA281BBC0FBDCCC111 /* Collector.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19B2E0E6DB3D1A75101A4F53F7262AE /* Collector.swift */; };
+		3364CD8A68D8311DD6FF302A02BA1CF8 /* FaviconFinder-iOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7128296BFD4FE0ED97DA30C5459ABF2D /* FaviconFinder-iOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		34FF2E8642D77EFC61ACF76649ACCCAF /* TextNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1E6D5A2B3C37B156DAC4994E9D7063 /* TextNode.swift */; };
+		3554C7A9FA8D786A0C8239889EDA5205 /* Pattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C458BAAC2CB687999BB045248E6CFD1 /* Pattern.swift */; };
+		36EC8FB29D5EE74274C6072E787EDF29 /* FaviconRelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED7F62A8B8722EA403F9F4FBA81A031 /* FaviconRelType.swift */; };
+		37E2FDB8B665AC4702FD6C64FA36C9DA /* SwiftSoup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77713CC9FF4A936996B61C49F19A5DAE /* SwiftSoup.swift */; };
+		39B006BF07D80D67D9BA5628F6FB6615 /* Whitelist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6421A4FFAA7A74D9B196B36F8144D955 /* Whitelist.swift */; };
+		3A2B32C378C48436D073E2408D3BA83C /* BinarySearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CCA454DC60F7C4C07C3E02CA3A80DB /* BinarySearch.swift */; };
+		3C8252B8A6E6ED4ACF8C98ECF493E9BC /* NodeTraversor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BDAFF39977B6CC56EAD90FA2257E92 /* NodeTraversor.swift */; };
+		3D202260DF85F1AA9BD3E237D21F5BB7 /* DataUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EA2C072E9BB38EED0A8F9327E630E7 /* DataUtil.swift */; };
+		3F9AFCCE2DA048B1FEAC060FD21D7222 /* URL+Parsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3703A641C35F26A35A8FD74FB75A0D /* URL+Parsing.swift */; };
+		3FEE1AD567069E4DF4D31A724DA79DF3 /* TextNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1E6D5A2B3C37B156DAC4994E9D7063 /* TextNode.swift */; };
+		408E922C49D141ED44D5346A21E3FD16 /* Evaluator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB412FD5175BAAC75D754B2238AEBE2 /* Evaluator.swift */; };
+		4165B303623B16ACAC370A65CF648BED /* Pattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C458BAAC2CB687999BB045248E6CFD1 /* Pattern.swift */; };
+		4356452A67FD45888C971945F5F9E4DF /* Exception.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E282A5D291759F94A9D4F072C5AA69A /* Exception.swift */; };
 		444B1A22FEAE2A9609791B1BD1F683AC /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68B0BAA0FF92344ABF481B76198A7193 /* Cocoa.framework */; };
 		44E791098C3C740B64D72BF7907C8155 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68B0BAA0FF92344ABF481B76198A7193 /* Cocoa.framework */; };
-		464769BB6C591F2500D1EC3D46903077 /* Cleaner.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE14A2E5865F2C8568D37794F5BEA5A4 /* Cleaner.swift */; };
-		48613A16B449764465332564C9B3861D /* Entities.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EAB7844FEFB7C5F87F6F541A15E811 /* Entities.swift */; };
-		49D97C95C5E1E55BD7B99C66ED9BB83E /* Selector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810E7F125E9CA17DB24CBDF572B41593 /* Selector.swift */; };
-		4A027FBA3E489272B229574A14C19D93 /* OrderedSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48C0E7903C6D039BC6F9872364C34A7 /* OrderedSet.swift */; };
-		4C4F77E3E969603B5EEE5522DB67E86E /* ArrayExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E7508A5ADE474EF3AA2B6CCDC67FB7 /* ArrayExt.swift */; };
-		4D2DFB47B81F5F7EADF8AAE227B26030 /* UnicodeScalar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FCD00BD1A7A2D8C666DB7D5A5A8351 /* UnicodeScalar.swift */; };
-		4FAF8FE689D2A86CF170A99DD59B57E5 /* SerializationException.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CE8249856195414161FB4D82CA0066 /* SerializationException.swift */; };
-		5082B0304DE8E63B771C53EC23792765 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1873361EC4F2578791869C71E0A90E /* Parser.swift */; };
-		50BC2E4DD47CADCDF00965DB7C957A7B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68B0BAA0FF92344ABF481B76198A7193 /* Cocoa.framework */; };
-		513ACA13C6963DD9E95D057A5D75E917 /* SwiftSoup.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD9FEDB323CA9D32C5C44763122EE758 /* SwiftSoup.framework */; };
-		5150C6E3536D890FE5F6ACD065AA321E /* HttpStatusException.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572700DFB09E46594A8EFF58E0C86454 /* HttpStatusException.swift */; };
-		524F2518295B86615ACE43F7F7AA8001 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D60DEC07A9C439719CEF3BBC13FBFB /* Tag.swift */; };
-		5724F841E6972FDAD522C2AA46E5FBC9 /* SwiftSoup.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD9FEDB323CA9D32C5C44763122EE758 /* SwiftSoup.framework */; };
-		5901B59B05BE03496C3BAF1FD0958165 /* TokeniserState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9612146A3559A308E076C1477431673 /* TokeniserState.swift */; };
-		5B43EFDAC16C044BFC711978402DDE00 /* ParseErrorList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D38FC0671BE48910705E9E535E444C2 /* ParseErrorList.swift */; };
-		5E50988D01A9724B5A97F8551B07459B /* Tokeniser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA0573A09AC422877AF058898C48908 /* Tokeniser.swift */; };
-		60CD3E50A3DFF55BA82AF96204D117E6 /* Elements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F555F6246F87A2C035A4E9C7943D0E4 /* Elements.swift */; };
-		6112FE52E2C6347B846EE2E121CD3DDA /* SwiftSoup-iOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C0F6AC2632ABB4644644EB19F23B863D /* SwiftSoup-iOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		62149C64B579B2E3C963E5DA62463258 /* DataNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C544890F74E0AA23B23D64B11AB99F88 /* DataNode.swift */; };
-		6778BE5FBD296E4792543960A74B5F7C /* String+Removals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425EB84763542D6CB571C65C7ABA0238 /* String+Removals.swift */; };
-		6AB9398B5B303AB41EBA5DDD1D803BF4 /* SimpleDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D82713A9CD6F799A76794D22E5FA29E /* SimpleDictionary.swift */; };
-		70CE784C1D9D84215BC59CEF2A793F7E /* URL+Parsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07967061D15B8651267C1F4D468927B /* URL+Parsing.swift */; };
-		728F8CD5EC38CF9B403F562539F82FEB /* BinarySearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CCA454DC60F7C4C07C3E02CA3A80DB /* BinarySearch.swift */; };
-		72B4057C2313B99EEC9843F084F4A779 /* XmlTreeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9FCA70E6A65B7FAD08D1246710C36B /* XmlTreeBuilder.swift */; };
-		7480D76F89B7FBA0DE29FDF8C8865CD1 /* CombiningEvaluator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CE8F429E814EFC28DDDB914DE83D07 /* CombiningEvaluator.swift */; };
-		765E4E4BC9ACEEB90EDA6684FD872EC9 /* Exception.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E282A5D291759F94A9D4F072C5AA69A /* Exception.swift */; };
-		81E3CECE99DE947E4D29E577F761F875 /* SwiftSoup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77713CC9FF4A936996B61C49F19A5DAE /* SwiftSoup.swift */; };
-		835BB8DF43DF31AE6D16E9A5214F441B /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37191BDF1EB9490F8293D5CF03F9524 /* String.swift */; };
+		4E7E2CE010509EA6843EEB7916DE2FA3 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37191BDF1EB9490F8293D5CF03F9524 /* String.swift */; };
+		51EE95B5882BB4E1BD43DB98202ACAD2 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3CA7DDD170466393DCA48AD8BDD296 /* Document.swift */; };
+		526B98FF847DFADB49A1F52C79A95EBA /* Selector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810E7F125E9CA17DB24CBDF572B41593 /* Selector.swift */; };
+		52C02684935EE079C684CC8423E65193 /* FaviconRelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED7F62A8B8722EA403F9F4FBA81A031 /* FaviconRelType.swift */; };
+		52D6B3827061C7C0CCB39CE36E2428CC /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D18D5FA0C65A465F05B68B6564B81B /* Regex.swift */; };
+		52F0BDF10F16C78E444F3AFB19E20098 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5E98D26120B44F7D01A0E5B28A8F17 /* Node.swift */; };
+		54E0DE568D9596265F782859D07532DA /* XmlTreeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9FCA70E6A65B7FAD08D1246710C36B /* XmlTreeBuilder.swift */; };
+		55AA0891E5E24D2E35F8FA94DE3C323D /* CombiningEvaluator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CE8F429E814EFC28DDDB914DE83D07 /* CombiningEvaluator.swift */; };
+		5BB7F1EBC8F4CB078E0DF4B084554284 /* Attribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E36B9A1D58E6D27431586D7B64F2D02 /* Attribute.swift */; };
+		62925AB8BEED84A035B61FC54DB75CE1 /* StringUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDEDB3CB8918EE9A3AFC09603900BFB /* StringUtil.swift */; };
+		63830B1BB6C581CFDD6AE1B65CFD2201 /* ParseSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F039F55BBF5F9624FD543B644A7AA862 /* ParseSettings.swift */; };
+		6D6BC0039CFDB5786BE3745BB13E7EFA /* URL+Parsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3703A641C35F26A35A8FD74FB75A0D /* URL+Parsing.swift */; };
+		6EB932A2D76F052FCEC62BF422EB18A8 /* FormElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CFE068E9EC21B9DF5DBBED22AC8C32 /* FormElement.swift */; };
+		6EDC7D711CE59586F38D5BDFB03E9B2A /* CharacterReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD26115771F0D79527937F6C1889B8B /* CharacterReader.swift */; };
+		72A59100508D32B2235E36E068F767CF /* BooleanAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F50800F817C1574E7D6CFBF016FCFE /* BooleanAttribute.swift */; };
+		755DC7E3B71CA769CF0246B242D10653 /* String+Removals.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FB745177A714C7141DFD0EB668E7FD /* String+Removals.swift */; };
+		76249CF07ADE7E708992892A5D328FD8 /* DataNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C544890F74E0AA23B23D64B11AB99F88 /* DataNode.swift */; };
+		76496EF110B7E248C67720979BB06B7C /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D60DEC07A9C439719CEF3BBC13FBFB /* Tag.swift */; };
+		7788838B4F7870836034FA11E3F113A6 /* ParseSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F039F55BBF5F9624FD543B644A7AA862 /* ParseSettings.swift */; };
+		79258F7E40EEC0CB79F8449B35EB8543 /* Attributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDB0E54DED33EECF64EFB8FF830D736 /* Attributes.swift */; };
+		7FBC006052741465DA40F335AFE94122 /* TokeniserState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9612146A3559A308E076C1477431673 /* TokeniserState.swift */; };
+		8170AFC84561A1A1904D09610E5575F5 /* SwiftSoup.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD9FEDB323CA9D32C5C44763122EE758 /* SwiftSoup.framework */; };
+		8285CD1ACC532C01349F2A0BBDCF75BD /* FormElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CFE068E9EC21B9DF5DBBED22AC8C32 /* FormElement.swift */; };
 		83A3EA5D8D3389BF8ED878ADCAF8B9D0 /* Pods-FaviconFinder_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F28AC593872D9CC80CA51BDC366FD68C /* Pods-FaviconFinder_Tests-dummy.m */; };
-		854D9E7042B22BEF1F52759AAC79645A /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEF09261EA48A5BD2A8146169C61A37D /* Regex.swift */; };
+		846516A162C33C6C2C09A87494B942BB /* DocumentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAAC3185A0EA32D313C2EBC4483E4F2 /* DocumentType.swift */; };
+		858D66F2CB70C1E92D347DA027E6C0EC /* Collector.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19B2E0E6DB3D1A75101A4F53F7262AE /* Collector.swift */; };
+		85F80E048C637BE9848671BA7264550C /* StreamReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042C4AFC49D5703AD3F43622A356AD58 /* StreamReader.swift */; };
 		87230C37441E414A8FDC5A112C9ADFCD /* Pods-FaviconFinder_iOS_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D61818FAE602BFCCC5C102293A45511E /* Pods-FaviconFinder_iOS_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		892C2DB4C2C6BE879B4710495304D7C1 /* CharacterReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD26115771F0D79527937F6C1889B8B /* CharacterReader.swift */; };
-		89DC9A9F992692CAF5486558684EC46B /* SwiftSoup-macOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 24CD6ACE749D06B3C4FA9B52BE502123 /* SwiftSoup-macOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8ACEEE6860DC5B15543C1688150B3FEF /* QueryParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF529112C67D18A76168F07D0000F32D /* QueryParser.swift */; };
-		8EFED7E6AA3691A9585F562CFC9565F7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0195FBE6152B63EEF7ECDFD0C0CB270C /* Foundation.framework */; };
-		946CD753DE0B22F09AA8DBDEC847AA1F /* TreeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB6B7FCE5A5C1C14401231DDB2D9F30 /* TreeBuilder.swift */; };
-		94ABEDB0B513E3D15E087DBF187FE3B9 /* StringUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDEDB3CB8918EE9A3AFC09603900BFB /* StringUtil.swift */; };
-		96DDDED543788C955B464F4F1A2AC24D /* Pattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C458BAAC2CB687999BB045248E6CFD1 /* Pattern.swift */; };
-		981AB1F39209160B8549A972B45A3D9C /* HtmlTreeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C72A6333876A7F65F142849EADE0904 /* HtmlTreeBuilder.swift */; };
-		987EFA597C158B0DA94ADCB87FDE214B /* TextNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1E6D5A2B3C37B156DAC4994E9D7063 /* TextNode.swift */; };
-		9A494FB6A13189712022A905E54EFF1A /* BooleanAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F50800F817C1574E7D6CFBF016FCFE /* BooleanAttribute.swift */; };
-		9C311552133F30FD1BBD05356935C34B /* Cleaner.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE14A2E5865F2C8568D37794F5BEA5A4 /* Cleaner.swift */; };
-		9D922B4EFE016EAC2FDF5F60694EAAEB /* XmlDeclaration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A052C862F2AACEAFBFB02044A6EDAFAD /* XmlDeclaration.swift */; };
-		A132623BE7EC6B0860A6EAF9DD129B6A /* ParseSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F039F55BBF5F9624FD543B644A7AA862 /* ParseSettings.swift */; };
-		A3566A3339AFC78449C188B6C0BF1D30 /* ParseSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F039F55BBF5F9624FD543B644A7AA862 /* ParseSettings.swift */; };
-		AC52305B3FE9F44965CA5496B9457A45 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5E98D26120B44F7D01A0E5B28A8F17 /* Node.swift */; };
-		AC761F8B6C8C7E0D585F0288CF8D9B18 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14FE914D8AD4EC4FCB41207D11E9AE0 /* Connection.swift */; };
-		AEF2EDA777932A2426355719845016E1 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5E98D26120B44F7D01A0E5B28A8F17 /* Node.swift */; };
+		877FE803B1CB85F04FB6E3703F0F3EBB /* Whitelist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6421A4FFAA7A74D9B196B36F8144D955 /* Whitelist.swift */; };
+		88B0370E50CD15F6EF9EB93F609AA1E2 /* CharacterExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5671DF6B46DBF9F070E6DA296C870D6A /* CharacterExt.swift */; };
+		8A9FA1917E6B88FC7B104FEA195505CC /* CharacterExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5671DF6B46DBF9F070E6DA296C870D6A /* CharacterExt.swift */; };
+		8B8E5A693A44DDEC027B4ED0D1FD596C /* String+Removals.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FB745177A714C7141DFD0EB668E7FD /* String+Removals.swift */; };
+		8C4D05F1FB3BCC79D8AA1D6F089FAB6C /* FaviconFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6928986DE49CDA2918E449A684283C06 /* FaviconFinder.swift */; };
+		8E66B817CFB2B4384CA694D7C2CE5DAD /* DocumentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAAC3185A0EA32D313C2EBC4483E4F2 /* DocumentType.swift */; };
+		8F3C0A13F0393E37272299F813B8BB04 /* TokeniserState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9612146A3559A308E076C1477431673 /* TokeniserState.swift */; };
+		8F558F26873352931C931AF20339F802 /* Cleaner.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE14A2E5865F2C8568D37794F5BEA5A4 /* Cleaner.swift */; };
+		91500DE89F5AFAA59FD47E69FF9D2AA3 /* ParseErrorList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D38FC0671BE48910705E9E535E444C2 /* ParseErrorList.swift */; };
+		92EB2B93742CB67578FC0D289A27D87E /* DataNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C544890F74E0AA23B23D64B11AB99F88 /* DataNode.swift */; };
+		95EF3915F375212C501A3B450D47D11A /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D60DEC07A9C439719CEF3BBC13FBFB /* Tag.swift */; };
+		962FE0E3FDE86EFE38C58B252483B9FF /* HttpStatusException.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572700DFB09E46594A8EFF58E0C86454 /* HttpStatusException.swift */; };
+		9D3FD2EC45768D6C101E3672DDB7D114 /* FaviconError.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC64FA7D6A9DBAF0BA6C76103B4115E /* FaviconError.swift */; };
+		9D53C72D50240BF6347F993F435CA66E /* QueryParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF529112C67D18A76168F07D0000F32D /* QueryParser.swift */; };
+		A10FBBEDB0519BBC18301E049E9E3D5B /* ParseErrorList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D38FC0671BE48910705E9E535E444C2 /* ParseErrorList.swift */; };
+		A1CDC992A4ECCABEC36BA6A7561251DA /* HttpStatusException.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572700DFB09E46594A8EFF58E0C86454 /* HttpStatusException.swift */; };
+		A41785A1B50DF0F2094887BC193C857D /* SwiftSoup-macOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B650DD319C2F94342E957D424BBD7B /* SwiftSoup-macOS-dummy.m */; };
+		A4BEC499C90D170D2F90E50997FFE5D9 /* ParseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EAFA65BCDF9C4A838DFDC8971029D9 /* ParseError.swift */; };
+		A599CB02076F23C099C52E3CFBBA8268 /* NodeTraversor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BDAFF39977B6CC56EAD90FA2257E92 /* NodeTraversor.swift */; };
+		A8826B015B33E5A95624EBB6084DBB22 /* Validate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8667D661C13F5A414D1447BD359AC5E9 /* Validate.swift */; };
+		AA5ED01C25B314063009D9D96E5BE9A5 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37191BDF1EB9490F8293D5CF03F9524 /* String.swift */; };
+		AA78794C800BC275610D0A25482E4F7A /* SerializationException.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CE8249856195414161FB4D82CA0066 /* SerializationException.swift */; };
+		AE54DAFEEB4F95D0D53983B59EF05B2D /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1873361EC4F2578791869C71E0A90E /* Parser.swift */; };
 		B0C6405B2AAFB686AA68B2C248FF5F0A /* Pods-FaviconFinder_iOS_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F2407BB28469C282007BD0E4D2AEA5 /* Pods-FaviconFinder_iOS_Example-dummy.m */; };
 		B1DFD58A548EC65AAFD94DB43E13EA93 /* Pods-FaviconFinder_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8224169CD8361A3BB68D53A238967A8F /* Pods-FaviconFinder_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B24B1B5BEB04B3AED6B6E7682B31B254 /* DocumentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAAC3185A0EA32D313C2EBC4483E4F2 /* DocumentType.swift */; };
-		B37CCBE81F5E4BB4BE2B9A4E8ED10B53 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0195FBE6152B63EEF7ECDFD0C0CB270C /* Foundation.framework */; };
-		B4A2F9ED87B93ECE1612F49CFC714320 /* TokeniserState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9612146A3559A308E076C1477431673 /* TokeniserState.swift */; };
-		B5018A535EAE3BAA3CB9A6EE5C328BEF /* Collector.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19B2E0E6DB3D1A75101A4F53F7262AE /* Collector.swift */; };
-		B60BC19C07D43A5462A6CE306802D203 /* ParseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EAFA65BCDF9C4A838DFDC8971029D9 /* ParseError.swift */; };
-		B6B5075CB3AB48FAB298788896987EDB /* StringBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A843541F902172708C58DEF21537516 /* StringBuilder.swift */; };
+		B229216E9DB8035EF0F7DD86E8ADC44D /* ParseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EAFA65BCDF9C4A838DFDC8971029D9 /* ParseError.swift */; };
+		B3EFC138BD1083FE8E46B0EEF9E0E778 /* NodeVisitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67C715036E5FE0BB52EDAAA3916D7D7 /* NodeVisitor.swift */; };
+		B57442511DC8C8D6B90DD717CB345F6E /* SwiftSoup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77713CC9FF4A936996B61C49F19A5DAE /* SwiftSoup.swift */; };
+		B79BD15118BD077AFCBDDC686E690F65 /* UnicodeScalar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FCD00BD1A7A2D8C666DB7D5A5A8351 /* UnicodeScalar.swift */; };
 		B8007BE64F32FE9A5BFBC74FF0AD3711 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0195FBE6152B63EEF7ECDFD0C0CB270C /* Foundation.framework */; };
-		B85ECDA83EE503EB84459F053E4C86A6 /* CombiningEvaluator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CE8F429E814EFC28DDDB914DE83D07 /* CombiningEvaluator.swift */; };
+		B9DB71936593F19E137ED3A31348CAC6 /* FaviconError.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC64FA7D6A9DBAF0BA6C76103B4115E /* FaviconError.swift */; };
 		BA79DC2E337749ACE3A89AD6E2DB24B7 /* Pods-FaviconFinder_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 09D58F8BF9BF042BB9C3A8D74A399F96 /* Pods-FaviconFinder_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BA81DBA52C1867DFA32F69B761D1AB30 /* SwiftSoup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77713CC9FF4A936996B61C49F19A5DAE /* SwiftSoup.swift */; };
-		BBD51AA2905C7C9D86D9BA6507785544 /* Elements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F555F6246F87A2C035A4E9C7943D0E4 /* Elements.swift */; };
-		C2C6706B37B97B344DD8EF17A7B96CC2 /* XmlTreeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9FCA70E6A65B7FAD08D1246710C36B /* XmlTreeBuilder.swift */; };
-		C49697FE8404B76880BA1FFC2EDA99D6 /* NodeVisitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67C715036E5FE0BB52EDAAA3916D7D7 /* NodeVisitor.swift */; };
-		C6CBC29239D8BEAC58DE26A1883527E9 /* Whitelist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6421A4FFAA7A74D9B196B36F8144D955 /* Whitelist.swift */; };
-		C71FBB1FC82C8E490C16E8585AD22524 /* HtmlTreeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C72A6333876A7F65F142849EADE0904 /* HtmlTreeBuilder.swift */; };
-		C86DD199C66EACD93A17C26999B54F9C /* Attribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E36B9A1D58E6D27431586D7B64F2D02 /* Attribute.swift */; };
-		C8CBBE27EC9325625C96CB9310C57B1F /* DataNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C544890F74E0AA23B23D64B11AB99F88 /* DataNode.swift */; };
-		CACE4F87E79918FA9F08B80FF20B5685 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6331A36DA377CFC7F3BCCE7908903867 /* Token.swift */; };
-		CDD134A675610B89289C17B599E9E517 /* CharacterExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5671DF6B46DBF9F070E6DA296C870D6A /* CharacterExt.swift */; };
-		CF5CBBD71D1A715C6C37163E1D604441 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1873361EC4F2578791869C71E0A90E /* Parser.swift */; };
-		CF7FDD2A6134A0395E43845053061D52 /* StreamReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042C4AFC49D5703AD3F43622A356AD58 /* StreamReader.swift */; };
-		D0E0C518F36AE8D2C1087E664E61F2AD /* NodeTraversor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BDAFF39977B6CC56EAD90FA2257E92 /* NodeTraversor.swift */; };
-		D23A3748D148FD14009FF2C2F3D55289 /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEF09261EA48A5BD2A8146169C61A37D /* Regex.swift */; };
-		D2FB1EEB44BEE2893784A103B1694D01 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D60DEC07A9C439719CEF3BBC13FBFB /* Tag.swift */; };
-		D5C6D6587E36F16D1F60CCDAF10112D3 /* OrderedSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48C0E7903C6D039BC6F9872364C34A7 /* OrderedSet.swift */; };
-		D64649EF87381E897FB4FE771DE14B28 /* FaviconRelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F2891ABDB736EC6136D045F329A843 /* FaviconRelType.swift */; };
-		D6BB305951C9B7E229343FAD815C1D3B /* TokenQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BF4B39277276355FC034B5607B0721 /* TokenQueue.swift */; };
-		D84468E6D3611DDE98FAECBC66A95258 /* Attributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDB0E54DED33EECF64EFB8FF830D736 /* Attributes.swift */; };
-		DBEDE2DB45165A73126323887F6B6C79 /* Element.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA99DEC244DAC2C6298F61F4FAC35653 /* Element.swift */; };
-		DCB03F59083B435A951C52A5F7B9638A /* StreamReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042C4AFC49D5703AD3F43622A356AD58 /* StreamReader.swift */; };
-		E31307F403FA45CF8B38629FD4B2DCF4 /* CharacterReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD26115771F0D79527937F6C1889B8B /* CharacterReader.swift */; };
-		E598AF7A303FCB05CD0ADD413BD04DFC /* ParseErrorList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D38FC0671BE48910705E9E535E444C2 /* ParseErrorList.swift */; };
-		E6D20988EB5DE39D9E592813D414A1CE /* SerializationException.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CE8249856195414161FB4D82CA0066 /* SerializationException.swift */; };
-		EA6CB6C5338E1C537FC822E6DFA14C5F /* ArrayExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E7508A5ADE474EF3AA2B6CCDC67FB7 /* ArrayExt.swift */; };
-		EAB47C20A1B74EA205705CBA69ABE874 /* Selector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810E7F125E9CA17DB24CBDF572B41593 /* Selector.swift */; };
-		EAC2D1F9CF8F3FC6F8DADD079076A2CF /* FaviconFinder-macOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F47130CB90217E245B393032E76B775D /* FaviconFinder-macOS-dummy.m */; };
-		ED6775FAA7F69BA0CD35DB584490349A /* FaviconError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BDBD849BCF4FA9148772AD9025CA9E /* FaviconError.swift */; };
-		EDC4AE6048E13E466B8241FBB364B3DF /* StructuralEvaluator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEAB2B65B20E09E9F88D17E454CF83B8 /* StructuralEvaluator.swift */; };
-		EE4A0EBC0D0BBFB5565B80AD0F2C8EEB /* HttpStatusException.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572700DFB09E46594A8EFF58E0C86454 /* HttpStatusException.swift */; };
-		EF059A97826C72D957B6020A24A0A7C3 /* HtmlTreeBuilderState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26387AFE49A8382CEF96BDCA9648F707 /* HtmlTreeBuilderState.swift */; };
-		EFAD763B6232DCFA256B0EB84D12ADEE /* TokenQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BF4B39277276355FC034B5607B0721 /* TokenQueue.swift */; };
-		F046244F5BBB88A6C1D119F5F90D6831 /* Collector.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19B2E0E6DB3D1A75101A4F53F7262AE /* Collector.swift */; };
-		F7A2064606CED4ACEEC9DA7AAE5983A5 /* Exception.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E282A5D291759F94A9D4F072C5AA69A /* Exception.swift */; };
-		F7CD21CD3F90F6A65A581927E1CF26E7 /* StringUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDEDB3CB8918EE9A3AFC09603900BFB /* StringUtil.swift */; };
-		F9940CD04514D08836A81B248EAE71C3 /* Attribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E36B9A1D58E6D27431586D7B64F2D02 /* Attribute.swift */; };
-		FACDB8EA56DE4854B09F43D3AC75FE4F /* URL+Parsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07967061D15B8651267C1F4D468927B /* URL+Parsing.swift */; };
-		FC26D4C9A18DCB8A197CB997B4348D06 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37191BDF1EB9490F8293D5CF03F9524 /* String.swift */; };
-		FC5BDDBD9374153C9F45825BC3243316 /* Evaluator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB412FD5175BAAC75D754B2238AEBE2 /* Evaluator.swift */; };
-		FD0271CB00FEDC47E8548CE91B57D025 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14FE914D8AD4EC4FCB41207D11E9AE0 /* Connection.swift */; };
-		FDA201E638CE9EA0F66C4C6E1FC4AA74 /* String+Removals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425EB84763542D6CB571C65C7ABA0238 /* String+Removals.swift */; };
-		FDAEEB8F50A11F080C04B44FFAC360D7 /* FaviconFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B77485428EB3C69E39C707F9D2B8E1 /* FaviconFinder.swift */; };
+		BBCFF79FDE657E2DCB72D8E507EE7C0B /* Exception.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E282A5D291759F94A9D4F072C5AA69A /* Exception.swift */; };
+		BBDE606982A62012E3C9A66A4BBE6E5B /* CharacterReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD26115771F0D79527937F6C1889B8B /* CharacterReader.swift */; };
+		BDF450F010524F367E4C6EAF0C2EBF94 /* ArrayExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E7508A5ADE474EF3AA2B6CCDC67FB7 /* ArrayExt.swift */; };
+		BF74BC1464A98A74BA573CD6149946EE /* SwiftSoup-iOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B70DF4D0948BF795F8D2D859BB9F4E4C /* SwiftSoup-iOS-dummy.m */; };
+		C2814E0C1202BCA447C16F063D7A2B15 /* StringBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A843541F902172708C58DEF21537516 /* StringBuilder.swift */; };
+		C5DA133AC3A8F997C9FAEC89E0F03393 /* OrderedSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48C0E7903C6D039BC6F9872364C34A7 /* OrderedSet.swift */; };
+		C9BC2594345FD25E1E0F4260DC80756D /* Entities.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EAB7844FEFB7C5F87F6F541A15E811 /* Entities.swift */; };
+		CA934261BD1A2AD6F0EBE0A918E10D70 /* StreamReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042C4AFC49D5703AD3F43622A356AD58 /* StreamReader.swift */; };
+		CCA3C5C20407EC373741918887C861D4 /* Element.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA99DEC244DAC2C6298F61F4FAC35653 /* Element.swift */; };
+		CD865E62DAFAA2E5C1957BAF92011EC3 /* Evaluator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB412FD5175BAAC75D754B2238AEBE2 /* Evaluator.swift */; };
+		CFAC556A114AAEC82E3E0089E91976D5 /* TokenQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BF4B39277276355FC034B5607B0721 /* TokenQueue.swift */; };
+		D29215493E979BDE1D29ACBFB1581961 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0195FBE6152B63EEF7ECDFD0C0CB270C /* Foundation.framework */; };
+		D36E04BB2DB60A60957D3480ED89D696 /* Tokeniser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA0573A09AC422877AF058898C48908 /* Tokeniser.swift */; };
+		D3819FFCC23D02EF32AE77109F9E2B74 /* FaviconFinder-macOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 378C8DAA789054F05213BA62E034DBA6 /* FaviconFinder-macOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D589FB77052079833FFB22320C81B57B /* HtmlTreeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C72A6333876A7F65F142849EADE0904 /* HtmlTreeBuilder.swift */; };
+		D8488464572613A993C0F776DEE2A7BA /* FaviconFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6928986DE49CDA2918E449A684283C06 /* FaviconFinder.swift */; };
+		D85FF8E1C1A7FD2FC5A76E8A549AA159 /* StructuralEvaluator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEAB2B65B20E09E9F88D17E454CF83B8 /* StructuralEvaluator.swift */; };
+		DA8E3F95C603092A4A4D760143196912 /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D18D5FA0C65A465F05B68B6564B81B /* Regex.swift */; };
+		DC625FE1C3D51F3C7CB3DBA4F8ED95EB /* OrderedSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48C0E7903C6D039BC6F9872364C34A7 /* OrderedSet.swift */; };
+		DC6556070BBDA2E085EAD016C3920F44 /* HtmlTreeBuilderState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26387AFE49A8382CEF96BDCA9648F707 /* HtmlTreeBuilderState.swift */; };
+		DE18ACF3BDC3EB054A1FC3AA87C7ECCF /* FaviconFinder-iOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FCFFD8480C77ED65BAF8DBE65346509 /* FaviconFinder-iOS-dummy.m */; };
+		DECAA4B47FCB82D94F28CE88C67598C6 /* StringUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDEDB3CB8918EE9A3AFC09603900BFB /* StringUtil.swift */; };
+		E068022B9829DD1291F7EB827D9232BF /* NodeVisitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67C715036E5FE0BB52EDAAA3916D7D7 /* NodeVisitor.swift */; };
+		E2131193802359867728FF1759E325E4 /* Elements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F555F6246F87A2C035A4E9C7943D0E4 /* Elements.swift */; };
+		E2A0BE5C8C4106B48A6EFEC6B7E04DFD /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5E98D26120B44F7D01A0E5B28A8F17 /* Node.swift */; };
+		E487DDED07BF772D2873C875222BC015 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14FE914D8AD4EC4FCB41207D11E9AE0 /* Connection.swift */; };
+		E5CF195C20336CBCD8F0DB0AA012F311 /* DataUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EA2C072E9BB38EED0A8F9327E630E7 /* DataUtil.swift */; };
+		EC8122F0BF27ADCE0308D9E38F8BEA2F /* Selector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810E7F125E9CA17DB24CBDF572B41593 /* Selector.swift */; };
+		ED223C3A82F2EC3093BBADB1D4134555 /* SerializationException.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CE8249856195414161FB4D82CA0066 /* SerializationException.swift */; };
+		EE87D348A8C36E76535797B85DC6009F /* Attributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDB0E54DED33EECF64EFB8FF830D736 /* Attributes.swift */; };
+		F0E917ECD93929B8E8AFEC27D0ED791C /* BinarySearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CCA454DC60F7C4C07C3E02CA3A80DB /* BinarySearch.swift */; };
+		F3082D82DE317BC1DA307ECD6F25CCED /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68B0BAA0FF92344ABF481B76198A7193 /* Cocoa.framework */; };
+		F4316D6B183DEEC2FEAD0939C702E59A /* TokenQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BF4B39277276355FC034B5607B0721 /* TokenQueue.swift */; };
+		F5A557ECE3A89FD7F756FC90FACFBEA5 /* Validate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8667D661C13F5A414D1447BD359AC5E9 /* Validate.swift */; };
+		F5A79C2793015D37911B529BAED57319 /* BooleanAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F50800F817C1574E7D6CFBF016FCFE /* BooleanAttribute.swift */; };
+		F7C8335451D309C32DEDAF692565FB72 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0195FBE6152B63EEF7ECDFD0C0CB270C /* Foundation.framework */; };
+		F817DC4D612DE151FB6179741779D3AB /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14FE914D8AD4EC4FCB41207D11E9AE0 /* Connection.swift */; };
+		FAD4CA5E57F2AAA43E4B3E46DDBB02D7 /* Attribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E36B9A1D58E6D27431586D7B64F2D02 /* Attribute.swift */; };
+		FB6CE29C2D32AF70AB28722B6148E7D6 /* ArrayExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E7508A5ADE474EF3AA2B6CCDC67FB7 /* ArrayExt.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		0E1F3FF1D62A9CCEDA88EDEE01124907 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D9B8DB9CB287820107F813D05015ACF2;
-			remoteInfo = "SwiftSoup-iOS";
-		};
 		5CF0BB6F90219475134E43850FD697D9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
@@ -178,7 +171,7 @@
 			remoteGlobalIDString = 87AB35C2C25A0D974E382A4C2C6B35D3;
 			remoteInfo = "SwiftSoup-macOS";
 		};
-		774FB6862333F619AEB5C6F6084DDA03 /* PBXContainerItemProxy */ = {
+		686BC5B3808D2058110819399DC17B97 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
@@ -220,23 +213,30 @@
 			remoteGlobalIDString = B974AD9B0F92206CF4FDC93F59EFF6F6;
 			remoteInfo = "FaviconFinder-macOS";
 		};
+		F25C1B5E441F46B6936065EEFBDD15FB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D9B8DB9CB287820107F813D05015ACF2;
+			remoteInfo = "SwiftSoup-iOS";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0175031E273DA9ED4660A459FD3F18C8 /* FaviconFinder-iOS-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FaviconFinder-iOS-prefix.pch"; sourceTree = "<group>"; };
 		0195FBE6152B63EEF7ECDFD0C0CB270C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		01F1E1E0985239AE23172AD9707CD43A /* Pods_FaviconFinder_iOS_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FaviconFinder_iOS_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		042C4AFC49D5703AD3F43622A356AD58 /* StreamReader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StreamReader.swift; path = Sources/StreamReader.swift; sourceTree = "<group>"; };
+		048D07F268A38247C00D31E8D8DB0DCF /* FaviconFinder-macOS-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "FaviconFinder-macOS-Info.plist"; path = "../FaviconFinder-macOS/FaviconFinder-macOS-Info.plist"; sourceTree = "<group>"; };
 		05DDAE01413AAC3E295B4DCCD2F6C607 /* Pods-FaviconFinder_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FaviconFinder_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		09D58F8BF9BF042BB9C3A8D74A399F96 /* Pods-FaviconFinder_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-FaviconFinder_Tests-umbrella.h"; sourceTree = "<group>"; };
 		0C458BAAC2CB687999BB045248E6CFD1 /* Pattern.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Pattern.swift; path = Sources/Pattern.swift; sourceTree = "<group>"; };
 		0CDB0E54DED33EECF64EFB8FF830D736 /* Attributes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Attributes.swift; path = Sources/Attributes.swift; sourceTree = "<group>"; };
 		0E9FCA70E6A65B7FAD08D1246710C36B /* XmlTreeBuilder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = XmlTreeBuilder.swift; path = Sources/XmlTreeBuilder.swift; sourceTree = "<group>"; };
-		11C3D4036C2D9BC2599684DE3403CAE9 /* FaviconFinder-macOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "FaviconFinder-macOS-umbrella.h"; path = "../FaviconFinder-macOS/FaviconFinder-macOS-umbrella.h"; sourceTree = "<group>"; };
 		11FCD00BD1A7A2D8C666DB7D5A5A8351 /* UnicodeScalar.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UnicodeScalar.swift; path = Sources/UnicodeScalar.swift; sourceTree = "<group>"; };
 		19B650DD319C2F94342E957D424BBD7B /* SwiftSoup-macOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "SwiftSoup-macOS-dummy.m"; path = "../SwiftSoup-macOS/SwiftSoup-macOS-dummy.m"; sourceTree = "<group>"; };
 		1B9B924DDF35ED5BC47A63B8DE3C9BB1 /* Pods-FaviconFinder_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FaviconFinder_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		1DD39A1D2C65F828B89617483D7331F6 /* FaviconFinder-iOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FaviconFinder-iOS-dummy.m"; sourceTree = "<group>"; };
-		2123CA7770FE70AF15A2F17DBE788534 /* FaviconFinder-iOS-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "FaviconFinder-iOS-Info.plist"; sourceTree = "<group>"; };
+		1CF0D2BE7B3142BA7966B1097997B923 /* FaviconFinder-macOS.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "FaviconFinder-macOS.xcconfig"; path = "../FaviconFinder-macOS/FaviconFinder-macOS.xcconfig"; sourceTree = "<group>"; };
 		23EAFA65BCDF9C4A838DFDC8971029D9 /* ParseError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ParseError.swift; path = Sources/ParseError.swift; sourceTree = "<group>"; };
 		24CD6ACE749D06B3C4FA9B52BE502123 /* SwiftSoup-macOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "SwiftSoup-macOS-umbrella.h"; path = "../SwiftSoup-macOS/SwiftSoup-macOS-umbrella.h"; sourceTree = "<group>"; };
 		26387AFE49A8382CEF96BDCA9648F707 /* HtmlTreeBuilderState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HtmlTreeBuilderState.swift; path = Sources/HtmlTreeBuilderState.swift; sourceTree = "<group>"; };
@@ -246,13 +246,13 @@
 		2CDEDB3CB8918EE9A3AFC09603900BFB /* StringUtil.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StringUtil.swift; path = Sources/StringUtil.swift; sourceTree = "<group>"; };
 		2D4508B27B3C1D0A2C9760B23DA576DB /* Pods_FaviconFinder_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FaviconFinder_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E3CA7DDD170466393DCA48AD8BDD296 /* Document.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Document.swift; path = Sources/Document.swift; sourceTree = "<group>"; };
+		2E9065FBACAD29AA841851BCD8FE05AC /* FaviconFinder-iOS-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "FaviconFinder-iOS-Info.plist"; sourceTree = "<group>"; };
 		31BF4B39277276355FC034B5607B0721 /* TokenQueue.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TokenQueue.swift; path = Sources/TokenQueue.swift; sourceTree = "<group>"; };
 		3256339E33203970F7844C258980836E /* SwiftSoup-iOS-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftSoup-iOS-prefix.pch"; sourceTree = "<group>"; };
+		378C8DAA789054F05213BA62E034DBA6 /* FaviconFinder-macOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "FaviconFinder-macOS-umbrella.h"; path = "../FaviconFinder-macOS/FaviconFinder-macOS-umbrella.h"; sourceTree = "<group>"; };
 		3B84525295B99C677D28BE2361A5021F /* Pods-FaviconFinder_iOS_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FaviconFinder_iOS_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		3E36B9A1D58E6D27431586D7B64F2D02 /* Attribute.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Attribute.swift; path = Sources/Attribute.swift; sourceTree = "<group>"; };
 		3F1E6D5A2B3C37B156DAC4994E9D7063 /* TextNode.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TextNode.swift; path = Sources/TextNode.swift; sourceTree = "<group>"; };
-		425EB84763542D6CB571C65C7ABA0238 /* String+Removals.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "String+Removals.swift"; sourceTree = "<group>"; };
-		444F5004E44E3D81D2FC28AE78E46C4E /* FaviconFinder-iOS-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FaviconFinder-iOS-prefix.pch"; sourceTree = "<group>"; };
 		46D60DEC07A9C439719CEF3BBC13FBFB /* Tag.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Tag.swift; path = Sources/Tag.swift; sourceTree = "<group>"; };
 		4752E2BD8329483568A799FCC41ADF61 /* Pods-FaviconFinder_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-FaviconFinder_Example-frameworks.sh"; sourceTree = "<group>"; };
 		487848743CE962DD3A04A29735228330 /* Pods-FaviconFinder_iOS_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FaviconFinder_iOS_Example-Info.plist"; sourceTree = "<group>"; };
@@ -260,22 +260,25 @@
 		4D5AECC180C3A849273EF8D717BA0C4E /* Pods_FaviconFinder_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FaviconFinder_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E282A5D291759F94A9D4F072C5AA69A /* Exception.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Exception.swift; path = Sources/Exception.swift; sourceTree = "<group>"; };
 		51F019B9024136A0E5D07F2E98342209 /* Pods-FaviconFinder_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FaviconFinder_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		5482380E8996AEDADDD8681D9EAB4C7A /* FaviconFinder-iOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "FaviconFinder-iOS.modulemap"; sourceTree = "<group>"; };
 		5671DF6B46DBF9F070E6DA296C870D6A /* CharacterExt.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CharacterExt.swift; path = Sources/CharacterExt.swift; sourceTree = "<group>"; };
 		572700DFB09E46594A8EFF58E0C86454 /* HttpStatusException.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HttpStatusException.swift; path = Sources/HttpStatusException.swift; sourceTree = "<group>"; };
 		57F50800F817C1574E7D6CFBF016FCFE /* BooleanAttribute.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BooleanAttribute.swift; path = Sources/BooleanAttribute.swift; sourceTree = "<group>"; };
+		59AC4BFEE82D7C07741D426A5CBD19F5 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		5E8DBD0788D912AB682EA49E4D3F3FCD /* Pods-FaviconFinder_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-FaviconFinder_Tests.modulemap"; sourceTree = "<group>"; };
 		5F555F6246F87A2C035A4E9C7943D0E4 /* Elements.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Elements.swift; path = Sources/Elements.swift; sourceTree = "<group>"; };
 		5F649911C300490BDAA68E0595F49041 /* SwiftSoup-iOS.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "SwiftSoup-iOS.xcconfig"; sourceTree = "<group>"; };
-		60BDBD849BCF4FA9148772AD9025CA9E /* FaviconError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FaviconError.swift; sourceTree = "<group>"; };
 		6331A36DA377CFC7F3BCCE7908903867 /* Token.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Token.swift; path = Sources/Token.swift; sourceTree = "<group>"; };
 		6421A4FFAA7A74D9B196B36F8144D955 /* Whitelist.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Whitelist.swift; path = Sources/Whitelist.swift; sourceTree = "<group>"; };
 		6452133D3188E3B4F1FCF0B165AF7E7A /* Pods-FaviconFinder_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FaviconFinder_Tests-Info.plist"; sourceTree = "<group>"; };
-		64EC9EB4390302A34711197159F1F3DF /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		64F2407BB28469C282007BD0E4D2AEA5 /* Pods-FaviconFinder_iOS_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-FaviconFinder_iOS_Example-dummy.m"; sourceTree = "<group>"; };
 		68B0BAA0FF92344ABF481B76198A7193 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
+		6928986DE49CDA2918E449A684283C06 /* FaviconFinder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FaviconFinder.swift; sourceTree = "<group>"; };
 		6A66A1F85556B481FAF87DA9F63165A7 /* SwiftSoup-macOS.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "SwiftSoup-macOS.xcconfig"; path = "../SwiftSoup-macOS/SwiftSoup-macOS.xcconfig"; sourceTree = "<group>"; };
 		6D49A5C10D482DDFCFFB20F55AE58832 /* SwiftSoup-iOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "SwiftSoup-iOS.modulemap"; sourceTree = "<group>"; };
 		6D82713A9CD6F799A76794D22E5FA29E /* SimpleDictionary.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SimpleDictionary.swift; path = Sources/SimpleDictionary.swift; sourceTree = "<group>"; };
+		6F5BD0CCA45A8B0AFFA95AA8BB1D8924 /* FaviconFinder-macOS-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "FaviconFinder-macOS-prefix.pch"; path = "../FaviconFinder-macOS/FaviconFinder-macOS-prefix.pch"; sourceTree = "<group>"; };
+		7128296BFD4FE0ED97DA30C5459ABF2D /* FaviconFinder-iOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FaviconFinder-iOS-umbrella.h"; sourceTree = "<group>"; };
 		77713CC9FF4A936996B61C49F19A5DAE /* SwiftSoup.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftSoup.swift; path = Sources/SwiftSoup.swift; sourceTree = "<group>"; };
 		7D38FC0671BE48910705E9E535E444C2 /* ParseErrorList.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ParseErrorList.swift; path = Sources/ParseErrorList.swift; sourceTree = "<group>"; };
 		8031035D9C171767CA3D88684089F73F /* Pods-FaviconFinder_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FaviconFinder_Example.release.xcconfig"; sourceTree = "<group>"; };
@@ -285,87 +288,85 @@
 		8667D661C13F5A414D1447BD359AC5E9 /* Validate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Validate.swift; path = Sources/Validate.swift; sourceTree = "<group>"; };
 		86CC726BD22450D22A11376E9E5884EA /* Pods-FaviconFinder_iOS_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FaviconFinder_iOS_Example.release.xcconfig"; sourceTree = "<group>"; };
 		87D341D94E293658DD1A46E17DD5119F /* SwiftSoup.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftSoup.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8E71681DEF1064F1246528AE6F3BA2E3 /* FaviconFinder-iOS.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "FaviconFinder-iOS.xcconfig"; sourceTree = "<group>"; };
+		8DCF38242B52907B321FCD4E738E533D /* FaviconFinder-iOS.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "FaviconFinder-iOS.xcconfig"; sourceTree = "<group>"; };
 		9366A4E91302DEB60E4EDE51EBD425F5 /* Pods-FaviconFinder_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-FaviconFinder_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		94CE8F429E814EFC28DDDB914DE83D07 /* CombiningEvaluator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CombiningEvaluator.swift; path = Sources/CombiningEvaluator.swift; sourceTree = "<group>"; };
 		98D296249FEBBF498D98DE38C94EC341 /* SwiftSoup-macOS-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "SwiftSoup-macOS-Info.plist"; path = "../SwiftSoup-macOS/SwiftSoup-macOS-Info.plist"; sourceTree = "<group>"; };
 		9A4112FBE53D4451CE36E042D3948608 /* Pods-FaviconFinder_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-FaviconFinder_Tests-frameworks.sh"; sourceTree = "<group>"; };
 		9A843541F902172708C58DEF21537516 /* StringBuilder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StringBuilder.swift; path = Sources/StringBuilder.swift; sourceTree = "<group>"; };
 		9AA5218E337095C7E52A4627DDAB2D06 /* Comment.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Comment.swift; path = Sources/Comment.swift; sourceTree = "<group>"; };
-		9B8E8F62ABC6EF48A4735D8E1956F846 /* LICENSE.txt */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		9B3703A641C35F26A35A8FD74FB75A0D /* URL+Parsing.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "URL+Parsing.swift"; sourceTree = "<group>"; };
 		9CA0573A09AC422877AF058898C48908 /* Tokeniser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Tokeniser.swift; path = Sources/Tokeniser.swift; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9FCFFD8480C77ED65BAF8DBE65346509 /* FaviconFinder-iOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FaviconFinder-iOS-dummy.m"; sourceTree = "<group>"; };
 		A052C862F2AACEAFBFB02044A6EDAFAD /* XmlDeclaration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = XmlDeclaration.swift; path = Sources/XmlDeclaration.swift; sourceTree = "<group>"; };
 		A1BDAFF39977B6CC56EAD90FA2257E92 /* NodeTraversor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NodeTraversor.swift; path = Sources/NodeTraversor.swift; sourceTree = "<group>"; };
 		A48C0E7903C6D039BC6F9872364C34A7 /* OrderedSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = OrderedSet.swift; path = Sources/OrderedSet.swift; sourceTree = "<group>"; };
 		AB349326101557DC21BE77604CA09FF5 /* Pods-FaviconFinder_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-FaviconFinder_Example.modulemap"; sourceTree = "<group>"; };
+		AC8330E1FE6DAFA05F904D8DC6DF2BA9 /* FaviconFinder-macOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; name = "FaviconFinder-macOS.modulemap"; path = "../FaviconFinder-macOS/FaviconFinder-macOS.modulemap"; sourceTree = "<group>"; };
+		ADC64FA7D6A9DBAF0BA6C76103B4115E /* FaviconError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FaviconError.swift; sourceTree = "<group>"; };
 		AEAB2B65B20E09E9F88D17E454CF83B8 /* StructuralEvaluator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StructuralEvaluator.swift; path = Sources/StructuralEvaluator.swift; sourceTree = "<group>"; };
+		AED7F62A8B8722EA403F9F4FBA81A031 /* FaviconRelType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FaviconRelType.swift; sourceTree = "<group>"; };
 		AF529112C67D18A76168F07D0000F32D /* QueryParser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QueryParser.swift; path = Sources/QueryParser.swift; sourceTree = "<group>"; };
-		B07967061D15B8651267C1F4D468927B /* URL+Parsing.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "URL+Parsing.swift"; sourceTree = "<group>"; };
 		B4CE8249856195414161FB4D82CA0066 /* SerializationException.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SerializationException.swift; path = Sources/SerializationException.swift; sourceTree = "<group>"; };
-		B60565CAF7419D95F7DE07875C1ADA43 /* FaviconFinder-macOS-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "FaviconFinder-macOS-prefix.pch"; path = "../FaviconFinder-macOS/FaviconFinder-macOS-prefix.pch"; sourceTree = "<group>"; };
 		B70DF4D0948BF795F8D2D859BB9F4E4C /* SwiftSoup-iOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftSoup-iOS-dummy.m"; sourceTree = "<group>"; };
-		B78F3348B2A8807CAECB33C2D52FAF57 /* FaviconFinder.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = FaviconFinder.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		B9612146A3559A308E076C1477431673 /* TokeniserState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TokeniserState.swift; path = Sources/TokeniserState.swift; sourceTree = "<group>"; };
 		B9B09667E52AFB674DA0D8C8CBD5B6C0 /* Pods-FaviconFinder_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-FaviconFinder_Example-dummy.m"; sourceTree = "<group>"; };
+		B9D18D5FA0C65A465F05B68B6564B81B /* Regex.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
 		BE14A2E5865F2C8568D37794F5BEA5A4 /* Cleaner.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Cleaner.swift; path = Sources/Cleaner.swift; sourceTree = "<group>"; };
 		BE85293150927E90D60487FA6DE069A6 /* Pods-FaviconFinder_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-FaviconFinder_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		BEA1B4D9F593E0CC512674677792CE3E /* FaviconFinder-iOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FaviconFinder-iOS-umbrella.h"; sourceTree = "<group>"; };
 		BFD26115771F0D79527937F6C1889B8B /* CharacterReader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CharacterReader.swift; path = Sources/CharacterReader.swift; sourceTree = "<group>"; };
 		C0F6AC2632ABB4644644EB19F23B863D /* SwiftSoup-iOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftSoup-iOS-umbrella.h"; sourceTree = "<group>"; };
 		C14FE914D8AD4EC4FCB41207D11E9AE0 /* Connection.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Connection.swift; path = Sources/Connection.swift; sourceTree = "<group>"; };
 		C22F9A0852BCB0CBDCBEA24426E1596F /* Pods-FaviconFinder_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FaviconFinder_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
-		C2F2891ABDB736EC6136D045F329A843 /* FaviconRelType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FaviconRelType.swift; sourceTree = "<group>"; };
 		C3CFE068E9EC21B9DF5DBBED22AC8C32 /* FormElement.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormElement.swift; path = Sources/FormElement.swift; sourceTree = "<group>"; };
+		C3FB745177A714C7141DFD0EB668E7FD /* String+Removals.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "String+Removals.swift"; sourceTree = "<group>"; };
 		C456AFA3E1D8D4ADB363F8928A9B0551 /* SwiftSoup.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftSoup.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C544890F74E0AA23B23D64B11AB99F88 /* DataNode.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DataNode.swift; path = Sources/DataNode.swift; sourceTree = "<group>"; };
 		C556980DDA39B7FAC78F3B809CB9ED05 /* Pods-FaviconFinder_iOS_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-FaviconFinder_iOS_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		CA1873361EC4F2578791869C71E0A90E /* Parser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Parser.swift; path = Sources/Parser.swift; sourceTree = "<group>"; };
 		CD9FEDB323CA9D32C5C44763122EE758 /* SwiftSoup.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftSoup.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CDA9146AAD0BFEA2F68AC0C1AE9F4E99 /* FaviconFinder-macOS-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "FaviconFinder-macOS-Info.plist"; path = "../FaviconFinder-macOS/FaviconFinder-macOS-Info.plist"; sourceTree = "<group>"; };
 		CE3BD4230C792CBE9807D2FF2982B6D9 /* Pods-FaviconFinder_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FaviconFinder_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		CF8F382C491A706FA7572018D1FAB1F6 /* Pods-FaviconFinder_iOS_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-FaviconFinder_iOS_Example.modulemap"; sourceTree = "<group>"; };
 		CFD0C824E8B67271581F03DF75B94BF4 /* SwiftSoup-macOS-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "SwiftSoup-macOS-prefix.pch"; path = "../SwiftSoup-macOS/SwiftSoup-macOS-prefix.pch"; sourceTree = "<group>"; };
+		D05023EE58C0D346B4CBA595B67D4444 /* FaviconFinder-macOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "FaviconFinder-macOS-dummy.m"; path = "../FaviconFinder-macOS/FaviconFinder-macOS-dummy.m"; sourceTree = "<group>"; };
 		D19B2E0E6DB3D1A75101A4F53F7262AE /* Collector.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Collector.swift; path = Sources/Collector.swift; sourceTree = "<group>"; };
 		D42CBB474301C7688A5C51D3DE7C54F5 /* SwiftSoup-iOS-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SwiftSoup-iOS-Info.plist"; sourceTree = "<group>"; };
 		D52C3AEA8042A02D9FE0FD5EE78DC7B6 /* Pods-FaviconFinder_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FaviconFinder_Example-Info.plist"; sourceTree = "<group>"; };
 		D61818FAE602BFCCC5C102293A45511E /* Pods-FaviconFinder_iOS_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-FaviconFinder_iOS_Example-umbrella.h"; sourceTree = "<group>"; };
 		D67C715036E5FE0BB52EDAAA3916D7D7 /* NodeVisitor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NodeVisitor.swift; path = Sources/NodeVisitor.swift; sourceTree = "<group>"; };
-		D7B77485428EB3C69E39C707F9D2B8E1 /* FaviconFinder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FaviconFinder.swift; sourceTree = "<group>"; };
 		DA99DEC244DAC2C6298F61F4FAC35653 /* Element.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Element.swift; path = Sources/Element.swift; sourceTree = "<group>"; };
 		DAB412FD5175BAAC75D754B2238AEBE2 /* Evaluator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Evaluator.swift; path = Sources/Evaluator.swift; sourceTree = "<group>"; };
 		DE6F81A06F64E5E7AC319AB640E158DC /* SwiftSoup-macOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; name = "SwiftSoup-macOS.modulemap"; path = "../SwiftSoup-macOS/SwiftSoup-macOS.modulemap"; sourceTree = "<group>"; };
 		E37191BDF1EB9490F8293D5CF03F9524 /* String.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = String.swift; path = Sources/String.swift; sourceTree = "<group>"; };
 		E3EAB7844FEFB7C5F87F6F541A15E811 /* Entities.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Entities.swift; path = Sources/Entities.swift; sourceTree = "<group>"; };
 		E5358E29167092D90DE6D7430D664E7C /* Pods-FaviconFinder_iOS_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-FaviconFinder_iOS_Example-frameworks.sh"; sourceTree = "<group>"; };
-		E64DB6B0BB3529232A806512394D7EAC /* FaviconFinder-iOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "FaviconFinder-iOS.modulemap"; sourceTree = "<group>"; };
 		E8C85A2BC930F1EA27A3E7F6D427B44D /* FaviconFinder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FaviconFinder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDB6B7FCE5A5C1C14401231DDB2D9F30 /* TreeBuilder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TreeBuilder.swift; path = Sources/TreeBuilder.swift; sourceTree = "<group>"; };
-		EE4C03AE6EA263424ACED8D0958FE832 /* FaviconFinder-macOS.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "FaviconFinder-macOS.xcconfig"; path = "../FaviconFinder-macOS/FaviconFinder-macOS.xcconfig"; sourceTree = "<group>"; };
+		EE8E8DB67E33B503DCDC82766BC2A932 /* LICENSE.txt */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		EF5E98D26120B44F7D01A0E5B28A8F17 /* Node.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Node.swift; path = Sources/Node.swift; sourceTree = "<group>"; };
 		F039F55BBF5F9624FD543B644A7AA862 /* ParseSettings.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ParseSettings.swift; path = Sources/ParseSettings.swift; sourceTree = "<group>"; };
 		F28AC593872D9CC80CA51BDC366FD68C /* Pods-FaviconFinder_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-FaviconFinder_Tests-dummy.m"; sourceTree = "<group>"; };
+		F2CF145BC2019F08AC7C224608617444 /* FaviconFinder.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = FaviconFinder.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		F2EA2C072E9BB38EED0A8F9327E630E7 /* DataUtil.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DataUtil.swift; path = Sources/DataUtil.swift; sourceTree = "<group>"; };
-		F47130CB90217E245B393032E76B775D /* FaviconFinder-macOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "FaviconFinder-macOS-dummy.m"; path = "../FaviconFinder-macOS/FaviconFinder-macOS-dummy.m"; sourceTree = "<group>"; };
-		F4D04DF4B06E9FA75139E31857FF54F8 /* FaviconFinder-macOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; name = "FaviconFinder-macOS.modulemap"; path = "../FaviconFinder-macOS/FaviconFinder-macOS.modulemap"; sourceTree = "<group>"; };
 		F8CCA454DC60F7C4C07C3E02CA3A80DB /* BinarySearch.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BinarySearch.swift; path = Sources/BinarySearch.swift; sourceTree = "<group>"; };
-		FEF09261EA48A5BD2A8146169C61A37D /* Regex.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		3BA764B3582422BACCAB3EF23E5B4E71 /* Frameworks */ = {
+		01F61A0E4EBBA7C1A8DA6766C3F0DE33 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				166A89BFD0A27A94EF3E2ED8F9835E4C /* Cocoa.framework in Frameworks */,
+				D29215493E979BDE1D29ACBFB1581961 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4FC647D5464872283EB683F5198A76DB /* Frameworks */ = {
+		314A4898817F1C851FC3DFD4F68C04F2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8EFED7E6AA3691A9585F562CFC9565F7 /* Foundation.framework in Frameworks */,
+				1D3B1CCB1340CF3D4EC1465AD2BBF28E /* Cocoa.framework in Frameworks */,
+				8170AFC84561A1A1904D09610E5575F5 /* SwiftSoup.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -377,21 +378,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6368E9E889E633B4EAD009203B8E7A76 /* Frameworks */ = {
+		68B9919C5F32B584C57E7D7D4B7FEF4D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				50BC2E4DD47CADCDF00965DB7C957A7B /* Cocoa.framework in Frameworks */,
-				5724F841E6972FDAD522C2AA46E5FBC9 /* SwiftSoup.framework in Frameworks */,
+				F7C8335451D309C32DEDAF692565FB72 /* Foundation.framework in Frameworks */,
+				0AC88FE1B4492128392C1B5D0764C8E1 /* SwiftSoup.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A2D1AEB4D4F1ED8B81E1BC22F4BC4032 /* Frameworks */ = {
+		8EF993DBF38021C24B9F5B69FBD23EAF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B37CCBE81F5E4BB4BE2B9A4E8ED10B53 /* Foundation.framework in Frameworks */,
-				513ACA13C6963DD9E95D057A5D75E917 /* SwiftSoup.framework in Frameworks */,
+				F3082D82DE317BC1DA307ECD6F25CCED /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -436,12 +436,16 @@
 			name = "OS X";
 			sourceTree = "<group>";
 		};
-		21C7E8AB6C0B0912E4E86CDA3EB57B71 /* Development Pods */ = {
+		1F6A0D850C768DA707CBBC4F4DCFB439 /* FaviconFinder */ = {
 			isa = PBXGroup;
 			children = (
-				4E5F59AA7A83400445313D5807BDDEE0 /* FaviconFinder */,
+				88671B7BC89E5E0998DD946686D8E291 /* Classes */,
+				64CA75C94633E52E1F943D959AB6936C /* Extensions */,
+				4E59EA6792EB4911E72A5021CC419BC1 /* Pod */,
+				6EFA28DAACDD2241BAF518D150DF9192 /* Support Files */,
 			);
-			name = "Development Pods";
+			name = FaviconFinder;
+			path = ../..;
 			sourceTree = "<group>";
 		};
 		2D4649FCE1D09708F2BFE7230BD6FF99 /* Frameworks */ = {
@@ -452,18 +456,6 @@
 				1AF8D94EEFF47436DEE980042715460D /* OS X */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		32BC952C4B6E518D2BB03AB9319C8AB0 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				60BDBD849BCF4FA9148772AD9025CA9E /* FaviconError.swift */,
-				D7B77485428EB3C69E39C707F9D2B8E1 /* FaviconFinder.swift */,
-				C2F2891ABDB736EC6136D045F329A843 /* FaviconRelType.swift */,
-				FEF09261EA48A5BD2A8146169C61A37D /* Regex.swift */,
-			);
-			name = Classes;
-			path = FaviconFinder/Classes;
 			sourceTree = "<group>";
 		};
 		38289BA2AF68A7CE37B65C99F736E8E1 /* Support Files */ = {
@@ -567,36 +559,64 @@
 			path = SwiftSoup;
 			sourceTree = "<group>";
 		};
-		4B75FA601BF40BAC49F15C90508A6966 /* Support Files */ = {
+		4E59EA6792EB4911E72A5021CC419BC1 /* Pod */ = {
 			isa = PBXGroup;
 			children = (
-				E64DB6B0BB3529232A806512394D7EAC /* FaviconFinder-iOS.modulemap */,
-				8E71681DEF1064F1246528AE6F3BA2E3 /* FaviconFinder-iOS.xcconfig */,
-				1DD39A1D2C65F828B89617483D7331F6 /* FaviconFinder-iOS-dummy.m */,
-				2123CA7770FE70AF15A2F17DBE788534 /* FaviconFinder-iOS-Info.plist */,
-				444F5004E44E3D81D2FC28AE78E46C4E /* FaviconFinder-iOS-prefix.pch */,
-				BEA1B4D9F593E0CC512674677792CE3E /* FaviconFinder-iOS-umbrella.h */,
-				F4D04DF4B06E9FA75139E31857FF54F8 /* FaviconFinder-macOS.modulemap */,
-				EE4C03AE6EA263424ACED8D0958FE832 /* FaviconFinder-macOS.xcconfig */,
-				F47130CB90217E245B393032E76B775D /* FaviconFinder-macOS-dummy.m */,
-				CDA9146AAD0BFEA2F68AC0C1AE9F4E99 /* FaviconFinder-macOS-Info.plist */,
-				B60565CAF7419D95F7DE07875C1ADA43 /* FaviconFinder-macOS-prefix.pch */,
-				11C3D4036C2D9BC2599684DE3403CAE9 /* FaviconFinder-macOS-umbrella.h */,
+				F2CF145BC2019F08AC7C224608617444 /* FaviconFinder.podspec */,
+				EE8E8DB67E33B503DCDC82766BC2A932 /* LICENSE.txt */,
+				59AC4BFEE82D7C07741D426A5CBD19F5 /* README.md */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
+		64CA75C94633E52E1F943D959AB6936C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C3FB745177A714C7141DFD0EB668E7FD /* String+Removals.swift */,
+				9B3703A641C35F26A35A8FD74FB75A0D /* URL+Parsing.swift */,
+			);
+			name = Extensions;
+			path = Sources/FaviconFinder/Extensions;
+			sourceTree = "<group>";
+		};
+		6EFA28DAACDD2241BAF518D150DF9192 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				5482380E8996AEDADDD8681D9EAB4C7A /* FaviconFinder-iOS.modulemap */,
+				8DCF38242B52907B321FCD4E738E533D /* FaviconFinder-iOS.xcconfig */,
+				9FCFFD8480C77ED65BAF8DBE65346509 /* FaviconFinder-iOS-dummy.m */,
+				2E9065FBACAD29AA841851BCD8FE05AC /* FaviconFinder-iOS-Info.plist */,
+				0175031E273DA9ED4660A459FD3F18C8 /* FaviconFinder-iOS-prefix.pch */,
+				7128296BFD4FE0ED97DA30C5459ABF2D /* FaviconFinder-iOS-umbrella.h */,
+				AC8330E1FE6DAFA05F904D8DC6DF2BA9 /* FaviconFinder-macOS.modulemap */,
+				1CF0D2BE7B3142BA7966B1097997B923 /* FaviconFinder-macOS.xcconfig */,
+				D05023EE58C0D346B4CBA595B67D4444 /* FaviconFinder-macOS-dummy.m */,
+				048D07F268A38247C00D31E8D8DB0DCF /* FaviconFinder-macOS-Info.plist */,
+				6F5BD0CCA45A8B0AFFA95AA8BB1D8924 /* FaviconFinder-macOS-prefix.pch */,
+				378C8DAA789054F05213BA62E034DBA6 /* FaviconFinder-macOS-umbrella.h */,
 			);
 			name = "Support Files";
 			path = "Example/Pods/Target Support Files/FaviconFinder-iOS";
 			sourceTree = "<group>";
 		};
-		4E5F59AA7A83400445313D5807BDDEE0 /* FaviconFinder */ = {
+		88671B7BC89E5E0998DD946686D8E291 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				32BC952C4B6E518D2BB03AB9319C8AB0 /* Classes */,
-				D2A7A7E513302B8833145997F12264A3 /* Extensions */,
-				D6C6E8BCCFE65F0454DF2B05C24B6B7A /* Pod */,
-				4B75FA601BF40BAC49F15C90508A6966 /* Support Files */,
+				ADC64FA7D6A9DBAF0BA6C76103B4115E /* FaviconError.swift */,
+				6928986DE49CDA2918E449A684283C06 /* FaviconFinder.swift */,
+				AED7F62A8B8722EA403F9F4FBA81A031 /* FaviconRelType.swift */,
+				B9D18D5FA0C65A465F05B68B6564B81B /* Regex.swift */,
 			);
-			name = FaviconFinder;
-			path = ../..;
+			name = Classes;
+			path = Sources/FaviconFinder/Classes;
+			sourceTree = "<group>";
+		};
+		C6866729A8287D2D76716D6282CD784C /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1F6A0D850C768DA707CBBC4F4DCFB439 /* FaviconFinder */,
+			);
+			name = "Development Pods";
 			sourceTree = "<group>";
 		};
 		CB226845039A4AADC9CC91CC19298AE2 /* Targets Support Files */ = {
@@ -613,7 +633,7 @@
 			isa = PBXGroup;
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
-				21C7E8AB6C0B0912E4E86CDA3EB57B71 /* Development Pods */,
+				C6866729A8287D2D76716D6282CD784C /* Development Pods */,
 				2D4649FCE1D09708F2BFE7230BD6FF99 /* Frameworks */,
 				CFB4ABEAEAFCDB4587FF6BE5A683746C /* Pods */,
 				07205D1C67C59146DF0F1D0581FA613B /* Products */,
@@ -646,26 +666,6 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		D2A7A7E513302B8833145997F12264A3 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				425EB84763542D6CB571C65C7ABA0238 /* String+Removals.swift */,
-				B07967061D15B8651267C1F4D468927B /* URL+Parsing.swift */,
-			);
-			name = Extensions;
-			path = FaviconFinder/Extensions;
-			sourceTree = "<group>";
-		};
-		D6C6E8BCCFE65F0454DF2B05C24B6B7A /* Pod */ = {
-			isa = PBXGroup;
-			children = (
-				B78F3348B2A8807CAECB33C2D52FAF57 /* FaviconFinder.podspec */,
-				9B8E8F62ABC6EF48A4735D8E1956F846 /* LICENSE.txt */,
-				64EC9EB4390302A34711197159F1F3DF /* README.md */,
-			);
-			name = Pod;
-			sourceTree = "<group>";
-		};
 		E4254789CF5CF26C6A3F9920FCD51FB0 /* Pods-FaviconFinder_Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -694,19 +694,11 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		253557CF49EA3FCF4E8B89E7D1AC78D9 /* Headers */ = {
+		19F258858B727DC10781D1774C38F3A9 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				89DC9A9F992692CAF5486558684EC46B /* SwiftSoup-macOS-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		26F973ABD95BAE0EC3635AF84A7D8642 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				13EAE412C28D2B8B1D55610CB31C8B7C /* FaviconFinder-macOS-umbrella.h in Headers */,
+				0B83E86D1EFD288B2A6AA628B44B5D57 /* SwiftSoup-macOS-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -715,6 +707,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				B1DFD58A548EC65AAFD94DB43E13EA93 /* Pods-FaviconFinder_Example-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3575DACC05389C35812F6B18A34301DD /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3364CD8A68D8311DD6FF302A02BA1CF8 /* FaviconFinder-iOS-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -734,19 +734,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		77E9DB48BE4D1C69121A44785F077F18 /* Headers */ = {
+		759DE2F4D589E26041E30F8DBFAE27C5 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6112FE52E2C6347B846EE2E121CD3DDA /* SwiftSoup-iOS-umbrella.h in Headers */,
+				139BBF07E953F321D8E6F3E747A3A59C /* SwiftSoup-iOS-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B895C0C740FCA7A53758F010E0BC69D2 /* Headers */ = {
+		E89D84FC8F8FBB3296336ABB13852144 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				400A8F2F5F4266CC60F55F6A881EEDD0 /* FaviconFinder-iOS-umbrella.h in Headers */,
+				D3819FFCC23D02EF32AE77109F9E2B74 /* FaviconFinder-macOS-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -775,17 +775,17 @@
 		};
 		764C59316C237D86F0E7E6065F523FF6 /* FaviconFinder-iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A946961C9280356FCFCA367BE9B17AEB /* Build configuration list for PBXNativeTarget "FaviconFinder-iOS" */;
+			buildConfigurationList = 8C19407E6E110FB39199B316C0BD6E17 /* Build configuration list for PBXNativeTarget "FaviconFinder-iOS" */;
 			buildPhases = (
-				B895C0C740FCA7A53758F010E0BC69D2 /* Headers */,
-				72D10E0913DB2F4B0F6D5FC01079BD5A /* Sources */,
-				A2D1AEB4D4F1ED8B81E1BC22F4BC4032 /* Frameworks */,
-				3777ABB9594A2FD176D0563CDD05F94F /* Resources */,
+				3575DACC05389C35812F6B18A34301DD /* Headers */,
+				43C7E865DE16EEA805F9FEDAB606F284 /* Sources */,
+				68B9919C5F32B584C57E7D7D4B7FEF4D /* Frameworks */,
+				D38CFDD2D236A2050DA1A213F071AC55 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				448D24B3B05F01DC11139C1CDF97AE24 /* PBXTargetDependency */,
+				3BBF187C7606E0FD986862C722D16C59 /* PBXTargetDependency */,
 			);
 			name = "FaviconFinder-iOS";
 			productName = "FaviconFinder-iOS";
@@ -794,12 +794,12 @@
 		};
 		87AB35C2C25A0D974E382A4C2C6B35D3 /* SwiftSoup-macOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3351E0F18CDF0EC314906BA318AECCF0 /* Build configuration list for PBXNativeTarget "SwiftSoup-macOS" */;
+			buildConfigurationList = CD2129F983208786734AA522AC299269 /* Build configuration list for PBXNativeTarget "SwiftSoup-macOS" */;
 			buildPhases = (
-				253557CF49EA3FCF4E8B89E7D1AC78D9 /* Headers */,
-				2B4C4BED70998F4CE257E969B8D32C90 /* Sources */,
-				3BA764B3582422BACCAB3EF23E5B4E71 /* Frameworks */,
-				B9D2D046E50A0508332D5B2550E7300C /* Resources */,
+				19F258858B727DC10781D1774C38F3A9 /* Headers */,
+				9F2B5CD722463056357053C8E3E3C27A /* Sources */,
+				8EF993DBF38021C24B9F5B69FBD23EAF /* Frameworks */,
+				11E8FFEA34FB9BF101427CB52088110D /* Resources */,
 			);
 			buildRules = (
 			);
@@ -832,17 +832,17 @@
 		};
 		B974AD9B0F92206CF4FDC93F59EFF6F6 /* FaviconFinder-macOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 640D8390A979292A384C0BC9F2213DEE /* Build configuration list for PBXNativeTarget "FaviconFinder-macOS" */;
+			buildConfigurationList = 6527E23F9211D2BCEA504B3B4ACF4A64 /* Build configuration list for PBXNativeTarget "FaviconFinder-macOS" */;
 			buildPhases = (
-				26F973ABD95BAE0EC3635AF84A7D8642 /* Headers */,
-				1BECA862574C04D389D358F66542EEF6 /* Sources */,
-				6368E9E889E633B4EAD009203B8E7A76 /* Frameworks */,
-				1CC8043D15945E74FF27F0DF0D46F0FB /* Resources */,
+				E89D84FC8F8FBB3296336ABB13852144 /* Headers */,
+				47D5B727C0214A3256D0B70B19783194 /* Sources */,
+				314A4898817F1C851FC3DFD4F68C04F2 /* Frameworks */,
+				EF7AD230842064D866EE83CD9D833292 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				104AE3681C881F9C8753F5F0C42F24A0 /* PBXTargetDependency */,
+				B18E042F278E65D067F3FE579940229D /* PBXTargetDependency */,
 			);
 			name = "FaviconFinder-macOS";
 			productName = "FaviconFinder-macOS";
@@ -851,12 +851,12 @@
 		};
 		D9B8DB9CB287820107F813D05015ACF2 /* SwiftSoup-iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1EABA197AF5F04DF0F75334C210C8171 /* Build configuration list for PBXNativeTarget "SwiftSoup-iOS" */;
+			buildConfigurationList = 8AA6A45BF658864DAF7AC583F6F21BB5 /* Build configuration list for PBXNativeTarget "SwiftSoup-iOS" */;
 			buildPhases = (
-				77E9DB48BE4D1C69121A44785F077F18 /* Headers */,
-				B1D67A00574F998D9F2713603C46813E /* Sources */,
-				4FC647D5464872283EB683F5198A76DB /* Frameworks */,
-				D72735EF00CE6C28F120F2FB858BCE03 /* Resources */,
+				759DE2F4D589E26041E30F8DBFAE27C5 /* Headers */,
+				65D654CF830975021666A29C67906988 /* Sources */,
+				01F61A0E4EBBA7C1A8DA6766C3F0DE33 /* Frameworks */,
+				C1F4A49C211305C53A22C2DADBEB5A70 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -895,7 +895,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1100;
-				LastUpgradeCheck = 1130;
+				LastUpgradeCheck = 1120;
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 8.0";
@@ -922,7 +922,7 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		1CC8043D15945E74FF27F0DF0D46F0FB /* Resources */ = {
+		11E8FFEA34FB9BF101427CB52088110D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -930,13 +930,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		23D5E5D999D88EC3BA4FDF62D868BC25 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3777ABB9594A2FD176D0563CDD05F94F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -957,14 +950,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B9D2D046E50A0508332D5B2550E7300C /* Resources */ = {
+		C1F4A49C211305C53A22C2DADBEB5A70 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D72735EF00CE6C28F120F2FB858BCE03 /* Resources */ = {
+		D38CFDD2D236A2050DA1A213F071AC55 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EF7AD230842064D866EE83CD9D833292 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -982,20 +982,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		1BECA862574C04D389D358F66542EEF6 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0EC67129B0F2F36014D4836C1A6C35DB /* FaviconError.swift in Sources */,
-				EAC2D1F9CF8F3FC6F8DADD079076A2CF /* FaviconFinder-macOS-dummy.m in Sources */,
-				0C2CDA8CABFF084889D6EABA07C968AC /* FaviconFinder.swift in Sources */,
-				25EFAE2BFD1024E3343C0B5A2814FE3C /* FaviconRelType.swift in Sources */,
-				D23A3748D148FD14009FF2C2F3D55289 /* Regex.swift in Sources */,
-				6778BE5FBD296E4792543960A74B5F7C /* String+Removals.swift in Sources */,
-				FACDB8EA56DE4854B09F43D3AC75FE4F /* URL+Parsing.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		1CC1B9A410925AA2B61F463F5B22B2E7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1004,67 +990,95 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2B4C4BED70998F4CE257E969B8D32C90 /* Sources */ = {
+		43C7E865DE16EEA805F9FEDAB606F284 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA6CB6C5338E1C537FC822E6DFA14C5F /* ArrayExt.swift in Sources */,
-				F9940CD04514D08836A81B248EAE71C3 /* Attribute.swift in Sources */,
-				3FE609350759965E249A585A2093C7C3 /* Attributes.swift in Sources */,
-				728F8CD5EC38CF9B403F562539F82FEB /* BinarySearch.swift in Sources */,
-				2266F050883EE8E5619C84A8751E01AE /* BooleanAttribute.swift in Sources */,
-				CDD134A675610B89289C17B599E9E517 /* CharacterExt.swift in Sources */,
-				892C2DB4C2C6BE879B4710495304D7C1 /* CharacterReader.swift in Sources */,
-				9C311552133F30FD1BBD05356935C34B /* Cleaner.swift in Sources */,
-				F046244F5BBB88A6C1D119F5F90D6831 /* Collector.swift in Sources */,
-				B85ECDA83EE503EB84459F053E4C86A6 /* CombiningEvaluator.swift in Sources */,
-				12066E9912392C1F0A54479AD84D87E4 /* Comment.swift in Sources */,
-				AC761F8B6C8C7E0D585F0288CF8D9B18 /* Connection.swift in Sources */,
-				C8CBBE27EC9325625C96CB9310C57B1F /* DataNode.swift in Sources */,
-				1DF54694A1503B2D62DB55CA95F74084 /* DataUtil.swift in Sources */,
-				3101356A71E5EC9F4A05C8FAD590D290 /* Document.swift in Sources */,
-				1DD4EBA748FB36EA4B73E0C675140055 /* DocumentType.swift in Sources */,
-				DBEDE2DB45165A73126323887F6B6C79 /* Element.swift in Sources */,
-				BBD51AA2905C7C9D86D9BA6507785544 /* Elements.swift in Sources */,
-				38372178147D02A1CFBA2D45B6EE8C48 /* Entities.swift in Sources */,
-				1924B384C320ABA7FD367E25CDF08927 /* Evaluator.swift in Sources */,
-				F7A2064606CED4ACEEC9DA7AAE5983A5 /* Exception.swift in Sources */,
-				2DCF2EA08964592A355CDBB283A006F9 /* FormElement.swift in Sources */,
-				C71FBB1FC82C8E490C16E8585AD22524 /* HtmlTreeBuilder.swift in Sources */,
-				379641D92DA9F39FFBC1EBF40EA3DE17 /* HtmlTreeBuilderState.swift in Sources */,
-				EE4A0EBC0D0BBFB5565B80AD0F2C8EEB /* HttpStatusException.swift in Sources */,
-				AEF2EDA777932A2426355719845016E1 /* Node.swift in Sources */,
-				3252F6963E65565E7662E873807542B8 /* NodeTraversor.swift in Sources */,
-				1338BBA8D53D407F74596350DAC6B1E8 /* NodeVisitor.swift in Sources */,
-				D5C6D6587E36F16D1F60CCDAF10112D3 /* OrderedSet.swift in Sources */,
-				352DD1B1A8B5B932DA4360E86B912474 /* ParseError.swift in Sources */,
-				E598AF7A303FCB05CD0ADD413BD04DFC /* ParseErrorList.swift in Sources */,
-				5082B0304DE8E63B771C53EC23792765 /* Parser.swift in Sources */,
-				A132623BE7EC6B0860A6EAF9DD129B6A /* ParseSettings.swift in Sources */,
-				1773741A62DA6A16D351AEA7B0A9F4F3 /* Pattern.swift in Sources */,
-				28E87DA1A64E0D3FD5AE11481C6DA4EF /* QueryParser.swift in Sources */,
-				49D97C95C5E1E55BD7B99C66ED9BB83E /* Selector.swift in Sources */,
-				4FAF8FE689D2A86CF170A99DD59B57E5 /* SerializationException.swift in Sources */,
-				2BC5043698ED4DBE13467C1DE2CF9FA5 /* SimpleDictionary.swift in Sources */,
-				DCB03F59083B435A951C52A5F7B9638A /* StreamReader.swift in Sources */,
-				FC26D4C9A18DCB8A197CB997B4348D06 /* String.swift in Sources */,
-				310C4C079951C9E8449F20A104D50397 /* StringBuilder.swift in Sources */,
-				F7CD21CD3F90F6A65A581927E1CF26E7 /* StringUtil.swift in Sources */,
-				0E2E27A2C039666F8AC17BA7FE429369 /* StructuralEvaluator.swift in Sources */,
-				2503D4AF9ABC616BF26FB2CE18831DD4 /* SwiftSoup-macOS-dummy.m in Sources */,
-				BA81DBA52C1867DFA32F69B761D1AB30 /* SwiftSoup.swift in Sources */,
-				D2FB1EEB44BEE2893784A103B1694D01 /* Tag.swift in Sources */,
-				987EFA597C158B0DA94ADCB87FDE214B /* TextNode.swift in Sources */,
-				CACE4F87E79918FA9F08B80FF20B5685 /* Token.swift in Sources */,
-				5E50988D01A9724B5A97F8551B07459B /* Tokeniser.swift in Sources */,
-				5901B59B05BE03496C3BAF1FD0958165 /* TokeniserState.swift in Sources */,
-				EFAD763B6232DCFA256B0EB84D12ADEE /* TokenQueue.swift in Sources */,
-				2C61044092B03446262760577C6F3924 /* TreeBuilder.swift in Sources */,
-				3EAF6B1F4316468D706EC088BA53484E /* UnicodeScalar.swift in Sources */,
-				0C7FFE9F2619B0064F12DCEE91D01645 /* Validate.swift in Sources */,
-				1B18835346F7700C628C6621A8AD5D8A /* Whitelist.swift in Sources */,
-				9D922B4EFE016EAC2FDF5F60694EAAEB /* XmlDeclaration.swift in Sources */,
-				C2C6706B37B97B344DD8EF17A7B96CC2 /* XmlTreeBuilder.swift in Sources */,
+				B9DB71936593F19E137ED3A31348CAC6 /* FaviconError.swift in Sources */,
+				DE18ACF3BDC3EB054A1FC3AA87C7ECCF /* FaviconFinder-iOS-dummy.m in Sources */,
+				8C4D05F1FB3BCC79D8AA1D6F089FAB6C /* FaviconFinder.swift in Sources */,
+				52C02684935EE079C684CC8423E65193 /* FaviconRelType.swift in Sources */,
+				52D6B3827061C7C0CCB39CE36E2428CC /* Regex.swift in Sources */,
+				755DC7E3B71CA769CF0246B242D10653 /* String+Removals.swift in Sources */,
+				6D6BC0039CFDB5786BE3745BB13E7EFA /* URL+Parsing.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		47D5B727C0214A3256D0B70B19783194 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9D3FD2EC45768D6C101E3672DDB7D114 /* FaviconError.swift in Sources */,
+				0A26803FBA8447F956FF8FFF1622C214 /* FaviconFinder-macOS-dummy.m in Sources */,
+				D8488464572613A993C0F776DEE2A7BA /* FaviconFinder.swift in Sources */,
+				36EC8FB29D5EE74274C6072E787EDF29 /* FaviconRelType.swift in Sources */,
+				DA8E3F95C603092A4A4D760143196912 /* Regex.swift in Sources */,
+				8B8E5A693A44DDEC027B4ED0D1FD596C /* String+Removals.swift in Sources */,
+				3F9AFCCE2DA048B1FEAC060FD21D7222 /* URL+Parsing.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		65D654CF830975021666A29C67906988 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FB6CE29C2D32AF70AB28722B6148E7D6 /* ArrayExt.swift in Sources */,
+				5BB7F1EBC8F4CB078E0DF4B084554284 /* Attribute.swift in Sources */,
+				EE87D348A8C36E76535797B85DC6009F /* Attributes.swift in Sources */,
+				3A2B32C378C48436D073E2408D3BA83C /* BinarySearch.swift in Sources */,
+				72A59100508D32B2235E36E068F767CF /* BooleanAttribute.swift in Sources */,
+				88B0370E50CD15F6EF9EB93F609AA1E2 /* CharacterExt.swift in Sources */,
+				6EDC7D711CE59586F38D5BDFB03E9B2A /* CharacterReader.swift in Sources */,
+				8F558F26873352931C931AF20339F802 /* Cleaner.swift in Sources */,
+				858D66F2CB70C1E92D347DA027E6C0EC /* Collector.swift in Sources */,
+				55AA0891E5E24D2E35F8FA94DE3C323D /* CombiningEvaluator.swift in Sources */,
+				0F15954199DA44E969E95CC93A15ECFE /* Comment.swift in Sources */,
+				F817DC4D612DE151FB6179741779D3AB /* Connection.swift in Sources */,
+				76249CF07ADE7E708992892A5D328FD8 /* DataNode.swift in Sources */,
+				E5CF195C20336CBCD8F0DB0AA012F311 /* DataUtil.swift in Sources */,
+				229F9BF1264DA5F69481A9651A5ABE1E /* Document.swift in Sources */,
+				8E66B817CFB2B4384CA694D7C2CE5DAD /* DocumentType.swift in Sources */,
+				1D85963F483F44898F0D1EFDF3D09472 /* Element.swift in Sources */,
+				E2131193802359867728FF1759E325E4 /* Elements.swift in Sources */,
+				071FA82B93471C50A3137F41B55E11CE /* Entities.swift in Sources */,
+				408E922C49D141ED44D5346A21E3FD16 /* Evaluator.swift in Sources */,
+				4356452A67FD45888C971945F5F9E4DF /* Exception.swift in Sources */,
+				6EB932A2D76F052FCEC62BF422EB18A8 /* FormElement.swift in Sources */,
+				D589FB77052079833FFB22320C81B57B /* HtmlTreeBuilder.swift in Sources */,
+				DC6556070BBDA2E085EAD016C3920F44 /* HtmlTreeBuilderState.swift in Sources */,
+				962FE0E3FDE86EFE38C58B252483B9FF /* HttpStatusException.swift in Sources */,
+				E2A0BE5C8C4106B48A6EFEC6B7E04DFD /* Node.swift in Sources */,
+				3C8252B8A6E6ED4ACF8C98ECF493E9BC /* NodeTraversor.swift in Sources */,
+				B3EFC138BD1083FE8E46B0EEF9E0E778 /* NodeVisitor.swift in Sources */,
+				DC625FE1C3D51F3C7CB3DBA4F8ED95EB /* OrderedSet.swift in Sources */,
+				A4BEC499C90D170D2F90E50997FFE5D9 /* ParseError.swift in Sources */,
+				A10FBBEDB0519BBC18301E049E9E3D5B /* ParseErrorList.swift in Sources */,
+				2B4F33D78DBAC1C41FBA8F350A87B081 /* Parser.swift in Sources */,
+				63830B1BB6C581CFDD6AE1B65CFD2201 /* ParseSettings.swift in Sources */,
+				3554C7A9FA8D786A0C8239889EDA5205 /* Pattern.swift in Sources */,
+				23E3DB58DD4D0F6CAEDBCABFF5AD2E54 /* QueryParser.swift in Sources */,
+				526B98FF847DFADB49A1F52C79A95EBA /* Selector.swift in Sources */,
+				AA78794C800BC275610D0A25482E4F7A /* SerializationException.swift in Sources */,
+				1050437A140158AC858D7F18979300E7 /* SimpleDictionary.swift in Sources */,
+				85F80E048C637BE9848671BA7264550C /* StreamReader.swift in Sources */,
+				AA5ED01C25B314063009D9D96E5BE9A5 /* String.swift in Sources */,
+				2B7641CB08F8092E21C5D4D04F1D9BD1 /* StringBuilder.swift in Sources */,
+				62925AB8BEED84A035B61FC54DB75CE1 /* StringUtil.swift in Sources */,
+				08F1CF9E4175B687A5B3FCDACB0FE7BD /* StructuralEvaluator.swift in Sources */,
+				BF74BC1464A98A74BA573CD6149946EE /* SwiftSoup-iOS-dummy.m in Sources */,
+				B57442511DC8C8D6B90DD717CB345F6E /* SwiftSoup.swift in Sources */,
+				76496EF110B7E248C67720979BB06B7C /* Tag.swift in Sources */,
+				34FF2E8642D77EFC61ACF76649ACCCAF /* TextNode.swift in Sources */,
+				2A59CEB499CE24763BB44EDACD7B7D10 /* Token.swift in Sources */,
+				1F988DE3B97A0187C1462BF4193AF3F6 /* Tokeniser.swift in Sources */,
+				8F3C0A13F0393E37272299F813B8BB04 /* TokeniserState.swift in Sources */,
+				CFAC556A114AAEC82E3E0089E91976D5 /* TokenQueue.swift in Sources */,
+				307BC27D690F54F10F1E71032F6EC763 /* TreeBuilder.swift in Sources */,
+				19547169EFBD56D58086EFA6725929F9 /* UnicodeScalar.swift in Sources */,
+				A8826B015B33E5A95624EBB6084DBB22 /* Validate.swift in Sources */,
+				39B006BF07D80D67D9BA5628F6FB6615 /* Whitelist.swift in Sources */,
+				0153555E20AFDDF607B4C3D8D7F7B207 /* XmlDeclaration.swift in Sources */,
+				54E0DE568D9596265F782859D07532DA /* XmlTreeBuilder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1076,98 +1090,78 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		72D10E0913DB2F4B0F6D5FC01079BD5A /* Sources */ = {
+		9F2B5CD722463056357053C8E3E3C27A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ED6775FAA7F69BA0CD35DB584490349A /* FaviconError.swift in Sources */,
-				09010E1C37BEDFF2470C8F5558CB5897 /* FaviconFinder-iOS-dummy.m in Sources */,
-				FDAEEB8F50A11F080C04B44FFAC360D7 /* FaviconFinder.swift in Sources */,
-				D64649EF87381E897FB4FE771DE14B28 /* FaviconRelType.swift in Sources */,
-				854D9E7042B22BEF1F52759AAC79645A /* Regex.swift in Sources */,
-				FDA201E638CE9EA0F66C4C6E1FC4AA74 /* String+Removals.swift in Sources */,
-				70CE784C1D9D84215BC59CEF2A793F7E /* URL+Parsing.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B1D67A00574F998D9F2713603C46813E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4C4F77E3E969603B5EEE5522DB67E86E /* ArrayExt.swift in Sources */,
-				C86DD199C66EACD93A17C26999B54F9C /* Attribute.swift in Sources */,
-				D84468E6D3611DDE98FAECBC66A95258 /* Attributes.swift in Sources */,
-				228018EC0E203FD01FB426BD3DD0D60A /* BinarySearch.swift in Sources */,
-				9A494FB6A13189712022A905E54EFF1A /* BooleanAttribute.swift in Sources */,
-				295044C18A9669FE82E9EBFC1C45E71A /* CharacterExt.swift in Sources */,
-				E31307F403FA45CF8B38629FD4B2DCF4 /* CharacterReader.swift in Sources */,
-				464769BB6C591F2500D1EC3D46903077 /* Cleaner.swift in Sources */,
-				B5018A535EAE3BAA3CB9A6EE5C328BEF /* Collector.swift in Sources */,
-				7480D76F89B7FBA0DE29FDF8C8865CD1 /* CombiningEvaluator.swift in Sources */,
-				166676C8E7D7CD148E6F994B508976C1 /* Comment.swift in Sources */,
-				FD0271CB00FEDC47E8548CE91B57D025 /* Connection.swift in Sources */,
-				62149C64B579B2E3C963E5DA62463258 /* DataNode.swift in Sources */,
-				3AD47641A05F26C447E586167804EFED /* DataUtil.swift in Sources */,
-				2A5253E5D8D971F58436E72A49D9BE0A /* Document.swift in Sources */,
-				B24B1B5BEB04B3AED6B6E7682B31B254 /* DocumentType.swift in Sources */,
-				1D9683C7CBD84E3ECAC1ADDAAFA9D264 /* Element.swift in Sources */,
-				60CD3E50A3DFF55BA82AF96204D117E6 /* Elements.swift in Sources */,
-				48613A16B449764465332564C9B3861D /* Entities.swift in Sources */,
-				FC5BDDBD9374153C9F45825BC3243316 /* Evaluator.swift in Sources */,
-				765E4E4BC9ACEEB90EDA6684FD872EC9 /* Exception.swift in Sources */,
-				3A7DA602636F32379901D497F89696CC /* FormElement.swift in Sources */,
-				981AB1F39209160B8549A972B45A3D9C /* HtmlTreeBuilder.swift in Sources */,
-				EF059A97826C72D957B6020A24A0A7C3 /* HtmlTreeBuilderState.swift in Sources */,
-				5150C6E3536D890FE5F6ACD065AA321E /* HttpStatusException.swift in Sources */,
-				AC52305B3FE9F44965CA5496B9457A45 /* Node.swift in Sources */,
-				D0E0C518F36AE8D2C1087E664E61F2AD /* NodeTraversor.swift in Sources */,
-				C49697FE8404B76880BA1FFC2EDA99D6 /* NodeVisitor.swift in Sources */,
-				4A027FBA3E489272B229574A14C19D93 /* OrderedSet.swift in Sources */,
-				B60BC19C07D43A5462A6CE306802D203 /* ParseError.swift in Sources */,
-				5B43EFDAC16C044BFC711978402DDE00 /* ParseErrorList.swift in Sources */,
-				CF5CBBD71D1A715C6C37163E1D604441 /* Parser.swift in Sources */,
-				A3566A3339AFC78449C188B6C0BF1D30 /* ParseSettings.swift in Sources */,
-				96DDDED543788C955B464F4F1A2AC24D /* Pattern.swift in Sources */,
-				8ACEEE6860DC5B15543C1688150B3FEF /* QueryParser.swift in Sources */,
-				EAB47C20A1B74EA205705CBA69ABE874 /* Selector.swift in Sources */,
-				E6D20988EB5DE39D9E592813D414A1CE /* SerializationException.swift in Sources */,
-				6AB9398B5B303AB41EBA5DDD1D803BF4 /* SimpleDictionary.swift in Sources */,
-				CF7FDD2A6134A0395E43845053061D52 /* StreamReader.swift in Sources */,
-				835BB8DF43DF31AE6D16E9A5214F441B /* String.swift in Sources */,
-				B6B5075CB3AB48FAB298788896987EDB /* StringBuilder.swift in Sources */,
-				94ABEDB0B513E3D15E087DBF187FE3B9 /* StringUtil.swift in Sources */,
-				EDC4AE6048E13E466B8241FBB364B3DF /* StructuralEvaluator.swift in Sources */,
-				394E0287AA96BB90BF8A72C38BE2B2B5 /* SwiftSoup-iOS-dummy.m in Sources */,
-				81E3CECE99DE947E4D29E577F761F875 /* SwiftSoup.swift in Sources */,
-				524F2518295B86615ACE43F7F7AA8001 /* Tag.swift in Sources */,
-				2F8CFEA25746317F8C009F7F276AE239 /* TextNode.swift in Sources */,
-				11A0EB124FDF97F52C1D5F1E2DCDDD9D /* Token.swift in Sources */,
-				0D5A7FDE315E4EB39343AD0B90E22799 /* Tokeniser.swift in Sources */,
-				B4A2F9ED87B93ECE1612F49CFC714320 /* TokeniserState.swift in Sources */,
-				D6BB305951C9B7E229343FAD815C1D3B /* TokenQueue.swift in Sources */,
-				946CD753DE0B22F09AA8DBDEC847AA1F /* TreeBuilder.swift in Sources */,
-				4D2DFB47B81F5F7EADF8AAE227B26030 /* UnicodeScalar.swift in Sources */,
-				1B4BA972536FF37A0C5A8C65078EE386 /* Validate.swift in Sources */,
-				C6CBC29239D8BEAC58DE26A1883527E9 /* Whitelist.swift in Sources */,
-				2B947F6C198A99446ED77B6F0EED7F6F /* XmlDeclaration.swift in Sources */,
-				72B4057C2313B99EEC9843F084F4A779 /* XmlTreeBuilder.swift in Sources */,
+				BDF450F010524F367E4C6EAF0C2EBF94 /* ArrayExt.swift in Sources */,
+				FAD4CA5E57F2AAA43E4B3E46DDBB02D7 /* Attribute.swift in Sources */,
+				79258F7E40EEC0CB79F8449B35EB8543 /* Attributes.swift in Sources */,
+				F0E917ECD93929B8E8AFEC27D0ED791C /* BinarySearch.swift in Sources */,
+				F5A79C2793015D37911B529BAED57319 /* BooleanAttribute.swift in Sources */,
+				8A9FA1917E6B88FC7B104FEA195505CC /* CharacterExt.swift in Sources */,
+				BBDE606982A62012E3C9A66A4BBE6E5B /* CharacterReader.swift in Sources */,
+				13B1D3DFA414386FE3DBBB725EEEE9EE /* Cleaner.swift in Sources */,
+				307F050AA07DD6DA281BBC0FBDCCC111 /* Collector.swift in Sources */,
+				2E76BF952CBD70300A752AC02323FD3B /* CombiningEvaluator.swift in Sources */,
+				0278372130DB1FC6A2DDAD374375876D /* Comment.swift in Sources */,
+				E487DDED07BF772D2873C875222BC015 /* Connection.swift in Sources */,
+				92EB2B93742CB67578FC0D289A27D87E /* DataNode.swift in Sources */,
+				3D202260DF85F1AA9BD3E237D21F5BB7 /* DataUtil.swift in Sources */,
+				51EE95B5882BB4E1BD43DB98202ACAD2 /* Document.swift in Sources */,
+				846516A162C33C6C2C09A87494B942BB /* DocumentType.swift in Sources */,
+				CCA3C5C20407EC373741918887C861D4 /* Element.swift in Sources */,
+				1846ECB1B218BEF4814E1BE0A1CE6EBE /* Elements.swift in Sources */,
+				C9BC2594345FD25E1E0F4260DC80756D /* Entities.swift in Sources */,
+				CD865E62DAFAA2E5C1957BAF92011EC3 /* Evaluator.swift in Sources */,
+				BBCFF79FDE657E2DCB72D8E507EE7C0B /* Exception.swift in Sources */,
+				8285CD1ACC532C01349F2A0BBDCF75BD /* FormElement.swift in Sources */,
+				03A159258E357BC91967B88AEEA9B098 /* HtmlTreeBuilder.swift in Sources */,
+				2681138DB1404F1DFA13305C5F42FA4D /* HtmlTreeBuilderState.swift in Sources */,
+				A1CDC992A4ECCABEC36BA6A7561251DA /* HttpStatusException.swift in Sources */,
+				52F0BDF10F16C78E444F3AFB19E20098 /* Node.swift in Sources */,
+				A599CB02076F23C099C52E3CFBBA8268 /* NodeTraversor.swift in Sources */,
+				E068022B9829DD1291F7EB827D9232BF /* NodeVisitor.swift in Sources */,
+				C5DA133AC3A8F997C9FAEC89E0F03393 /* OrderedSet.swift in Sources */,
+				B229216E9DB8035EF0F7DD86E8ADC44D /* ParseError.swift in Sources */,
+				91500DE89F5AFAA59FD47E69FF9D2AA3 /* ParseErrorList.swift in Sources */,
+				AE54DAFEEB4F95D0D53983B59EF05B2D /* Parser.swift in Sources */,
+				7788838B4F7870836034FA11E3F113A6 /* ParseSettings.swift in Sources */,
+				4165B303623B16ACAC370A65CF648BED /* Pattern.swift in Sources */,
+				9D53C72D50240BF6347F993F435CA66E /* QueryParser.swift in Sources */,
+				EC8122F0BF27ADCE0308D9E38F8BEA2F /* Selector.swift in Sources */,
+				ED223C3A82F2EC3093BBADB1D4134555 /* SerializationException.swift in Sources */,
+				00ABA976068D973981DA80D58CB7274D /* SimpleDictionary.swift in Sources */,
+				CA934261BD1A2AD6F0EBE0A918E10D70 /* StreamReader.swift in Sources */,
+				4E7E2CE010509EA6843EEB7916DE2FA3 /* String.swift in Sources */,
+				C2814E0C1202BCA447C16F063D7A2B15 /* StringBuilder.swift in Sources */,
+				DECAA4B47FCB82D94F28CE88C67598C6 /* StringUtil.swift in Sources */,
+				D85FF8E1C1A7FD2FC5A76E8A549AA159 /* StructuralEvaluator.swift in Sources */,
+				A41785A1B50DF0F2094887BC193C857D /* SwiftSoup-macOS-dummy.m in Sources */,
+				37E2FDB8B665AC4702FD6C64FA36C9DA /* SwiftSoup.swift in Sources */,
+				95EF3915F375212C501A3B450D47D11A /* Tag.swift in Sources */,
+				3FEE1AD567069E4DF4D31A724DA79DF3 /* TextNode.swift in Sources */,
+				22ADD1E248B3732C228BE7BD380B68B6 /* Token.swift in Sources */,
+				D36E04BB2DB60A60957D3480ED89D696 /* Tokeniser.swift in Sources */,
+				7FBC006052741465DA40F335AFE94122 /* TokeniserState.swift in Sources */,
+				F4316D6B183DEEC2FEAD0939C702E59A /* TokenQueue.swift in Sources */,
+				234124420E77369B1E2FB00DA5D09818 /* TreeBuilder.swift in Sources */,
+				B79BD15118BD077AFCBDDC686E690F65 /* UnicodeScalar.swift in Sources */,
+				F5A557ECE3A89FD7F756FC90FACFBEA5 /* Validate.swift in Sources */,
+				877FE803B1CB85F04FB6E3703F0F3EBB /* Whitelist.swift in Sources */,
+				1A628812B62340B7024B8223B294388A /* XmlDeclaration.swift in Sources */,
+				2AB78EB8D7811CCC3A345C54BAFBC804 /* XmlTreeBuilder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		104AE3681C881F9C8753F5F0C42F24A0 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "SwiftSoup-macOS";
-			target = 87AB35C2C25A0D974E382A4C2C6B35D3 /* SwiftSoup-macOS */;
-			targetProxy = 774FB6862333F619AEB5C6F6084DDA03 /* PBXContainerItemProxy */;
-		};
-		448D24B3B05F01DC11139C1CDF97AE24 /* PBXTargetDependency */ = {
+		3BBF187C7606E0FD986862C722D16C59 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "SwiftSoup-iOS";
 			target = D9B8DB9CB287820107F813D05015ACF2 /* SwiftSoup-iOS */;
-			targetProxy = 0E1F3FF1D62A9CCEDA88EDEE01124907 /* PBXContainerItemProxy */;
+			targetProxy = F25C1B5E441F46B6936065EEFBDD15FB /* PBXContainerItemProxy */;
 		};
 		4C2D99818FC964586C6556263A9977F7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1199,6 +1193,12 @@
 			target = B974AD9B0F92206CF4FDC93F59EFF6F6 /* FaviconFinder-macOS */;
 			targetProxy = 865B291A2E980A4BF4667BCD1B72CA1B /* PBXContainerItemProxy */;
 		};
+		B18E042F278E65D067F3FE579940229D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "SwiftSoup-macOS";
+			target = 87AB35C2C25A0D974E382A4C2C6B35D3 /* SwiftSoup-macOS */;
+			targetProxy = 686BC5B3808D2058110819399DC17B97 /* PBXContainerItemProxy */;
+		};
 		C5FDB02C02944DF85BF91E043517FDBD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "SwiftSoup-macOS";
@@ -1214,71 +1214,37 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		087F1CC605DF7ECC43C6399AF2C77739 /* Debug */ = {
+		0EAC5575719CB18E10F5876D014E6A62 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EE4C03AE6EA263424ACED8D0958FE832 /* FaviconFinder-macOS.xcconfig */;
+			baseConfigurationReference = 8DCF38242B52907B321FCD4E738E533D /* FaviconFinder-iOS.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				GCC_PREFIX_HEADER = "Target Support Files/FaviconFinder-macOS/FaviconFinder-macOS-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/FaviconFinder-macOS/FaviconFinder-macOS-Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/FaviconFinder-iOS/FaviconFinder-iOS-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/FaviconFinder-iOS/FaviconFinder-iOS-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				MODULEMAP_FILE = "Target Support Files/FaviconFinder-macOS/FaviconFinder-macOS.modulemap";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/FaviconFinder-iOS/FaviconFinder-iOS.modulemap";
 				PRODUCT_MODULE_NAME = FaviconFinder;
 				PRODUCT_NAME = FaviconFinder;
-				SDKROOT = macosx;
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
-		};
-		166146ABF1AAC8BE2DBE8B9A31A05F39 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6A66A1F85556B481FAF87DA9F63165A7 /* SwiftSoup-macOS.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				GCC_PREFIX_HEADER = "Target Support Files/SwiftSoup-macOS/SwiftSoup-macOS-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SwiftSoup-macOS/SwiftSoup-macOS-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				MODULEMAP_FILE = "Target Support Files/SwiftSoup-macOS/SwiftSoup-macOS.modulemap";
-				PRODUCT_MODULE_NAME = SwiftSoup;
-				PRODUCT_NAME = SwiftSoup;
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.1;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
 		};
 		2D2A1631EB08B225B20B485736D55AFD /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -1310,38 +1276,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		2D43976851CC1A7C36F14FE11B09273A /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5F649911C300490BDAA68E0595F49041 /* SwiftSoup-iOS.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/SwiftSoup-iOS/SwiftSoup-iOS-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SwiftSoup-iOS/SwiftSoup-iOS-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/SwiftSoup-iOS/SwiftSoup-iOS.modulemap";
-				PRODUCT_MODULE_NAME = SwiftSoup;
-				PRODUCT_NAME = SwiftSoup;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.1;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -1407,72 +1341,40 @@
 			};
 			name = Release;
 		};
-		35F991E848C93DC51694D6F1EAA1CA75 /* Debug */ = {
+		39188CF8CC99149595F130409EE4DDE6 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8E71681DEF1064F1246528AE6F3BA2E3 /* FaviconFinder-iOS.xcconfig */;
+			baseConfigurationReference = 6A66A1F85556B481FAF87DA9F63165A7 /* SwiftSoup-macOS.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/FaviconFinder-iOS/FaviconFinder-iOS-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/FaviconFinder-iOS/FaviconFinder-iOS-Info.plist";
+				FRAMEWORK_VERSION = A;
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftSoup-macOS/SwiftSoup-macOS-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftSoup-macOS/SwiftSoup-macOS-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/FaviconFinder-iOS/FaviconFinder-iOS.modulemap";
-				PRODUCT_MODULE_NAME = FaviconFinder;
-				PRODUCT_NAME = FaviconFinder;
-				SDKROOT = iphoneos;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MODULEMAP_FILE = "Target Support Files/SwiftSoup-macOS/SwiftSoup-macOS.modulemap";
+				PRODUCT_MODULE_NAME = SwiftSoup;
+				PRODUCT_NAME = SwiftSoup;
+				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		3B18735B825FC454C3540A56F6C68FB1 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8E71681DEF1064F1246528AE6F3BA2E3 /* FaviconFinder-iOS.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/FaviconFinder-iOS/FaviconFinder-iOS-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/FaviconFinder-iOS/FaviconFinder-iOS-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/FaviconFinder-iOS/FaviconFinder-iOS.modulemap";
-				PRODUCT_MODULE_NAME = FaviconFinder;
-				PRODUCT_NAME = FaviconFinder;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
+				SWIFT_VERSION = 5.1;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
-		4CFC935228DBFE24CDB459B5E0B853D6 /* Debug */ = {
+		4006FF8E0B7239EEABAD1E938AA3DA78 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6A66A1F85556B481FAF87DA9F63165A7 /* SwiftSoup-macOS.xcconfig */;
 			buildSettings = {
@@ -1504,6 +1406,39 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
+		};
+		4ED419BFE358A3382939C957A9422F12 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1CF0D2BE7B3142BA7966B1097997B923 /* FaviconFinder-macOS.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				GCC_PREFIX_HEADER = "Target Support Files/FaviconFinder-macOS/FaviconFinder-macOS-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/FaviconFinder-macOS/FaviconFinder-macOS-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MODULEMAP_FILE = "Target Support Files/FaviconFinder-macOS/FaviconFinder-macOS.modulemap";
+				PRODUCT_MODULE_NAME = FaviconFinder;
+				PRODUCT_NAME = FaviconFinder;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
 		};
 		59C160E9646AD491D26E62F5AE658030 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -1540,7 +1475,7 @@
 			};
 			name = Release;
 		};
-		74F2056A30A08F695262D3AA0FEF3A8B /* Debug */ = {
+		64E8196616EDF06ED8313292153CA7B3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5F649911C300490BDAA68E0595F49041 /* SwiftSoup-iOS.xcconfig */;
 			buildSettings = {
@@ -1566,6 +1501,40 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_VERSION = 5.1;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		7A374FF2833CD29E90ABDFFF7FEED6CB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1CF0D2BE7B3142BA7966B1097997B923 /* FaviconFinder-macOS.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				GCC_PREFIX_HEADER = "Target Support Files/FaviconFinder-macOS/FaviconFinder-macOS-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/FaviconFinder-macOS/FaviconFinder-macOS-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MODULEMAP_FILE = "Target Support Files/FaviconFinder-macOS/FaviconFinder-macOS.modulemap";
+				PRODUCT_MODULE_NAME = FaviconFinder;
+				PRODUCT_NAME = FaviconFinder;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -1605,6 +1574,39 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
+		};
+		C6AE4F68D9670C350623CFE24CBCCD96 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8DCF38242B52907B321FCD4E738E533D /* FaviconFinder-iOS.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/FaviconFinder-iOS/FaviconFinder-iOS-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/FaviconFinder-iOS/FaviconFinder-iOS-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/FaviconFinder-iOS/FaviconFinder-iOS.modulemap";
+				PRODUCT_MODULE_NAME = FaviconFinder;
+				PRODUCT_NAME = FaviconFinder;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
 		};
 		D63C41DC61832ECE705D8F2C0D83F9FE /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -1741,38 +1743,36 @@
 			};
 			name = Release;
 		};
-		EE6C25A163FDD7A876C85A5B61628800 /* Release */ = {
+		F1E80B17363CA07AC97BA5702152037A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EE4C03AE6EA263424ACED8D0958FE832 /* FaviconFinder-macOS.xcconfig */;
+			baseConfigurationReference = 5F649911C300490BDAA68E0595F49041 /* SwiftSoup-iOS.xcconfig */;
 			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				GCC_PREFIX_HEADER = "Target Support Files/FaviconFinder-macOS/FaviconFinder-macOS-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/FaviconFinder-macOS/FaviconFinder-macOS-Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftSoup-iOS/SwiftSoup-iOS-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftSoup-iOS/SwiftSoup-iOS-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				MODULEMAP_FILE = "Target Support Files/FaviconFinder-macOS/FaviconFinder-macOS.modulemap";
-				PRODUCT_MODULE_NAME = FaviconFinder;
-				PRODUCT_NAME = FaviconFinder;
-				SDKROOT = macosx;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SwiftSoup-iOS/SwiftSoup-iOS.modulemap";
+				PRODUCT_MODULE_NAME = SwiftSoup;
+				PRODUCT_NAME = SwiftSoup;
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 5.1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Release;
+			name = Debug;
 		};
 		F219220FFC12743A024F4D604316EB55 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -1811,29 +1811,11 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1EABA197AF5F04DF0F75334C210C8171 /* Build configuration list for PBXNativeTarget "SwiftSoup-iOS" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				74F2056A30A08F695262D3AA0FEF3A8B /* Debug */,
-				2D43976851CC1A7C36F14FE11B09273A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		313EA044F6317DD58040B18C584035A8 /* Build configuration list for PBXNativeTarget "Pods-FaviconFinder_Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D63C41DC61832ECE705D8F2C0D83F9FE /* Debug */,
 				EC43BBA100A4B50C80904F9FFAF7307E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		3351E0F18CDF0EC314906BA318AECCF0 /* Build configuration list for PBXNativeTarget "SwiftSoup-macOS" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				4CFC935228DBFE24CDB459B5E0B853D6 /* Debug */,
-				166146ABF1AAC8BE2DBE8B9A31A05F39 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1847,11 +1829,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		640D8390A979292A384C0BC9F2213DEE /* Build configuration list for PBXNativeTarget "FaviconFinder-macOS" */ = {
+		6527E23F9211D2BCEA504B3B4ACF4A64 /* Build configuration list for PBXNativeTarget "FaviconFinder-macOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				087F1CC605DF7ECC43C6399AF2C77739 /* Debug */,
-				EE6C25A163FDD7A876C85A5B61628800 /* Release */,
+				7A374FF2833CD29E90ABDFFF7FEED6CB /* Debug */,
+				4ED419BFE358A3382939C957A9422F12 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1865,11 +1847,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A946961C9280356FCFCA367BE9B17AEB /* Build configuration list for PBXNativeTarget "FaviconFinder-iOS" */ = {
+		8AA6A45BF658864DAF7AC583F6F21BB5 /* Build configuration list for PBXNativeTarget "SwiftSoup-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				35F991E848C93DC51694D6F1EAA1CA75 /* Debug */,
-				3B18735B825FC454C3540A56F6C68FB1 /* Release */,
+				F1E80B17363CA07AC97BA5702152037A /* Debug */,
+				64E8196616EDF06ED8313292153CA7B3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8C19407E6E110FB39199B316C0BD6E17 /* Build configuration list for PBXNativeTarget "FaviconFinder-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0EAC5575719CB18E10F5876D014E6A62 /* Debug */,
+				C6AE4F68D9670C350623CFE24CBCCD96 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1879,6 +1870,15 @@
 			buildConfigurations = (
 				B1694721DFD92A9BED45E35DE0A563D9 /* Debug */,
 				2D2A1631EB08B225B20B485736D55AFD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CD2129F983208786734AA522AC299269 /* Build configuration list for PBXNativeTarget "SwiftSoup-macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4006FF8E0B7239EEABAD1E938AA3DA78 /* Debug */,
+				39188CF8CC99149595F130409EE4DDE6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

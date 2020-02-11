@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "FaviconFinder"
-  s.version      = "2.0.0"
+  s.version      = "2.1.0"
   s.summary      = "A pure Swift library to detect favicons use by a website."
   s.homepage     = "https://github.com/will-lumley/FaviconFinder.git"
   s.license      = { :type => 'MIT', :file => 'LICENSE.txt' }
@@ -29,7 +29,7 @@ Pod::Spec.new do |s|
   
   s.source       = { :git => "https://github.com/will-lumley/FaviconFinder.git", :tag => s.version.to_s }
   
-  s.source_files = 'FaviconFinder/**/*'
+  s.source_files = 'Sources/**/*/*'
   
   s.dependency 'SwiftSoup', '~> 2.3.0'
   
