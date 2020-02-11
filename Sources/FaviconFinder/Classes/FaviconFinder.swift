@@ -5,8 +5,11 @@
 //  Created by William Lumley on 16/10/19.
 //  Copyright © 2019 William Lumley. All rights reserved.
 //
+#if targetEnvironment(macCatalyst)
+import UIKit
+public typealias Image = UIImage
 
-#if canImport(AppKit)
+#elseif canImport(AppKit)
 import AppKit
 public typealias Image = NSImage
 
@@ -32,7 +35,7 @@ open class FaviconFinder: NSObject
     ///When parsing through HTML, these are the type of images we'll look for in the HTML header
     fileprivate var acceptableIconTypes = FaviconRelType.allTypes
     
-    ///The base URL of the site we're trying to extract from
+    ///Prints useful states and errors when enabled
     fileprivate var isLogEnabled: Bool
 
     public init(url: URL, isLogEnabled: Bool = false)
