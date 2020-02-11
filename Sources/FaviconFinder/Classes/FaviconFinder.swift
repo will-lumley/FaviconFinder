@@ -6,11 +6,11 @@
 //  Copyright © 2019 William Lumley. All rights reserved.
 //
 
-#if os(OSX)
+#if canImport(AppKit)
 import AppKit
 public typealias Image = NSImage
 
-#elseif os(iOS)
+#elseif canImport(UIKit)
 import UIKit
 public typealias Image = UIImage
 
