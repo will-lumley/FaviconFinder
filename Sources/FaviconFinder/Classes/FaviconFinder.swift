@@ -7,18 +7,17 @@
 //
 
 #if os(OSX)
-
 import AppKit
-import SwiftSoup
-
 public typealias Image = NSImage
 
 #elseif os(iOS)
-
 import UIKit
-import SwiftSoup
-
 public typealias Image = UIImage
+
+#endif
+
+#if canImport(SwiftSoup)
+import SwiftSoup
 
 #endif
 
