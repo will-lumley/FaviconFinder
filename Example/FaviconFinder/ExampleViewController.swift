@@ -29,7 +29,7 @@ class ExampleViewController: NSViewController
             return
         }
         
-        FaviconFinder(url: url).downloadFavicon({(image, error) in
+        FaviconFinder(url: url, isLogEnabled: true).downloadFavicon({(image, error) in
             self.imageView.image = image
 
             if let error = error {
