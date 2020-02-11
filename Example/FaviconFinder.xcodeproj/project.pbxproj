@@ -16,13 +16,13 @@
 		BE21381123F0D4FD00DCA2CB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE21380F23F0D4FD00DCA2CB /* Main.storyboard */; };
 		BE21381323F0D4FF00DCA2CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE21381223F0D4FF00DCA2CB /* Assets.xcassets */; };
 		BE21381623F0D4FF00DCA2CB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE21381423F0D4FF00DCA2CB /* LaunchScreen.storyboard */; };
-		BE331C0223E1B1EA0005E065 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = BE331C0123E1B1EA0005E065 /* Cartfile */; };
 		BE52CAF523CAE3BA005F1123 /* StringRemovalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE52CAF223CAE3BA005F1123 /* StringRemovalTests.swift */; };
 		BE52CAF623CAE3BA005F1123 /* RegexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE52CAF323CAE3BA005F1123 /* RegexTests.swift */; };
 		BE52CAF723CAE3BA005F1123 /* URLParsingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE52CAF423CAE3BA005F1123 /* URLParsingTests.swift */; };
 		BE52CB1923CB26C0005F1123 /* ExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE52CB1823CB26C0005F1123 /* ExampleViewController.swift */; };
 		BE52CB3923CB2E56005F1123 /* ExampleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE52CB3823CB2E56005F1123 /* ExampleViewController.xib */; };
 		BEBAE77F23CB2F1F00A60406 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEBAE77D23CB2F1F00A60406 /* MainMenu.xib */; };
+		BEDA437D23F226B80086C78A /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = BEDA437C23F226B80086C78A /* Cartfile */; };
 		ED83F67C20348A760038D96B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED83F67B20348A760038D96B /* AppDelegate.swift */; };
 		ED83F67E20348A760038D96B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED83F67D20348A760038D96B /* ContentView.swift */; };
 		ED83F68020348A760038D96B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED83F67F20348A760038D96B /* Assets.xcassets */; };
@@ -56,13 +56,14 @@
 		BE21381223F0D4FF00DCA2CB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BE21381523F0D4FF00DCA2CB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BE21381723F0D4FF00DCA2CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BE331C0123E1B1EA0005E065 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Cartfile; path = ../Cartfile; sourceTree = "<group>"; };
 		BE52CAF223CAE3BA005F1123 /* StringRemovalTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringRemovalTests.swift; sourceTree = "<group>"; };
 		BE52CAF323CAE3BA005F1123 /* RegexTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegexTests.swift; sourceTree = "<group>"; };
 		BE52CAF423CAE3BA005F1123 /* URLParsingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLParsingTests.swift; sourceTree = "<group>"; };
 		BE52CB1823CB26C0005F1123 /* ExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleViewController.swift; sourceTree = "<group>"; };
 		BE52CB3823CB2E56005F1123 /* ExampleViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExampleViewController.xib; sourceTree = "<group>"; };
 		BEBAE77E23CB2F1F00A60406 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		BEDA437C23F226B80086C78A /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Cartfile; path = ../Cartfile; sourceTree = "<group>"; };
+		BEDA437E23F226C20086C78A /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Package.swift; path = ../Package.swift; sourceTree = "<group>"; };
 		CA7C527B8CAE06B6FAAC37F6 /* Pods_FaviconFinder_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FaviconFinder_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D126331FEBE93627C20ED818 /* Pods-FaviconFinder_Example-FaviconFinder_iOS_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FaviconFinder_Example-FaviconFinder_iOS_Example.release.xcconfig"; path = "Target Support Files/Pods-FaviconFinder_Example-FaviconFinder_iOS_Example/Pods-FaviconFinder_Example-FaviconFinder_iOS_Example.release.xcconfig"; sourceTree = "<group>"; };
 		D507263EAAFD4C18A4924A31 /* Pods-FaviconFinder_Example-FaviconFinder_iOS_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FaviconFinder_Example-FaviconFinder_iOS_Example.debug.xcconfig"; path = "Target Support Files/Pods-FaviconFinder_Example-FaviconFinder_iOS_Example/Pods-FaviconFinder_Example-FaviconFinder_iOS_Example.debug.xcconfig"; sourceTree = "<group>"; };
@@ -150,8 +151,7 @@
 		ED83F66F20348A760038D96B = {
 			isa = PBXGroup;
 			children = (
-				BE331C0123E1B1EA0005E065 /* Cartfile */,
-				ED83F69A20348B650038D96B /* Podspec Metadata */,
+				ED83F69A20348B650038D96B /* Metadata */,
 				ED83F67A20348A760038D96B /* FaviconFinder */,
 				BE21380823F0D4FD00DCA2CB /* FaviconFinder_iOS_Example */,
 				ED83F68D20348A760038D96B /* Tests */,
@@ -198,14 +198,16 @@
 			path = Tests;
 			sourceTree = "<group>";
 		};
-		ED83F69A20348B650038D96B /* Podspec Metadata */ = {
+		ED83F69A20348B650038D96B /* Metadata */ = {
 			isa = PBXGroup;
 			children = (
 				9C5773D0659DE71F64359322 /* FaviconFinder.podspec */,
+				BEDA437C23F226B80086C78A /* Cartfile */,
+				BEDA437E23F226C20086C78A /* Package.swift */,
 				012C43A70A0346876129F0F6 /* README.md */,
 				E43CC0CE153FC238A29BC3B4 /* LICENSE.txt */,
 			);
-			name = "Podspec Metadata";
+			name = Metadata;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -333,7 +335,7 @@
 			files = (
 				ED83F68020348A760038D96B /* Assets.xcassets in Resources */,
 				BE52CB3923CB2E56005F1123 /* ExampleViewController.xib in Resources */,
-				BE331C0223E1B1EA0005E065 /* Cartfile in Resources */,
+				BEDA437D23F226B80086C78A /* Cartfile in Resources */,
 				BEBAE77F23CB2F1F00A60406 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

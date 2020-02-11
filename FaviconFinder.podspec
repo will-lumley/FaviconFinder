@@ -29,7 +29,7 @@ Pod::Spec.new do |s|
   
   s.source       = { :git => "https://github.com/will-lumley/FaviconFinder.git", :tag => s.version.to_s }
   
-  s.source_files = 'FaviconFinder/**/*'
+  s.source_files = 'Sources/**/*/*'
   
   s.dependency 'SwiftSoup', '~> 2.3.0'
   
