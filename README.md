@@ -79,7 +79,7 @@ targets: [
 ```
 ## Author
 
-William Lumley, will@lumley.io
+[William Lumley](https://lumley.io/), will@lumley.io
 
 ## License
 
