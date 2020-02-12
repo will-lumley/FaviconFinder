@@ -71,7 +71,6 @@ open class FaviconFinder: NSObject
                         //We found an image, yay
                         if let image = image {
                             DispatchQueue.main.async(execute: { onCompletion(image, url, nil) })
-                            
                         }
                         //We failed to create an image
                         else {
