@@ -31,7 +31,7 @@ class FaviconFinderTests: XCTestCase
         let expectation = self.expectation(description: "Favicon.ico FaviconFind")
         
         let faviconFinder = FaviconFinder(url: self.googleUrl)
-        faviconFinder.downloadFavicon({(image, error) in
+        faviconFinder.downloadFavicon({(image, url, error) in
             
             if let error = error {
                 XCTAssert(false, "Failed to download favicon.ico file: \(error)")
@@ -54,7 +54,7 @@ class FaviconFinderTests: XCTestCase
         let expectation = self.expectation(description: "HTML FaviconFind")
         
         let faviconFinder = FaviconFinder(url: self.realFaviconGeneratorUrl)
-        faviconFinder.downloadFavicon({(image, error) in
+        faviconFinder.downloadFavicon({(image, url, error) in
             
             if let error = error {
                 XCTAssert(false, "Failed to download favicon from HTML header: \(error.localizedDescription)")

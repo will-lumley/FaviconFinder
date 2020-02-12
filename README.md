@@ -31,8 +31,10 @@ To do:
 
 FaviconFinder uses simple syntax to allow you to easily download the favicon you need, and get on with your project. Just insert this code into your project:
 ```swift
-FaviconFinder(url: url).downloadFavicon { (image, error) in
-    // Do whatever you'd like with 'image' here
+FaviconFinder(url: url).downloadFavicon { (image, url, error) in
+    // 'image' will be the image object holding the favicon (UIImage or NSImage depending on your platform)
+    // 'url' will be the URL location of the favicon
+    // 'error' will be the error that occured if we failed to get the favicon
 }
 ```
 
@@ -52,7 +54,7 @@ FaviconFinder is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod 'FaviconFinder'
+pod 'FaviconFinder', '~> 2.1.1'
 ```
 
 ### Carthage
@@ -60,7 +62,7 @@ FaviconFinder is also available through [Carthage](https://github.com/Carthage/C
 it, simply add the following line to your Cartfile:
 
 ```ruby
-github "will-lumley/FaviconFinder"
+github "will-lumley/FaviconFinder" == 2.1.1
 ```
 
 ### Swift Package Manager
@@ -70,7 +72,7 @@ To install it, simply add the dependency to your Package.Swift file:
 ```swift
 ...
 dependencies: [
-    .package(url: "https://github.com/will-lumley/FaviconFinder.git", from: "2.1.0"),
+    .package(url: "https://github.com/will-lumley/FaviconFinder.git", from: "2.1.1"),
 ],
 targets: [
     .target( name: "YourTarget", dependencies: ["FaviconFinder"]),
