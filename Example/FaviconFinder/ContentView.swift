@@ -64,9 +64,9 @@ final class ImageLoader: ObservableObject
 
     func load(url: URL)
     {
-        FaviconFinder(url: url).downloadFavicon({(image, error) in
+        FaviconFinder(url: url, isLogEnabled: true).downloadFavicon({(image, url, error) in
             self.image = image
-
+            print("favicon url: \(url)")
             if let error = error {
                 NSAlert(error: error).runModal()
             }
