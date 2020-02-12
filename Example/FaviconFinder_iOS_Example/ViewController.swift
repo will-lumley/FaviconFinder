@@ -31,7 +31,7 @@ class ViewController: UIViewController
             return
         }
         
-        FaviconFinder(url: url).downloadFavicon({(image, error) in
+        FaviconFinder(url: url).downloadFavicon({(image, url, error) in
             self.imageView.image = image
 
             if let error = error {
