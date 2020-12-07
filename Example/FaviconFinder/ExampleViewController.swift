@@ -29,13 +29,15 @@ class ExampleViewController: NSViewController
             return
         }
         
-        FaviconFinder(url: url, isLogEnabled: true).downloadFavicon({(image, url, error) in
-            print("Favicon URL: \(String(describing: url))")
+        FaviconFinder(url: url, isLogEnabled: true).downloadFavicon { result in
+            switch result {
+            case .success(let favicon):
+                print("URL of Favicon: \(favicon.url)")
+                self.imageView.image = favicon.image
             
-            self.imageView.image = image
-            if let error = error {
+            case .failure(let error):
                 NSAlert(error: error).runModal()
             }
-        })
+        }
     }
 }

@@ -24,21 +24,26 @@ import SwiftSoup
 
 #endif
 
-open class FaviconFinder: NSObject {
+public class FaviconFinder: NSObject {
+
+    public struct Favicon {
+        public let image: Image
+        public let url: URL
+    }
 
     // MARK: - Properties
 
     /// The base URL of the site we're trying to extract from
-    fileprivate var url: URL
+    private var url: URL
     
     /// If true, this means we failed to extract a favicon from the URL, and will now try to extract a favicon from the root domain
-    fileprivate var usingRootUrl = false
+    private var usingRootUrl = false
     
     /// When parsing through HTML, these are the type of images we'll look for in the HTML header
-    fileprivate var acceptableIconTypes = FaviconRelType.allTypes
+    private var acceptableIconTypes = FaviconRelType.allTypes
     
     /// Prints useful states and errors when enabled
-    fileprivate var isLogEnabled: Bool
+    private var isLogEnabled: Bool
 
     // MARK: - FaviconFinder
 
@@ -51,47 +56,34 @@ open class FaviconFinder: NSObject {
      Begins the quest to find our Favicon
      - parameter onCompletion: The closure that will be called when the image is found (or not found)
     */
-    public func downloadFavicon(_ onCompletion: @escaping (_ image: Image?, _ url: URL?, _ error: Error?) -> Void) {
+    public func downloadFavicon(_ onCompletion: @escaping (_ result: Result<Favicon, FaviconError>) -> Void) {
         //Search for our favicon in the root directory
-        self.searchForFaviconInRoot(onDownload: {(image, url, error) in
+        self.searchForFaviconInRoot(onDownload: {result in
             
-            //We failed to find the favicon in our root
-            if error != nil {
-                
+            switch result {
+            case .success(let favicon):
+                // We found a favicon in the root directory, we're done here
+                DispatchQueue.main.async {
+                    onCompletion(.success(favicon))
+                }
+
+            case .failure:
+                //We failed to find the favicon in our root
                 //Let's try and search our favicon in our HTML headers
-                self.searchForFaviconInHTML(onDownload: {(image, url, error) in
+                self.searchForFaviconInHTML(onDownload: {result in
                     
-                    //We failed to find the favicon in the HTML as well
-                    if let error = error {
-                        DispatchQueue.main.async(execute: { onCompletion(nil, nil, error) })
-                        
-                        return
-                    }
-                    
-                    //We didn't experience an error when download our favicon in our HTML header
-                    else {
-                        //We found an image, yay
-                        if let image = image {
-                            DispatchQueue.main.async(execute: { onCompletion(image, url, nil) })
+                    switch result {
+                    case .success(let favicon):
+                        DispatchQueue.main.async {
+                            onCompletion(.success(favicon))
                         }
-                        //We failed to create an image
-                        else {
-                            DispatchQueue.main.async(execute: { onCompletion(nil, nil, FaviconError.invalidImage) })
+
+                    case .failure(let error):
+                        DispatchQueue.main.async {
+                            onCompletion(.failure(error))
                         }
                     }
                 })
-            }
-            
-            //We didn't experience an error when downloading our root favicon
-            else {
-                //We found an image, yay
-                if let image = image {
-                    DispatchQueue.main.async(execute: { onCompletion(image, url, nil) })
-                }
-                //We failed to create an image
-                else {
-                    DispatchQueue.main.async(execute: { onCompletion(nil, nil, FaviconError.invalidImage) })
-                }
             }
         })
     }
@@ -99,9 +91,9 @@ open class FaviconFinder: NSObject {
     /**
      Searches for the favicon within the root directory of the website, with a filename of favicon.ico
      */
-    fileprivate func searchForFaviconInRoot(onDownload: @escaping ((_ image: Image?, _ url: URL?, _ error: Error?) -> Void)) {
+    private func searchForFaviconInRoot(onDownload: @escaping ((_ result: Result<Favicon, FaviconError>) -> Void)) {
         guard let faviconUrl = self.url.urlWithoutSubdomains?.appendingPathComponent("favicon.ico") else {
-            onDownload(nil, nil, FaviconError.failedToFindFavicon)
+            onDownload(.failure(.failedToFindFavicon))
             return
         }
         
@@ -111,7 +103,7 @@ open class FaviconFinder: NSObject {
     /**
      Searches for a link to the favicon within the HTML header
      */
-    fileprivate func searchForFaviconInHTML(onDownload: @escaping ((_ image: Image?, _ url: URL?, _ error: Error?) -> Void)) {
+    private func searchForFaviconInHTML(onDownload: @escaping ((_ result: Result<Favicon, FaviconError>) -> Void)) {
         //Download the web page at our URL
         URLSession.shared.dataTask(with: self.url, completionHandler: {(data, response, error) in
             
@@ -126,7 +118,7 @@ open class FaviconFinder: NSObject {
                 if self.isLogEnabled {
                     print("Could NOT get favicon from url: \(self.url), Data was nil.")
                 }
-                onDownload(nil, nil, FaviconError.emptyData)
+                onDownload(.failure(.emptyData))
                 return
             }
             
@@ -135,7 +127,7 @@ open class FaviconFinder: NSObject {
                 if self.isLogEnabled {
                     print("Could NOT get favicon from url: \(self.url), could not parse HTML.")
                 }
-                onDownload(nil, nil, FaviconError.failedToParseHTML)
+                onDownload(.failure(.failedToParseHTML))
                 return
             }
             
@@ -144,7 +136,7 @@ open class FaviconFinder: NSObject {
                 if self.isLogEnabled {
                     print("Could NOT get favicon from url: \(self.url), failed to parse favicon from HTML.")
                 }
-                onDownload(nil, nil, FaviconError.failedToFindFavicon)
+                onDownload(.failure(.failedToDownloadFavicon))
                 return
             }
             
@@ -152,6 +144,7 @@ open class FaviconFinder: NSObject {
             if self.isLogEnabled {
                 print("Extracted favicon: \(url.absoluteString)")
             }
+
             self.downloadImage(at: url, onDownload: onDownload)
             
         }).resume()
@@ -161,15 +154,15 @@ open class FaviconFinder: NSObject {
      Downloads an image from the provided URL
      - parameter url: The URL at which we assume an image is at
      */
-    fileprivate func downloadImage(at url: URL, onDownload: @escaping ((_ image: Image?, _ url: URL?, _ error: Error?) -> Void)) {
+    private func downloadImage(at url: URL, onDownload: @escaping ((_ result: Result<Favicon, FaviconError>) -> Void)) {
         //Now that we've got the URL of the image, let's download the image
         URLSession.shared.dataTask(with: url, completionHandler: {(data, response, error) in
             if let error = error {
                 if self.isLogEnabled {
                     print("Could NOT download favicon from url: \(url), error: \(error)")
                 }
-                onDownload(nil, nil, FaviconError.failedToDownloadFavicon)
-                
+                onDownload(.failure(.failedToDownloadFavicon))
+
                 return
             }
             
@@ -178,8 +171,8 @@ open class FaviconFinder: NSObject {
                 if self.isLogEnabled {
                     print("Could NOT get favicon from url: \(self.url), Data was nil.")
                 }
-                onDownload(nil, nil, FaviconError.emptyFavicon)
-                
+                onDownload(.failure(.emptyFavicon))
+
                 return
             }
             
@@ -187,7 +180,7 @@ open class FaviconFinder: NSObject {
                 if self.isLogEnabled {
                     print("Could NOT create favicon from data.")
                 }
-                onDownload(nil, nil, FaviconError.invalidImage)
+                onDownload(.failure(.invalidImage))
                 
                 return
             }
@@ -195,7 +188,9 @@ open class FaviconFinder: NSObject {
             if self.isLogEnabled {
                 print("Successfully extracted favicon from url: \(self.url)")
             }
-            onDownload(image, url, nil)
+
+            let favicon = Favicon(image: image, url: url)
+            onDownload(.success(favicon))
             
         }).resume()
     }
@@ -204,10 +199,10 @@ open class FaviconFinder: NSObject {
      This function gets called If we fail to get connect to our URL
      - parameter error: The error that tells us why we couldn't connect to the URL
      */
-    fileprivate func handleDownloadError(_ error: Error, _ onDownload: @escaping ((_ image: Image?, _ url: URL?, _ error: Error?) -> Void)) {
+    private func handleDownloadError(_ error: Error, _ onDownload: @escaping ((_ result: Result<Favicon, FaviconError>) -> Void)) {
         //We've already tried to fix the URL, don't bother again
         if self.usingRootUrl {
-            onDownload(nil, nil, error)
+            onDownload(.failure(.other))
             return
         }
         
@@ -219,20 +214,20 @@ open class FaviconFinder: NSObject {
             self.downloadFavicon(onDownload)
         }
         else {
-            onDownload(nil, nil, error)
+            onDownload(.failure(.other))
         }
     }
 }
 
 //MARK: - HTML Parsing
-extension FaviconFinder
+private extension FaviconFinder
 {
     /**
      Parses the provided HTML for the favicon URL
      - parameter htmlStr: The HTML that we will be parsing and iterating through to find the favicon
      - returns: The URL that the favicon can be found at
     */
-    fileprivate func faviconURL(from htmlStr: String) -> URL? {
+    func faviconURL(from htmlStr: String) -> URL? {
         var htmlOpt: Document?
         do {
             htmlOpt = try SwiftSoup.parse(htmlStr)
@@ -311,7 +306,7 @@ extension FaviconFinder
      - parameter icons: Our array of our image links that we have to choose a desirable one from
      - returns: The most preferred image link from our aray of icons
      */
-    fileprivate func mostPreferrableIcon(icons: [(rel: String, href: String)]) -> (rel: String, href: String)? {
+    func mostPreferrableIcon(icons: [(rel: String, href: String)]) -> (rel: String, href: String)? {
         for icon in icons {
             let rel  = icon.rel
             

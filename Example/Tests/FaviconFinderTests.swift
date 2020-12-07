@@ -25,22 +25,15 @@ class FaviconFinderTests: XCTestCase {
 
     func testFaviconIcoFind() {
         let expectation = self.expectation(description: "Favicon.ico FaviconFind")
-        
-        let faviconFinder = FaviconFinder(url: self.googleUrl)
-        faviconFinder.downloadFavicon({(image, url, error) in
-            
-            if let error = error {
+
+        FaviconFinder(url: self.googleUrl).downloadFavicon { result in
+            switch result {
+            case .success:
+                expectation.fulfill()
+            case .failure(let error):
                 XCTAssert(false, "Failed to download favicon.ico file: \(error)")
-                return
             }
-            
-            guard let _ = image else {
-                XCTAssert(false, "Image from favicon.ico is nil.")
-                return
-            }
-            
-            expectation.fulfill()
-        })
+        }
         
         waitForExpectations(timeout: 20.0, handler: nil)
     }
@@ -48,21 +41,14 @@ class FaviconFinderTests: XCTestCase {
     func testFaviconHtmlFind() {
         let expectation = self.expectation(description: "HTML FaviconFind")
         
-        let faviconFinder = FaviconFinder(url: self.realFaviconGeneratorUrl)
-        faviconFinder.downloadFavicon({(image, url, error) in
-            
-            if let error = error {
+        FaviconFinder(url: self.realFaviconGeneratorUrl).downloadFavicon { result in
+            switch result {
+            case .success:
+                expectation.fulfill()
+            case .failure(let error):
                 XCTAssert(false, "Failed to download favicon from HTML header: \(error.localizedDescription)")
-                return
             }
-            
-            guard let _ = image else {
-                XCTAssert(false, "Image from favicon from HTML header is nil.")
-                return
-            }
-            
-            expectation.fulfill()
-        })
+        }
         
         waitForExpectations(timeout: 20.0, handler: nil)
     }
