@@ -8,13 +8,11 @@
 
 import Foundation
 
-internal class Regex
-{
+internal class Regex {
     fileprivate var expression: NSRegularExpression?
     fileprivate var pattern: String
     
-    init(_ pattern: String)
-    {
+    init(_ pattern: String) {
         self.pattern = pattern
         
         do {
@@ -25,8 +23,7 @@ internal class Regex
         }
     }
     
-    public func test(input: String) -> Bool
-    {
+    public func test(input: String) -> Bool {
         guard let expression = self.expression else {
             return false
         }
@@ -37,11 +34,11 @@ internal class Regex
 }
 
 //MARK: - Static Functions
-extension Regex
-{
-    public static func testForHttpsOrHttp(input: String) -> Bool
-    {
+extension Regex {
+
+    public static func testForHttpsOrHttp(input: String) -> Bool {
         let regex = Regex("^(http|https)://")
         return regex.test(input: input)
     }
+
 }

@@ -8,13 +8,12 @@
 
 import Foundation
 
-extension URL
-{
+extension URL {
+
     /**
      A list of possible domain components that we recognise as TLDs
      */
-    public func tlds() -> [String]
-    {
+    public var tlds: [String] {
         return [
             "com",
             "com.au",
@@ -26,8 +25,7 @@ extension URL
     /**
      https://stackoverflow.com/questions/17101227/how-to-extract-and-remove-scheme-name-from-nsurl
      */
-    public func absoluteStringWithoutScheme() -> String?
-    {
+    public var absoluteStringWithoutScheme: String? {
         guard let scheme = self.scheme else {
             return nil
         }
@@ -45,10 +43,9 @@ extension URL
      
      - returns: Nil if removing the subdomains was not possible, otherwise the new URL is returned
     */
-    public func urlWithoutSubdomains() -> URL?
-    {
+    public var urlWithoutSubdomains: URL? {
         //Remove the scheme
-        guard var urlStr = self.absoluteStringWithoutScheme() else {
+        guard var urlStr = self.absoluteStringWithoutScheme else {
             return nil
         }
         
@@ -63,7 +60,7 @@ extension URL
             let component = components[i]
             
             //If this is the TLD, we can stop iterating
-            if self.tlds().contains(component) {
+            if self.tlds.contains(component) {
                 
                 //We found the TLD, so the part before the TLD must be the root domain
                 let secondLastPart = components[i - 1]
@@ -92,4 +89,5 @@ extension URL
         
         return nil
     }
+
 }
