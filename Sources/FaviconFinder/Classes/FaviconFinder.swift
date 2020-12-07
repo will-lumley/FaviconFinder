@@ -298,13 +298,13 @@ extension FaviconFinder
         //Extract the most preferrable icon, and return it's href as a URL object
         let mostPreferrableIcon = self.mostPreferrableIcon(icons: possibleIcons)
         
-        guard var href = mostPreferrableIcon?.href else { return nil }
+        guard let href = mostPreferrableIcon?.href else { return nil }
         
         //If we don't have a http or https prepended to our href, prepend our base domain
         if !Regex.testForHttpsOrHttp(input: href) {
             let host   = "\(self.url.scheme ?? "https")://"
             let domain = self.url.host ?? self.url.absoluteString
-            href = "\(host)\(domain)\(href)"
+            return URL(string: "\(host)\(domain)")?.appendingPathComponent(href)
         }
         
         return URL(string: href)
