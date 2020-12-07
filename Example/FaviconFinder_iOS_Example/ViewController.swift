@@ -9,18 +9,15 @@
 import UIKit
 import FaviconFinder
 
-class ViewController: UIViewController
-{
+class ViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var textField: UITextField!
     
-    override func viewDidLoad()
-    {
+    override func viewDidLoad() {
         super.viewDidLoad()
     }
     
-    @IBAction func buttonTapped(_ sender: Any)
-    {
+    @IBAction func buttonTapped(_ sender: Any) {
         guard let urlStr = self.textField.text else {
             print("TextField text is nil.")
             return
@@ -31,13 +28,16 @@ class ViewController: UIViewController
             return
         }
         
-        FaviconFinder(url: url).downloadFavicon({(image, url, error) in
-            self.imageView.image = image
+        FaviconFinder(url: url, isLogEnabled: true).downloadFavicon { result in
+            switch result {
+            case .success(let favicon):
+                print("URL of Favicon: \(favicon.url)")
+                self.imageView.image = image
 
-            if let error = error {
+            case .failure(let error):
                 print("Error: \(error)")
             }
-        })
+        }
     }
 }
 
