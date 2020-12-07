@@ -8,15 +8,14 @@
 
 import Foundation
 
-extension String
-{
+extension String {
+
     /**
      Finds the first instance of the provided string occurences, and removes everything after it,
      including the provided string itself
      - parameter str: The string occurence which we're looking for
      */
-    public mutating func removeEverythingAfter(str: String)
-    {
+    public mutating func removeEverythingAfter(str: String) {
         let nsString = NSString(string: self)
         
         //This is the location/start-index of the occurence of str within our `self` string
@@ -29,4 +28,5 @@ extension String
             self = nsString.replacingCharacters(in: range, with: "")
         }
     }
+
 }

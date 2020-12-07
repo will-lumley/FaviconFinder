@@ -11,13 +11,11 @@ import Combine
 import FaviconFinder
 
 @available(OSX 10.15, *)
-struct ContentView: View
-{
+struct ContentView: View {
     @State var urlStr = "https://apple.com/au"
     @ObservedObject var imageLoader = ImageLoader()
 
-    var body: some View
-    {
+    var body: some View {
         VStack {
             Image(nsImage: self.imageLoader.image ?? NSImage())
                 .frame(width: 100.0, height: 100.0, alignment: .center)
@@ -29,7 +27,6 @@ struct ContentView: View
                 .padding(25.0)
 
             Button(action: {
-
                 guard let url = URL(string: self.urlStr) else {
                     print("Not a valid URL: \(self.urlStr)")
                     return
@@ -47,8 +44,7 @@ struct ContentView: View
 }
 
 @available(OSX 10.15, *)
-struct ContentView_Previews: PreviewProvider
-{
+struct ContentView_Previews: PreviewProvider {
     static var previews: some View
     {
         ContentView()
@@ -56,21 +52,21 @@ struct ContentView_Previews: PreviewProvider
 }
 
 @available(OSX 10.15, *)
-final class ImageLoader: ObservableObject
-{
+final class ImageLoader: ObservableObject {
     @Published private(set) var image: NSImage? = nil
 
     private var url: URL? = nil
 
-    func load(url: URL)
-    {
-        FaviconFinder(url: url, isLogEnabled: true).downloadFavicon({(image, url, error) in
-            print("Favicon URL: \(String(describing: url))")
-            
-            self.image = image
-            if let error = error {
+    func load(url: URL) {
+        FaviconFinder(url: url, isLogEnabled: true).downloadFavicon { result in
+            switch result {
+            case .success(let favicon):
+                print("URL of Favicon: \(favicon.url)")
+                self.image = favicon.image
+
+            case .failure(let error):
                 NSAlert(error: error).runModal()
             }
-        })
+        }
     }
 }
