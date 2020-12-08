@@ -35,7 +35,7 @@ FaviconFinder(url: url).downloadFavicon { result in
     switch result {
     case .success(let favicon):
         print("URL of Favicon: \(favicon.url)")
-        self.imageView.image = image
+        self.imageView.image = favicon.image
 
     case .failure(let error):
         print("Error: \(error)")
