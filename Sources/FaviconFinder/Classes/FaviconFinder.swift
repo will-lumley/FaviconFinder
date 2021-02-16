@@ -7,15 +7,15 @@
 //
 #if targetEnvironment(macCatalyst)
 import UIKit
-public typealias Image = UIImage
+public typealias FaviconImage = UIImage
 
 #elseif canImport(AppKit)
 import AppKit
-public typealias Image = NSImage
+public typealias FaviconImage = NSImage
 
 #elseif canImport(UIKit)
 import UIKit
-public typealias Image = UIImage
+public typealias FaviconImage = UIImage
 
 #endif
 
@@ -27,7 +27,7 @@ import SwiftSoup
 public class FaviconFinder: NSObject {
 
     public struct Favicon {
-        public let image: Image
+        public let image: FaviconImage
         public let url: URL
     }
 
@@ -176,7 +176,7 @@ public class FaviconFinder: NSObject {
                 return
             }
             
-            guard let image = Image(data: data) else {
+            guard let image = FaviconImage(data: data) else {
                 if self.isLogEnabled {
                     print("Could NOT create favicon from data.")
                 }

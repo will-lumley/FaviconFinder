@@ -45,8 +45,7 @@ struct ContentView: View {
 
 @available(OSX 10.15, *)
 struct ContentView_Previews: PreviewProvider {
-    static var previews: some View
-    {
+    static var previews: some View {
         ContentView()
     }
 }
