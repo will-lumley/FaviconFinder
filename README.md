@@ -2,7 +2,7 @@
 
 # FaviconFinder
 
-[![CI Status](https://img.shields.io/travis/will-lumley/FaviconFinder/main.svg)](https://travis-ci.com/will-lumley/FaviconFinder)
+[![CI Status](https://api.travis-ci.com/will-lumley/ColorPicker.svg?branch=main)](https://travis-ci.com/will-lumley/FaviconFinder)
 [![Version](https://img.shields.io/cocoapods/v/FaviconFinder.svg?style=flat)](https://cocoapods.org/pods/FaviconFinder)
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![SPM Compatible](https://img.shields.io/badge/SPM-compatible-4BC51D.svg?style=flat)](https://github.com/apple/swift-package-manager)
