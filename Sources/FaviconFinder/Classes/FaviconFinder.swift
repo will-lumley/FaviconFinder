@@ -307,29 +307,9 @@ private extension FaviconFinder
      - returns: The most preferred image link from our aray of icons
      */
     func mostPreferrableIcon(icons: [(rel: String, href: String)]) -> (rel: String, href: String)? {
-        for icon in icons {
-            let rel  = icon.rel
-            
-            switch rel {
-            case FaviconRelType.appleTouchIcon.rawValue:
-                return icon
-
-            case FaviconRelType.appleTouchIconPrecomposed.rawValue:
-                return icon
-
-            case FaviconRelType.shortcutIcon.rawValue:
-                return icon
-                
-            case FaviconRelType.icon.rawValue:
-                return icon
-                
-            default:
-                if isLogEnabled {
-                    print("Not using link rel: \(rel)")
-                }
-            }
-        }
-        
-        return nil
+        return icons.first(where: { rel, _ in rel == FaviconRelType.appleTouchIcon.rawValue }) ??
+            icons.first(where: { rel, _ in rel == FaviconRelType.appleTouchIconPrecomposed.rawValue }) ??
+            icons.first(where: { rel, _ in rel == FaviconRelType.shortcutIcon.rawValue }) ??
+            icons.first(where: { rel, _ in rel == FaviconRelType.icon.rawValue })
     }
 }
