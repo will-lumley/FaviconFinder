@@ -28,7 +28,7 @@ class ViewController: UIViewController {
             return
         }
         
-        FaviconFinder(url: url, logEnabled: true).downloadFavicon { result in
+        FaviconFinder(url: url, preferredType: .appleTouchIcon).downloadFavicon { result in
             switch result {
             case .success(let favicon):
                 print("URL of Favicon: \(favicon.url)")
