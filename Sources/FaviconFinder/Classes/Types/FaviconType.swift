@@ -8,19 +8,26 @@
 
 import Foundation
 
-internal enum FaviconRelType: String {
+public enum FaviconType: String {
     case appleTouchIcon            = "apple-touch-icon"
     case appleTouchIconPrecomposed = "apple-touch-icon-precomposed"
     case shortcutIcon              = "shortcut icon"
     case icon                      = "icon"
-    
-    static let allTypes: [FaviconRelType] = [
+    case ico                       = "ico"
+    case rootIco                   = "rootIco"
+
+    static let allTypes: [FaviconType] = [
         .appleTouchIcon,
         .appleTouchIconPrecomposed,
         .shortcutIcon,
-        .icon
+        .icon,
+        .ico,
+        rootIco
     ]
-    
+}
+
+internal extension FaviconType {
+
     /**
      Checks to see if the provided rawRelType matches to an enum provided in the array
      of FaviconRelTypes
@@ -28,8 +35,8 @@ internal enum FaviconRelType: String {
      - parameter rawRelType: A raw string representation of a FaviconRelType. We'll iterate through our array of relTypes and look for a match
      - returns: A boolean value indicative of if rawRelType was found in relTypes
      */
-    static func contains(relTypes: [FaviconRelType], rawRelType: String) -> Bool {
-        guard let needle = FaviconRelType(rawValue: rawRelType) else {
+    static func contains(relTypes: [FaviconType], rawRelType: String) -> Bool {
+        guard let needle = FaviconType(rawValue: rawRelType) else {
             return false
         }
         
@@ -40,5 +47,6 @@ internal enum FaviconRelType: String {
         }
         
         return false
-    }    
+    }
+
 }

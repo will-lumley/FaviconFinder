@@ -57,7 +57,7 @@ final class ImageLoader: ObservableObject {
     private var url: URL? = nil
 
     func load(url: URL) {
-        FaviconFinder(url: url, isLogEnabled: true).downloadFavicon { result in
+        FaviconFinder(url: url, preferredType: .appleTouchIcon, logEnabled: true).downloadFavicon { result in
             switch result {
             case .success(let favicon):
                 print("URL of Favicon: \(favicon.url)")

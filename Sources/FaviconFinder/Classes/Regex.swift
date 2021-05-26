@@ -9,8 +9,9 @@
 import Foundation
 
 internal class Regex {
-    fileprivate var expression: NSRegularExpression?
-    fileprivate var pattern: String
+
+    private var expression: NSRegularExpression?
+    private var pattern: String
 
     init(_ pattern: String) {
         self.pattern = pattern

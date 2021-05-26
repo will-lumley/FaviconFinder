@@ -1,0 +1,17 @@
+//
+//  Favicon.swift
+//  Pods
+//
+//  Created by William Lumley on 26/5/21.
+//
+
+import Foundation
+
+public struct Favicon {
+
+    /// The actual image
+    public let image: FaviconImage
+
+    /// The url of the .ico or HTML page, of where the favicon was found
+    public let url: URL
+}

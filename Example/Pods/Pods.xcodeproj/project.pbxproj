@@ -42,7 +42,6 @@
 		3364CD8A68D8311DD6FF302A02BA1CF8 /* FaviconFinder-iOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7128296BFD4FE0ED97DA30C5459ABF2D /* FaviconFinder-iOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		34FF2E8642D77EFC61ACF76649ACCCAF /* TextNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1E6D5A2B3C37B156DAC4994E9D7063 /* TextNode.swift */; };
 		3554C7A9FA8D786A0C8239889EDA5205 /* Pattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C458BAAC2CB687999BB045248E6CFD1 /* Pattern.swift */; };
-		36EC8FB29D5EE74274C6072E787EDF29 /* FaviconRelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED7F62A8B8722EA403F9F4FBA81A031 /* FaviconRelType.swift */; };
 		37E2FDB8B665AC4702FD6C64FA36C9DA /* SwiftSoup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77713CC9FF4A936996B61C49F19A5DAE /* SwiftSoup.swift */; };
 		39B006BF07D80D67D9BA5628F6FB6615 /* Whitelist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6421A4FFAA7A74D9B196B36F8144D955 /* Whitelist.swift */; };
 		3A2B32C378C48436D073E2408D3BA83C /* BinarySearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CCA454DC60F7C4C07C3E02CA3A80DB /* BinarySearch.swift */; };
@@ -58,7 +57,6 @@
 		4E7E2CE010509EA6843EEB7916DE2FA3 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37191BDF1EB9490F8293D5CF03F9524 /* String.swift */; };
 		51EE95B5882BB4E1BD43DB98202ACAD2 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3CA7DDD170466393DCA48AD8BDD296 /* Document.swift */; };
 		526B98FF847DFADB49A1F52C79A95EBA /* Selector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810E7F125E9CA17DB24CBDF572B41593 /* Selector.swift */; };
-		52C02684935EE079C684CC8423E65193 /* FaviconRelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED7F62A8B8722EA403F9F4FBA81A031 /* FaviconRelType.swift */; };
 		52D6B3827061C7C0CCB39CE36E2428CC /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D18D5FA0C65A465F05B68B6564B81B /* Regex.swift */; };
 		52F0BDF10F16C78E444F3AFB19E20098 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5E98D26120B44F7D01A0E5B28A8F17 /* Node.swift */; };
 		54E0DE568D9596265F782859D07532DA /* XmlTreeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9FCA70E6A65B7FAD08D1246710C36B /* XmlTreeBuilder.swift */; };
@@ -118,6 +116,20 @@
 		BBCFF79FDE657E2DCB72D8E507EE7C0B /* Exception.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E282A5D291759F94A9D4F072C5AA69A /* Exception.swift */; };
 		BBDE606982A62012E3C9A66A4BBE6E5B /* CharacterReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD26115771F0D79527937F6C1889B8B /* CharacterReader.swift */; };
 		BDF450F010524F367E4C6EAF0C2EBF94 /* ArrayExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E7508A5ADE474EF3AA2B6CCDC67FB7 /* ArrayExt.swift */; };
+		BEB1C96A265E582F009697FB /* FaviconType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB1C969265E582F009697FB /* FaviconType.swift */; };
+		BEB1C96B265E582F009697FB /* FaviconType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB1C969265E582F009697FB /* FaviconType.swift */; };
+		BEB1C970265E5D94009697FB /* FaviconDownloadType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB1C96F265E5D94009697FB /* FaviconDownloadType.swift */; };
+		BEB1C971265E5D94009697FB /* FaviconDownloadType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB1C96F265E5D94009697FB /* FaviconDownloadType.swift */; };
+		BEB1C974265E6009009697FB /* HTMLFaviconFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB1C973265E6009009697FB /* HTMLFaviconFinder.swift */; };
+		BEB1C975265E6009009697FB /* HTMLFaviconFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB1C973265E6009009697FB /* HTMLFaviconFinder.swift */; };
+		BEB1C977265E601D009697FB /* FaviconFinderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB1C976265E601D009697FB /* FaviconFinderProtocol.swift */; };
+		BEB1C978265E601D009697FB /* FaviconFinderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB1C976265E601D009697FB /* FaviconFinderProtocol.swift */; };
+		BEB1C97A265E60B9009697FB /* Favicon.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB1C979265E60B9009697FB /* Favicon.swift */; };
+		BEB1C97B265E60B9009697FB /* Favicon.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB1C979265E60B9009697FB /* Favicon.swift */; };
+		BEB1C97D265E629C009697FB /* ICOFaviconFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB1C97C265E629B009697FB /* ICOFaviconFinder.swift */; };
+		BEB1C97E265E629C009697FB /* ICOFaviconFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB1C97C265E629B009697FB /* ICOFaviconFinder.swift */; };
+		BEB1C981265E64C0009697FB /* RootICOFaviconFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB1C980265E64C0009697FB /* RootICOFaviconFinder.swift */; };
+		BEB1C982265E64C0009697FB /* RootICOFaviconFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB1C980265E64C0009697FB /* RootICOFaviconFinder.swift */; };
 		BF74BC1464A98A74BA573CD6149946EE /* SwiftSoup-iOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B70DF4D0948BF795F8D2D859BB9F4E4C /* SwiftSoup-iOS-dummy.m */; };
 		C2814E0C1202BCA447C16F063D7A2B15 /* StringBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A843541F902172708C58DEF21537516 /* StringBuilder.swift */; };
 		C5DA133AC3A8F997C9FAEC89E0F03393 /* OrderedSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48C0E7903C6D039BC6F9872364C34A7 /* OrderedSet.swift */; };
@@ -306,7 +318,6 @@
 		AC8330E1FE6DAFA05F904D8DC6DF2BA9 /* FaviconFinder-macOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; name = "FaviconFinder-macOS.modulemap"; path = "../FaviconFinder-macOS/FaviconFinder-macOS.modulemap"; sourceTree = "<group>"; };
 		ADC64FA7D6A9DBAF0BA6C76103B4115E /* FaviconError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FaviconError.swift; sourceTree = "<group>"; };
 		AEAB2B65B20E09E9F88D17E454CF83B8 /* StructuralEvaluator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StructuralEvaluator.swift; path = Sources/StructuralEvaluator.swift; sourceTree = "<group>"; };
-		AED7F62A8B8722EA403F9F4FBA81A031 /* FaviconRelType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FaviconRelType.swift; sourceTree = "<group>"; };
 		AF529112C67D18A76168F07D0000F32D /* QueryParser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QueryParser.swift; path = Sources/QueryParser.swift; sourceTree = "<group>"; };
 		B4CE8249856195414161FB4D82CA0066 /* SerializationException.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SerializationException.swift; path = Sources/SerializationException.swift; sourceTree = "<group>"; };
 		B70DF4D0948BF795F8D2D859BB9F4E4C /* SwiftSoup-iOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftSoup-iOS-dummy.m"; sourceTree = "<group>"; };
@@ -315,6 +326,13 @@
 		B9D18D5FA0C65A465F05B68B6564B81B /* Regex.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
 		BE14A2E5865F2C8568D37794F5BEA5A4 /* Cleaner.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Cleaner.swift; path = Sources/Cleaner.swift; sourceTree = "<group>"; };
 		BE85293150927E90D60487FA6DE069A6 /* Pods-FaviconFinder_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-FaviconFinder_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		BEB1C969265E582F009697FB /* FaviconType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaviconType.swift; sourceTree = "<group>"; };
+		BEB1C96F265E5D94009697FB /* FaviconDownloadType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaviconDownloadType.swift; sourceTree = "<group>"; };
+		BEB1C973265E6009009697FB /* HTMLFaviconFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLFaviconFinder.swift; sourceTree = "<group>"; };
+		BEB1C976265E601D009697FB /* FaviconFinderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaviconFinderProtocol.swift; sourceTree = "<group>"; };
+		BEB1C979265E60B9009697FB /* Favicon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favicon.swift; sourceTree = "<group>"; };
+		BEB1C97C265E629B009697FB /* ICOFaviconFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICOFaviconFinder.swift; sourceTree = "<group>"; };
+		BEB1C980265E64C0009697FB /* RootICOFaviconFinder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootICOFaviconFinder.swift; sourceTree = "<group>"; };
 		BFD26115771F0D79527937F6C1889B8B /* CharacterReader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CharacterReader.swift; path = Sources/CharacterReader.swift; sourceTree = "<group>"; };
 		C0F6AC2632ABB4644644EB19F23B863D /* SwiftSoup-iOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftSoup-iOS-umbrella.h"; sourceTree = "<group>"; };
 		C14FE914D8AD4EC4FCB41207D11E9AE0 /* Connection.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Connection.swift; path = Sources/Connection.swift; sourceTree = "<group>"; };
@@ -602,13 +620,35 @@
 		88671B7BC89E5E0998DD946686D8E291 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				ADC64FA7D6A9DBAF0BA6C76103B4115E /* FaviconError.swift */,
 				6928986DE49CDA2918E449A684283C06 /* FaviconFinder.swift */,
-				AED7F62A8B8722EA403F9F4FBA81A031 /* FaviconRelType.swift */,
+				BEB1C972265E5FF8009697FB /* Finders */,
+				BEB1C97F265E62C4009697FB /* Types */,
 				B9D18D5FA0C65A465F05B68B6564B81B /* Regex.swift */,
 			);
 			name = Classes;
 			path = Sources/FaviconFinder/Classes;
+			sourceTree = "<group>";
+		};
+		BEB1C972265E5FF8009697FB /* Finders */ = {
+			isa = PBXGroup;
+			children = (
+				BEB1C976265E601D009697FB /* FaviconFinderProtocol.swift */,
+				BEB1C973265E6009009697FB /* HTMLFaviconFinder.swift */,
+				BEB1C97C265E629B009697FB /* ICOFaviconFinder.swift */,
+				BEB1C980265E64C0009697FB /* RootICOFaviconFinder.swift */,
+			);
+			path = Finders;
+			sourceTree = "<group>";
+		};
+		BEB1C97F265E62C4009697FB /* Types */ = {
+			isa = PBXGroup;
+			children = (
+				BEB1C979265E60B9009697FB /* Favicon.swift */,
+				BEB1C96F265E5D94009697FB /* FaviconDownloadType.swift */,
+				ADC64FA7D6A9DBAF0BA6C76103B4115E /* FaviconError.swift */,
+				BEB1C969265E582F009697FB /* FaviconType.swift */,
+			);
+			path = Types;
 			sourceTree = "<group>";
 		};
 		C6866729A8287D2D76716D6282CD784C /* Development Pods */ = {
@@ -997,7 +1037,13 @@
 				B9DB71936593F19E137ED3A31348CAC6 /* FaviconError.swift in Sources */,
 				DE18ACF3BDC3EB054A1FC3AA87C7ECCF /* FaviconFinder-iOS-dummy.m in Sources */,
 				8C4D05F1FB3BCC79D8AA1D6F089FAB6C /* FaviconFinder.swift in Sources */,
-				52C02684935EE079C684CC8423E65193 /* FaviconRelType.swift in Sources */,
+				BEB1C974265E6009009697FB /* HTMLFaviconFinder.swift in Sources */,
+				BEB1C96A265E582F009697FB /* FaviconType.swift in Sources */,
+				BEB1C977265E601D009697FB /* FaviconFinderProtocol.swift in Sources */,
+				BEB1C97D265E629C009697FB /* ICOFaviconFinder.swift in Sources */,
+				BEB1C981265E64C0009697FB /* RootICOFaviconFinder.swift in Sources */,
+				BEB1C97A265E60B9009697FB /* Favicon.swift in Sources */,
+				BEB1C970265E5D94009697FB /* FaviconDownloadType.swift in Sources */,
 				52D6B3827061C7C0CCB39CE36E2428CC /* Regex.swift in Sources */,
 				755DC7E3B71CA769CF0246B242D10653 /* String+Removals.swift in Sources */,
 				6D6BC0039CFDB5786BE3745BB13E7EFA /* URL+Parsing.swift in Sources */,
@@ -1011,7 +1057,13 @@
 				9D3FD2EC45768D6C101E3672DDB7D114 /* FaviconError.swift in Sources */,
 				0A26803FBA8447F956FF8FFF1622C214 /* FaviconFinder-macOS-dummy.m in Sources */,
 				D8488464572613A993C0F776DEE2A7BA /* FaviconFinder.swift in Sources */,
-				36EC8FB29D5EE74274C6072E787EDF29 /* FaviconRelType.swift in Sources */,
+				BEB1C975265E6009009697FB /* HTMLFaviconFinder.swift in Sources */,
+				BEB1C96B265E582F009697FB /* FaviconType.swift in Sources */,
+				BEB1C978265E601D009697FB /* FaviconFinderProtocol.swift in Sources */,
+				BEB1C97E265E629C009697FB /* ICOFaviconFinder.swift in Sources */,
+				BEB1C982265E64C0009697FB /* RootICOFaviconFinder.swift in Sources */,
+				BEB1C97B265E60B9009697FB /* Favicon.swift in Sources */,
+				BEB1C971265E5D94009697FB /* FaviconDownloadType.swift in Sources */,
 				DA8E3F95C603092A4A4D760143196912 /* Regex.swift in Sources */,
 				8B8E5A693A44DDEC027B4ED0D1FD596C /* String+Removals.swift in Sources */,
 				3F9AFCCE2DA048B1FEAC060FD21D7222 /* URL+Parsing.swift in Sources */,
