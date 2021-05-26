@@ -103,7 +103,7 @@ public class FaviconFinder: NSObject {
     /**
      Searches for a link to the favicon within the HTML header
      */
-    private func searchForFaviconInHTML(onDownload: @escaping ((_ result: Result<Favicon, FaviconError>) -> Void)) {
+    public func searchForFaviconInHTML(onDownload: @escaping ((_ result: Result<Favicon, FaviconError>) -> Void)) {
         //Download the web page at our URL
         URLSession.shared.dataTask(with: self.url, completionHandler: {(data, response, error) in
             
