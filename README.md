@@ -18,10 +18,10 @@ Why not just download the file that exists at `https://site.com/fav.ico`? There 
 
 
 Favicon will:
-- [x] Detect the favicon in the root directory
+- [x] Detect the favicon in the root directory of the URL provided
 - [x] Will automatically check if the favicon is located within the root URL if the subdomain failed (Will check `https://site.com/fav.ico` if `https://subdomain.site.com/fav.ico` fails)
 - [x] Detect and parse the HTML at the URL for the declaration of the favicon
-
+- [x] Allow you to prioritise which format of favicon you would like served
 
 To do:
 - [ ] Detect and parse web application manifest JSON files
@@ -43,6 +43,28 @@ FaviconFinder(url: url).downloadFavicon { result in
 }
 ```
 
+However if you're the type to want to have some fine-tuned control over what sort of favicon's we're after, you can do so. Just insert this code into your project:
+```swift
+FaviconFinder(url: url, preferredType: .html, preferences: [
+    .html: FaviconType.appleTouchIcon.rawValue,
+    .ico: "favicon.ico"
+]).downloadFavicon { result in
+    switch result {
+    case .success(let favicon):
+        print("URL of Favicon: \(favicon.url)")
+        DispatchQueue.main.async {
+            self.imageView.image = favicon.image
+        }
+
+    case .failure(let error):
+        print("Error: \(error)")
+    }
+}
+```
+
+This allows you to control:
+- What type of download type FaviconFinder will use first
+- When iterating through each download type, what sub-type to look for. For the HTML download type, this allows you to prioritise different "rel" types. For the file .ico type, this allows you to choose the filename. 
 
 ## Example Project
 
@@ -59,7 +81,7 @@ FaviconFinder is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod 'FaviconFinder', '~> 2.3.0'
+pod 'FaviconFinder', '3.0.0'
 ```
 
 ### Carthage
@@ -67,7 +89,7 @@ FaviconFinder is also available through [Carthage](https://github.com/Carthage/C
 it, simply add the following line to your Cartfile:
 
 ```ruby
-github "will-lumley/FaviconFinder" == 2.3.0
+github "will-lumley/FaviconFinder" == 3.0.0
 ```
 
 ### Swift Package Manager
@@ -77,7 +99,7 @@ To install it, simply add the dependency to your Package.Swift file:
 ```swift
 ...
 dependencies: [
-    .package(url: "https://github.com/will-lumley/FaviconFinder.git", from: "2.3.0"),
+    .package(url: "https://github.com/will-lumley/FaviconFinder.git", from: "3.0.0"),
 ],
 targets: [
     .target( name: "YourTarget", dependencies: ["FaviconFinder"]),

@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
+
     @IBAction func buttonTapped(_ sender: Any) {
         guard let urlStr = self.textField.text else {
             print("TextField text is nil.")
@@ -27,12 +27,17 @@ class ViewController: UIViewController {
             print("Not a valid URL: \(urlStr)")
             return
         }
-        
-        FaviconFinder(url: url, isLogEnabled: true).downloadFavicon { result in
+
+        FaviconFinder(url: url, preferredType: .html, preferences: [
+            .html: FaviconType.appleTouchIcon.rawValue,
+            .ico: "favicon.ico"
+        ]).downloadFavicon { result in
             switch result {
             case .success(let favicon):
                 print("URL of Favicon: \(favicon.url)")
-                self.imageView.image = favicon.image
+                DispatchQueue.main.async {
+                    self.imageView.image = favicon.image
+                }
 
             case .failure(let error):
                 print("Error: \(error)")
