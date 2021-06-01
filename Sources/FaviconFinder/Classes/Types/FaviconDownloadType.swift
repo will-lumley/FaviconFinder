@@ -8,15 +8,13 @@
 
 import Foundation
 
-internal enum FaviconDownloadType {
+public enum FaviconDownloadType {
     case html
     case ico
-    case rootIco
 
     static let allTypes: [FaviconDownloadType] = [
         .html,
-        .ico,
-        .rootIco
+        .ico
     ]
 }
 
@@ -35,14 +33,12 @@ internal extension FaviconDownloadType {
 
 internal extension FaviconDownloadType {
 
-    func downloader(url: URL, logEnabled: Bool) -> FaviconFinderProtocol {
+    func downloader(url: URL, preferredType: String?, logEnabled: Bool) -> FaviconFinderProtocol {
         switch self {
         case .ico:
-            return ICOFaviconFinder(url: url, logEnabled: logEnabled)
-        case .rootIco:
-            return RootICOFaviconFinder(url: url, logEnabled: logEnabled)
+            return ICOFaviconFinder(url: url, preferredType: preferredType, logEnabled: logEnabled)
         case .html:
-            return HTMLFaviconFinder(url: url, logEnabled: logEnabled)
+            return HTMLFaviconFinder(url: url, preferredType: preferredType, logEnabled: logEnabled)
         }
     }
 

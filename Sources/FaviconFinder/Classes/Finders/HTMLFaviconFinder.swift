@@ -14,18 +14,32 @@ import SwiftSoup
 
 class HTMLFaviconFinder: FaviconFinderProtocol {
 
+    // MARK: - Types
+
+    struct HTMLFaviconReference {
+        let rel: String
+        let href: String
+    }
+
+    // MARK: - Properties
+
     var url: URL
+    var preferredType: String
     var logEnabled: Bool
 
     /// When parsing through HTML, these are the type of images we'll look for in the HTML header
     private var acceptableIconTypes = FaviconType.allTypes
 
-    required init(url: URL, logEnabled: Bool) {
+    /// The preferred type of favicon we're after
+    //var preferredType: String? = FaviconType.appleTouchIcon.rawValue
+
+    required init(url: URL, preferredType: String?, logEnabled: Bool) {
         self.url = url
+        self.preferredType = preferredType ?? FaviconType.appleTouchIcon.rawValue //Default to `appleTouchIcon` type if user does not present us with one
         self.logEnabled = logEnabled
     }
 
-    func search(onFind: @escaping ((Result<URL, FaviconError>) -> Void)) {
+    func search(onFind: @escaping ((Result<FaviconURL, FaviconError>) -> Void)) {
 
         //Download the web page at our URL
         URLSession.shared.dataTask(with: self.url, completionHandler: {(data, response, error) in
@@ -49,7 +63,7 @@ class HTMLFaviconFinder: FaviconFinderProtocol {
             }
             
             //Make sure we can find a favicon in our retrieved string (at this point we're assuming it's valid HTML)
-            guard let url = self.faviconURL(from: html) else {
+            guard let faviconURL = self.faviconURL(from: html) else {
                 if self.logEnabled {
                     print("Could NOT get favicon from url: \(self.url), failed to parse favicon from HTML.")
                 }
@@ -59,10 +73,10 @@ class HTMLFaviconFinder: FaviconFinderProtocol {
             
             //We found our favicon, let's download it
             if self.logEnabled {
-                print("Extracted favicon: \(url.absoluteString)")
+                print("Extracted favicon: \(faviconURL.url.absoluteString)")
             }
 
-            onFind(.success(url))
+            onFind(.success(faviconURL))
             
         }).resume()
     }
@@ -76,7 +90,7 @@ private extension HTMLFaviconFinder {
      - parameter htmlStr: The HTML that we will be parsing and iterating through to find the favicon
      - returns: The URL that the favicon can be found at
     */
-    func faviconURL(from htmlStr: String) -> URL? {
+    func faviconURL(from htmlStr: String) -> FaviconURL? {
         var htmlOpt: Document?
         do {
             htmlOpt = try SwiftSoup.parse(htmlStr)
@@ -101,9 +115,10 @@ private extension HTMLFaviconFinder {
             }
             return nil
         }
-        
-        var possibleIcons = [(rel: String, href: String)]()
-        
+
+        // Where we're going to store our HTML favicons
+        var possibleIcons = [HTMLFaviconReference]()
+
         var allLinks = Elements()
         do {
             allLinks = try head.select("link")
@@ -123,7 +138,7 @@ private extension HTMLFaviconFinder {
                 
                 //If this is an icon that we deem might be a favicon, add it to our array
                 if FaviconType.contains(relTypes: self.acceptableIconTypes, rawRelType: rel) {
-                    let possibleIcon = (rel: rel, href: href)
+                    let possibleIcon = HTMLFaviconReference(rel: rel, href: href)
                     possibleIcons.append(possibleIcon)
                 }
             }
@@ -134,20 +149,33 @@ private extension HTMLFaviconFinder {
                 continue
             }
         }
-        
+
         //Extract the most preferrable icon, and return it's href as a URL object
-        let mostPreferrableIcon = self.mostPreferrableIcon(icons: possibleIcons)
-        
-        guard let href = mostPreferrableIcon?.href else { return nil }
+        guard let mostPreferrableIcon = self.mostPreferrableIcon(icons: possibleIcons) else {
+            return nil
+        }
+
+        let href = mostPreferrableIcon.icon.href
         
         //If we don't have a http or https prepended to our href, prepend our base domain
         if !Regex.testForHttpsOrHttp(input: href) {
-            let host   = "\(self.url.scheme ?? "https")://"
+            let protocolFormat = "\(self.url.scheme ?? "https")://"
             let domain = self.url.host ?? self.url.absoluteString
-            return URL(string: "\(host)\(domain)")?.appendingPathComponent(href)
+
+            guard let url = URL(string: "\(protocolFormat)\(domain)")?.appendingPathComponent(href) else {
+                return nil
+            }
+
+            let faviconURL = FaviconURL(url: url, type: mostPreferrableIcon.type)
+            return faviconURL
         }
         
-        return URL(string: href)
+        guard let url = URL(string: href) else {
+            return nil
+        }
+        
+        let faviconURL = FaviconURL(url: url, type: mostPreferrableIcon.type)
+        return faviconURL
     }
     
     /**
@@ -155,11 +183,21 @@ private extension HTMLFaviconFinder {
      - parameter icons: Our array of our image links that we have to choose a desirable one from
      - returns: The most preferred image link from our aray of icons
      */
-    func mostPreferrableIcon(icons: [(rel: String, href: String)]) -> (rel: String, href: String)? {
-        return icons.first(where: { rel, _ in rel == FaviconType.appleTouchIcon.rawValue }) ??
-            icons.first(where: { rel, _ in rel == FaviconType.appleTouchIconPrecomposed.rawValue }) ??
-            icons.first(where: { rel, _ in rel == FaviconType.shortcutIcon.rawValue }) ??
-            icons.first(where: { rel, _ in rel == FaviconType.icon.rawValue })
+    func mostPreferrableIcon(icons: [HTMLFaviconReference]) -> (icon: HTMLFaviconReference, type: FaviconType)? {
+        if let icon = icons.first(where: { FaviconType(rawValue: $0.rel) == .appleTouchIcon }) {
+            return (icon: icon, type: FaviconType(rawValue: icon.rel)!)
+        }
+        else if let icon = icons.first(where: { FaviconType(rawValue: $0.rel) == .appleTouchIconPrecomposed }) {
+            return (icon: icon, type: FaviconType(rawValue: icon.rel)!)
+        }
+        else if let icon = icons.first(where: { FaviconType(rawValue: $0.rel) == .shortcutIcon }) {
+            return (icon: icon, type: FaviconType(rawValue: icon.rel)!)
+        }
+        else if let icon = icons.first(where: { FaviconType(rawValue: $0.rel) == .icon }) {
+            return (icon: icon, type: FaviconType(rawValue: icon.rel)!)
+        }
+
+        return nil
     }
 
 }

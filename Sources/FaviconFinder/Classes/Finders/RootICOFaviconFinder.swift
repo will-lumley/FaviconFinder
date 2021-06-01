@@ -10,22 +10,23 @@ import Foundation
 class RootICOFaviconFinder: FaviconFinderProtocol {
 
     var url: URL
+    var preferredType: String
     var logEnabled: Bool
 
-    private let filename = "favicon.ico"
-
-    required init(url: URL, logEnabled: Bool) {
+    required init(url: URL, preferredType: String, logEnabled: Bool) {
         self.url = url
+        self.preferredType = preferredType
         self.logEnabled = logEnabled
     }
 
-    func search(onFind: @escaping ((Result<URL, FaviconError>) -> Void)) {
-        guard let url = self.url.urlWithoutSubdomains?.appendingPathComponent(self.filename) else {
+    func search(onFind: @escaping ((Result<FaviconURL, FaviconError>) -> Void)) {
+        guard let url = self.url.urlWithoutSubdomains?.appendingPathComponent(self.preferredType) else {
             onFind(.failure(.failedToFindFavicon))
             return
         }
 
-        onFind(.success(url))
+        let faviconURL = FaviconURL(url: url, type: .rootIco)
+        onFind(.success(faviconURL))
     }
 
 }

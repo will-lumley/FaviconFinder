@@ -29,14 +29,18 @@ public class FaviconFinder: NSObject {
     /// Prints useful states and errors when enabled
     private var logEnabled: Bool
 
-    /// The icon type we'd most prefer
-    private var preferredType = FaviconType.appleTouchIcon
+    /// Which download type our user would prefer to use
+    private var preferredType: FaviconDownloadType
+
+    /// Which preferences the user has for each download type
+    private var preferences: [FaviconDownloadType: String]
 
     // MARK: - FaviconFinder
 
-    public init(url: URL, preferredType: FaviconType, logEnabled: Bool = false) {
+    public init(url: URL, preferredType: FaviconDownloadType = .html, preferences: [FaviconDownloadType: String] = [:], logEnabled: Bool = false) {
         self.url = url
         self.preferredType = preferredType
+        self.preferences = preferences
         self.logEnabled = logEnabled
     }
 
@@ -46,14 +50,44 @@ public class FaviconFinder: NSObject {
     */
     public func downloadFavicon(_ onCompletion: @escaping (_ result: Result<Favicon, FaviconError>) -> Void) {
 
-        // All of the download types available to us, and ones we'll fallback onto if this one fails
+        // All of the download types available to us, and ones we'll fallback onto if this one fails.
+        // As each download type fails, we'll remove it from the list and try an alternative.
         var allDownloadTypes = FaviconDownloadType.allTypes
 
         // Get the users preferred download type, and remove the users preferred download type from our list of potential download types
-        var currentDownloadType = FaviconDownloadType(type: self.preferredType)
+        var currentDownloadType = self.preferredType
         allDownloadTypes.removeAll { $0 == currentDownloadType }
 
-        func tryAgain() {
+        search(downloadType: currentDownloadType)
+
+        func search(downloadType: FaviconDownloadType) {
+            // Setup the download, and get it to search for the URL
+            let downloader = downloadType.downloader(url: self.url, preferredType: self.preferences[downloadType], logEnabled: self.logEnabled)
+            downloader.search(onFind: { [unowned self] result in
+                switch result {
+                case .success(let faviconURL):
+
+                    // Yay! We successfully found a URL. Let's download the image
+                    self.downloadImage(at: faviconURL.url, type: faviconURL.type, onDownload: { result in
+                        switch result {
+                        case .success(let favicon):
+                            // We successfully downloaded the image. We won!
+                            onCompletion(.success(favicon))
+                        
+                        case .failure:
+                            // We successfully found the URL, but failed to download the image. Let's try again.
+                            trySearchAgain()
+                        }
+                    })
+
+                case .failure:
+                    // We couldn't find the URL. Let's try again.
+                    trySearchAgain()
+                }
+            })
+        }
+
+        func trySearchAgain() {
             guard let newDownloadType = allDownloadTypes.first else {
                 // We have ran out of potential downloader types, and we never found the favicon. Game over.
                 onCompletion(.failure(.failedToFindFavicon))
@@ -68,41 +102,17 @@ public class FaviconFinder: NSObject {
             // Try again, with a new download type
             search(downloadType: currentDownloadType)
         }
-
-        func search(downloadType: FaviconDownloadType) {
-            // Setup the download, and get it to search for the URL
-            let downloader = downloadType.downloader(url: self.url, logEnabled: self.logEnabled)
-            downloader.search(onFind: { [unowned self] result in
-                switch result {
-                case .success(let url):
-                    // Yay! We successfully found a URL. Let's download the image
-                    self.downloadImage(at: url, onDownload: { result in
-                        switch result {
-                        case .success(let favicon):
-                            // We successfully downloaded the image. We won!
-                            onCompletion(.success(favicon))
-                        
-                        case .failure:
-                            // We successfully found the URL, but failed to download the image. Let's try again.
-                            tryAgain()
-                        }
-                    })
-
-                case .failure:
-                    // We coudln't find the URL. Let's try again.
-                    tryAgain()
-                }
-            })
-        }
-
-        search(downloadType: currentDownloadType)
     }
-    
+
+}
+
+private extension FaviconFinder {
+
     /**
      Downloads an image from the provided URL
      - parameter url: The URL at which we assume an image is at
      */
-    private func downloadImage(at url: URL, onDownload: @escaping ((_ result: Result<Favicon, FaviconError>) -> Void)) {
+    private func downloadImage(at url: URL, type: FaviconType, onDownload: @escaping ((_ result: Result<Favicon, FaviconError>) -> Void)) {
         //Now that we've got the URL of the image, let's download the image
         URLSession.shared.dataTask(with: url, completionHandler: {(data, response, error) in
             if let error = error {
@@ -137,9 +147,10 @@ public class FaviconFinder: NSObject {
                 print("Successfully extracted favicon from url: \(self.url)")
             }
 
-            let favicon = Favicon(image: image, url: url)
+            let favicon = Favicon(image: image, url: url, type: type)
             onDownload(.success(favicon))
             
         }).resume()
     }
+
 }

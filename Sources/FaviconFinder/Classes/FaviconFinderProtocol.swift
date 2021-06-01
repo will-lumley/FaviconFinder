@@ -11,9 +11,10 @@ protocol FaviconFinderProtocol {
 
     var url: URL { get set }
     var logEnabled: Bool { get set }
+    var preferredType: String { get set }
 
-    init(url: URL, logEnabled: Bool)
+    init(url: URL, preferredType: String?, logEnabled: Bool)
 
-    func search(onFind: @escaping ((_ result: Result<URL, FaviconError>) -> Void))
+    func search(onFind: @escaping ((_ result: Result<FaviconURL, FaviconError>) -> Void))
 
 }
