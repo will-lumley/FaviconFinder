@@ -63,6 +63,7 @@ extension URL {
             if self.tlds.contains(component) {
                 
                 //We found the TLD, so the part before the TLD must be the root domain
+                guard i > 0 else { return nil }
                 let secondLastPart = components[i - 1]
                 let remainingParts = components[i ..< components.count]
 
@@ -76,7 +77,7 @@ extension URL {
                 for tldComponent in remainingParts {
                     newURL += tldComponent
                     
-                    let isLastComponent = tldComponent == remainingParts.last!
+                    let isLastComponent = tldComponent == remainingParts.last
                     if !isLastComponent {
                         newURL += "."
                     }
