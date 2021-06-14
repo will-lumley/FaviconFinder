@@ -159,10 +159,16 @@ private extension HTMLFaviconFinder {
         
         //If we don't have a http or https prepended to our href, prepend our base domain
         if !Regex.testForHttpsOrHttp(input: href) {
-            let protocolFormat = "\(self.url.scheme ?? "https")://"
-            let domain = self.url.host ?? self.url.absoluteString
+            let baseRef = { () -> URL in
+                if let baseRef = try? html.head()?.getElementsByTag("base").attr("href"),
+                   let baseRefUrl = URL(string: baseRef) {
+                    return baseRefUrl
+                } else {
+                    return self.url
+                }
+            }
 
-            guard let url = URL(string: "\(protocolFormat)\(domain)")?.appendingPathComponent(href) else {
+            guard let url = URL(string: href, relativeTo: baseRef()) else {
                 return nil
             }
 
