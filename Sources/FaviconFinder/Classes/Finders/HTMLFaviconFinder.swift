@@ -161,7 +161,7 @@ private extension HTMLFaviconFinder {
         if !Regex.testForHttpsOrHttp(input: href) {
             let baseRef = { () -> URL in
                 if let baseRef = try? html.head()?.getElementsByTag("base").attr("href"),
-                   let baseRefUrl = URL(string: baseRef) {
+                   let baseRefUrl = URL(string: baseRef, relativeTo: self.url) {
                     return baseRefUrl
                 } else {
                     return self.url
