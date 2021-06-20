@@ -13,14 +13,15 @@
 
 FaviconFinder is a small, pure Swift library designed for iOS and macOS applications that allows you to detect favicons used by a website.
 
-Why not just download the file that exists at `https://site.com/fav.ico`? There are multiple places that a developer can place there favicon, not just at the root directory with the specific filename of `fav.ico`. FaviconFinder handles the dirty work for you and iterates through the numerous locations that the favicon could be located at, and simply delivers the image to you in a closure, once the image is found.
+Why not just download the file that exists at `https://site.com/favicon.ico`? There are multiple places that a developer can place there favicon, not just at the root directory with the specific filename of `fav.ico`. FaviconFinder handles the dirty work for you and iterates through the numerous locations that the favicon could be located at, and simply delivers the image to you in a closure, once the image is found.
 
 
 
-Favicon will:
+FaviconFinder will:
 - [x] Detect the favicon in the root directory of the URL provided
-- [x] Will automatically check if the favicon is located within the root URL if the subdomain failed (Will check `https://site.com/fav.ico` if `https://subdomain.site.com/fav.ico` fails)
+- [x] Will automatically check if the favicon is located within the root URL if the subdomain failed (Will check `https://site.com/favicon.ico` if `https://subdomain.site.com/favicon.ico` fails)
 - [x] Detect and parse the HTML at the URL for the declaration of the favicon
+- [x] Is able to read the favicon URL, even if it's a relative URL to the subdomain that you're querying  
 - [x] Allow you to prioritise which format of favicon you would like served
 
 To do:
@@ -35,7 +36,9 @@ FaviconFinder(url: url).downloadFavicon { result in
     switch result {
     case .success(let favicon):
         print("URL of Favicon: \(favicon.url)")
-        self.imageView.image = favicon.image
+        DispatchQueue.main.async {
+            self.imageView.image = favicon.image
+        }
 
     case .failure(let error):
         print("Error: \(error)")
@@ -81,7 +84,7 @@ FaviconFinder is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod 'FaviconFinder', '3.0.0'
+pod 'FaviconFinder', '3.1.0'
 ```
 
 ### Carthage
@@ -89,7 +92,7 @@ FaviconFinder is also available through [Carthage](https://github.com/Carthage/C
 it, simply add the following line to your Cartfile:
 
 ```ruby
-github "will-lumley/FaviconFinder" == 3.0.0
+github "will-lumley/FaviconFinder" == 3.1.0
 ```
 
 ### Swift Package Manager
@@ -99,7 +102,7 @@ To install it, simply add the dependency to your Package.Swift file:
 ```swift
 ...
 dependencies: [
-    .package(url: "https://github.com/will-lumley/FaviconFinder.git", from: "3.0.0"),
+    .package(url: "https://github.com/will-lumley/FaviconFinder.git", from: "3.1.0"),
 ],
 targets: [
     .target( name: "YourTarget", dependencies: ["FaviconFinder"]),
