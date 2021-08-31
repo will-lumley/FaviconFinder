@@ -46,16 +46,23 @@ FaviconFinder(url: url).downloadFavicon { result in
 ```
 
 However if you're the type to want to have some fine-tuned control over what sort of favicon's we're after, you can do so.
+
 FaviconFinder allows you to specify which download type you'd prefer (HTML, actual file, or web application manifest file), and then allows you to specify which favicon type you'd prefer for each download type.
 
 For example, you can specify that you'd prefer a HTML tag favicon, with the type of `appleTouchIcon`. FaviconFinder will then search through the HTML favicon tags for the `appleTouchIcon` type. If it cannot find the `appleTouchIcon` type, it will search for the other HTML favicon tag types.   
+
 If the URL does not have a HTML tag that specifies the favicon, FaviconFinder will default to other download types, and will search the URL for each favicon download type. 
+
 Just like how you can specify which HTML favicon tag you'd prefer, you can set which filename you'd prefer when search for actual files. 
+
 Similarly, you can specify which JSON key you'd prefer when iterating through the web application manifest file. 
+
 
 For the `.ico` download type, you can request FaviconFinder searchs for a filename of your choosing.
 
+
 Here's how you'd make that request:
+
 ```swift
     FaviconFinder(
         url: url, 
