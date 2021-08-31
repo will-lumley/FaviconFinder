@@ -38,10 +38,12 @@ class WebApplicationManifestFaviconFinder: FaviconFinderProtocol {
 
     func search(onFind: @escaping ((Result<FaviconURL, FaviconError>) -> Void)) {
 
-        //Download the web page at our URL
-        URLSession.shared.dataTask(with: self.url, completionHandler: {(data, response, error) in
+        let strongSelf = self
+
+        // Download the web page at our URL
+        URLSession.shared.dataTask(with: `self`.url, completionHandler: { [unowned self] (data, response, error) in
             
-            //Make sure our data exists
+            // Make sure our data exists
             guard let data = data else {
                 if self.logEnabled {
                     print("Could NOT get favicon from url: \(self.url), Data was nil.")
@@ -50,7 +52,7 @@ class WebApplicationManifestFaviconFinder: FaviconFinderProtocol {
                 return
             }
             
-            //Make sure we can parse the response into a string
+            // Make sure we can parse the response into a string
             guard let html = String(data: data, encoding: String.Encoding.utf8) else {
                 if self.logEnabled {
                     print("Could NOT get favicon from url: \(self.url), could not parse HTML.")
@@ -59,8 +61,8 @@ class WebApplicationManifestFaviconFinder: FaviconFinderProtocol {
                 return
             }
             
-            //Get a hold of where our manifest URL is
-            guard let manifestURL = self.manifestUrl(from: html) else {
+            // Get a hold of where our manifest URL is
+            guard let manifestURL = strongSelf.manifestUrl(from: html) else {
                 if self.logEnabled {
                     print("Could NOT get manifest file from url: \(self.url), failed to parse favicon from WebApplicationManifestFile.")
                 }
@@ -68,11 +70,11 @@ class WebApplicationManifestFaviconFinder: FaviconFinderProtocol {
                 return
             }
             
-            //Download the manifest file
+            // Download the manifest file
             self.downloadManifestFile(from: manifestURL, onSuccess: { [unowned self] manifestData in
 
-                //Make sure we can find a favicon in our retrieved manifest data
-                guard let faviconURL = self.faviconURL(from: manifestData) else {
+                // Make sure we can find a favicon in our retrieved manifest data
+                guard let faviconURL = strongSelf.faviconURL(from: manifestData) else {
                     if self.logEnabled {
                         print("Could NOT get favicon from url: \(self.url), failed to parse favicon from manifest data.")
                     }
@@ -80,7 +82,7 @@ class WebApplicationManifestFaviconFinder: FaviconFinderProtocol {
                     return
                 }
                 
-                //We found our favicon, let's download it
+                // We found our favicon, let's download it
                 if self.logEnabled {
                     print("Extracted favicon: \(faviconURL.url.absoluteString)")
                 }
