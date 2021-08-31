@@ -51,7 +51,7 @@ FaviconFinder allows you to specify which download type you'd prefer (HTML, actu
 
 For example, you can specify that you'd prefer a HTML tag favicon, with the type of `appleTouchIcon`. FaviconFinder will then search through the HTML favicon tags for the `appleTouchIcon` type. If it cannot find the `appleTouchIcon` type, it will search for the other HTML favicon tag types.   
 
-If the URL does not have a HTML tag that specifies the favicon, FaviconFinder will default to other download types, and will search the URL for each favicon download type. 
+If the URL does not have a HTML tag that specifies the favicon, FaviconFinder will default to other download types, and will search the URL for each favicon download type until it finds one, or it'll return an error. 
 
 Just like how you can specify which HTML favicon tag you'd prefer, you can set which filename you'd prefer when search for actual files. 
 
