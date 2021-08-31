@@ -16,16 +16,15 @@ FaviconFinder is a small, pure Swift library designed for iOS and macOS applicat
 Why not just download the file that exists at `https://site.com/favicon.ico`? There are multiple places that a developer can place there favicon, not just at the root directory with the specific filename of `fav.ico`. FaviconFinder handles the dirty work for you and iterates through the numerous locations that the favicon could be located at, and simply delivers the image to you in a closure, once the image is found.
 
 
-
 FaviconFinder will:
 - [x] Detect the favicon in the root directory of the URL provided
 - [x] Will automatically check if the favicon is located within the root URL if the subdomain failed (Will check `https://site.com/favicon.ico` if `https://subdomain.site.com/favicon.ico` fails)
 - [x] Detect and parse the HTML at the URL for the declaration of the favicon
-- [x] Is able to read the favicon URL, even if it's a relative URL to the subdomain that you're querying  
+- [x] Resolve the favicon URL for you, even if it's a relative URL to the subdomain that you're querying
 - [x] Allow you to prioritise which format of favicon you would like served
+- [x] Detect and parse web application manifest JSON files for favicon locations
 
 To do:
-- [ ] Detect and parse web application manifest JSON files
 - [ ] Detect and parse web application Microsoft browser configuration XML
 
 ## Usage
@@ -67,7 +66,9 @@ FaviconFinder(url: url, preferredType: .html, preferences: [
 
 This allows you to control:
 - What type of download type FaviconFinder will use first
-- When iterating through each download type, what sub-type to look for. For the HTML download type, this allows you to prioritise different "rel" types. For the file .ico type, this allows you to choose the filename. 
+- When iterating through each download type, what sub-type to look for. For the HTML download type, this allows you to prioritise different "rel" types. For the file.ico type, this allows you to choose the filename.
+
+If your desired download type doesn't exist for your URL (ie. you requested the favicon that exists as a file but there's no file), FaviconFinder will automatically try all other methods of favicon storage for you. 
 
 ## Example Project
 
@@ -84,7 +85,7 @@ FaviconFinder is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod 'FaviconFinder', '3.1.0'
+pod 'FaviconFinder', '3.2.0'
 ```
 
 ### Carthage
@@ -92,7 +93,7 @@ FaviconFinder is also available through [Carthage](https://github.com/Carthage/C
 it, simply add the following line to your Cartfile:
 
 ```ruby
-github "will-lumley/FaviconFinder" == 3.1.0
+github "will-lumley/FaviconFinder" == 3.2.0
 ```
 
 ### Swift Package Manager
@@ -102,7 +103,7 @@ To install it, simply add the dependency to your Package.Swift file:
 ```swift
 ...
 dependencies: [
-    .package(url: "https://github.com/will-lumley/FaviconFinder.git", from: "3.1.0"),
+    .package(url: "https://github.com/will-lumley/FaviconFinder.git", from: "3.2.0"),
 ],
 targets: [
     .target( name: "YourTarget", dependencies: ["FaviconFinder"]),
