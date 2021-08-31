@@ -47,21 +47,26 @@ FaviconFinder(url: url).downloadFavicon { result in
 
 However if you're the type to want to have some fine-tuned control over what sort of favicon's we're after, you can do so. Just insert this code into your project:
 ```swift
-FaviconFinder(url: url, preferredType: .html, preferences: [
-    .html: FaviconType.appleTouchIcon.rawValue,
-    .ico: "favicon.ico"
-]).downloadFavicon { result in
-    switch result {
-    case .success(let favicon):
-        print("URL of Favicon: \(favicon.url)")
-        DispatchQueue.main.async {
-            self.imageView.image = favicon.image
-        }
+    FaviconFinder(
+        url: url, 
+        preferredType: .html, 
+        preferences: [
+            .html: FaviconType.appleTouchIcon.rawValue,
+            .ico: "favicon.ico"
+        ],
+        logEnabled: true
+    ).downloadFavicon { result in
+        switch result {
+        case .success(let favicon):
+            print("URL of Favicon: \(favicon.url)")
+            DispatchQueue.main.async {
+                self.imageView.image = favicon.image
+            }
 
-    case .failure(let error):
-        print("Error: \(error)")
+        case .failure(let error):
+            print("Error: \(error)")
+        }
     }
-}
 ```
 
 This allows you to control:
