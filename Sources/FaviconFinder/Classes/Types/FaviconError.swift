@@ -17,4 +17,8 @@ public enum FaviconError: Error
     case emptyFavicon
     case invalidImage
     case other
+
+    case failedToFindWebApplicationManifestFile
+    case failedToDownloadWebApplicationManifestFile
+    case failedToParseWebApplicationManifestFile
 }
