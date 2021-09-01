@@ -17,4 +17,7 @@ public struct Favicon {
 
     /// The type of favicon we extracted
     public let type: FaviconType
+
+    /// The download type of the favicon we extracted
+    public let downloadType: FaviconDownloadType
 }

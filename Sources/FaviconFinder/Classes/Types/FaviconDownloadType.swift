@@ -11,6 +11,7 @@ import Foundation
 public enum FaviconDownloadType {
     case html
     case ico
+    case webApplicationManifestFile
 
     static let allTypes: [FaviconDownloadType] = [
         .html,
@@ -22,10 +23,20 @@ internal extension FaviconDownloadType {
 
     init(type: FaviconType) {
         switch type {
-        case .ico:
-            self = .ico
-        default:
-            self = .html
+        // ICO
+        case .ico: self = .ico
+
+        // HTML
+        case .appleTouchIcon:            self = .html
+        case .appleTouchIconPrecomposed: self = .html
+        case .shortcutIcon:              self = .html
+        case .icon:                      self = .html
+
+        // Web Application Manifest File
+        case .launcherIcon1x: self = .webApplicationManifestFile
+        case .launcherIcon2x: self = .webApplicationManifestFile
+        case .launcherIcon3x: self = .webApplicationManifestFile
+        case .launcherIcon4x: self = .webApplicationManifestFile
         }
     }
 
@@ -39,6 +50,8 @@ internal extension FaviconDownloadType {
             return ICOFaviconFinder(url: url, preferredType: preferredType, logEnabled: logEnabled)
         case .html:
             return HTMLFaviconFinder(url: url, preferredType: preferredType, logEnabled: logEnabled)
+        case .webApplicationManifestFile:
+            return WebApplicationManifestFaviconFinder(url: url, preferredType: preferredType, logEnabled: logEnabled)
         }
     }
 

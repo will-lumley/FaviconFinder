@@ -157,29 +157,34 @@ private extension HTMLFaviconFinder {
 
         let href = mostPreferrableIcon.icon.href
         
-        //If we don't have a http or https prepended to our href, prepend our base domain
-        if !Regex.testForHttpsOrHttp(input: href) {
-            let baseRef = { () -> URL in
-                if let baseRef = try? html.head()?.getElementsByTag("base").attr("href"),
-                   let baseRefUrl = URL(string: baseRef, relativeTo: self.url) {
+        var hrefUrl: URL?
+
+        // If we don't have a http or https prepended to our href, prepend our base domain
+        if Regex.testForHttpsOrHttp(input: href) == false {
+            let baseRef = {() -> URL in
+                // Try and get the base URL from a HTML tag if we can
+                if let baseRef = try? html.head()?.getElementsByTag("base").attr("href"), let baseRefUrl = URL(string: baseRef, relativeTo: self.url) {
                     return baseRefUrl
-                } else {
+                }
+                
+                // We couldn't get the base URL from a HTML tag, so we'll use the base URL that we have on hand
+                else {
                     return self.url
                 }
             }
 
-            guard let url = URL(string: href, relativeTo: baseRef()) else {
-                return nil
-            }
-
-            let faviconURL = FaviconURL(url: url, type: mostPreferrableIcon.type)
-            return faviconURL
+            hrefUrl = URL(string: href, relativeTo: baseRef())
         }
         
-        guard let url = URL(string: href) else {
+        // Our href is a proper URL, nevermind
+        else {
+            hrefUrl = URL(string: href)
+        }
+        
+        guard let url = hrefUrl else {
             return nil
         }
-        
+
         let faviconURL = FaviconURL(url: url, type: mostPreferrableIcon.type)
         return faviconURL
     }
@@ -190,15 +195,28 @@ private extension HTMLFaviconFinder {
      - returns: The most preferred image link from our aray of icons
      */
     func mostPreferrableIcon(icons: [HTMLFaviconReference]) -> (icon: HTMLFaviconReference, type: FaviconType)? {
-        if let icon = icons.first(where: { FaviconType(rawValue: $0.rel) == .appleTouchIcon }) {
+        
+        // Check for the users preferred type
+        if let icon = icons.first(where: { FaviconType(rawValue: $0.rel)?.rawValue == preferredType }) {
             return (icon: icon, type: FaviconType(rawValue: icon.rel)!)
         }
+
+        // Check for appleTouchIcon type
+        else if let icon = icons.first(where: { FaviconType(rawValue: $0.rel) == .appleTouchIcon }) {
+            return (icon: icon, type: FaviconType(rawValue: icon.rel)!)
+        }
+
+        // Check for appleTouchIconPrecomposed type
         else if let icon = icons.first(where: { FaviconType(rawValue: $0.rel) == .appleTouchIconPrecomposed }) {
             return (icon: icon, type: FaviconType(rawValue: icon.rel)!)
         }
+
+        // Check for shortcutIcon type
         else if let icon = icons.first(where: { FaviconType(rawValue: $0.rel) == .shortcutIcon }) {
             return (icon: icon, type: FaviconType(rawValue: icon.rel)!)
         }
+
+        // Check for icon type
         else if let icon = icons.first(where: { FaviconType(rawValue: $0.rel) == .icon }) {
             return (icon: icon, type: FaviconType(rawValue: icon.rel)!)
         }

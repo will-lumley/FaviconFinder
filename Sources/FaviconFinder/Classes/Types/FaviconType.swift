@@ -9,6 +9,7 @@
 import Foundation
 
 public enum FaviconType: String {
+
     // HTML Types
     case appleTouchIcon            = "apple-touch-icon"
     case appleTouchIconPrecomposed = "apple-touch-icon-precomposed"
@@ -16,14 +17,26 @@ public enum FaviconType: String {
     case icon                      = "icon"
 
     // Filetype (ico)
-    case ico                       = "ico"
+    case ico = "ico"
+
+    // Web Application Manifest File
+    case launcherIcon1x = "launcher-icon-1x.png"
+    case launcherIcon2x = "launcher-icon-2x.png"
+    case launcherIcon3x = "launcher-icon-3x.png"
+    case launcherIcon4x = "launcher-icon-4x.png"
 
     static let allTypes: [FaviconType] = [
         .appleTouchIcon,
         .appleTouchIconPrecomposed,
         .shortcutIcon,
         .icon,
-        .ico
+
+        .ico,
+
+        .launcherIcon1x,
+        .launcherIcon2x,
+        .launcherIcon3x,
+        .launcherIcon4x,
     ]
 }
 

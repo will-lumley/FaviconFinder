@@ -147,7 +147,9 @@ private extension FaviconFinder {
                 print("Successfully extracted favicon from url: \(self.url)")
             }
 
-            let favicon = Favicon(image: image, url: url, type: type)
+            let downloadType = FaviconDownloadType(type: type)
+
+            let favicon = Favicon(image: image, url: url, type: type, downloadType: downloadType)
             onDownload(.success(favicon))
             
         }).resume()
