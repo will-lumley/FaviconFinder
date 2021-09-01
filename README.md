@@ -13,12 +13,14 @@
 
 FaviconFinder is a small, pure Swift library designed for iOS and macOS applications that allows you to detect favicons used by a website.
 
-Why not just download the file that exists at `https://site.com/favicon.ico`? There are multiple places that a developer can place there favicon, not just at the root directory with the specific filename of `fav.ico`. FaviconFinder handles the dirty work for you and iterates through the numerous locations that the favicon could be located at, and simply delivers the image to you in a closure, once the image is found.
+Why not just download the file that exists at `https://site.com/favicon.ico`? There are multiple places that a developer can place there favicon, not just at the root directory with the specific filename of `favicon.ico`. The favicons address may be linked within the HTML header tags, or it may be within a web application manifest JSON file, or it could even be a file with a custom filename.
+
+FaviconFinder handles the dirty work for you and iterates through the numerous locations that the favicon could be located at, and simply delivers the image to you in a closure, once the image is found.
 
 
 FaviconFinder will:
 - [x] Detect the favicon in the root directory of the URL provided
-- [x] Will automatically check if the favicon is located within the root URL if the subdomain failed (Will check `https://site.com/favicon.ico` if `https://subdomain.site.com/favicon.ico` fails)
+- [x] Automatically check if the favicon is located within the root URL if the subdomain failed (Will check `https://site.com/favicon.ico` if `https://subdomain.site.com/favicon.ico` fails)
 - [x] Detect and parse the HTML at the URL for the declaration of the favicon
 - [x] Resolve the favicon URL for you, even if it's a relative URL to the subdomain that you're querying
 - [x] Allow you to prioritise which format of favicon you would like served
@@ -44,6 +46,8 @@ FaviconFinder(url: url).downloadFavicon { result in
     }
 }
 ```
+
+## Advanced Usage
 
 However if you're the type to want to have some fine-tuned control over what sort of favicon's we're after, you can do so.
 
