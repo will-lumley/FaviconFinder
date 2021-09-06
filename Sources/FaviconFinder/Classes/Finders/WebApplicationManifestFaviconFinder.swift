@@ -9,6 +9,7 @@ import Foundation
 
 #if canImport(SwiftSoup)
 import SwiftSoup
+
 #endif
 
 class WebApplicationManifestFaviconFinder: FaviconFinderProtocol {
@@ -24,76 +25,49 @@ class WebApplicationManifestFaviconFinder: FaviconFinderProtocol {
 
     var url: URL
     var preferredType: String
-    var checkForMetaRefreshRedirect: Bool
-
     var logEnabled: Bool
-    var description: String
-    var logger: Logger?
 
-    // MARK: - FaviconFinder
+    /// The preferred type of favicon we're after
+    //var preferredType: String? = FaviconType.appleTouchIcon.rawValue
 
-    required init(url: URL, preferredType: String?, checkForMetaRefreshRedirect: Bool, logEnabled: Bool) {
+    required init(url: URL, preferredType: String?, logEnabled: Bool) {
         self.url = url
         self.preferredType = preferredType ?? FaviconType.launcherIcon4x.rawValue //Default to `launcherIcon4x` type if user does not present us with one
-        self.checkForMetaRefreshRedirect = checkForMetaRefreshRedirect
-        
         self.logEnabled = logEnabled
-        self.description = NSStringFromClass(Self.self)
-        self.logger = Logger(faviconFinder: self)
     }
 
-    func search(onFind: @escaping ((Result<FaviconURL, FaviconError>) -> Void)) {
+    func search() async throws -> FaviconURL {
 
-        // Download the web page at our URL
-        FaviconURLRequest.dataTask(
-            with: self.url,
-            checkForMetaRefreshRedirect: true
-        ) { [unowned self] data, response, error in
+        let strongSelf = self
 
-            // Make sure our data exists
-            guard let data = data else {
-                self.logger?.print("Could NOT get favicon from url: \(self.url), Data was nil.")
-                onFind(.failure(.emptyData))
-                return
+        let data = try await URLSession.shared.data(from: `self`.url).0
+        
+        guard let html = String(data: data, encoding: .utf8) else {
+            if self.logEnabled {
+                print("Could NOT get favicon from url: \(self.url), could not parse HTML.")
             }
-
-            // Make sure we can parse the response into a string
-            guard let html = String(data: data, encoding: String.Encoding.utf8) else {
-                self.logger?.print("Could NOT get favicon from url: \(self.url), could not parse HTML.")
-                onFind(.failure(.failedToParseHTML))
-                return
-            }
-
-            // Get a hold of where our manifest URL is
-            guard let manifestURL = self.manifestUrl(from: html) else {
-                self.logger?.print("Could NOT get manifest file from url: \(self.url), failed to parse favicon from WebApplicationManifestFile.")
-                onFind(.failure(.failedToFindWebApplicationManifestFile))
-                return
-            }
-            
-            // Download the manifest file
-            self.downloadManifestFile(from: manifestURL, onSuccess: { [unowned self] manifestData in
-
-                // Make sure we can find a favicon in our retrieved manifest data
-                guard let faviconURL = self.faviconURL(from: manifestData) else {
-                    self.logger?.print("Could NOT get favicon from url: \(self.url), failed to parse favicon from manifest data.")
-                    onFind(.failure(.failedToDownloadFavicon))
-                    return
-                }
-                
-                // We found our favicon, let's download it
-                Logger.print(self.logEnabled, "Extracted favicon: \(faviconURL.url.absoluteString)")
-                onFind(.success(faviconURL))
-            }, onError: { error in
-                onFind(.failure(error))
-            })
-
+            throw FaviconError.failedToParseHTML
         }
+        guard let manifestURL = strongSelf.manifestUrl(from: html) else {
+            if self.logEnabled {
+                print("Could NOT get manifest file from url: \(self.url), failed to parse favicon from WebApplicationManifestFile.")
+            }
+            throw FaviconError.failedToFindWebApplicationManifestFile
+        }
+        
+        let manifestData = try await self.downloadManifestFile(from: manifestURL)
+        
+        guard let faviconURL = strongSelf.faviconURL(from: manifestData) else {
+            if self.logEnabled {
+                print("Could NOT get favicon from url: \(self.url), failed to parse favicon from manifest data.")
+            }
+            throw FaviconError.failedToDownloadFavicon
+        }
+        
+        return faviconURL
     }
 
 }
-
-// MARK: - Private Functions
 
 private extension WebApplicationManifestFaviconFinder {
 
@@ -108,17 +82,23 @@ private extension WebApplicationManifestFaviconFinder {
             htmlOpt = try SwiftSoup.parse(htmlStr)
         }
         catch let error {
-            self.logger?.print("Could NOT parse HTML due to error: \(error). HTML: \(htmlStr)")
+            if logEnabled {
+                print("Could NOT parse HTML due to error: \(error). HTML: \(htmlStr)")
+            }
             return nil
         }
         
         guard let html = htmlOpt else {
-            self.logger?.print("Could NOT parse HTML from string: \(htmlStr)")
+            if logEnabled {
+                print("Could NOT parse HTML from string: \(htmlStr)")
+            }
             return nil
         }
         
         guard let head = html.head() else {
-            self.logger?.print("Could NOT parse HTML head from string: \(htmlStr)")
+            if logEnabled {
+                print("Could NOT parse HTML head from string: \(htmlStr)")
+            }
             return nil
         }
 
@@ -148,13 +128,17 @@ private extension WebApplicationManifestFaviconFinder {
                 }
             }
             catch let error {
-                self.logger?.print("Could NOT parse HTML due to error: \(error). HTML: \(htmlStr)")
+                if logEnabled {
+                    print("Could NOT parse HTML due to error: \(error). HTML: \(htmlStr)")
+                }
                 continue
             }
         }
 
         guard let fileReference = fileReference else {
-            self.logger?.print("Could NOT find any HTML href tag that points to a manifest file")
+            if logEnabled {
+                print("Could NOT find any HTML href tag that points to a manifest file")
+            }
             return nil
         }
 
@@ -193,42 +177,16 @@ private extension WebApplicationManifestFaviconFinder {
      - parameter onSuccess: The closure that will be called once we find a valid manifest file
      - parameter onError: The closure that will be called if we fail to find a valid manifest file
     */
-    func downloadManifestFile(from manifestURL: URL, onSuccess: @escaping (Dictionary<String, Any>) -> (), onError: @escaping (FaviconError) -> ()) {
+    func downloadManifestFile(from manifestURL: URL) async throws -> Dictionary<String, Any> {
         let request = URLRequest(url: manifestURL)
-        let session = URLSession(configuration: URLSessionConfiguration.default)
 
-        let completionHandler = {(data : Data?, response : URLResponse?, error : Error?) in
-
-            //If we can convert the NSURLResponse to an NSHTTPURLResponse
-            guard let urlResponse = response as? HTTPURLResponse else {
-                self.logger?.print("Could not create URLResponse from request: \(request): \(String(describing: error))")
-                onError(.failedToDownloadWebApplicationManifestFile)
-                return
-            }
-
-            self.logger?.print("Received URL response of \(urlResponse.statusCode) for URL: \(request.url!.absoluteString)")
-
-            guard let data = data else {
-                onError(.emptyData)
-                return
-            }
-
-            do {
-                guard let manifestData = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else {
-                    onError(.failedToParseWebApplicationManifestFile)
-                    return
-                }
-
-                onSuccess(manifestData)
-            }
-            catch {
-                onError(.failedToParseWebApplicationManifestFile)
-            }
+        let data = try await URLSession.shared.data(for: request).0
+        
+        guard let manifestData = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else {
+            throw FaviconError.failedToParseWebApplicationManifestFile
         }
         
-        DispatchQueue.global().async {
-            session.dataTask(with: request, completionHandler: completionHandler).resume()
-        }
+        return manifestData
     }
 
     /**
