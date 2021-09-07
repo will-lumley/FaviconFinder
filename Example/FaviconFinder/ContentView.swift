@@ -10,7 +10,6 @@ import SwiftUI
 import Combine
 import FaviconFinder
 
-@available(OSX 10.15, *)
 struct ContentView: View {
     @State var urlStr = "https://apple.com/au"
     @ObservedObject var imageLoader = ImageLoader()
@@ -43,31 +42,28 @@ struct ContentView: View {
     }
 }
 
-@available(OSX 10.15, *)
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
     }
 }
 
-@available(OSX 10.15, *)
 final class ImageLoader: ObservableObject {
     @Published private(set) var image: NSImage? = nil
-
+    
     private var url: URL? = nil
-
+    
     func load(url: URL) {
-        FaviconFinder(url: url, preferredType: .html, preferences: [
-            FaviconDownloadType.html: FaviconType.appleTouchIcon.rawValue,
-            FaviconDownloadType.ico: "favicon.ico"
-        ]).downloadFavicon { result in
-            switch result {
-            case .success(let favicon):
-                print("URL of Favicon: \(favicon.url)")
+        Task {
+            do {
+                let favicon = try await FaviconFinder(url: url, preferredType: .html, preferences: [
+                    FaviconDownloadType.html: FaviconType.appleTouchIcon.rawValue,
+                    FaviconDownloadType.ico: "favicon.ico"
+                ]).downloadFavicon()
+                
                 self.image = favicon.image
-
-            case .failure(let error):
-                NSAlert(error: error).runModal()
+            } catch {
+                print(error)
             }
         }
     }

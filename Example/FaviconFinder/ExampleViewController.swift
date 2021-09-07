@@ -29,19 +29,18 @@ class ExampleViewController: NSViewController
             return
         }
         
-        FaviconFinder(url: url, preferredType: .html, preferences: [
-            .html: FaviconType.appleTouchIcon.rawValue,
-            .ico: "favicon.ico"
-        ]).downloadFavicon { result in
-            switch result {
-            case .success(let favicon):
-                print("URL of Favicon: \(favicon.url)")
+        Task {
+            do {
+                let favicon = try await FaviconFinder(url: url, preferredType: .html, preferences: [
+                    FaviconDownloadType.html: FaviconType.appleTouchIcon.rawValue,
+                    FaviconDownloadType.ico: "favicon.ico"
+                ]).downloadFavicon()
+                
                 DispatchQueue.main.async {
                     self.imageView.image = favicon.image
                 }
-
-            case .failure(let error):
-                print("Error: \(error)")
+            } catch {
+                print(error)
             }
         }
     }
