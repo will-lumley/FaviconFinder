@@ -19,6 +19,7 @@ class HTMLFaviconFinder: FaviconFinderProtocol {
     struct HTMLFaviconReference {
         let rel: String
         let href: String
+        let sizes: String?
     }
 
     // MARK: - Properties
@@ -135,10 +136,11 @@ private extension HTMLFaviconFinder {
             do {
                 let rel = try element.attr("rel")
                 let href = try element.attr("href")
+                let sizes = try element.attr("sizes")
                 
                 //If this is an icon that we deem might be a favicon, add it to our array
                 if FaviconType.contains(relTypes: self.acceptableIconTypes, rawRelType: rel) {
-                    let possibleIcon = HTMLFaviconReference(rel: rel, href: href)
+                    let possibleIcon = HTMLFaviconReference(rel: rel, href: href, sizes: sizes)
                     possibleIcons.append(possibleIcon)
                 }
             }
@@ -217,7 +219,15 @@ private extension HTMLFaviconFinder {
         }
 
         // Check for icon type
-        else if let icon = icons.first(where: { FaviconType(rawValue: $0.rel) == .icon }) {
+        let iconTypeIcons = icons.enumerated().filter({FaviconType(rawValue: $1.rel) == .icon})
+        
+        // Sort in sizes (like "64x64")
+        let sizes = iconTypeIcons.map({ index, icon -> (index: Int, size: Int) in
+            let iconSize = Int(icon.sizes?.components(separatedBy: "x").first ?? "") ?? 0
+            return (index: index, size: iconSize)
+        }).sorted(by: {$0.size > $1.size})
+        if let firstSize = sizes.first {
+            let icon = icons[firstSize.index]
             return (icon: icon, type: FaviconType(rawValue: icon.rel)!)
         }
 
