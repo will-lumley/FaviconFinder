@@ -12,7 +12,7 @@ open class Node: Equatable, Hashable {
     private static let abs = "abs:"
     fileprivate static let empty = ""
     private static let EMPTY_NODES: Array<Node>  = Array<Node>()
-    weak var parentNode: Node?
+    unowned var parentNode: Node?
     var childNodes: Array <Node>
     var attributes: Attributes?
     var baseUri: String?
@@ -21,7 +21,7 @@ open class Node: Equatable, Hashable {
 	* Get the list index of this node in its node sibling list. I.e. if this is the first node
 	* sibling, returns 0.
 	* @return position in node sibling list
-	* @see org.jsoup.nodes.Element#elementSiblingIndex()
+	* @see Element#elementSiblingIndex()
 	*/
     public private(set) var siblingIndex: Int = 0
 

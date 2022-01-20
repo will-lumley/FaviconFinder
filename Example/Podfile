@@ -1,7 +1,7 @@
 use_frameworks!
 
 target 'FaviconFinder_Example' do
-  platform :macos
+  platform :macos, '10.10'
   pod 'FaviconFinder', :path => '../'
 
   target 'FaviconFinder_Tests' do
@@ -10,7 +10,7 @@ target 'FaviconFinder_Example' do
   end
   
   target 'FaviconFinder_iOS_Example' do
-    platform :ios
+    platform :ios, '14.0'
     pod 'FaviconFinder', :path => '../'
   end
 end
