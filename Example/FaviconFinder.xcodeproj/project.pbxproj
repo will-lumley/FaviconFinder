@@ -49,6 +49,7 @@
 		81EF860286A33245010DEEED /* Pods-FaviconFinder_iOS_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FaviconFinder_iOS_Example.debug.xcconfig"; path = "Target Support Files/Pods-FaviconFinder_iOS_Example/Pods-FaviconFinder_iOS_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		9C5773D0659DE71F64359322 /* FaviconFinder.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = FaviconFinder.podspec; path = ../FaviconFinder.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		BE20446C27996CFD00D5D2EB /* BuildTests.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; name = BuildTests.yml; path = ../.github/workflows/BuildTests.yml; sourceTree = "<group>"; };
+		BE2044712799795400D5D2EB /* DeployToCocoapods.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; name = DeployToCocoapods.yml; path = ../.github/workflows/DeployToCocoapods.yml; sourceTree = "<group>"; };
 		BE21380723F0D4FD00DCA2CB /* FaviconFinder_iOS_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FaviconFinder_iOS_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE21380923F0D4FD00DCA2CB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BE21380B23F0D4FD00DCA2CB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -135,6 +136,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		BE2044702799794400D5D2EB /* Workflows */ = {
+			isa = PBXGroup;
+			children = (
+				BE20446C27996CFD00D5D2EB /* BuildTests.yml */,
+				BE2044712799795400D5D2EB /* DeployToCocoapods.yml */,
+			);
+			name = Workflows;
+			sourceTree = "<group>";
+		};
 		BE21380823F0D4FD00DCA2CB /* FaviconFinder_iOS_Example */ = {
 			isa = PBXGroup;
 			children = (
@@ -202,7 +212,7 @@
 		ED83F69A20348B650038D96B /* Metadata */ = {
 			isa = PBXGroup;
 			children = (
-				BE20446C27996CFD00D5D2EB /* BuildTests.yml */,
+				BE2044702799794400D5D2EB /* Workflows */,
 				9C5773D0659DE71F64359322 /* FaviconFinder.podspec */,
 				BEDA437C23F226B80086C78A /* Cartfile */,
 				BEDA437E23F226C20086C78A /* Package.swift */,
