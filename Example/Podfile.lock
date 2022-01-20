@@ -1,7 +1,7 @@
 PODS:
-  - FaviconFinder (2.0.0):
-    - SwiftSoup (~> 2.3.0)
-  - SwiftSoup (2.3.0)
+  - FaviconFinder (3.2.1):
+    - SwiftSoup (~> 2.3.7)
+  - SwiftSoup (2.3.7)
 
 DEPENDENCIES:
   - FaviconFinder (from `../`)
@@ -15,9 +15,9 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  FaviconFinder: 892d111260e21afa07d46cc99b9b11036eaff462
-  SwiftSoup: d78683f7ea0ae5733225a9e1d3bee5b256449df4
+  FaviconFinder: cda7139cb6d739807fe4a21a0e9d29e807b8e1c9
+  SwiftSoup: 58e6228d50e89645f7345a3729929c5c2f25e4f2
 
-PODFILE CHECKSUM: cb75b1ec9eef108df883725f54a1ad31877632dd
+PODFILE CHECKSUM: eb8da1b777f810bca9f3dfe363e41a5e08d91632
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.11.2

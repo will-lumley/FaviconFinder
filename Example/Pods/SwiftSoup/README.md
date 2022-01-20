@@ -1,5 +1,5 @@
 <p align="center" >
-  <img src="https://raw.githubusercontent.com/scinfu/SwiftSoup/master/swifsoup.png" alt="SwiftSoup" title="SwiftSoup">
+  <img src="https://raw.githubusercontent.com/scinfu/SwiftSoup/master/swiftsoup.png" alt="SwiftSoup" title="SwiftSoup">
 </p>
 
 
@@ -551,7 +551,7 @@ Output:
 "?foo=bar<qux&lg=1"
 ```
 
-## Escape and Enescape
+## Escape and Unescape
 
 ```swift
 let text = "Hello &<> Å å π 新 there ¾ © »"

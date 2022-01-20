@@ -162,24 +162,24 @@ enum HtmlTreeBuilderState: String, HtmlTreeBuilderStateProtocol {
                 return false
             case .StartTag:
                 let start: Token.StartTag = t.asStartTag()
-                var name: String = start.normalName()!
+                let name: String = start.normalName()!
                 if (name.equals("html")) {
                     return try HtmlTreeBuilderState.InBody.process(t, tb)
                 } else if TagSets.baseEtc.contains(name) {
                     let el: Element = try tb.insertEmpty(start)
-                    // jsoup special: update base the frist time it is seen
+                    // SwiftSoup special: update base the frist time it is seen
                     if (name.equals("base") && el.hasAttr("href")) {
                         try tb.maybeSetBaseUri(el)
                     }
                 } else if (name.equals("meta")) {
-                    let meta: Element = try tb.insertEmpty(start)
+                    let _: Element = try tb.insertEmpty(start)
                     // todo: charset switches
                 } else if (name.equals("title")) {
                     try HtmlTreeBuilderState.handleRcData(start, tb)
                 } else if name == "noframes" || name == "style" {
                     try HtmlTreeBuilderState.handleRawtext(start, tb)
                 } else if (name.equals("noscript")) {
-                    // else if noscript && scripting flag = true: rawtext (jsoup doesn't run script, to handle as noscript)
+                    // else if noscript && scripting flag = true: rawtext (SwiftSoup doesn't run script, to handle as noscript)
                     try tb.insert(start)
                     tb.transition(.InHeadNoscript)
                 } else if (name.equals("script")) {
@@ -638,7 +638,7 @@ enum HtmlTreeBuilderState: String, HtmlTreeBuilderStateProtocol {
                 if let name = endTag.normalName() {
                     if Constants.InBodyEndAdoptionFormatters.contains(name) {
                         // Adoption Agency Algorithm.
-                        for i in 0..<8 {
+                        for _ in 0..<8 {
                             let formatEl: Element? = tb.getActiveFormattingElement(name)
                             if (formatEl == nil) {
                                 return anyOtherEndTag(t, tb)
@@ -681,7 +681,7 @@ enum HtmlTreeBuilderState: String, HtmlTreeBuilderStateProtocol {
                             // does that mean: int pos of format el in list?
                             var node: Element? = furthestBlock
                             var lastNode: Element? = furthestBlock
-                            for j in 0..<3 {
+                            for _ in 0..<3 {
                                 if (node != nil && tb.onStack(node!)) {
                                     node = tb.aboveOnStack(node!)
                                 }
@@ -725,7 +725,7 @@ enum HtmlTreeBuilderState: String, HtmlTreeBuilderStateProtocol {
 
                             let adopter: Element = Element(formatEl!.tag(), tb.getBaseUri())
                             adopter.getAttributes()?.addAll(incoming: formatEl!.getAttributes())
-                            var childNodes: [Node] = furthestBlock!.getChildNodes()
+                            let childNodes: [Node] = furthestBlock!.getChildNodes()
                             for childNode: Node in childNodes {
                                 try adopter.appendChild(childNode) // append will reparent. thus the clone to avoid concurrent mod.
                             }
