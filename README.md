@@ -112,7 +112,7 @@ FaviconFinder is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod 'FaviconFinder', '3.2.1'
+pod 'FaviconFinder', '3.2.2'
 ```
 
 ### Carthage
@@ -120,7 +120,7 @@ FaviconFinder is also available through [Carthage](https://github.com/Carthage/C
 it, simply add the following line to your Cartfile:
 
 ```ruby
-github "will-lumley/FaviconFinder" == 3.2.1
+github "will-lumley/FaviconFinder" == 3.2.2
 ```
 
 ### Swift Package Manager
@@ -130,7 +130,7 @@ To install it, simply add the dependency to your Package.Swift file:
 ```swift
 ...
 dependencies: [
-    .package(url: "https://github.com/will-lumley/FaviconFinder.git", from: "3.2.1"),
+    .package(url: "https://github.com/will-lumley/FaviconFinder.git", from: "3.2.2"),
 ],
 targets: [
     .target( name: "YourTarget", dependencies: ["FaviconFinder"]),
