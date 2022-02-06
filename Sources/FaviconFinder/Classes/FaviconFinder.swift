@@ -149,7 +149,7 @@ private extension FaviconFinder {
 
             let downloadType = FaviconDownloadType(type: type)
 
-            let favicon = Favicon(image: image, url: url, type: type, downloadType: downloadType)
+            let favicon = Favicon(image: image, data: data, url: url, type: type, downloadType: downloadType)
             onDownload(.success(favicon))
             
         }).resume()

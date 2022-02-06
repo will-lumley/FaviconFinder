@@ -11,6 +11,8 @@ public struct Favicon {
 
     /// The actual image
     public let image: FaviconImage
+  
+    public let data: Data
 
     /// The url of the .ico or HTML page, of where the favicon was found
     public let url: URL
