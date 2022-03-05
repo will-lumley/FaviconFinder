@@ -8,7 +8,7 @@
 
 import Foundation
 
-internal class Regex {
+class Regex {
 
     private var expression: NSRegularExpression?
     private var pattern: String
@@ -35,6 +35,7 @@ internal class Regex {
 }
 
 //MARK: - Static Functions
+
 extension Regex {
 
     public static func testForHttpsOrHttp(input: String) -> Bool {

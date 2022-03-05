@@ -5,6 +5,7 @@
 //  Created by William Lumley on 16/10/19.
 //  Copyright © 2019 William Lumley. All rights reserved.
 //
+
 #if targetEnvironment(macCatalyst)
 import UIKit
 public typealias FaviconImage = UIImage
@@ -16,7 +17,6 @@ public typealias FaviconImage = NSImage
 #elseif canImport(UIKit)
 import UIKit
 public typealias FaviconImage = UIImage
-
 #endif
 
 public class FaviconFinder: NSObject {
@@ -113,8 +113,11 @@ private extension FaviconFinder {
      - parameter url: The URL at which we assume an image is at
      */
     private func downloadImage(at url: URL, type: FaviconType, onDownload: @escaping ((_ result: Result<Favicon, FaviconError>) -> Void)) {
-        //Now that we've got the URL of the image, let's download the image
+
+        // Now that we've got the URL of the image, let's download the image
         URLSession.shared.dataTask(with: url, completionHandler: {(data, response, error) in
+
+            // Check for an error
             if let error = error {
                 if self.logEnabled {
                     print("Could NOT download favicon from url: \(url), error: \(error)")
@@ -124,7 +127,7 @@ private extension FaviconFinder {
                 return
             }
             
-            //Make sure our data exists
+            // Make sure our data exists
             guard let data = data else {
                 if self.logEnabled {
                     print("Could NOT get favicon from url: \(self.url), Data was nil.")

@@ -9,7 +9,6 @@ import Foundation
 
 #if canImport(SwiftSoup)
 import SwiftSoup
-
 #endif
 
 class HTMLFaviconFinder: FaviconFinderProtocol {
@@ -27,62 +26,58 @@ class HTMLFaviconFinder: FaviconFinderProtocol {
     var url: URL
     var preferredType: String
     var logEnabled: Bool
+    var description: String
+    var logger: Logger?
 
     /// When parsing through HTML, these are the type of images we'll look for in the HTML header
-    private var acceptableIconTypes = FaviconType.allTypes
+    private let acceptableIconTypes = FaviconType.allTypes
 
-    /// The preferred type of favicon we're after
-    //var preferredType: String? = FaviconType.appleTouchIcon.rawValue
+    // MARK: - FaviconFinder
 
     required init(url: URL, preferredType: String?, logEnabled: Bool) {
         self.url = url
-        self.preferredType = preferredType ?? FaviconType.appleTouchIcon.rawValue //Default to `appleTouchIcon` type if user does not present us with one
+        self.preferredType = preferredType ?? FaviconType.appleTouchIcon.rawValue // Default to `appleTouchIcon` type if user does not present us with one
         self.logEnabled = logEnabled
+        self.description = NSStringFromClass(HTMLFaviconFinder.self)
+
+        self.logger = Logger(faviconFinder: self)
     }
 
     func search(onFind: @escaping ((Result<FaviconURL, FaviconError>) -> Void)) {
 
-        //Download the web page at our URL
-        URLSession.shared.dataTask(with: self.url, completionHandler: {(data, response, error) in
-            
-            //Make sure our data exists
+        // Download the web page at our URL
+        FaviconURLRequest.dataTask(with: self.url, checkForMetaRefreshRedirect: true) { data, response, error in
+
+            // Make sure our data exists
             guard let data = data else {
-                if self.logEnabled {
-                    print("Could NOT get favicon from url: \(self.url), Data was nil.")
-                }
+                self.logger?.print("Could NOT get favicon from url: \(self.url), Data was nil.")
                 onFind(.failure(.emptyData))
                 return
             }
-            
-            //Make sure we can parse the response into a string
-            guard let html = String(data: data, encoding: String.Encoding.utf8) else {
-                if self.logEnabled {
-                    print("Could NOT get favicon from url: \(self.url), could not parse HTML.")
-                }
+
+            // Make sure we can parse the response into a string
+            guard let html = String(data: data, encoding: .utf8) else {
+                self.logger?.print("Could NOT get favicon from url: \(self.url), could not parse HTML.")
                 onFind(.failure(.failedToParseHTML))
                 return
             }
-            
-            //Make sure we can find a favicon in our retrieved string (at this point we're assuming it's valid HTML)
+
+            // Make sure we can find a favicon in our retrieved string (at this point we're assuming it's valid HTML)
             guard let faviconURL = self.faviconURL(from: html) else {
-                if self.logEnabled {
-                    print("Could NOT get favicon from url: \(self.url), failed to parse favicon from HTML.")
-                }
+                self.logger?.print("Could NOT get favicon from url: \(self.url), failed to parse favicon from HTML.")
                 onFind(.failure(.failedToDownloadFavicon))
                 return
             }
-            
-            //We found our favicon, let's download it
-            if self.logEnabled {
-                print("Extracted favicon: \(faviconURL.url.absoluteString)")
-            }
 
+            // We found our favicon, let's download it
+            Logger.print(self.logEnabled, "Extracted favicon: \(faviconURL.url.absoluteString)")
             onFind(.success(faviconURL))
             
-        }).resume()
+        }
     }
-
 }
+
+// MARK: - Private Functions
 
 private extension HTMLFaviconFinder {
 
@@ -97,23 +92,17 @@ private extension HTMLFaviconFinder {
             htmlOpt = try SwiftSoup.parse(htmlStr)
         }
         catch let error {
-            if logEnabled {
-                print("Could NOT parse HTML due to error: \(error). HTML: \(htmlStr)")
-            }
+            self.logger?.print("Could NOT parse HTML due to error: \(error). HTML: \(htmlStr)")
             return nil
         }
         
         guard let html = htmlOpt else {
-            if logEnabled {
-                print("Could NOT parse HTML from string: \(htmlStr)")
-            }
+            self.logger?.print("Could NOT parse HTML from string: \(htmlStr)")
             return nil
         }
         
         guard let head = html.head() else {
-            if logEnabled {
-                print("Could NOT parse HTML head from string: \(htmlStr)")
-            }
+            self.logger?.print("Could NOT parse HTML head from string: \(htmlStr)")
             return nil
         }
 
@@ -125,13 +114,11 @@ private extension HTMLFaviconFinder {
             allLinks = try head.select("link")
         }
         catch let error {
-            if logEnabled {
-                print("Could NOT parse HTML due to error: \(error). HTML: \(htmlStr)")
-            }
+            self.logger?.print("Could NOT parse HTML due to error: \(error). HTML: \(htmlStr)")
             return nil
         }
         
-        //Iterate over every 'link' tag that's in the head document, and collect them
+        // Iterate over every 'link' tag that's in the head document, and collect them
         for element in allLinks {
             do {
                 let rel = try element.attr("rel")
@@ -145,14 +132,12 @@ private extension HTMLFaviconFinder {
                 }
             }
             catch let error {
-                if logEnabled {
-                    print("Could NOT parse HTML due to error: \(error). HTML: \(htmlStr)")
-                }
+                self.logger?.print("Could NOT parse HTML due to error: \(error). HTML: \(htmlStr)")
                 continue
             }
         }
 
-        //Extract the most preferrable icon, and return it's href as a URL object
+        // Extract the most preferrable icon, and return it's href as a URL object
         guard let mostPreferrableIcon = self.mostPreferrableIcon(icons: possibleIcons) else {
             return nil
         }
@@ -226,6 +211,7 @@ private extension HTMLFaviconFinder {
             let iconSize = Int(icon.sizes?.components(separatedBy: "x").first ?? "") ?? 0
             return (index: index, size: iconSize)
         }).sorted(by: {$0.size > $1.size})
+
         if let firstSize = sizes.first {
             let icon = icons[firstSize.index]
             return (icon: icon, type: FaviconType(rawValue: icon.rel)!)
