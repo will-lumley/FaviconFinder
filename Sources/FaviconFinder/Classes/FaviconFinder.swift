@@ -25,9 +25,6 @@ public class FaviconFinder: NSObject {
 
     /// The base URL of the site we're trying to extract from
     private var url: URL
-    
-    /// Prints useful states and errors when enabled
-    private var logEnabled: Bool
 
     /// Which download type our user would prefer to use
     private var preferredType: FaviconDownloadType
@@ -35,12 +32,25 @@ public class FaviconFinder: NSObject {
     /// Which preferences the user has for each download type
     private var preferences: [FaviconDownloadType: String]
 
+    /// Indicates if we should check for a meta-refresh-redirect tag in the HTML header
+    private var checkForMetaRefreshRedirect: Bool
+
+    /// Prints useful states and errors when enabled
+    private var logEnabled: Bool
+
     // MARK: - FaviconFinder
 
-    public init(url: URL, preferredType: FaviconDownloadType = .html, preferences: [FaviconDownloadType: String] = [:], logEnabled: Bool = false) {
+    public init(
+        url: URL,
+        preferredType: FaviconDownloadType = .html,
+        preferences: [FaviconDownloadType: String] = [:],
+        checkForMetaRefreshRedirect: Bool = false,
+        logEnabled: Bool = false
+    ) {
         self.url = url
         self.preferredType = preferredType
         self.preferences = preferences
+        self.checkForMetaRefreshRedirect = checkForMetaRefreshRedirect
         self.logEnabled = logEnabled
     }
 
@@ -61,8 +71,14 @@ public class FaviconFinder: NSObject {
         search(downloadType: currentDownloadType)
 
         func search(downloadType: FaviconDownloadType) {
+
             // Setup the download, and get it to search for the URL
-            let downloader = downloadType.downloader(url: self.url, preferredType: self.preferences[downloadType], logEnabled: self.logEnabled)
+            let downloader = downloadType.downloader(
+                url: self.url,
+                preferredType: self.preferences[downloadType],
+                checkForMetaRefreshRedirect: self.checkForMetaRefreshRedirect,
+                logEnabled: self.logEnabled
+            )
             downloader.search(onFind: { [unowned self] result in
                 switch result {
                 case .success(let faviconURL):

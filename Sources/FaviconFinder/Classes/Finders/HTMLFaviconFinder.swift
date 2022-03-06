@@ -25,6 +25,8 @@ class HTMLFaviconFinder: FaviconFinderProtocol {
 
     var url: URL
     var preferredType: String
+    var checkForMetaRefreshRedirect: Bool
+
     var logEnabled: Bool
     var description: String
     var logger: Logger?
@@ -34,19 +36,23 @@ class HTMLFaviconFinder: FaviconFinderProtocol {
 
     // MARK: - FaviconFinder
 
-    required init(url: URL, preferredType: String?, logEnabled: Bool) {
+    required init(url: URL, preferredType: String?, checkForMetaRefreshRedirect: Bool, logEnabled: Bool) {
         self.url = url
         self.preferredType = preferredType ?? FaviconType.appleTouchIcon.rawValue // Default to `appleTouchIcon` type if user does not present us with one
+        self.checkForMetaRefreshRedirect = checkForMetaRefreshRedirect
+
         self.logEnabled = logEnabled
         self.description = NSStringFromClass(HTMLFaviconFinder.self)
-
         self.logger = Logger(faviconFinder: self)
     }
 
     func search(onFind: @escaping ((Result<FaviconURL, FaviconError>) -> Void)) {
 
         // Download the web page at our URL
-        FaviconURLRequest.dataTask(with: self.url, checkForMetaRefreshRedirect: true) { data, response, error in
+        FaviconURLRequest.dataTask(
+            with: self.url,
+            checkForMetaRefreshRedirect: self.checkForMetaRefreshRedirect
+        ) { data, response, error in
 
             // Make sure our data exists
             guard let data = data else {

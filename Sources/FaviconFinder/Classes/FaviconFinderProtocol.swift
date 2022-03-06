@@ -23,10 +23,13 @@ protocol FaviconFinderProtocol {
     /// A string representation of the class name. Used for logging purposes.
     var description: String { get }
 
+    /// Indicates if we should check for a meta-refresh-redirect tag in the HTML header
+    var checkForMetaRefreshRedirect: Bool { get }
+
     /// An instance of the object we direct logging through.
     var logger: Logger? { get }
 
-    init(url: URL, preferredType: String?, logEnabled: Bool)
+    init(url: URL, preferredType: String?, checkForMetaRefreshRedirect: Bool, logEnabled: Bool)
     func search(onFind: @escaping ((_ result: Result<FaviconURL, FaviconError>) -> Void))
 
 }

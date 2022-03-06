@@ -7,21 +7,25 @@
 
 import Foundation
 
-class ICOFaviconFinder: FaviconFinderProtocol {
+class ICOFaviconFinder: FaviconFinderProtocol {    
 
     // MARK: - Properties
 
     var url: URL
     var preferredType: String
+    var checkForMetaRefreshRedirect: Bool
+
     var logEnabled: Bool
     var description: String
     var logger: Logger?
 
     // MARK: - FaviconFinder
 
-    required init(url: URL, preferredType: String?, logEnabled: Bool) {
+    required init(url: URL, preferredType: String?, checkForMetaRefreshRedirect: Bool, logEnabled: Bool) {
         self.url = url
         self.preferredType = preferredType ?? "favicon.ico" // Default to the filename of "favicon.ico" if user does not present us with one
+        self.checkForMetaRefreshRedirect = checkForMetaRefreshRedirect
+
         self.logEnabled = logEnabled
         self.description = NSStringFromClass(Self.self)
         self.logger = Logger(faviconFinder: self)

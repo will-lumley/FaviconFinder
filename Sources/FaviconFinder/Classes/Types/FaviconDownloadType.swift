@@ -44,14 +44,34 @@ internal extension FaviconDownloadType {
 
 internal extension FaviconDownloadType {
 
-    func downloader(url: URL, preferredType: String?, logEnabled: Bool) -> FaviconFinderProtocol {
+    func downloader(
+        url: URL,
+        preferredType: String?,
+        checkForMetaRefreshRedirect: Bool,
+        logEnabled: Bool
+    ) -> FaviconFinderProtocol {
         switch self {
         case .ico:
-            return ICOFaviconFinder(url: url, preferredType: preferredType, logEnabled: logEnabled)
+            return ICOFaviconFinder(
+                url: url,
+                preferredType: preferredType,
+                checkForMetaRefreshRedirect: checkForMetaRefreshRedirect,
+                logEnabled: logEnabled
+            )
         case .html:
-            return HTMLFaviconFinder(url: url, preferredType: preferredType, logEnabled: logEnabled)
+            return HTMLFaviconFinder(
+                url: url,
+                preferredType: preferredType,
+                checkForMetaRefreshRedirect: checkForMetaRefreshRedirect,
+                logEnabled: logEnabled
+            )
         case .webApplicationManifestFile:
-            return WebApplicationManifestFaviconFinder(url: url, preferredType: preferredType, logEnabled: logEnabled)
+            return WebApplicationManifestFaviconFinder(
+                url: url,
+                preferredType: preferredType,
+                checkForMetaRefreshRedirect: checkForMetaRefreshRedirect,
+                logEnabled: logEnabled
+            )
         }
     }
 

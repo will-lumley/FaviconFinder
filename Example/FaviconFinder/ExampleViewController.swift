@@ -23,7 +23,7 @@ class ExampleViewController: NSViewController
     @IBAction func downloadButtonTapped(_ sender: Any)
     {
         let urlStr = self.textField.stringValue
-        
+
         guard let url = URL(string: urlStr) else {
             print("Not a valid URL: \(urlStr)")
             return
