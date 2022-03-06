@@ -16,6 +16,7 @@ class FaviconFinderTests: XCTestCase {
     let appleUrl  = URL(string: "https://apple.com")!
     let realFaviconGeneratorUrl = URL(string: "https://realfavicongenerator.net/blog/apple-touch-icon-the-good-the-bad-the-ugly/")!
     let webApplicationManifestUrl = URL(string: "https://googlechrome.github.io/samples/web-application-manifest/")!
+    let metaRefreshRedirectUrl = URL(string: "https://www.sympy.org/")!
 
     override func setUp() {
 
@@ -55,7 +56,7 @@ class FaviconFinderTests: XCTestCase {
 
     func testFaviconHtmlFind() {
         let expectation = self.expectation(description: "HTML FaviconFind")
-        
+
         FaviconFinder(
             url: self.realFaviconGeneratorUrl,
             preferredType: .html,
@@ -105,6 +106,36 @@ class FaviconFinderTests: XCTestCase {
 
             case .failure(let error):
                 XCTAssert(false, "Failed to download favicon from WebApplicationManifestFile header: \(error.localizedDescription)")
+            }
+        }
+        
+        waitForExpectations(timeout: 5.0, handler: nil)
+    }
+
+    func testCheckForMetaRefreshRedirect() {
+        let expectation = self.expectation(description: "MetaRefreshRedirect HTML FaviconFind")
+
+        FaviconFinder(
+            url: self.metaRefreshRedirectUrl,
+            preferredType: .html,
+            preferences: [:],
+            checkForMetaRefreshRedirect: true,
+            logEnabled: true
+        ).downloadFavicon { result in
+            switch result {
+            case .success(let favicon):
+                
+                // Ensure that our favicon is actually valid
+                XCTAssertTrue(favicon.image.isValidImage)
+
+                // Ensure that our favicon was retrieved from the desired source
+                XCTAssertTrue(favicon.downloadType == .html)
+                
+                // Let the test know that we got our favicon back
+                expectation.fulfill()
+
+            case .failure(let error):
+                XCTAssert(false, "Failed to download favicon from HTML header: \(error.localizedDescription)")
             }
         }
         

@@ -19,15 +19,16 @@ FaviconFinder handles the dirty work for you and iterates through the numerous l
 
 
 FaviconFinder will:
-- [x] Detect the favicon in the root directory of the URL provided
-- [x] Automatically check if the favicon is located within the root URL if the subdomain failed (Will check `https://site.com/favicon.ico` if `https://subdomain.site.com/favicon.ico` fails)
-- [x] Detect and parse the HTML at the URL for the declaration of the favicon
-- [x] Resolve the favicon URL for you, even if it's a relative URL to the subdomain that you're querying
-- [x] Allow you to prioritise which format of favicon you would like served
-- [x] Detect and parse web application manifest JSON files for favicon locations
+- [x] Detect the favicon in the root directory of the URL provided.
+- [x] Automatically check if the favicon is located within the root URL if the subdomain failed (Will check `https://site.com/favicon.ico` if `https://subdomain.site.com/favicon.ico` fails).
+- [x] Detect and parse the HTML at the URL for the declaration of the favicon.
+- [x] Resolve the favicon URL for you, even if it's a relative URL to the subdomain that you're querying.
+- [x] Allow you to prioritise which format of favicon you would like served.
+- [x] Detect and parse web application manifest JSON files for favicon locations.
+- [x] If you set `checkForMetaRefreshRedirect` to true, FaviconFinder will analyse the HTML for a meta refresh redirect tag. If such a tag is found, the URL in the tag is the URL that will be queried.
 
 To do:
-- [ ] Detect and parse web application Microsoft browser configuration XML
+- [ ] Detect and parse web application Microsoft browser configuration XML.
 
 ## Usage
 
@@ -64,6 +65,7 @@ Similarly, you can specify which JSON key you'd prefer when iterating through th
 
 For the `.ico` download type, you can request FaviconFinder searchs for a filename of your choosing.
 
+In addition, you can also let FaviconFinder know that you'd like the HTML of the website parsed and analysed for a meta-refresh-redirect tag, and query the new URL if found.
 
 Here's how you'd make that request:
 
@@ -76,6 +78,7 @@ Here's how you'd make that request:
             .ico: "favicon.ico",
             .webApplicationManifestFile: FaviconType.launcherIcon4x.rawValue
         ],
+        checkForMetaRefreshRedirect: true,
         logEnabled: true
     ).downloadFavicon { result in
         switch result {
@@ -112,7 +115,7 @@ FaviconFinder is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod 'FaviconFinder', '3.2.2'
+pod 'FaviconFinder', '3.3.0'
 ```
 
 ### Carthage
@@ -120,7 +123,7 @@ FaviconFinder is also available through [Carthage](https://github.com/Carthage/C
 it, simply add the following line to your Cartfile:
 
 ```ruby
-github "will-lumley/FaviconFinder" == 3.2.2
+github "will-lumley/FaviconFinder" == 3.3.0
 ```
 
 ### Swift Package Manager
@@ -130,7 +133,7 @@ To install it, simply add the dependency to your Package.Swift file:
 ```swift
 ...
 dependencies: [
-    .package(url: "https://github.com/will-lumley/FaviconFinder.git", from: "3.2.2"),
+    .package(url: "https://github.com/will-lumley/FaviconFinder.git", from: "3.3.0"),
 ],
 targets: [
     .target( name: "YourTarget", dependencies: ["FaviconFinder"]),
