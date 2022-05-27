@@ -35,12 +35,14 @@ class ExampleViewController: NSViewController
                     FaviconDownloadType.html: FaviconType.appleTouchIcon.rawValue,
                     FaviconDownloadType.ico: "favicon.ico"
                 ]).downloadFavicon()
-                
+
+                print("URL of Favicon: \(favicon.url)")
                 DispatchQueue.main.async {
                     self.imageView.image = favicon.image
                 }
-            } catch {
-                print(error)
+
+            } catch let error {
+                print("Error: \(error)")
             }
         }
     }

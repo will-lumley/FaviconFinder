@@ -34,18 +34,16 @@ To do:
 
 FaviconFinder uses simple syntax to allow you to easily download the favicon you need, and get on with your project. Just insert this code into your project:
 ```swift
-FaviconFinder(url: url).downloadFavicon { result in
-    switch result {
-    case .success(let favicon):
+    do {
+        let favicon = try await FaviconFinder(url: url).downloadFavicon()
+
         print("URL of Favicon: \(favicon.url)")
         DispatchQueue.main.async {
             self.imageView.image = favicon.image
         }
-
-    case .failure(let error):
+    } catch let error {
         print("Error: \(error)")
     }
-}
 ```
 
 ## Advanced Usage
@@ -70,27 +68,23 @@ In addition, you can also let FaviconFinder know that you'd like the HTML of the
 Here's how you'd make that request:
 
 ```swift
-    FaviconFinder(
-        url: url, 
-        preferredType: .html, 
-        preferences: [
-            .html: FaviconType.appleTouchIcon.rawValue,
-            .ico: "favicon.ico",
-            .webApplicationManifestFile: FaviconType.launcherIcon4x.rawValue
-        ],
-        checkForMetaRefreshRedirect: true,
-        logEnabled: true
-    ).downloadFavicon { result in
-        switch result {
-        case .success(let favicon):
-            print("URL of Favicon: \(favicon.url)")
-            DispatchQueue.main.async {
-                self.imageView.image = favicon.image
-            }
+    do {
+        let favicon = try await FaviconFinder(
+            url: url, 
+            preferredType: .html, 
+            preferences: [
+                .html: FaviconType.appleTouchIcon.rawValue,
+                .ico: "favicon.ico",
+                .webApplicationManifestFile: FaviconType.launcherIcon4x.rawValue
+            ]
+        ).downloadFavicon()
 
-        case .failure(let error):
-            print("Error: \(error)")
+        print("URL of Favicon: \(favicon.url)")
+        DispatchQueue.main.async {
+            self.imageView.image = favicon.image
         }
+    } catch let error {
+        print("Error: \(error)")
     }
 ```
 
@@ -106,7 +100,8 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Requirements
 
-FaviconFinder supports iOS 10.0 and above & macOS 10.10 and above.
+FaviconFinder now supports await/async concurrency, as seen in the examples below. Due to this, the most up to date version of FaviconFinder requires iOS 15.0 and macOS 12.0.
+If you need to support older versions of iOS or macOS, version 3.3.0 of FaviconFinder uses closures to call back the success/failure instead of await/async concurrency.
 
 ## Installation
 
@@ -115,7 +110,7 @@ FaviconFinder is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod 'FaviconFinder', '3.3.0'
+pod 'FaviconFinder', '4.0.0'
 ```
 
 ### Carthage
@@ -123,7 +118,7 @@ FaviconFinder is also available through [Carthage](https://github.com/Carthage/C
 it, simply add the following line to your Cartfile:
 
 ```ruby
-github "will-lumley/FaviconFinder" == 3.3.0
+github "will-lumley/FaviconFinder" == 4.0.0
 ```
 
 ### Swift Package Manager
@@ -133,7 +128,7 @@ To install it, simply add the dependency to your Package.Swift file:
 ```swift
 ...
 dependencies: [
-    .package(url: "https://github.com/will-lumley/FaviconFinder.git", from: "3.3.0"),
+    .package(url: "https://github.com/will-lumley/FaviconFinder.git", from: "4.0.0"),
 ],
 targets: [
     .target( name: "YourTarget", dependencies: ["FaviconFinder"]),

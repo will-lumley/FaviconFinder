@@ -1,6 +1,6 @@
 {
   "name": "FaviconFinder",
-  "version": "3.2.1",
+  "version": "3.3.0",
   "summary": "A pure Swift library to detect favicons use by a website.",
   "homepage": "https://github.com/will-lumley/FaviconFinder.git",
   "license": {
@@ -13,13 +13,13 @@
   },
   "social_media_url": "https://twitter.com/wlumley95",
   "platforms": {
-    "ios": "10.0",
-    "osx": "10.10"
+    "ios": "15.0",
+    "osx": "12.0"
   },
   "swift_versions": "5.0",
   "source": {
     "git": "https://github.com/will-lumley/FaviconFinder.git",
-    "tag": "3.2.1"
+    "tag": "3.3.0"
   },
   "source_files": "Sources/**/*/*",
   "dependencies": {
