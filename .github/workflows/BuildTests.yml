@@ -24,4 +24,4 @@ jobs:
           xcodebuild test
           -workspace Example/FaviconFinder.xcworkspace
           -scheme FaviconFinder-Example
-          -destination 'platform=macOS-12'
+          -destination 'platform=macOS'
