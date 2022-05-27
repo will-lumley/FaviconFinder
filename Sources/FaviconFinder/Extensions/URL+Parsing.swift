@@ -10,6 +10,7 @@ import Foundation
 
 extension URL {
 
+    //TODO: Expand upon this
     /**
      A list of possible domain components that we recognise as TLDs
      */

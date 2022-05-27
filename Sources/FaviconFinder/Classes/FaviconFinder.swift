@@ -5,6 +5,7 @@
 //  Created by William Lumley on 16/10/19.
 //  Copyright © 2019 William Lumley. All rights reserved.
 //
+
 #if targetEnvironment(macCatalyst)
 import UIKit
 public typealias FaviconImage = UIImage
@@ -16,7 +17,6 @@ public typealias FaviconImage = NSImage
 #elseif canImport(UIKit)
 import UIKit
 public typealias FaviconImage = UIImage
-
 #endif
 
 public class FaviconFinder: NSObject {
@@ -25,9 +25,6 @@ public class FaviconFinder: NSObject {
 
     /// The base URL of the site we're trying to extract from
     private var url: URL
-    
-    /// Prints useful states and errors when enabled
-    private var logEnabled: Bool
 
     /// Which download type our user would prefer to use
     private var preferredType: FaviconDownloadType
@@ -35,12 +32,25 @@ public class FaviconFinder: NSObject {
     /// Which preferences the user has for each download type
     private var preferences: [FaviconDownloadType: String]
 
+    /// Indicates if we should check for a meta-refresh-redirect tag in the HTML header
+    private var checkForMetaRefreshRedirect: Bool
+
+    /// Prints useful states and errors when enabled
+    private var logEnabled: Bool
+
     // MARK: - FaviconFinder
 
-    public init(url: URL, preferredType: FaviconDownloadType = .html, preferences: [FaviconDownloadType: String] = [:], logEnabled: Bool = false) {
+    public init(
+        url: URL,
+        preferredType: FaviconDownloadType = .html,
+        preferences: [FaviconDownloadType: String] = [:],
+        checkForMetaRefreshRedirect: Bool = false,
+        logEnabled: Bool = false
+    ) {
         self.url = url
         self.preferredType = preferredType
         self.preferences = preferences
+        self.checkForMetaRefreshRedirect = checkForMetaRefreshRedirect
         self.logEnabled = logEnabled
     }
 
@@ -57,14 +67,21 @@ public class FaviconFinder: NSObject {
         // Get the users preferred download type, and remove the users preferred download type from our list of potential download types
         var currentDownloadType = self.preferredType
         allDownloadTypes.removeAll { $0 == currentDownloadType }
-        
+
+        //search(downloadType: currentDownloadType)
+
         func search(downloadType: FaviconDownloadType) async throws -> Favicon {
             // Setup the download, and get it to search for the URL
-            let downloader = downloadType.downloader(url: self.url, preferredType: self.preferences[downloadType], logEnabled: self.logEnabled)
+            let downloader = downloadType.downloader(
+                url: self.url,
+                preferredType: self.preferences[downloadType],
+                checkForMetaRefreshRedirect: self.checkForMetaRefreshRedirect,
+                logEnabled: self.logEnabled
+            )
             let url = try await downloader.search()
             return try await downloadImage(at: url.url, type: url.type)
         }
-        
+
         do {
             return try await search(downloadType: currentDownloadType)
         } catch {
@@ -82,7 +99,6 @@ public class FaviconFinder: NSObject {
             return try await search(downloadType: currentDownloadType)
         }
     }
-
 }
 
 private extension FaviconFinder {
@@ -91,7 +107,7 @@ private extension FaviconFinder {
      Downloads an image from the provided URL
      - parameter url: The URL at which we assume an image is at
      */
-    private func downloadImage(at url: URL, type: FaviconType) async throws -> Favicon {
+    func downloadImage(at url: URL, type: FaviconType) async throws -> Favicon {
         let data = try await URLSession.shared.data(from: url).0
         guard let image = FaviconImage(data: data) else {
             if self.logEnabled {
@@ -101,8 +117,7 @@ private extension FaviconFinder {
         }
         
         let downloadType = FaviconDownloadType(type: type)
-
-        return Favicon(image: image, url: url, type: type, downloadType: downloadType)
+        return Favicon(image: image, data: data, url: url, type: type, downloadType: downloadType)
     }
 
 }

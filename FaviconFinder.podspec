@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "FaviconFinder"
-  s.version      = "3.3.0"
+  s.version      = "4.0.0"
   s.summary      = "A pure Swift library to detect favicons use by a website."
   s.homepage     = "https://github.com/will-lumley/FaviconFinder.git"
   s.license      = { :type => 'MIT', :file => 'LICENSE.txt' }
@@ -22,8 +22,8 @@ Pod::Spec.new do |s|
   s.author             = { "William Lumley" => "will@lumley.io" }
   s.social_media_url   = "https://twitter.com/wlumley95"
 
-  s.ios.deployment_target = "10.0"
-  s.osx.deployment_target = "10.10"
+  s.ios.deployment_target = "15.0"
+  s.osx.deployment_target = "12.0"
   
   s.swift_version         = '5.0'
   
