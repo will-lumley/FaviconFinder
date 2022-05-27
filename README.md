@@ -100,7 +100,7 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Requirements
 
-FaviconFinder now supports await/async concurrency, as seen in the examples below. Due to this, the most up to date version of FaviconFinder requires iOS 15.0 and macOS 12.0.
+FaviconFinder now supports await/async concurrency, as seen in the examples above. Due to this, the most up to date version of FaviconFinder requires iOS 15.0 and macOS 12.0.
 If you need to support older versions of iOS or macOS, version 3.3.0 of FaviconFinder uses closures to call back the success/failure instead of await/async concurrency.
 
 ## Installation

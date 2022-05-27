@@ -62,7 +62,7 @@ public class FaviconFinder: NSObject {
 
         // All of the download types available to us, and ones we'll fallback onto if this one fails.
         // As each download type fails, we'll remove it from the list and try an alternative.
-        var allDownloadTypes = FaviconDownloadType.allTypes
+        var allDownloadTypes = FaviconDownloadType.allCases
 
         // Get the users preferred download type, and remove the users preferred download type from our list of potential download types
         var currentDownloadType = self.preferredType

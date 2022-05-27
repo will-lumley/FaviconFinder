@@ -8,15 +8,10 @@
 
 import Foundation
 
-public enum FaviconDownloadType {
+public enum FaviconDownloadType: CaseIterable {
     case html
     case ico
     case webApplicationManifestFile
-
-    static let allTypes: [FaviconDownloadType] = [
-        .html,
-        .ico
-    ]
 }
 
 internal extension FaviconDownloadType {
