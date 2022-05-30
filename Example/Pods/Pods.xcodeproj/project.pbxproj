@@ -132,6 +132,8 @@
 		BAC3414F9AE9CDFC61E3743077CC52E0 /* SwiftSoup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DE35DEEAAE4A4C2D430A4D83B2381AF /* SwiftSoup.swift */; };
 		BB112C7C5E2160D57903035AAFBE8D80 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575C8AE3BB2470696D264C739FDB2597 /* Comment.swift */; };
 		BBFE8C5233C99DE8F929CDB54CAFD3AB /* TokeniserState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55302528FE9453EB3BB90D1FA877126 /* TokeniserState.swift */; };
+		BE0A87CD2840D5C100466DF0 /* MSBrowserConfigurationFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0A87CC2840D5C100466DF0 /* MSBrowserConfigurationFinder.swift */; };
+		BE0A87CE2840D5C100466DF0 /* MSBrowserConfigurationFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0A87CC2840D5C100466DF0 /* MSBrowserConfigurationFinder.swift */; };
 		BFCCF2DE0A5602A78E3E16627C1B5BC6 /* Elements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3716937BCAB6F0D36BD18C22AAD75E3C /* Elements.swift */; };
 		C2539A8CC965879B0AA0AD8EC3FAEA3B /* TextNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDBD0CBD546005C62F1B6C5FFD456DE /* TextNode.swift */; };
 		C311A6106D14B9D7AD0A90F338DEBA2A /* Favicon.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEFFC9694B469A8940F0FE33D3D83CB /* Favicon.swift */; };
@@ -343,6 +345,7 @@
 		BB08FAD924516DEBE0DD23CE6A466FEB /* Parser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Parser.swift; path = Sources/Parser.swift; sourceTree = "<group>"; };
 		BBC76ADB84C4197270FCDDB1CDBD62CD /* SwiftSoup-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "SwiftSoup-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		BDDBD0CBD546005C62F1B6C5FFD456DE /* TextNode.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TextNode.swift; path = Sources/TextNode.swift; sourceTree = "<group>"; };
+		BE0A87CC2840D5C100466DF0 /* MSBrowserConfigurationFinder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSBrowserConfigurationFinder.swift; sourceTree = "<group>"; };
 		BE85293150927E90D60487FA6DE069A6 /* Pods-FaviconFinder_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-FaviconFinder_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		C0EDBF0A1EDEAFFEF4B3F049DDC612C0 /* ParseSettings.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ParseSettings.swift; path = Sources/ParseSettings.swift; sourceTree = "<group>"; };
 		C20B42400EF692136C361A875D6052B2 /* FaviconFinder-iOS-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FaviconFinder-iOS-prefix.pch"; sourceTree = "<group>"; };
@@ -504,6 +507,7 @@
 				F630CC69046AA862536E059C6B66ED4A /* HTMLFaviconFinder.swift */,
 				CDFA4849A035DCB84F89E44CF59E15A4 /* ICOFaviconFinder.swift */,
 				806AEBE8B92D34079BFC05A7CF3E76E3 /* WebApplicationManifestFaviconFinder.swift */,
+				BE0A87CC2840D5C100466DF0 /* MSBrowserConfigurationFinder.swift */,
 			);
 			path = Finders;
 			sourceTree = "<group>";
@@ -1112,6 +1116,7 @@
 				89CDF006596D8FF26CCF4D8353A0F736 /* FaviconFinderProtocol.swift in Sources */,
 				4AEE1E919EC8C724E313867D188A0F24 /* FaviconType.swift in Sources */,
 				800AE10A4FC19227B8EF534C455C906C /* FaviconURL.swift in Sources */,
+				BE0A87CD2840D5C100466DF0 /* MSBrowserConfigurationFinder.swift in Sources */,
 				3CB7AF7E98BD8F14231E3C7C79942FB0 /* FaviconURLRequest.swift in Sources */,
 				A1345DB30F8417513D1D06988C49F95E /* HTMLFaviconFinder.swift in Sources */,
 				30E584F971896CF855F499D6BD3E9C34 /* ICOFaviconFinder.swift in Sources */,
@@ -1143,6 +1148,7 @@
 				5F768F0324BCDDBAD07621B4A3A61233 /* FaviconFinderProtocol.swift in Sources */,
 				8D10925E626EA0F913138F4139C4BBDB /* FaviconType.swift in Sources */,
 				82447AD935D35F52D1F654CA7BBABAA8 /* FaviconURL.swift in Sources */,
+				BE0A87CE2840D5C100466DF0 /* MSBrowserConfigurationFinder.swift in Sources */,
 				11386376F148F911D73FA0D48E0752CF /* FaviconURLRequest.swift in Sources */,
 				CF7EAB726014D5979629AEF562CCB9BB /* HTMLFaviconFinder.swift in Sources */,
 				9B6D6CFF6FCD37F922F5E5CD9F822066 /* ICOFaviconFinder.swift in Sources */,
