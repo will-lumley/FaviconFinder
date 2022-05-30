@@ -188,11 +188,6 @@ private extension HTMLFaviconFinder {
             return (icon: icon, type: FaviconType(rawValue: icon.rel)!)
         }
 
-        // Check for shortcutIcon type
-        else if let icon = icons.first(where: { FaviconType(rawValue: $0.rel) == .shortcutIcon }) {
-            return (icon: icon, type: FaviconType(rawValue: icon.rel)!)
-        }
-
         // Check for icon type
         let iconTypeIcons = icons.enumerated().filter({FaviconType(rawValue: $1.rel) == .icon})
         
@@ -204,6 +199,11 @@ private extension HTMLFaviconFinder {
 
         if let firstSize = sizes.first {
             let icon = icons[firstSize.index]
+            return (icon: icon, type: FaviconType(rawValue: icon.rel)!)
+        }
+
+        // Check for shortcutIcon type last since it's often a low quality .ico file
+        if let icon = icons.first(where: { FaviconType(rawValue: $0.rel) == .shortcutIcon }) {
             return (icon: icon, type: FaviconType(rawValue: icon.rel)!)
         }
 
