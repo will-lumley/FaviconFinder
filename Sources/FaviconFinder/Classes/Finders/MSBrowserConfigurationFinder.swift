@@ -36,7 +36,7 @@ class MSBrowserConfigurationFinder: FaviconFinderProtocol {
         self.url = url
         self.preferredType = preferredType ?? FaviconType.launcherIcon4x.rawValue //Default to `launcherIcon4x` type if user does not present us with one
         self.checkForMetaRefreshRedirect = checkForMetaRefreshRedirect
-        
+
         self.logEnabled = logEnabled
         self.description = NSStringFromClass(Self.self)
         self.logger = Logger(faviconFinder: self)

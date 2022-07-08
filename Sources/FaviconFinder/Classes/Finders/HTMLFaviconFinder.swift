@@ -61,7 +61,7 @@ class HTMLFaviconFinder: FaviconFinderProtocol {
         }
 
         // We found our favicon, let's download it
-        Logger.print(self.logEnabled, "Extracted favicon: \(faviconURL.url.absoluteString)")
+        Logger.print(self.logEnabled, "(HTML) Extracted favicon: \(faviconURL.url.absoluteString)")
 
         return faviconURL
     }
