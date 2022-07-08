@@ -21,7 +21,7 @@ class FaviconURLRequest {
 
         if checkForMetaRefreshRedirect {
             // Make sure we can parse the response into a string
-            guard let htmlStr = String(data: data, encoding: .utf8) else {
+            guard let htmlStr = String(data: data, encoding: response.encoding) else {
                 return (data, response)
             }
 

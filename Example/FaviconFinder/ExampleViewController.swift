@@ -28,7 +28,7 @@ class ExampleViewController: NSViewController
             print("Not a valid URL: \(urlStr)")
             return
         }
-        
+
         Task {
             do {
                 let favicon = try await FaviconFinder(url: url, preferredType: .html, preferences: [
