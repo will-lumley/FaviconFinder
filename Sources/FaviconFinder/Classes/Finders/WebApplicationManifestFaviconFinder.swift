@@ -44,10 +44,13 @@ class WebApplicationManifestFaviconFinder: FaviconFinderProtocol {
 
     func search() async throws -> FaviconURL {
         // Download the web page at our URL
-        let data = try await FaviconURLRequest.dataTask(with: self.url, checkForMetaRefreshRedirect: self.checkForMetaRefreshRedirect).0
+        let urlResponse = try await FaviconURLRequest.dataTask(with: self.url, checkForMetaRefreshRedirect: self.checkForMetaRefreshRedirect)
+
+        let data = urlResponse.0
+        let response = urlResponse.1
         
         // Make sure we can parse the response into a string
-        guard let html = String(data: data, encoding: .utf8) else {
+        guard let html = String(data: data, encoding: response.encoding) else {
             self.logger?.print("Could NOT get favicon from url: \(self.url), could not parse HTML.")
             throw FaviconError.failedToParseHTML
         }
