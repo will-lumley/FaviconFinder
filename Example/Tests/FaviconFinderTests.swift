@@ -17,6 +17,7 @@ class FaviconFinderTests: XCTestCase {
     let realFaviconGeneratorUrl = URL(string: "https://realfavicongenerator.net/blog/apple-touch-icon-the-good-the-bad-the-ugly/")!
     let webApplicationManifestUrl = URL(string: "https://googlechrome.github.io/samples/web-application-manifest/")!
     let metaRefreshRedirectUrl = URL(string: "https://www.sympy.org/")!
+    let nonUtf8EncodedWebsite = URL(string: "https://www.qq.com/")!
 
     override func setUp() {
 
@@ -133,6 +134,34 @@ class FaviconFinderTests: XCTestCase {
                 expectation.fulfill()
             } catch let error {
                 XCTAssert(false, "Failed to download favicon from WebApplicationManifestFile header: \(error.localizedDescription)")
+            }
+        }
+
+        waitForExpectations(timeout: 10.0, handler: nil)
+    }
+
+    func testForeignEncoding() {
+        let expectation = self.expectation(description: "Non-UTF8")
+
+        Task {
+            do {
+                let favicon = try await FaviconFinder(
+                    url: self.nonUtf8EncodedWebsite,
+                    preferredType: .html,
+                    preferences: [:],
+                    logEnabled: true
+                ).downloadFavicon()
+
+                // Ensure that our favicon is actually valid
+                XCTAssertTrue(favicon.image.isValidImage)
+
+                // Ensure that our favicon was retrieved from the desired source
+                XCTAssertTrue(favicon.downloadType == .html)
+
+                // Let the test know that we got our favicon back
+                expectation.fulfill()
+            } catch let error {
+                XCTAssert(false, "Failed to download favicon from HTML header: \(error.localizedDescription)")
             }
         }
 
