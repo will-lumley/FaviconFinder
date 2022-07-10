@@ -34,7 +34,8 @@
                 <true/>
             </dict>
         </dict>
-    </dict>	<key>NSMainNibFile</key>
+    </dict>
+    <key>NSMainNibFile</key>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
