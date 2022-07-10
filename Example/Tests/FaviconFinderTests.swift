@@ -17,7 +17,7 @@ class FaviconFinderTests: XCTestCase {
     let realFaviconGeneratorUrl = URL(string: "https://realfavicongenerator.net/blog/apple-touch-icon-the-good-the-bad-the-ugly/")!
     let webApplicationManifestUrl = URL(string: "https://googlechrome.github.io/samples/web-application-manifest/")!
     let metaRefreshRedirectUrl = URL(string: "https://www.sympy.org/")!
-    let nonUtf8EncodedWebsite = URL(string: "https://www.qq.com/")!
+    let nonUtf8EncodedWebsite = URL(string: "http://foodmate.net")!
 
     override func setUp() {
 
@@ -145,12 +145,7 @@ class FaviconFinderTests: XCTestCase {
 
         Task {
             do {
-                let favicon = try await FaviconFinder(
-                    url: self.nonUtf8EncodedWebsite,
-                    preferredType: .html,
-                    preferences: [:],
-                    logEnabled: true
-                ).downloadFavicon()
+                let favicon = try await FaviconFinder(url: self.nonUtf8EncodedWebsite).downloadFavicon()
 
                 // Ensure that our favicon is actually valid
                 XCTAssertTrue(favicon.image.isValidImage)

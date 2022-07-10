@@ -32,8 +32,6 @@ class ICOFaviconFinder: FaviconFinderProtocol {
     }
 
     func search() async throws -> FaviconURL {
-        // TODO: Check that there's an actual image at the path.
-
         // If there's not, try the root instead.
         // Then, remove the RootICO finder and type.
         let baseUrl = URL(string: "/", relativeTo: self.url)
