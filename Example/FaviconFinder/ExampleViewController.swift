@@ -31,10 +31,14 @@ class ExampleViewController: NSViewController
 
         Task {
             do {
-                let favicon = try await FaviconFinder(url: url, preferredType: .html, preferences: [
-                    FaviconDownloadType.html: FaviconType.appleTouchIcon.rawValue,
-                    FaviconDownloadType.ico: "favicon.ico"
-                ]).downloadFavicon()
+                let favicon = try await FaviconFinder(
+                    url: url,
+                    preferredType: .html,
+                    preferences: [
+                        FaviconDownloadType.ico: "favicon.ico",
+                        FaviconDownloadType.html: FaviconType.appleTouchIcon.rawValue
+                    ]
+                ).downloadFavicon()
 
                 print("URL of Favicon: \(favicon.url)")
                 DispatchQueue.main.async {
@@ -43,6 +47,12 @@ class ExampleViewController: NSViewController
 
             } catch let error {
                 print("Error: \(error)")
+
+                let alert = NSAlert()
+                alert.messageText = "Error"
+                alert.informativeText = "\(error)"
+
+                alert.runModal()
             }
         }
     }
