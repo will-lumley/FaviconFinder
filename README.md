@@ -48,6 +48,8 @@ FaviconFinder uses simple syntax to allow you to easily download the favicon you
 
 ## Advanced Usage
 
+### Preferential Downloading
+
 However if you're the type to want to have some fine-tuned control over what sort of favicon's we're after, you can do so.
 
 FaviconFinder allows you to specify which download type you'd prefer (HTML, actual file, or web application manifest file), and then allows you to specify which favicon type you'd prefer for each download type.
@@ -93,6 +95,34 @@ This allows you to control:
 - When iterating through each download type, what sub-type to look for. For the HTML download type, this allows you to prioritise different "rel" types. For the file.ico type, this allows you to choose the filename.
 
 If your desired download type doesn't exist for your URL (ie. you requested the favicon that exists as a file but there's no file), FaviconFinder will automatically try all other methods of favicon storage for you. 
+
+### Fetching without Downloading
+
+If you would like FaviconFinder to fetch the favicon URL without also executing an image download, you can do so with the following parameter:
+
+```swift
+    do {
+        let favicon = try await FaviconFinder(
+            url: url, 
+            preferredType: .html, 
+            preferences: [
+                .html: FaviconType.appleTouchIcon.rawValue,
+                .ico: "favicon.ico",
+                .webApplicationManifestFile: FaviconType.launcherIcon4x.rawValue
+            ],
+            downloadImage: false
+        ).downloadFavicon()
+
+        print("URL of Favicon: \(favicon.url)")
+        DispatchQueue.main.async {
+            self.imageView.image = favicon.image
+        }
+    } catch let error {
+        print("Error: \(error)")
+    }
+```
+
+When the parameter `downloadImage` is set to false, an image download will not occur and only the URL will be returned (wrapped in a Favicon struct).
 
 ## Example Project
 

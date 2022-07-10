@@ -164,7 +164,7 @@ class FaviconFinderTests: XCTestCase {
     }
 
     func testNoImageDownload() {
-        let expectation = self.expectation(description: "HTML FaviconFind")
+        let expectation = self.expectation(description: "No Image Download")
 
         Task {
             do {
