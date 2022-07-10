@@ -168,6 +168,35 @@ class FaviconFinderTests: XCTestCase {
         waitForExpectations(timeout: 10.0, handler: nil)
     }
 
+    func testNoImageDownload() {
+        let expectation = self.expectation(description: "HTML FaviconFind")
+
+        Task {
+            do {
+                let favicon = try await FaviconFinder(
+                    url: self.realFaviconGeneratorUrl,
+                    preferredType: .html,
+                    preferences: [:],
+                    downloadImage: false,
+                    logEnabled: true
+                ).downloadFavicon()
+
+                // Ensure that our favicon is NOT valid
+                XCTAssertFalse(favicon.image.isValidImage)
+
+                // Ensure the URL was passed
+                XCTAssertEqual(favicon.url.absoluteString, "https://realfavicongenerator.net/blog/wp-content/uploads/fbrfg/apple-touch-icon.png")
+
+                // Let the test know that we got our favicon back
+                expectation.fulfill()
+            } catch let error {
+                XCTAssert(false, "Failed to download favicon from HTML header: \(error.localizedDescription)")
+            }
+        }
+
+        waitForExpectations(timeout: 10.0, handler: nil)
+    }
+
 }
 
 private extension FaviconImage {

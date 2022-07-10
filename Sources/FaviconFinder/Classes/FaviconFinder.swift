@@ -35,6 +35,9 @@ public class FaviconFinder: NSObject {
     /// Indicates if we should check for a meta-refresh-redirect tag in the HTML header
     private var checkForMetaRefreshRedirect: Bool
 
+    /// Indicates if FaviconFinder should download the image for the user upon detection
+    private var downloadImage: Bool
+
     /// Prints useful states and errors when enabled
     private var logEnabled: Bool
 
@@ -45,12 +48,14 @@ public class FaviconFinder: NSObject {
         preferredType: FaviconDownloadType = .html,
         preferences: [FaviconDownloadType: String] = [:],
         checkForMetaRefreshRedirect: Bool = false,
+        downloadImage: Bool = true,
         logEnabled: Bool = false
     ) {
         self.url = url
         self.preferredType = preferredType
         self.preferences = preferences
         self.checkForMetaRefreshRedirect = checkForMetaRefreshRedirect
+        self.downloadImage = downloadImage
         self.logEnabled = logEnabled
     }
 
@@ -68,8 +73,6 @@ public class FaviconFinder: NSObject {
         var currentDownloadType = self.preferredType
         allDownloadTypes.removeAll { $0 == currentDownloadType }
 
-        //search(downloadType: currentDownloadType)
-
         func search(downloadType: FaviconDownloadType) async throws -> Favicon {
             // Setup the download, and get it to search for the URL
             let downloader = downloadType.downloader(
@@ -78,7 +81,16 @@ public class FaviconFinder: NSObject {
                 checkForMetaRefreshRedirect: self.checkForMetaRefreshRedirect,
                 logEnabled: self.logEnabled
             )
+
+            // Let's try and get the URL of the Favicon
             let url = try await downloader.search()
+
+            // If we're not supposed to download the image, just return the URL
+            if self.downloadImage == false {
+                return url.emptyImage
+            }
+
+            // We found the URL 🎉 Now let's download the image
             return try await downloadImage(at: url.url, type: url.type)
         }
 
