@@ -43,7 +43,9 @@ class HTMLFaviconFinder: FaviconFinderProtocol {
 
         self.logEnabled = logEnabled
         self.description = NSStringFromClass(HTMLFaviconFinder.self)
-        self.logger = Logger(faviconFinder: self)
+        if logEnabled {
+            self.logger = Logger(faviconFinder: self)
+        }
     }
 
     func search() async throws -> FaviconURL {
