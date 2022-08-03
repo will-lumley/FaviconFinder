@@ -39,7 +39,9 @@ class WebApplicationManifestFaviconFinder: FaviconFinderProtocol {
         
         self.logEnabled = logEnabled
         self.description = NSStringFromClass(Self.self)
-        self.logger = Logger(faviconFinder: self)
+        if logEnabled {
+            self.logger = Logger(faviconFinder: self)
+        }
     }
 
     func search() async throws -> FaviconURL {
