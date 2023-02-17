@@ -1,8 +1,6 @@
 ![FaviconFinder: Simple Favicon Finding](https://raw.githubusercontent.com/will-lumley/FaviconFinder/main/FaviconFinder.png)
 
 # FaviconFinder
-
-<p align="center">
 ![CI Status](https://github.com/will-lumley/FaviconFinder/actions/workflows/BuildTests.yml/badge.svg?branch=main)
 [![Version](https://img.shields.io/cocoapods/v/FaviconFinder.svg?style=flat)](https://cocoapods.org/pods/FaviconFinder)
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
