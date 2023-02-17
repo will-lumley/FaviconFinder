@@ -2,6 +2,7 @@
 
 # FaviconFinder
 
+<p align="center">
 ![CI Status](https://github.com/will-lumley/FaviconFinder/actions/workflows/BuildTests.yml/badge.svg?branch=main)
 [![Version](https://img.shields.io/cocoapods/v/FaviconFinder.svg?style=flat)](https://cocoapods.org/pods/FaviconFinder)
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
@@ -10,6 +11,7 @@
 [![Platform](https://img.shields.io/cocoapods/p/FaviconFinder.svg?style=flat)](https://cocoapods.org/pods/FaviconFinder)
 [![License](https://img.shields.io/cocoapods/l/FaviconFinder.svg?style=flat)](https://cocoapods.org/pods/FaviconFinder)
 [![Twitter](https://img.shields.io/badge/twitter-@wlumley95-blue.svg?style=flat)](https://twitter.com/wlumley95)
+</p>
 
 FaviconFinder is a small, pure Swift library designed for iOS and macOS applications that allows you to detect favicons used by a website.
 
@@ -46,7 +48,7 @@ FaviconFinder uses simple syntax to allow you to easily download the favicon you
     }
 ```
 
-Note, Swift on Linux does not support async/await concurrency. To this point, FaviconFinder has implemented it's inner workings using closures for Linux. As these re-implementations are wrapped in an `#if os(Linux)` statement, Linux users can use the same repo as their iOS/macOS counterparts, using the same logic.
+Note that Swift on Linux does not support async/await concurrency. To this point, FaviconFinder has implemented it's inner workings using closures for Linux. As these re-implementations are wrapped in an `#if os(Linux)` statement, Linux users can use the same repo as their iOS/macOS counterparts, using the same logic.
 
 Swift on Linux does not natively support image types, so the image is returned in the `data` property of `Favicon`.
 
