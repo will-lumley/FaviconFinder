@@ -19,14 +19,23 @@ extension URLResponse {
             return .utf8
         }
 
+        #if os(Linux)
         let nsString = rawName as NSString
-        let cfString = nsString as CFString
+        let cfString = nsString as! CFString
 
         let cfName = CFStringConvertIANACharSetNameToEncoding(cfString)
         let constant = CFStringConvertEncodingToNSStringEncoding(cfName)
 
         let encoded = String.Encoding(rawValue: constant)
         return encoded
+        #else
+        let cfName = CFStringConvertIANACharSetNameToEncoding(rawName as CFString)
+
+        let constant = CFStringConvertEncodingToNSStringEncoding(cfName)
+
+        let encoded = String.Encoding(rawValue: constant)
+        return encoded
+        #endif
     }
 
 }
