@@ -45,7 +45,7 @@ FaviconFinder uses simple syntax to allow you to easily download the favicon you
     }
 ```
 
-Note that Swift on Linux does not support async/await concurrency. To this point, FaviconFinder has implemented it's inner workings using closures for Linux. As these re-implementations are wrapped in an `#if os(Linux)` statement, Linux users can use the same repo as their iOS/macOS counterparts, using the same logic.
+Note that Swift on Linux does not support async/await concurrency. To this point, FaviconFinder has re-implemented it's inner workings using closures for Linux. As these re-implementations are wrapped in an `#if os(Linux)` statement, Linux users can use the same repo as their iOS/macOS counterparts, using the same logic.
 
 Swift on Linux does not natively support image types, so the image is returned in the `data` property of `Favicon`.
 
