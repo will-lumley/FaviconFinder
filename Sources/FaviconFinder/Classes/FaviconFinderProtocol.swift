@@ -36,7 +36,7 @@ protocol FaviconFinderProtocol {
     init(url: URL, preferredType: String?, checkForMetaRefreshRedirect: Bool, logEnabled: Bool)
 
     #if os(Linux)
-    func search(onSearchComplete: OnSearchComplete)
+    func search(onSearchComplete: @escaping OnSearchComplete)
     #else
     func search() async throws -> FaviconURL
     #endif
