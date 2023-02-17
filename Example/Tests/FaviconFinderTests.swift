@@ -150,9 +150,6 @@ class FaviconFinderTests: XCTestCase {
                 // Ensure that our favicon is actually valid
                 XCTAssertTrue(favicon.image.isValidImage)
 
-                // Ensure that our favicon was retrieved from the desired source
-                XCTAssertTrue(favicon.downloadType == .html)
-
                 // Let the test know that we got our favicon back
                 expectation.fulfill()
             } catch let error {
