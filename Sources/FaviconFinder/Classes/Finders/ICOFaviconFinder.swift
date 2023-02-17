@@ -49,7 +49,7 @@ class ICOFaviconFinder: FaviconFinderProtocol {
         DispatchQueue.global().async {
 
             // We have the URL, let's see if there's any valid image data here
-            if let data = try? Data(contentsOf: faviconUrl) {
+            if let _ = try? Data(contentsOf: faviconUrl) {
                 // We found valid image data, woohoo!
                 let faviconURL = FaviconURL(url: faviconUrl, type: .ico)
                 onSearchComplete(.success(faviconURL))
@@ -66,7 +66,7 @@ class ICOFaviconFinder: FaviconFinderProtocol {
                 }
 
                 // We created a URL without the subdomains, let's check if there's a valid image there
-                if try? Data(contentsOf: rootURL) != nil {
+                if let _ = try? Data(contentsOf: rootURL) {
                     // We found valid image data, woohoo!
                     let faviconURL = FaviconURL(url: rootURL, type: .ico)
                     onSearchComplete(.success(faviconURL))

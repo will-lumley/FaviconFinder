@@ -21,7 +21,9 @@ public typealias FaviconImage = UIImage
 #elseif os(Linux)
 import Foundation
 import FoundationNetworking
-public typealias FaviconImage = Data
+public struct FaviconImage {
+    public var data: Data = .init()
+}
 #endif
 
 public class FaviconFinder: NSObject {
@@ -207,13 +209,8 @@ private extension FaviconFinder {
                 return
             }
 
-            guard let image = FaviconImage(data: data) else {
-                onDownload(.failure(.invalidImage))
-                return
-            }
-
             let downloadType = FaviconDownloadType(type: type)
-            let favicon = Favicon(image: image, data: data, url: url, type: type, downloadType: downloadType)
+            let favicon = Favicon(image: FaviconImage(), data: data, url: url, type: type, downloadType: downloadType)
 
             onDownload(.success(favicon))
         }.resume()
