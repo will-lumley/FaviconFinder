@@ -7,6 +7,10 @@
 
 import Foundation
 
+#if os(Linux)
+import FoundationNetworking
+#endif
+
 #if canImport(SwiftSoup)
 import SwiftSoup
 #endif
