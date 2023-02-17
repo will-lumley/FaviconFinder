@@ -7,12 +7,27 @@
 
 import Foundation
 
+#if os(Linux)
+import FoundationNetworking
+#endif
+
 #if canImport(SwiftSoup)
 import SwiftSoup
 #endif
 
 class FaviconURLRequest {
 
+    // MARK: - Types
+
+    typealias OnComplete = (Result<(Data, URLResponse), FaviconError>) -> Void
+
+    // MARK: - URLRequest
+
+    #if os(Linux)
+    static func dataTask(with url: URL, checkForMetaRefreshRedirect: Bool = false, onComplete: OnComplete) {
+
+    }
+    #else
     static func dataTask(with url: URL, checkForMetaRefreshRedirect: Bool = false) async throws -> (Data, URLResponse) {
         let urlResponse = try await URLSession.shared.data(from: url)
 
@@ -81,6 +96,7 @@ class FaviconURLRequest {
             return (data, response)
         }
     }
+    #endif
 }
 
 // MARK: - SwiftSoup.Elements

@@ -48,6 +48,11 @@ class HTMLFaviconFinder: FaviconFinderProtocol {
         }
     }
 
+    #if os(Linux)
+    func search(onSearchComplete: FaviconFinderProtocol.OnSearchComplete) {
+
+    }
+    #else
     func search() async throws -> FaviconURL {
         // Download the web page at our URL
         let urlResponse = try await FaviconURLRequest.dataTask(with: self.url, checkForMetaRefreshRedirect: self.checkForMetaRefreshRedirect)
@@ -70,6 +75,7 @@ class HTMLFaviconFinder: FaviconFinderProtocol {
 
         return faviconURL
     }
+    #endif
 }
 
 // MARK: - Private Functions

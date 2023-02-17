@@ -33,6 +33,11 @@ class ICOFaviconFinder: FaviconFinderProtocol {
         }
     }
 
+    #if os(Linux)
+    func search(onSearchComplete: OnSearchComplete) {
+
+    }
+    #else
     func search() async throws -> FaviconURL {
         // If there's not, try the root instead.
         // Then, remove the RootICO finder and type.
@@ -68,5 +73,6 @@ class ICOFaviconFinder: FaviconFinderProtocol {
             }
         }
     }
+    #endif
 
 }

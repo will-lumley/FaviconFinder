@@ -17,9 +17,18 @@ public typealias FaviconImage = NSImage
 #elseif canImport(UIKit)
 import UIKit
 public typealias FaviconImage = UIImage
+
+#elseif os(Linux)
+import Foundation
+import FoundationNetworking
+public typealias FaviconImage = Data
 #endif
 
 public class FaviconFinder: NSObject {
+
+    // MARK: - Types
+
+    public typealias OnDownloadComplete = (Result<Favicon, FaviconError>) -> Void
 
     // MARK: - Properties
 
@@ -59,6 +68,15 @@ public class FaviconFinder: NSObject {
         self.logEnabled = logEnabled
     }
 
+    #if os(Linux)
+    /**
+     Begins the quest to find our Favicon
+     - parameter onCompletion: The closure that will be called when the image is found (or not found)
+    */
+    public func downloadFavicon(onDownloadComplete: OnDownloadComplete) {
+
+    }
+    #else
     /**
      Begins the quest to find our Favicon
      - parameter onCompletion: The closure that will be called when the image is found (or not found)
@@ -111,10 +129,20 @@ public class FaviconFinder: NSObject {
             return try await search(downloadType: currentDownloadType)
         }
     }
+    #endif
 }
 
 private extension FaviconFinder {
 
+    #if os(Linux)
+    /**
+     Downloads an image from the provided URL
+     - parameter url: The URL at which we assume an image is at
+     */
+    func downloadImage(at url: URL, type: FaviconType, onDownloadComplete: OnDownloadComplete) {
+
+    }
+    #else
     /**
      Downloads an image from the provided URL
      - parameter url: The URL at which we assume an image is at
@@ -131,5 +159,5 @@ private extension FaviconFinder {
         let downloadType = FaviconDownloadType(type: type)
         return Favicon(image: image, data: data, url: url, type: type, downloadType: downloadType)
     }
-
+    #endif
 }

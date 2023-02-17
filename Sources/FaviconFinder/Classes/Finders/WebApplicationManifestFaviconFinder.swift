@@ -44,6 +44,11 @@ class WebApplicationManifestFaviconFinder: FaviconFinderProtocol {
         }
     }
 
+    #if os(Linux)
+    func search(onSearchComplete: OnSearchComplete) {
+    
+    }
+    #else
     func search() async throws -> FaviconURL {
         // Download the web page at our URL
         let urlResponse = try await FaviconURLRequest.dataTask(with: self.url, checkForMetaRefreshRedirect: self.checkForMetaRefreshRedirect)
@@ -75,6 +80,7 @@ class WebApplicationManifestFaviconFinder: FaviconFinderProtocol {
         Logger.print(self.logEnabled, "Extracted favicon: \(faviconURL.url.absoluteString)")
         return faviconURL
     }
+    #endif
 
 }
 
@@ -170,6 +176,11 @@ private extension WebApplicationManifestFaviconFinder {
         return hrefUrl
     }
 
+    #if os(Linux)
+    func downloadManifestFile(from manifestURL: URL, onComplete: (_: Result<Dictionary<String, Any>, FaviconError>) -> Void) {
+
+    }
+    #else
     /**
      Fetches and parses the manifest file from the URL provided
      - parameter manifestURL: The URL that the manifest file is supposedly located at
@@ -198,6 +209,7 @@ private extension WebApplicationManifestFaviconFinder {
             throw FaviconError.failedToParseWebApplicationManifestFile
         }
     }
+    #endif
 
     /**
      Parses the provided manifest data for the favicon URL
