@@ -199,7 +199,7 @@ private extension FaviconFinder {
      */
     func downloadImage(at url: URL, type: FaviconType, onDownload: @escaping OnDownloadComplete) {
         URLSession.shared.dataTask(with: URLRequest(url: url)) { data, response, error in
-            guard error != nil else {
+            guard error == nil else {
                 onDownload(.failure(.failedToDownloadFavicon))
                 return
             }
