@@ -35,3 +35,6 @@ Carthage/Build
 #
 # Pods/
 .build/
+
+# VSCode
+.vscode/

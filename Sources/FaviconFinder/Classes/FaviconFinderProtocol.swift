@@ -9,6 +9,10 @@ import Foundation
 
 protocol FaviconFinderProtocol {
 
+    #if os(Linux)
+    typealias OnSearchComplete = (Result<FaviconURL, FaviconError>) -> Void
+    #endif
+
     /// The URL of the website we're querying the Favicon for
     var url: URL { get set }
 
@@ -30,7 +34,12 @@ protocol FaviconFinderProtocol {
     var logger: Logger? { get }
 
     init(url: URL, preferredType: String?, checkForMetaRefreshRedirect: Bool, logEnabled: Bool)
+
+    #if os(Linux)
+    func search(onSearchComplete: @escaping OnSearchComplete)
+    #else
     func search() async throws -> FaviconURL
+    #endif
 
 }
 

@@ -1,7 +1,6 @@
 ![FaviconFinder: Simple Favicon Finding](https://raw.githubusercontent.com/will-lumley/FaviconFinder/main/FaviconFinder.png)
 
 # FaviconFinder
-
 ![CI Status](https://github.com/will-lumley/FaviconFinder/actions/workflows/BuildTests.yml/badge.svg?branch=main)
 [![Version](https://img.shields.io/cocoapods/v/FaviconFinder.svg?style=flat)](https://cocoapods.org/pods/FaviconFinder)
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
@@ -44,6 +43,19 @@ FaviconFinder uses simple syntax to allow you to easily download the favicon you
     } catch let error {
         print("Error: \(error)")
     }
+```
+
+Note that Swift on Linux does not support async/await concurrency. To this point, FaviconFinder has re-implemented it's inner workings using closures for Linux. As these re-implementations are wrapped in an `#if os(Linux)` statement, Linux users can use the same repo as their iOS/macOS counterparts, using the same logic.
+
+Swift on Linux does not natively support image types, so the image is returned in the `data` property of `Favicon`.
+
+Here is an example of using FaviconFinder in Swift on Linux.
+
+```swift
+        let faviconFinder = FaviconFinder(url: url)
+        faviconFinder.downloadFavicon { result in
+            print("Result: \(result)")
+        }
 ```
 
 ## Advanced Usage
@@ -140,7 +152,7 @@ FaviconFinder is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod 'FaviconFinder', '4.1.0'
+pod 'FaviconFinder', '4.2.0'
 ```
 
 ### Carthage
@@ -148,7 +160,7 @@ FaviconFinder is also available through [Carthage](https://github.com/Carthage/C
 it, simply add the following line to your Cartfile:
 
 ```ruby
-github "will-lumley/FaviconFinder" == 4.1.0
+github "will-lumley/FaviconFinder" == 4.2.0
 ```
 
 ### Swift Package Manager
@@ -158,7 +170,7 @@ To install it, simply add the dependency to your Package.Swift file:
 ```swift
 ...
 dependencies: [
-    .package(url: "https://github.com/will-lumley/FaviconFinder.git", from: "4.1.0"),
+    .package(url: "https://github.com/will-lumley/FaviconFinder.git", from: "4.2.0"),
 ],
 targets: [
     .target( name: "YourTarget", dependencies: ["FaviconFinder"]),

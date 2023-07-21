@@ -17,9 +17,20 @@ public typealias FaviconImage = NSImage
 #elseif canImport(UIKit)
 import UIKit
 public typealias FaviconImage = UIImage
+
+#elseif os(Linux)
+import Foundation
+import FoundationNetworking
+public struct FaviconImage {
+    public var data: Data = .init()
+}
 #endif
 
 public class FaviconFinder: NSObject {
+
+    // MARK: - Types
+
+    public typealias OnDownloadComplete = (Result<Favicon, FaviconError>) -> Void
 
     // MARK: - Properties
 
@@ -59,12 +70,78 @@ public class FaviconFinder: NSObject {
         self.logEnabled = logEnabled
     }
 
+    #if os(Linux)
     /**
      Begins the quest to find our Favicon
      - parameter onCompletion: The closure that will be called when the image is found (or not found)
     */
     public func downloadFavicon() async throws -> Favicon {
+        try await withCheckedThrowingContinuation({ continuation in
+            // All of the download types available to us, and ones we'll fallback onto if this one fails.
+            // As each download type fails, we'll remove it from the list and try an alternative.
+            var allDownloadTypes = FaviconDownloadType.allTypes
 
+            // Get the users preferred download type, and remove the users preferred download type from our list of potential download types
+            var currentDownloadType = self.preferredType
+            allDownloadTypes.removeAll { $0 == currentDownloadType }
+
+            search(downloadType: currentDownloadType)
+
+            func search(downloadType: FaviconDownloadType) {
+                // Setup the download, and get it to search for the URL
+                let downloader = downloadType.downloader(
+                    url: self.url,
+                    preferredType: self.preferences[downloadType],
+                    checkForMetaRefreshRedirect: self.checkForMetaRefreshRedirect,
+                    logEnabled: self.logEnabled
+                )
+
+                downloader.search(onSearchComplete: { [unowned self] result in
+                    switch result {
+                    case .success(let faviconURL):
+                        // Yay! We successfully found a URL. Let's download the image
+                        self.downloadImage(at: faviconURL.url, type: faviconURL.type, onDownload: { result in
+                            switch result {
+                            case .success(let favicon):
+                                // We successfully downloaded the image. We won!
+                                continuation.resume(returning: favicon)
+
+                            case .failure:
+                                // We successfully found the URL, but failed to download the image. Let's try again.
+                                trySearchAgain()
+                            }
+                        })
+
+                    case .failure:
+                        // We couldn't find the URL. Let's try again.
+                        trySearchAgain()
+                    }
+                })
+            }
+
+            func trySearchAgain() {
+                guard let newDownloadType = allDownloadTypes.first else {
+                    // We have ran out of potential downloader types, and we never found the favicon. Game over.
+                    continuation.resume(throwing: FaviconError.failedToFindFavicon)
+                    return
+                }
+
+                // We couldn't find our favicon with that download type, so let's try the next type
+                // Get the users preferred download type, and remove the users preferred download type from our list of potential download types
+                currentDownloadType = newDownloadType
+                allDownloadTypes.removeAll { $0 == currentDownloadType }
+
+                // Try again, with a new download type
+                search(downloadType: currentDownloadType)
+            }
+        })
+    }
+    #else
+    /**
+     Begins the quest to find our Favicon
+     - parameter onCompletion: The closure that will be called when the image is found (or not found)
+    */
+    public func downloadFavicon() async throws -> Favicon {
         // All of the download types available to us, and ones we'll fallback onto if this one fails.
         // As each download type fails, we'll remove it from the list and try an alternative.
         var allDownloadTypes = FaviconDownloadType.allTypes
@@ -111,10 +188,35 @@ public class FaviconFinder: NSObject {
             return try await search(downloadType: currentDownloadType)
         }
     }
+    #endif
 }
 
 private extension FaviconFinder {
 
+    #if os(Linux)
+    /**
+     Downloads an image from the provided URL
+     - parameter url: The URL at which we assume an image is at
+     */
+    func downloadImage(at url: URL, type: FaviconType, onDownload: @escaping OnDownloadComplete) {
+        URLSession.shared.dataTask(with: URLRequest(url: url)) { data, response, error in
+            guard error == nil else {
+                onDownload(.failure(.failedToDownloadFavicon))
+                return
+            }
+
+            guard let data = data else {
+                onDownload(.failure(.emptyData))
+                return
+            }
+
+            let downloadType = FaviconDownloadType(type: type)
+            let favicon = Favicon(image: FaviconImage(), data: data, url: url, type: type, downloadType: downloadType)
+
+            onDownload(.success(favicon))
+        }.resume()
+    }
+    #else
     /**
      Downloads an image from the provided URL
      - parameter url: The URL at which we assume an image is at
@@ -131,5 +233,5 @@ private extension FaviconFinder {
         let downloadType = FaviconDownloadType(type: type)
         return Favicon(image: image, data: data, url: url, type: type, downloadType: downloadType)
     }
-
+    #endif
 }
