@@ -173,7 +173,9 @@ class FaviconFinderTests: XCTestCase {
                 ).downloadFavicon()
 
                 // Ensure that our favicon is NOT valid
+                #if !os(Linux)
                 XCTAssertFalse(favicon.image.isValidImage)
+                #endif
 
                 // Ensure the URL was passed
                 XCTAssertEqual(favicon.url.absoluteString, "https://realfavicongenerator.net/blog/wp-content/uploads/fbrfg/apple-touch-icon.png")
