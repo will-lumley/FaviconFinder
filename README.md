@@ -9,7 +9,7 @@
 [![License](https://img.shields.io/cocoapods/l/FaviconFinder.svg?style=flat)](https://cocoapods.org/pods/FaviconFinder)
 [![Twitter](https://img.shields.io/badge/twitter-@wlumley95-blue.svg?style=flat)](https://twitter.com/wlumley95)
 
-FaviconFinder is a small, pure Swift library designed for iOS and macOS applications that allows you to detect favicons used by a website.
+FaviconFinder is a small, pure Swift library designed for iOS, macOS and Linux applications that allows you to detect favicons used by a website.
 
 Why not just download the file that exists at `https://site.com/favicon.ico`? There are multiple places that a developer can place their favicon, not just at the root directory with the specific filename of `favicon.ico`. The favicon's address may be linked within the HTML header tags, or it may be within a web application manifest JSON file, or it could even be a file with a custom filename.
 
