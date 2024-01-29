@@ -200,7 +200,10 @@ private extension FaviconImage {
         return self.isValid
 
         #elseif canImport(UIKit)
-        return self.isValid
+        return self.cgImage != nil || self.ciImage != nil
+
+        #else // Linux and other non-Apple platforms
+        return true // We'll leave this hardcoded as we Linux doesn't have an "image" type
 
         #endif
     }
