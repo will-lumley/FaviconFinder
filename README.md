@@ -144,22 +144,6 @@ If you need to support older versions of iOS or macOS, version 3.3.0 of FaviconF
 
 ## Installation
 
-### Cocoapods
-FaviconFinder is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
-
-```ruby
-pod 'FaviconFinder', '4.3.0'
-```
-
-### Carthage
-FaviconFinder is also available through [Carthage](https://github.com/Carthage/Carthage). To install
-it, simply add the following line to your Cartfile:
-
-```ruby
-github "will-lumley/FaviconFinder" == 4.3.0
-```
-
 ### Swift Package Manager
 FaviconFinder is also available through [Swift Package Manager](https://github.com/apple/swift-package-manager). 
 To install it, simply add the dependency to your Package.Swift file:
