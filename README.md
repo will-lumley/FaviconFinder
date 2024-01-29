@@ -176,7 +176,7 @@ targets: [
 ```
 
 ### Cocoapods and Carthage
-RichEditor was previously available through CocoaPods and Carthage, however making the library available to all three Cocoapods, 
+FaviconFinder was previously available through CocoaPods and Carthage, however making the library available to all three Cocoapods, 
 Carthage, and SPM (and functional to all three) was becoming troublesome. This, combined with the fact that SPM has seen a serious
 up-tick in adoption & functionality, has led me to remove support for CocoaPods and Carthage.
 
