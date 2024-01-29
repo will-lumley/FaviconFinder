@@ -19,9 +19,5 @@ jobs:
       - name: Force Xcode 13.2.1
         run: sudo xcode-select -switch /Applications/Xcode_13.2.1.app
 
-      - name: Build Setup
-        run: >-
-          xcodebuild test
-          -workspace Example/FaviconFinder.xcworkspace
-          -scheme FaviconFinder-Example
-          -destination 'platform=macOS'
+      - name: Test
+        run: swift test

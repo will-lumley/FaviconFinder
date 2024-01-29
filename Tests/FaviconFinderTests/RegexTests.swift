@@ -6,9 +6,8 @@
 //  Copyright © 2019 William Lumley. All rights reserved.
 //
 
-import XCTest
-
 @testable import FaviconFinder
+import XCTest
 
 class RegexTests: XCTestCase {
     let plainWebsite = "google.com"

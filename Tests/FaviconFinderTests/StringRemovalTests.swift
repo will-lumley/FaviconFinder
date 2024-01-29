@@ -6,8 +6,8 @@
 //  Copyright © 2019 William Lumley. All rights reserved.
 //
 
-import XCTest
 import FaviconFinder
+import XCTest
 
 class StringRemovalTests: XCTestCase {
 
