@@ -2,11 +2,8 @@
 
 # FaviconFinder
 ![CI Status](https://github.com/will-lumley/FaviconFinder/actions/workflows/BuildTests.yml/badge.svg?branch=main)
-[![Version](https://img.shields.io/cocoapods/v/FaviconFinder.svg?style=flat)](https://cocoapods.org/pods/FaviconFinder)
-[![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![SPM Compatible](https://img.shields.io/badge/SPM-compatible-4BC51D.svg?style=flat)](https://github.com/apple/swift-package-manager)
 ![Swift 5.0](https://img.shields.io/badge/Swift-5.0-orange.svg)
-[![Platform](https://img.shields.io/cocoapods/p/FaviconFinder.svg?style=flat)](https://cocoapods.org/pods/FaviconFinder)
 [![License](https://img.shields.io/cocoapods/l/FaviconFinder.svg?style=flat)](https://cocoapods.org/pods/FaviconFinder)
 [![Twitter](https://img.shields.io/badge/twitter-@wlumley95-blue.svg?style=flat)](https://twitter.com/wlumley95)
 
@@ -147,22 +144,6 @@ If you need to support older versions of iOS or macOS, version 3.3.0 of FaviconF
 
 ## Installation
 
-### Cocoapods
-FaviconFinder is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
-
-```ruby
-pod 'FaviconFinder', '4.2.0'
-```
-
-### Carthage
-FaviconFinder is also available through [Carthage](https://github.com/Carthage/Carthage). To install
-it, simply add the following line to your Cartfile:
-
-```ruby
-github "will-lumley/FaviconFinder" == 4.2.0
-```
-
 ### Swift Package Manager
 FaviconFinder is also available through [Swift Package Manager](https://github.com/apple/swift-package-manager). 
 To install it, simply add the dependency to your Package.Swift file:
@@ -170,13 +151,19 @@ To install it, simply add the dependency to your Package.Swift file:
 ```swift
 ...
 dependencies: [
-    .package(url: "https://github.com/will-lumley/FaviconFinder.git", from: "4.2.0"),
+    .package(url: "https://github.com/will-lumley/FaviconFinder.git", from: "4.3.0"),
 ],
 targets: [
     .target( name: "YourTarget", dependencies: ["FaviconFinder"]),
 ]
 ...
 ```
+
+### Cocoapods and Carthage
+FaviconFinder was previously available through CocoaPods and Carthage, however making the library available to all three Cocoapods, 
+Carthage, and SPM (and functional to all three) was becoming troublesome. This, combined with the fact that SPM has seen a serious
+up-tick in adoption & functionality, has led me to remove support for CocoaPods and Carthage.
+
 ## Author
 
 [William Lumley](https://lumley.io/), will@lumley.io
