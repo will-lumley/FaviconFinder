@@ -1,6 +1,0 @@
-framework module FaviconFinder {
-  umbrella header "FaviconFinder-macOS-umbrella.h"
-
-  export *
-  module * { export * }
-}
