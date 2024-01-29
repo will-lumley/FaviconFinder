@@ -1,4 +1,4 @@
-name: Run Unit Tests
+name: Run Unit Tests on Linux
 
 on:
   push:
@@ -11,7 +11,7 @@ on:
 jobs:
   build:
     name: Build and Test
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2

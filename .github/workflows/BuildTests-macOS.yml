@@ -1,0 +1,20 @@
+name: Run Unit Tests on macOS
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Build and Test
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Test
+        run: swift test
