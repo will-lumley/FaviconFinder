@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Set Xcode version
-        run: sudo xcode-select -s /Applications/Xcode_15.0.app/Contents/Developer
+        run: sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
 
       - name: Setup Swift
         uses: fwal/setup-swift@v1
