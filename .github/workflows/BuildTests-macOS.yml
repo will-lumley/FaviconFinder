@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    name: Build and Test
+    name: Build and Test (macOS)
     runs-on: macos-latest
     steps:
       - name: Checkout
