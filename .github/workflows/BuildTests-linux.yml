@@ -1,4 +1,4 @@
-name: Run Unit Tests on Linux
+name: Unit Tests - Linux
 
 on:
   push:
