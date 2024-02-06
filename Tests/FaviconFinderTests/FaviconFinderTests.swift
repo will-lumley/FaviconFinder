@@ -54,32 +54,23 @@ class FaviconFinderTests: XCTestCase {
         waitForExpectations(timeout: 10.0, handler: nil)
     }
 
-    func testFaviconHtmlFind() {
-        let expectation = self.expectation(description: "HTML FaviconFind")
+    func testFaviconHtmlFind() async throws {
+        do {
+            let favicon = try await FaviconFinder(
+                url: self.realFaviconGeneratorUrl,
+                preferredType: .html,
+                preferences: [:],
+                logEnabled: true
+            ).downloadFavicon()
 
-        Task {
-            do {
-                let favicon = try await FaviconFinder(
-                    url: self.realFaviconGeneratorUrl,
-                    preferredType: .html,
-                    preferences: [:],
-                    logEnabled: true
-                ).downloadFavicon()
+            // Ensure that our favicon is actually valid
+            XCTAssertTrue(favicon.image.isValidImage)
 
-                // Ensure that our favicon is actually valid
-                XCTAssertTrue(favicon.image.isValidImage)
-
-                // Ensure that our favicon was retrieved from the desired source
-                XCTAssertTrue(favicon.downloadType == .html)
-
-                // Let the test know that we got our favicon back
-                expectation.fulfill()
-            } catch let error {
-                XCTAssert(false, "Failed to download favicon from HTML header: \(error.localizedDescription)")
-            }
+            // Ensure that our favicon was retrieved from the desired source
+            XCTAssertTrue(favicon.downloadType == .html)
+        } catch let error {
+            XCTAssert(false, "Failed to download favicon from HTML header: \(error.localizedDescription)")
         }
-
-        waitForExpectations(timeout: 10.0, handler: nil)
     }
 
     func testFaviconWebApplicationManifestFileFind() {

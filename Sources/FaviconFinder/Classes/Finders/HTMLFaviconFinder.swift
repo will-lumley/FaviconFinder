@@ -54,29 +54,36 @@ class HTMLFaviconFinder: FaviconFinderProtocol {
 
     #if os(Linux)
     func search(onSearchComplete: @escaping FaviconFinderProtocol.OnSearchComplete) {
+        let group = DispatchGroup.init()
+        group.enter()
+
         // Download the web page at our URL
         FaviconURLRequest.dataTask(
             with: self.url,
             checkForMetaRefreshRedirect: self.checkForMetaRefreshRedirect
         ) { data, response, error in
+            defer {
+                group.leave()
+            }
 
             // Make sure our data exists
             guard let data = data else {
-                self.logger?.print("Could NOT get favicon from url: \(self.url), Data was nil.")
+                print("Response: \(String(describing: response))")
+                self.logger?.print("*Could NOT get favicon from url: \(self.url), Data was nil.")
                 onSearchComplete(.failure(.emptyData))
                 return
             }
 
             // Make sure we can parse the response into a string
             guard let html = String(data: data, encoding: .utf8) else {
-                self.logger?.print("Could NOT get favicon from url: \(self.url), could not parse HTML.")
+                self.logger?.print("**Could NOT get favicon from url: \(self.url), could not parse HTML.")
                 onSearchComplete(.failure(.failedToParseHTML))
                 return
             }
 
             // Make sure we can find a favicon in our retrieved string (at this point we're assuming it's valid HTML)
             guard let faviconURL = self.faviconURL(from: html) else {
-                self.logger?.print("Could NOT get favicon from url: \(self.url), failed to parse favicon from HTML.")
+                self.logger?.print("***Could NOT get favicon from url: \(self.url), failed to parse favicon from HTML.")
                 onSearchComplete(.failure(.failedToDownloadFavicon))
                 return
             }
@@ -85,6 +92,8 @@ class HTMLFaviconFinder: FaviconFinderProtocol {
             Logger.print(self.logEnabled, "Extracted favicon: \(faviconURL.url.absoluteString)")
             onSearchComplete(.success(faviconURL))
         }
+
+        group.wait()
     }
     #else
     func search() async throws -> FaviconURL {
@@ -152,7 +161,7 @@ private extension HTMLFaviconFinder {
             self.logger?.print("Could NOT parse HTML due to error: \(error). HTML: \(htmlStr)")
             return nil
         }
-        
+
         // Iterate over every 'link' tag that's in the head document, and collect them
         for element in allLinks {
             do {
@@ -174,6 +183,7 @@ private extension HTMLFaviconFinder {
 
         // Extract the most preferrable icon, and return it's href as a URL object
         guard let mostPreferrableIcon = self.mostPreferrableIcon(icons: possibleIcons) else {
+            self.logger?.print("Could NOT find any preferrable icon.")
             return nil
         }
 
