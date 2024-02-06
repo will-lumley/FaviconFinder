@@ -1,12 +1,18 @@
 ![FaviconFinder: Simple Favicon Finding](https://raw.githubusercontent.com/will-lumley/FaviconFinder/main/FaviconFinder.png)
 
 # FaviconFinder
-![iOS - CI Status](https://github.com/will-lumley/FaviconFinder/actions/workflows/BuildTests-iOS.yml/badge.svg?branch=main)
-![macOS - CI Status](https://github.com/will-lumley/FaviconFinder/actions/workflows/BuildTests-linux.yml/badge.svg?branch=main)
-![Linux - CI Status](https://github.com/will-lumley/FaviconFinder/actions/workflows/BuildTests-macOS.yml/badge.svg?branch=main)
-[![SPM Compatible](https://img.shields.io/badge/SPM-compatible-4BC51D.svg?style=flat)](https://github.com/apple/swift-package-manager)
-![Swift 5.5](https://img.shields.io/badge/Swift-5.5-orange.svg)
-[![Twitter](https://img.shields.io/badge/twitter-@wlumley95-blue.svg?style=flat)](https://twitter.com/wlumley95)
+<p align="center">
+  <img src="https://github.com/will-lumley/FaviconFinder/actions/workflows/BuildTests-iOS.yml/badge.svg?branch=main" alt="iOS - CI Status">
+  <img src="https://github.com/will-lumley/FaviconFinder/actions/workflows/BuildTests-linux.yml/badge.svg?branch=main" alt="macOS - CI Status">
+  <img src="https://github.com/will-lumley/FaviconFinder/actions/workflows/BuildTests-macOS.yml/badge.svg?branch=main" alt="Linux - CI Status">
+</p>
+<p align="center">
+  <a href="https://github.com/apple/swift-package-manager"><img src="https://img.shields.io/badge/SPM-compatible-4BC51D.svg?style=flat" alt="SPM Compatible"></a>
+  <img src="https://img.shields.io/badge/Swift-5.5-orange.svg" alt="Swift 5.5">
+  <a href="https://twitter.com/wlumley95">
+    <img src="https://img.shields.io/badge/twitter-@wlumley95-blue.svg?style=flat" alt="Twitter">
+  </a>
+</p>
 
 FaviconFinder is a small, pure Swift library designed for iOS, macOS and Linux applications that allows you to detect favicons used by a website.
 
