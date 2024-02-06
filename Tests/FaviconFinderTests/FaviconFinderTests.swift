@@ -131,6 +131,7 @@ class FaviconFinderTests: XCTestCase {
         waitForExpectations(timeout: 10.0, handler: nil)
     }
 
+    #if !os(Linux)
     func testForeignEncoding() {
         let expectation = self.expectation(description: "Non-UTF8")
 
@@ -150,6 +151,7 @@ class FaviconFinderTests: XCTestCase {
 
         waitForExpectations(timeout: 10.0, handler: nil)
     }
+    #endif
 
     func testNoImageDownload() {
         let expectation = self.expectation(description: "No Image Download")
