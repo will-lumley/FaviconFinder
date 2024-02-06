@@ -73,7 +73,6 @@ public class FaviconFinder: NSObject {
     #if os(Linux)
     /**
      Begins the quest to find our Favicon
-     - parameter onCompletion: The closure that will be called when the image is found (or not found)
     */
     public func downloadFavicon() async throws -> Favicon {
         try await withCheckedThrowingContinuation({ continuation in
@@ -139,7 +138,6 @@ public class FaviconFinder: NSObject {
     #else
     /**
      Begins the quest to find our Favicon
-     - parameter onCompletion: The closure that will be called when the image is found (or not found)
     */
     public func downloadFavicon() async throws -> Favicon {
         // All of the download types available to us, and ones we'll fallback onto if this one fails.
