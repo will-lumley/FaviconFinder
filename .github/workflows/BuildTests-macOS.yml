@@ -1,4 +1,4 @@
-name: Run Unit Tests
+name: Unit Tests - macOS
 
 on:
   push:
@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    name: Build and Test
+    name: Build and Test (macOS)
     runs-on: macos-latest
     steps:
       - name: Checkout

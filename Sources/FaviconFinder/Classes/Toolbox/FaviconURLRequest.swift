@@ -25,7 +25,14 @@ class FaviconURLRequest {
 
     #if os(Linux)
     static func dataTask(with url: URL, checkForMetaRefreshRedirect: Bool = false, onComplete: @escaping OnComplete) {
-        URLSession.shared.dataTask(with: url) { data, urlResponse, error in
+        let group = DispatchGroup.init()
+        group.enter()
+
+        let dataTask = URLSession.shared.dataTask(with: url) { data, urlResponse, error in
+            defer {
+                group.leave()
+            }
+
             // If we're supposed to check for the meta-refresh-redirect,
             // parse the HTML and check for a meta-refresh-redirect
             if checkForMetaRefreshRedirect {
@@ -107,7 +114,10 @@ class FaviconURLRequest {
             else {
                 onComplete(data, urlResponse, error)
             }
-        }.resume()
+        }
+        dataTask.resume()
+
+        group.wait()
     }
     #else
     static func dataTask(with url: URL, checkForMetaRefreshRedirect: Bool = false) async throws -> (Data, URLResponse) {
