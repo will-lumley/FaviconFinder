@@ -13,6 +13,7 @@ class FaviconFinderTests: XCTestCase {
 
     let googleUrl = URL(string: "https://google.com")!
     let appleUrl  = URL(string: "https://apple.com")!
+    let w3SchoolsUrl = URL(string: "https://www.w3schools.com/")!
     let realFaviconGeneratorUrl = URL(string: "https://realfavicongenerator.net/blog/apple-touch-icon-the-good-the-bad-the-ugly/")!
     let webApplicationManifestUrl = URL(string: "https://googlechrome.github.io/samples/web-application-manifest/")!
     let metaRefreshRedirectUrl = URL(string: "https://www.sympy.org/")!
@@ -57,7 +58,7 @@ class FaviconFinderTests: XCTestCase {
     func testFaviconHtmlFind() async throws {
         do {
             let favicon = try await FaviconFinder(
-                url: self.realFaviconGeneratorUrl,
+                url: self.w3SchoolsUrl,
                 preferredType: .html,
                 preferences: [:],
                 logEnabled: true

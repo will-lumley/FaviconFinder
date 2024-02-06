@@ -68,22 +68,21 @@ class HTMLFaviconFinder: FaviconFinderProtocol {
 
             // Make sure our data exists
             guard let data = data else {
-                print("Response: \(String(describing: response))")
-                self.logger?.print("*Could NOT get favicon from url: \(self.url), Data was nil.")
+                self.logger?.print("Could NOT get favicon from url: \(self.url), Data was nil.")
                 onSearchComplete(.failure(.emptyData))
                 return
             }
 
             // Make sure we can parse the response into a string
             guard let html = String(data: data, encoding: .utf8) else {
-                self.logger?.print("**Could NOT get favicon from url: \(self.url), could not parse HTML.")
+                self.logger?.print("Could NOT get favicon from url: \(self.url), could not parse HTML.")
                 onSearchComplete(.failure(.failedToParseHTML))
                 return
             }
 
             // Make sure we can find a favicon in our retrieved string (at this point we're assuming it's valid HTML)
             guard let faviconURL = self.faviconURL(from: html) else {
-                self.logger?.print("***Could NOT get favicon from url: \(self.url), failed to parse favicon from HTML.")
+                self.logger?.print("Could NOT get favicon from url: \(self.url), failed to parse favicon from HTML.")
                 onSearchComplete(.failure(.failedToDownloadFavicon))
                 return
             }

@@ -25,7 +25,6 @@ class FaviconURLRequest {
 
     #if os(Linux)
     static func dataTask(with url: URL, checkForMetaRefreshRedirect: Bool = false, onComplete: @escaping OnComplete) {
-        print("Making request to URL: \(url)")
         let group = DispatchGroup.init()
         group.enter()
 
@@ -113,8 +112,6 @@ class FaviconURLRequest {
             }
             // We're not supposed to check for the meta-refresh-redirect, so just return the data
             else {
-                print("Data: \(data)")
-                print("Error: \(error)")
                 onComplete(data, urlResponse, error)
             }
         }
