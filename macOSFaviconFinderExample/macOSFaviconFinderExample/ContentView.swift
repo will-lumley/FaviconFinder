@@ -31,7 +31,7 @@ struct ContentView: View {
                     return
                 }
 
-                self.imageLoader.load(url: url)
+                Task { try await self.imageLoader.load(url: url) }
 
             }, label: {
                 Text("Download Favicon")
@@ -45,24 +45,26 @@ struct ContentView: View {
 final class ImageLoader: ObservableObject {
     @Published private(set) var image: NSImage? = nil
     
-    private var url: URL? = nil
-    
-    func load(url: URL) {
-        Task {
-            do {
-                let favicon = try await FaviconFinder(url: url, preferredType: .html, preferences: [
-                    FaviconDownloadType.html: FaviconType.appleTouchIcon.rawValue,
-                    FaviconDownloadType.ico: "favicon.ico"
-                ]).downloadFavicon()
-
-                DispatchQueue.main.async {
-                    self.image = favicon.image
-                }
-            } catch {
-                print(error)
-            }
+    func load(url: URL) async throws {
+        let favicon = try await FaviconFinder(
+            url: url,
+            configuration: .init(
+                preferredSource: .html,
+                preferences: [
+                    .html: FaviconFormatType.appleTouchIcon.rawValue,
+                    .ico: "favicon.ico"
+                ]
+            )
+        )
+            .fetchFaviconURLs()
+            .download()
+            .first
+        
+        DispatchQueue.main.async {
+            self.image = favicon?.image?.image
         }
     }
+    
 }
 
 #Preview {

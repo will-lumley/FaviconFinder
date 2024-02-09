@@ -10,10 +10,9 @@ import Foundation
 
 extension URL {
 
-    //TODO: Expand upon this
-    /**
-     A list of possible domain components that we recognise as TLDs
-     */
+    // TODO: Expand upon this
+
+    /// A list of possible domain components that we recognise as TLDs
     public var tlds: [String] {
         return [
             "com",
@@ -23,9 +22,7 @@ extension URL {
         ]
     }
     
-    /**
-     https://stackoverflow.com/questions/17101227/how-to-extract-and-remove-scheme-name-from-nsurl
-     */
+    /// https://stackoverflow.com/questions/17101227/how-to-extract-and-remove-scheme-name-from-nsurl
     public var absoluteStringWithoutScheme: String? {
         guard let scheme = self.scheme else {
             return nil
@@ -38,12 +35,9 @@ extension URL {
         return urlStr
     }
     
-    /**
-     Attempts to create a URL by removing the subdomains from self.
-     For example, emailer.netflix.com/foobar would be netflix.com
-     
-     - returns: Nil if removing the subdomains was not possible, otherwise the new URL is returned
-    */
+    /// Attempts to create a URL by removing the subdomains from self.
+    /// For example, emailer.netflix.com/foobar would be netflix.com
+    /// - Returns: Nil if removing the subdomains was not possible, otherwise the new URL is returned
     public var urlWithoutSubdomains: URL? {
         //Remove the scheme
         guard var urlStr = self.absoluteStringWithoutScheme else {

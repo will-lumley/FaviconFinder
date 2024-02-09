@@ -34,11 +34,11 @@ class Regex {
     }
 }
 
-//MARK: - Static Functions
+//MARK: - Public
 
 extension Regex {
 
-    public static func testForHttpsOrHttp(input: String) -> Bool {
+    static func testForHttpsOrHttp(input: String) -> Bool {
         let regex = Regex("^(http|https)://")
         return regex.test(input: input)
     }

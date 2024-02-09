@@ -91,9 +91,9 @@ Here's how you'd make that request:
             url: url, 
             preferredType: .html, 
             preferences: [
-                .html: FaviconType.appleTouchIcon.rawValue,
+                .html: FaviconFormatType.appleTouchIcon.rawValue,
                 .ico: "favicon.ico",
-                .webApplicationManifestFile: FaviconType.launcherIcon4x.rawValue
+                .webApplicationManifestFile: FaviconFormatType.launcherIcon4x.rawValue
             ]
         ).downloadFavicon()
 
@@ -122,9 +122,9 @@ If you would like FaviconFinder to fetch the favicon URL without also executing 
             url: url, 
             preferredType: .html, 
             preferences: [
-                .html: FaviconType.appleTouchIcon.rawValue,
+                .html: FaviconFormatType.appleTouchIcon.rawValue,
                 .ico: "favicon.ico",
-                .webApplicationManifestFile: FaviconType.launcherIcon4x.rawValue
+                .webApplicationManifestFile: FaviconFormatType.launcherIcon4x.rawValue
             ],
             downloadImage: false
         ).downloadFavicon()

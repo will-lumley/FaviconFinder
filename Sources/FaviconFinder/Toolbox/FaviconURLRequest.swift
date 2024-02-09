@@ -15,11 +15,26 @@ import FoundationNetworking
 import SwiftSoup
 #endif
 
+/// Why is having our own wrapper around `URLSession` necessary? Great question. Usually I'd be very against
+/// something like this, but I believe that in this use-case it's necessary for a number of reasons.
+///
+/// 1. Having all our Favicon download's come through this object allows for us to check for a meta-refresh redirect. `URLSession`
+/// doesn't check for meta-refresh redirect's so having it here allows for the caller to not worry about such logic.
+///
+/// 2. The `URLSession` that comes with Linux (ie. `FoundationNetworking`) doesn't support `async await`
+/// functionality, instead relying on archaic closures. Having this handled in `FaviconURLRequest` is neat so the
+/// caller doesn't have to worry about handling the two different types of `URLSession` calls.
+///
 class FaviconURLRequest {
 
     // MARK: - Types
 
     typealias OnComplete = (Data?, URLResponse?, Error?) -> Void
+
+    struct Response {
+        let data: Data
+        let response: URLResponse
+    }
 
     // MARK: - URLRequest
 
@@ -120,7 +135,7 @@ class FaviconURLRequest {
         group.wait()
     }
     #else
-    static func dataTask(with url: URL, checkForMetaRefreshRedirect: Bool = false) async throws -> (Data, URLResponse) {
+    static func dataTask(with url: URL, checkForMetaRefreshRedirect: Bool = false) async throws -> Response {
         let urlResponse = try await URLSession.shared.data(from: url)
 
         let data = urlResponse.0
@@ -129,7 +144,7 @@ class FaviconURLRequest {
         if checkForMetaRefreshRedirect {
             // Make sure we can parse the response into a string
             guard let htmlStr = String(data: data, encoding: response.encoding) else {
-                return (data, response)
+                return .init(data: data, response: response)
             }
 
             // Parse the string into a workable HTML object
@@ -137,13 +152,13 @@ class FaviconURLRequest {
 
             // Get the head of the HTML
             guard let head = html.head() else {
-                return (data, response)
+                return .init(data: data, response: response)
             }
 
             // Get all meta-refresh-redirect tag
             let httpEquivs = try head.getElementsByAttribute("http-equiv")
             guard let httpEquiv = try httpEquivs.whereAttr("http-equiv", equals: "refresh") else {
-                return (data, response)
+                return .init(data: data, response: response)
             }
 
             // Get the URL
@@ -159,10 +174,11 @@ class FaviconURLRequest {
             if brandNewURL {
                 // If we can't form a valid redirect URL, we'll just return the data from the original page
                 guard let redirectURL = URL(string: redirectURLStr) else {
-                    return (data, response)
+                    return .init(data: data, response: response)
                 }
 
-                return try await URLSession.shared.data(from: redirectURL)
+                let redirectResponse = try await URLSession.shared.data(from: redirectURL)
+                return .init(data: redirectResponse.0, response: redirectResponse.1)
             }
 
             // If this something we should append to our current URL
@@ -177,15 +193,16 @@ class FaviconURLRequest {
 
                 // If we can't form a valid redirect URL, we'll just return the data from the original page
                 guard let redirectURL = URL(string: redirectURLStr) else {
-                    return (data, response)
+                    return .init(data: data, response: response)
                 }
 
-                return try await URLSession.shared.data(from: redirectURL)
+                let redirectResponse = try await URLSession.shared.data(from: redirectURL)
+                return .init(data: redirectResponse.0, response: redirectResponse.1)
             }
         }
         // We're not supposed to check for the meta-refresh-redirect, so just return the data
         else {
-            return (data, response)
+            return .init(data: data, response: response)
         }
     }
     #endif

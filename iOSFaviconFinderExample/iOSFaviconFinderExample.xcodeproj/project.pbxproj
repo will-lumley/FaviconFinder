@@ -12,6 +12,9 @@
 		BE638D212B67614F00AA3E60 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE638D202B67614F00AA3E60 /* Assets.xcassets */; };
 		BE638D242B67614F00AA3E60 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE638D232B67614F00AA3E60 /* Preview Assets.xcassets */; };
 		BE638D2C2B6762F600AA3E60 /* FaviconFinder in Frameworks */ = {isa = PBXBuildFile; productRef = BE638D2B2B6762F600AA3E60 /* FaviconFinder */; };
+		BE947E7F2B7253BA008977BC /* FaviconFinder in Frameworks */ = {isa = PBXBuildFile; productRef = BE947E7E2B7253BA008977BC /* FaviconFinder */; };
+		BEBD27862B723C3C00C5128A /* FaviconFinder in Frameworks */ = {isa = PBXBuildFile; productRef = BEBD27852B723C3C00C5128A /* FaviconFinder */; };
+		BEBD27892B723C7300C5128A /* FaviconFinder in Frameworks */ = {isa = PBXBuildFile; productRef = BEBD27882B723C7300C5128A /* FaviconFinder */; };
 		BEF486702B676681000A1263 /* FaviconFinder in Frameworks */ = {isa = PBXBuildFile; productRef = BEF4866F2B676681000A1263 /* FaviconFinder */; };
 /* End PBXBuildFile section */
 
@@ -28,8 +31,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BEBD27862B723C3C00C5128A /* FaviconFinder in Frameworks */,
+				BE947E7F2B7253BA008977BC /* FaviconFinder in Frameworks */,
 				BE638D2C2B6762F600AA3E60 /* FaviconFinder in Frameworks */,
 				BEF486702B676681000A1263 /* FaviconFinder in Frameworks */,
+				BEBD27892B723C7300C5128A /* FaviconFinder in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,6 +96,9 @@
 			packageProductDependencies = (
 				BE638D2B2B6762F600AA3E60 /* FaviconFinder */,
 				BEF4866F2B676681000A1263 /* FaviconFinder */,
+				BEBD27852B723C3C00C5128A /* FaviconFinder */,
+				BEBD27882B723C7300C5128A /* FaviconFinder */,
+				BE947E7E2B7253BA008977BC /* FaviconFinder */,
 			);
 			productName = iOSFaviconFinderExample;
 			productReference = BE638D192B67614E00AA3E60 /* iOSFaviconFinderExample.app */;
@@ -120,7 +129,7 @@
 			);
 			mainGroup = BE638D102B67614E00AA3E60;
 			packageReferences = (
-				BEF4866E2B676681000A1263 /* XCLocalSwiftPackageReference ".." */,
+				BE947E7D2B7253BA008977BC /* XCLocalSwiftPackageReference ".." */,
 			);
 			productRefGroup = BE638D1A2B67614E00AA3E60 /* Products */;
 			projectDirPath = "";
@@ -357,7 +366,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		BEF4866E2B676681000A1263 /* XCLocalSwiftPackageReference ".." */ = {
+		BE947E7D2B7253BA008977BC /* XCLocalSwiftPackageReference ".." */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = ..;
 		};
@@ -365,6 +374,18 @@
 
 /* Begin XCSwiftPackageProductDependency section */
 		BE638D2B2B6762F600AA3E60 /* FaviconFinder */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FaviconFinder;
+		};
+		BE947E7E2B7253BA008977BC /* FaviconFinder */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FaviconFinder;
+		};
+		BEBD27852B723C3C00C5128A /* FaviconFinder */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FaviconFinder;
+		};
+		BEBD27882B723C7300C5128A /* FaviconFinder */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = FaviconFinder;
 		};

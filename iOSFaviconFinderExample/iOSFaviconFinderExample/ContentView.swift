@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ContentView: View {
 
-    @State var urlStr = "https://apple.com/au"
+    @State var urlStr = "https://mastodon.social/"
     @ObservedObject var imageLoader = ImageLoader()
 
     var body: some View {
@@ -33,8 +33,7 @@ struct ContentView: View {
                     return
                 }
 
-                self.imageLoader.load(url: url)
-
+                Task { try await self.imageLoader.load(url: url) }
             }, label: {
                 Text("Download Favicon")
             }).padding(50.0)
@@ -45,26 +44,29 @@ struct ContentView: View {
 }
 
 final class ImageLoader: ObservableObject {
+
     @Published private(set) var image: UIImage? = nil
     
-    private var url: URL? = nil
-    
-    func load(url: URL) {
-        Task {
-            do {
-                let favicon = try await FaviconFinder(url: url, preferredType: .html, preferences: [
-                    FaviconDownloadType.html: FaviconType.appleTouchIcon.rawValue,
-                    FaviconDownloadType.ico: "favicon.ico"
-                ]).downloadFavicon()
+    func load(url: URL) async throws {
+        let favicon = try await FaviconFinder(
+            url: url,
+            configuration: .init(
+                preferredSource: .html,
+                preferences: [
+                    .html: FaviconFormatType.appleTouchIcon.rawValue,
+                    .ico: "favicon.ico"
+                ]
+            )
+        )
+            .fetchFaviconURLs()
+            .download()
+            .first()
 
-                DispatchQueue.main.async {
-                    self.image = favicon.image
-                }
-            } catch {
-                print(error)
-            }
+        DispatchQueue.main.async {
+            self.image = favicon.image?.image
         }
     }
+
 }
 
 #Preview {
