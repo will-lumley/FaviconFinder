@@ -37,6 +37,7 @@ public struct FaviconImage {
 
     // MARK: - Lifecycle
 
+#if !os(Linux)
     init(data: Data) throws {
         guard let image = Image(data: data) else {
             throw FaviconError.invalidImage
@@ -45,9 +46,10 @@ public struct FaviconImage {
         self.data = data
         self.image = image
     }
-
+#endif
 }
 
+#if !os(Linux)
 extension FaviconImage {
 
     var size: CGFloat {
@@ -55,3 +57,4 @@ extension FaviconImage {
     }
 
 }
+#endif

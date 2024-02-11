@@ -26,7 +26,7 @@ public struct Favicon {
         self.url = url
 
         // Download the image from the URL provided, and store the data and image
-        let data = try await URLSession.shared.data(from: url.source).0
+        let data = try await FaviconURLSession.dataTask(with: url.source).data
         guard let image = try? FaviconImage(data: data) else {
             throw FaviconError.invalidImage
         }
