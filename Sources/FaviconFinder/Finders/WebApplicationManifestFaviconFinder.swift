@@ -6,10 +6,7 @@
 //
 
 import Foundation
-
-#if canImport(SwiftSoup)
 import SwiftSoup
-#endif
 
 class WebApplicationManifestFaviconFinder: FaviconFinderProtocol {
 
