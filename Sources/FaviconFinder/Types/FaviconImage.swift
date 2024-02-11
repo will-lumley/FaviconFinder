@@ -37,7 +37,16 @@ public struct FaviconImage {
 
     // MARK: - Lifecycle
 
-#if !os(Linux)
+#if os(Linux)
+    init(data: Data) throws {
+        guard let image = Image(data: data) else {
+            throw FaviconError.invalidImage
+        }
+
+        self.data = data
+        self.image = image
+    }
+#else
     init(data: Data) throws {
         guard let image = Image(data: data) else {
             throw FaviconError.invalidImage
