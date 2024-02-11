@@ -5,15 +5,12 @@
 //  Created by William Lumley on 5/3/2022.
 //
 
-import Foundation
-
 #if os(Linux)
 import FoundationNetworking
 #endif
 
-#if canImport(SwiftSoup)
+import Foundation
 import SwiftSoup
-#endif
 
 /// Why is having our own wrapper around `URLSession` necessary? Great question. Usually I'd be very against
 /// something like this, but I believe that in this use-case it's necessary for a number of reasons.
@@ -61,81 +58,145 @@ class FaviconURLSession {
 // MARK: - Private
 
 private extension FaviconURLSession {
+
 #if os(Linux)
+
     static func linuxDataTask(
         with url: URL,
         checkForMetaRefreshRedirect: Bool = false
     ) async throws -> Response {
-        let response = Response(try await URLSession.shared.data(from: url))
-        
-        let data = response.data
-        let rawResponse = response.rawResponse
-        
-        if checkForMetaRefreshRedirect {
-            // Make sure we can parse the response into a string
-            guard let htmlStr = String(data: data, encoding: rawResponse.encoding) else {
-                return response
-            }
-            
-            // Parse the string into a workable HTML object
-            let html = try SwiftSoup.parse(htmlStr)
-            
-            // Get the head of the HTML
-            guard let head = html.head() else {
-                return response
-            }
-            
-            // Get all meta-refresh-redirect tag
-            let httpEquivs = try head.getElementsByAttribute("http-equiv")
-            guard let httpEquiv = try httpEquivs.whereAttr("http-equiv", equals: "refresh") else {
-                return response
-            }
-            
-            // Get the URL
-            var redirectURLStr = try httpEquiv.attr("content")
-            
-            // Remove the 0;URL=
-            redirectURLStr = redirectURLStr.replacingOccurrences(of: "0;URL=", with: "")
-            
-            // Determine if this is a whole new URL, or something we should append to the current one
-            let brandNewURL = Regex.testForHttpsOrHttp(input: redirectURLStr)
-            
-            // If this is a brand new URL
-            if brandNewURL {
-                // If we can't form a valid redirect URL, we'll just return the data from the original page
-                guard let redirectURL = URL(string: redirectURLStr) else {
-                    return response
+                return try await withCheckedThrowingContinuation { continuation in
+            let group = DispatchGroup.init()
+            group.enter()
+
+            let urlRequest = URLRequest(url: url)
+            let dataTask = URLSession.shared.dataTask(with: urlRequest) { data, rawResponse, error in
+                defer {
+                    group.leave()
                 }
+
+                guard let data else {
+                    continuation.resume(throwing: FaviconError.failedToDownloadFavicon)
+                    return
+                }
+                guard let rawResponse else {
+                    continuation.resume(throwing: FaviconError.failedToDownloadFavicon)
+                    return
+                }
+
+                let response = Response((data, rawResponse))
                 
-                let redirectResponse = Response(try await URLSession.shared.data(from: redirectURL))
-                return redirectResponse
-            }
-            
-            // If this something we should append to our current URL
-            else {
-                let needsPrependingSlash = url.absoluteString.last != "/" && redirectURLStr.first != "/"
-                if needsPrependingSlash {
-                    redirectURLStr = "\(url.absoluteString)/\(redirectURLStr)"
+                if checkForMetaRefreshRedirect {
+                    // Make sure we can parse the response into a string
+                    guard let htmlStr = String(data: data, encoding: rawResponse.encoding) else {
+                        continuation.resume(returning: response)
+                        return
+                    }
+
+                    // Parse the string into a workable HTML object
+                    guard let html = try? SwiftSoup.parse(htmlStr) else {
+                        continuation.resume(returning: response)
+                        return
+                    }
+                    
+                    // Get the head of the HTML
+                    guard let head = html.head() else {
+                        continuation.resume(returning: response)
+                        return
+                    }
+                    
+                    // Get all meta-refresh-redirect tag
+                    guard let httpEquivs = try? head.getElementsByAttribute("http-equiv") else {
+                        continuation.resume(returning: response)
+                        return
+                    }
+                    guard let httpEquiv = try? httpEquivs.whereAttr("http-equiv", equals: "refresh") else {
+                        continuation.resume(returning: response)
+                        return
+                    }
+                    
+                    // Get the URL
+                    guard var redirectURLStr = try? httpEquiv.attr("content") else {
+                        continuation.resume(returning: response)
+                        return
+                    }
+                    
+                    // Remove the 0;URL=
+                    redirectURLStr = redirectURLStr.replacingOccurrences(of: "0;URL=", with: "")
+                    
+                    // Determine if this is a whole new URL, or something we should append to the current one
+                    let brandNewURL = Regex.testForHttpsOrHttp(input: redirectURLStr)
+                    
+                    // If this is a brand new URL
+                    if brandNewURL {
+                        // If we can't form a valid redirect URL, we'll just return the data from the original page
+                        guard let redirectURL = URL(string: redirectURLStr) else {
+                            continuation.resume(returning: response)
+                            return
+                        }
+
+                        URLSession.shared.dataTask(with: URLRequest(url: redirectURL)) { redirectData, redirectRawResponse, redirectError in
+                            guard let redirectData else {
+                                continuation.resume(throwing: FaviconError.failedToDownloadFavicon)
+                                return
+                            }
+                            guard let redirectRawResponse else {
+                                continuation.resume(throwing: FaviconError.failedToDownloadFavicon)
+                                return
+                            }
+
+                            let redirectResponse = Response((redirectData, redirectRawResponse))
+                            continuation.resume(returning: redirectResponse)
+                        }
+                        .resume()
+                    }
+                    
+                    // If this something we should append to our current URL
+                    else {
+                        let needsPrependingSlash = url.absoluteString.last != "/" && redirectURLStr.first != "/"
+                        if needsPrependingSlash {
+                            redirectURLStr = "\(url.absoluteString)/\(redirectURLStr)"
+                        }
+                        else {
+                            redirectURLStr = "\(url.absoluteString)\(redirectURLStr)"
+                        }
+                        
+                        // If we can't form a valid redirect URL, we'll just return the data from the original page
+                        guard let redirectURL = URL(string: redirectURLStr) else {
+                            continuation.resume(returning: response)
+                            return
+                        }
+                        
+                        URLSession.shared.dataTask(with: URLRequest(url: redirectURL)) { redirectData, redirectRawResponse, redirectError in
+                            guard let redirectData else {
+                                continuation.resume(throwing: FaviconError.failedToDownloadFavicon)
+                                return
+                            }
+                            guard let redirectRawResponse else {
+                                continuation.resume(throwing: FaviconError.failedToDownloadFavicon)
+                                return
+                            }
+
+                            let redirectResponse = Response((redirectData, redirectRawResponse))
+                            continuation.resume(returning: redirectResponse)
+                        }
+                        .resume()
+                    }
                 }
+                // We're not supposed to check for the meta-refresh-redirect, so just return the data
                 else {
-                    redirectURLStr = "\(url.absoluteString)\(redirectURLStr)"
+                    continuation.resume(returning: response)
+                    return
                 }
-                
-                // If we can't form a valid redirect URL, we'll just return the data from the original page
-                guard let redirectURL = URL(string: redirectURLStr) else {
-                    return response
-                }
-                
-                let redirectResponse = Response(try await URLSession.shared.data(from: redirectURL))
-                return redirectResponse
             }
-        }
-        // We're not supposed to check for the meta-refresh-redirect, so just return the data
-        else {
-            return response
+
+            dataTask.resume()
+            group.wait()
         }
     }
+
 #else
+
     static func appleDataTask(
         with url: URL,
         checkForMetaRefreshRedirect: Bool = false
