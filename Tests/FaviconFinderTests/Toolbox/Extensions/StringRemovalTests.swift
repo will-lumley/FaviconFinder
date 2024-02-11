@@ -10,14 +10,6 @@ import FaviconFinder
 import XCTest
 
 class StringRemovalTests: XCTestCase {
-
-    override func setUp() {
-        
-    }
-
-    override func tearDown() {
-        
-    }
     
     func testRemoveEverythingAfter() {
         var str = "abcdef1234"

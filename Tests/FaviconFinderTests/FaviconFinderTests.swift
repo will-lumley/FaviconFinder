@@ -11,197 +11,88 @@ import XCTest
 
 class FaviconFinderTests: XCTestCase {
 
-    let googleUrl = URL(string: "https://google.com")!
-    let appleUrl  = URL(string: "https://apple.com")!
-    let w3SchoolsUrl = URL(string: "https://www.w3schools.com/")!
-    let realFaviconGeneratorUrl = URL(string: "https://realfavicongenerator.net/blog/apple-touch-icon-the-good-the-bad-the-ugly/")!
-    let webApplicationManifestUrl = URL(string: "https://googlechrome.github.io/samples/web-application-manifest/")!
-    let metaRefreshRedirectUrl = URL(string: "https://www.sympy.org/")!
-    let nonUtf8EncodedWebsite = URL(string: "http://foodmate.net")!
+    // MARK: - Tests
 
-    override func setUp() {
+    func testIco() async throws {
+        let favicon = try await FaviconFinder(
+            url: .google,
+            configuration: .init(preferredSource: .ico)
+        )
+            .fetchFaviconURLs()
+            .download()
+            .first()
 
+        // Ensure that our favicon is actually valid
+        let image = try XCTUnwrap(favicon.image)
+        XCTAssertTrue(image.isValidImage)
+
+        // Ensure that our favicon was retrieved from the desired source
+        XCTAssertTrue(favicon.url.sourceType == .ico)
     }
 
-    override func tearDown() {
+    func testHtml() async throws {
+        let favicon = try await FaviconFinder(
+            url: .w3Schools,
+            configuration: .init(preferredSource: .html)
+        )
+            .fetchFaviconURLs()
+            .download()
+            .first()
 
+        // Ensure that our favicon is actually valid
+        let image = try XCTUnwrap(favicon.image)
+        XCTAssertTrue(image.isValidImage)
+
+        // Ensure that our favicon was retrieved from the desired source
+        XCTAssertTrue(favicon.url.sourceType == .html)
     }
 
-    func testFaviconIcoFind() {
-        let expectation = self.expectation(description: "Favicon.ico FaviconFind")
+    func testWebApplicationManifestFile() async throws {
+        let favicon = try await FaviconFinder(
+            url: .webApplicationManifest,
+            configuration: .init(preferredSource: .webApplicationManifestFile)
+        )
+            .fetchFaviconURLs()
+            .download()
+            .first()
 
-        Task {
-            do {
-                let favicon = try await FaviconFinder(
-                    url: self.googleUrl,
-                    preferredType: .ico,
-                    preferences: [:],
-                    logEnabled: true
-                ).downloadFavicon()
+        // Ensure that our favicon is actually valid
+        let image = try XCTUnwrap(favicon.image)
+        XCTAssertTrue(image.isValidImage)
 
-                // Ensure that our favicon is actually valid
-                XCTAssertTrue(favicon.image.isValidImage)
-
-                // Ensure that our favicon was retrieved from the desired source
-                XCTAssertTrue(favicon.downloadType == .ico)
-                
-                // Let the test know that we got our favicon back
-                expectation.fulfill()
-            } catch let error {
-                XCTAssert(false, "Failed to download favicon.ico file: \(error)")
-            }
-        }
-
-        waitForExpectations(timeout: 10.0, handler: nil)
+        // Ensure that our favicon was retrieved from the desired source
+        XCTAssertTrue(favicon.url.sourceType == .webApplicationManifestFile)
     }
 
-    func testFaviconHtmlFind() async throws {
-        do {
-            let favicon = try await FaviconFinder(
-                url: self.w3SchoolsUrl,
-                preferredType: .html,
-                preferences: [:],
-                logEnabled: true
-            ).downloadFavicon()
+    func testCheckForMetaRefreshRedirect() async throws {
+        let favicon = try await FaviconFinder(
+            url: .metaRefreshRedirect,
+            configuration: .init(
+                preferredSource: .html,
+                checkForMetaRefreshRedirect: true
+            )
+        )
+            .fetchFaviconURLs()
+            .download()
+            .first()
 
-            // Ensure that our favicon is actually valid
-            XCTAssertTrue(favicon.image.isValidImage)
+        // Ensure that our favicon is actually valid
+        let image = try XCTUnwrap(favicon.image)
+        XCTAssertTrue(image.isValidImage)
 
-            // Ensure that our favicon was retrieved from the desired source
-            XCTAssertTrue(favicon.downloadType == .html)
-        } catch let error {
-            XCTAssert(false, "Failed to download favicon from HTML header: \(error.localizedDescription)")
-        }
+        // Ensure that our favicon was retrieved from the desired source
+        XCTAssertTrue(favicon.url.sourceType == .html)
     }
 
-    func testFaviconWebApplicationManifestFileFind() {
-        let expectation = self.expectation(description: "WebApplicationManifestFile FaviconFind")
+    func testForeignEncoding() async throws {
+        let favicon = try await FaviconFinder(url: .nonUtf8Encoded)
+            .fetchFaviconURLs()
+            .download()
+            .first()
 
-        Task {
-            do {
-                let favicon = try await FaviconFinder(
-                    url: self.webApplicationManifestUrl,
-                    preferredType: .webApplicationManifestFile,
-                    preferences: [:],
-                    logEnabled: true
-                ).downloadFavicon()
-
-                // Ensure that our favicon is actually valid
-                XCTAssertTrue(favicon.image.isValidImage)
-
-                // Ensure that our favicon was retrieved from the desired source
-                XCTAssertTrue(favicon.downloadType == .webApplicationManifestFile)
-
-                // Let the test know that we got our favicon back
-                expectation.fulfill()
-            } catch let error {
-                XCTAssert(false, "Failed to download favicon from WebApplicationManifestFile header: \(error.localizedDescription)")
-            }
-        }
-
-        waitForExpectations(timeout: 5.0, handler: nil)
-    }
-
-    func testCheckForMetaRefreshRedirect() {
-        let expectation = self.expectation(description: "MetaRefreshRedirect HTML FaviconFind")
-
-        Task {
-            do {
-                let favicon = try await FaviconFinder(
-                    url: self.metaRefreshRedirectUrl,
-                    preferredType: .html,
-                    preferences: [:],
-                    checkForMetaRefreshRedirect: true,
-                    logEnabled: true
-                ).downloadFavicon()
-
-                // Ensure that our favicon is actually valid
-                XCTAssertTrue(favicon.image.isValidImage)
-
-                // Ensure that our favicon was retrieved from the desired source
-                XCTAssertTrue(favicon.downloadType == .html)
-
-                // Let the test know that we got our favicon back
-                expectation.fulfill()
-            } catch let error {
-                XCTAssert(false, "Failed to download favicon from WebApplicationManifestFile header: \(error.localizedDescription)")
-            }
-        }
-
-        waitForExpectations(timeout: 10.0, handler: nil)
-    }
-
-    #if !os(Linux)
-    func testForeignEncoding() {
-        let expectation = self.expectation(description: "Non-UTF8")
-
-        Task {
-            do {
-                let favicon = try await FaviconFinder(url: self.nonUtf8EncodedWebsite).downloadFavicon()
-
-                // Ensure that our favicon is actually valid
-                XCTAssertTrue(favicon.image.isValidImage)
-
-                // Let the test know that we got our favicon back
-                expectation.fulfill()
-            } catch let error {
-                XCTAssert(false, "Failed to download favicon from HTML header: \(error.localizedDescription)")
-            }
-        }
-
-        waitForExpectations(timeout: 10.0, handler: nil)
-    }
-    #endif
-
-    func testNoImageDownload() {
-        let expectation = self.expectation(description: "No Image Download")
-
-        Task {
-            do {
-                let favicon = try await FaviconFinder(
-                    url: self.realFaviconGeneratorUrl,
-                    preferredType: .html,
-                    preferences: [:],
-                    downloadImage: false,
-                    logEnabled: true
-                ).downloadFavicon()
-
-                // Ensure that our favicon is NOT valid
-                #if !os(Linux)
-                XCTAssertFalse(favicon.image.isValidImage)
-                #endif
-
-                // Ensure the URL was passed
-                XCTAssertEqual(favicon.url.absoluteString, "https://realfavicongenerator.net/blog/wp-content/uploads/fbrfg/apple-touch-icon.png")
-
-                // Let the test know that we got our favicon back
-                expectation.fulfill()
-            } catch let error {
-                XCTAssert(false, "Failed to download favicon from HTML header: \(error.localizedDescription)")
-            }
-        }
-
-        waitForExpectations(timeout: 10.0, handler: nil)
-    }
-
-}
-
-private extension FaviconImage {
-
-    var isValidImage: Bool {
-        #if targetEnvironment(macCatalyst)
-        return self.isValid
-
-        #elseif canImport(AppKit)
-        return self.isValid
-
-        #elseif canImport(UIKit)
-        return self.cgImage != nil || self.ciImage != nil
-
-        #else // Linux and other non-Apple platforms
-        return true // We'll leave this hardcoded as we Linux doesn't have an "image" type
-
-        #endif
+        // Ensure that our favicon is actually valid
+        let image = try XCTUnwrap(favicon.image)
+        XCTAssertTrue(image.isValidImage)
     }
 
 }

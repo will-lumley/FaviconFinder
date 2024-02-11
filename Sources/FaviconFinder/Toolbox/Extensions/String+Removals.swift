@@ -10,11 +10,9 @@ import Foundation
 
 extension String {
 
-    /**
-     Finds the first instance of the provided string occurences, and removes everything after it,
-     including the provided string itself
-     - parameter str: The string occurence which we're looking for
-     */
+    /// Finds the first instance of the provided string occurences, and removes everything after it,
+    /// including the provided string itself.
+    /// - Parameter str: The string occurence which we're looking for
     public mutating func removeEverythingAfter(str: String) {
         let nsString = NSString(string: self)
         

@@ -8,21 +8,16 @@
 
 import Foundation
 
-public enum FaviconDownloadType {
+public enum FaviconSourceType: CaseIterable {
     case html
     case ico
     case webApplicationManifestFile
-
-    static let allTypes: [FaviconDownloadType] = [
-        .html,
-        .ico
-    ]
 }
 
-internal extension FaviconDownloadType {
+extension FaviconSourceType {
 
-    init(type: FaviconType) {
-        switch type {
+    init(format: FaviconFormatType) { 
+        switch format {
         // ICO
         case .ico: self = .ico
 
@@ -33,7 +28,9 @@ internal extension FaviconDownloadType {
         case .icon:                      self = .html
 
         // Web Application Manifest File
+        case .launcherIcon0_75x: self = .webApplicationManifestFile
         case .launcherIcon1x: self = .webApplicationManifestFile
+        case .launcherIcon1_5x: self = .webApplicationManifestFile
         case .launcherIcon2x: self = .webApplicationManifestFile
         case .launcherIcon3x: self = .webApplicationManifestFile
         case .launcherIcon4x: self = .webApplicationManifestFile
@@ -42,35 +39,27 @@ internal extension FaviconDownloadType {
 
 }
 
-internal extension FaviconDownloadType {
+extension FaviconSourceType {
 
-    func downloader(
+    func finder(
         url: URL,
-        preferredType: String?,
-        checkForMetaRefreshRedirect: Bool,
-        logEnabled: Bool
+        configuration: FaviconFinder.Configuration
     ) -> FaviconFinderProtocol {
         switch self {
         case .ico:
             return ICOFaviconFinder(
                 url: url,
-                preferredType: preferredType,
-                checkForMetaRefreshRedirect: checkForMetaRefreshRedirect,
-                logEnabled: logEnabled
+                configuration: configuration
             )
         case .html:
             return HTMLFaviconFinder(
                 url: url,
-                preferredType: preferredType,
-                checkForMetaRefreshRedirect: checkForMetaRefreshRedirect,
-                logEnabled: logEnabled
+                configuration: configuration
             )
         case .webApplicationManifestFile:
             return WebApplicationManifestFaviconFinder(
                 url: url,
-                preferredType: preferredType,
-                checkForMetaRefreshRedirect: checkForMetaRefreshRedirect,
-                logEnabled: logEnabled
+                configuration: configuration
             )
         }
     }

@@ -10,18 +10,15 @@
 import XCTest
 
 class RegexTests: XCTestCase {
+
+    // MARK: - Properties
+
     let plainWebsite = "google.com"
     let httpWebsite  = "http://google.com"
     let httpsWebsite = "https://google.com"
     
-    override func setUp() {
-        
-    }
+    // MARK: - Tests
 
-    override func tearDown() {
-        
-    }
-    
     func testRegexTest() {
         let regex = Regex("go+gle")
         XCTAssert(regex.test(input: "goooooogle"))

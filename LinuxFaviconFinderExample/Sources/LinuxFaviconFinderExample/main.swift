@@ -10,7 +10,11 @@ struct swift {
         let url = URL(string: "https://www.w3schools.com")!
 
         do {
-            let favicon = try await FaviconFinder(url: url).downloadFavicon()
+            let favicon = try await FaviconFinder(url: url)
+                .fetchFaviconURLs()
+                .download()
+                .first
+
             print("Result: \(favicon)")
         } catch let error {
             print("Error: \(error)")
