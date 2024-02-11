@@ -17,6 +17,6 @@ public struct FaviconURL {
     /// The source type of the favicon we extracted
     public let sourceType: FaviconSourceType
 
-    /// If the size is from HTML and we've been told it's size, we'll store that data here
+    /// If the icon is from HTML/WAMF and we've been told it's size, we'll store that data here
     public let sizeTag: String?
 }
