@@ -61,7 +61,7 @@ class WebApplicationManifestFaviconFinder: FaviconFinderProtocol {
         guard let manifestFileReference = try self.manifestFileReference(from: head) else {
             throw FaviconError.failedToFindWebApplicationManifestFile
         }
-        
+
         // Download the manifest file
         let manifestData = try await self.downloadManifestFile(with: manifestFileReference)
 

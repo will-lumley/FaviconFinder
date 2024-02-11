@@ -65,16 +65,9 @@ private extension FaviconURLSession {
         with url: URL,
         checkForMetaRefreshRedirect: Bool = false
     ) async throws -> Response {
-                return try await withCheckedThrowingContinuation { continuation in
-            let group = DispatchGroup.init()
-            group.enter()
-
+        return try await withCheckedThrowingContinuation { continuation in
             let urlRequest = URLRequest(url: url)
             let dataTask = URLSession.shared.dataTask(with: urlRequest) { data, rawResponse, error in
-                defer {
-                    group.leave()
-                }
-
                 guard let data else {
                     continuation.resume(throwing: FaviconError.failedToDownloadFavicon)
                     return
@@ -191,7 +184,6 @@ private extension FaviconURLSession {
             }
 
             dataTask.resume()
-            group.wait()
         }
     }
 

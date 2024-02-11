@@ -13,7 +13,7 @@ class FaviconFinderTests: XCTestCase {
 
     // MARK: - Tests
 
-    func testFaviconIcoFind() async throws {
+    func testIco() async throws {
         let favicon = try await FaviconFinder(
             url: .google,
             configuration: .init(preferredSource: .ico)
@@ -30,7 +30,7 @@ class FaviconFinderTests: XCTestCase {
         XCTAssertTrue(favicon.url.sourceType == .ico)
     }
 
-    func testFaviconHtmlFind() async throws {
+    func testHtml() async throws {
         let favicon = try await FaviconFinder(
             url: .w3Schools,
             configuration: .init(preferredSource: .html)
@@ -47,7 +47,7 @@ class FaviconFinderTests: XCTestCase {
         XCTAssertTrue(favicon.url.sourceType == .html)
     }
 
-    func testFaviconWebApplicationManifestFileFind() async throws {
+    func testWebApplicationManifestFile() async throws {
         let favicon = try await FaviconFinder(
             url: .webApplicationManifest,
             configuration: .init(preferredSource: .webApplicationManifestFile)
@@ -84,7 +84,6 @@ class FaviconFinderTests: XCTestCase {
         XCTAssertTrue(favicon.url.sourceType == .html)
     }
 
-    #if !os(Linux)
     func testForeignEncoding() async throws {
         let favicon = try await FaviconFinder(url: .nonUtf8Encoded)
             .fetchFaviconURLs()
@@ -95,6 +94,5 @@ class FaviconFinderTests: XCTestCase {
         let image = try XCTUnwrap(favicon.image)
         XCTAssertTrue(image.isValidImage)
     }
-    #endif
 
 }
