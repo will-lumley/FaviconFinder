@@ -39,12 +39,8 @@ public struct FaviconImage {
 
 #if os(Linux)
     init(data: Data) throws {
-        guard let image = Image(data: data) else {
-            throw FaviconError.invalidImage
-        }
-
         self.data = data
-        self.image = image
+        self.image = Image()
     }
 #else
     init(data: Data) throws {
