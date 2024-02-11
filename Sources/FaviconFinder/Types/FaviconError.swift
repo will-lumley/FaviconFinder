@@ -22,6 +22,10 @@ public enum FaviconError: Error {
 
     case faviconImageIsNotDownloaded
 
+    case invalidWebApplicationManifestFileUrl
+    case failedToConvertUrlResponseToHttpUrlResponse
+    case webApplicationManifestFileConainedNoIcons
+
     case failedToFindWebApplicationManifestFile
     case failedToDownloadWebApplicationManifestFile
     case failedToParseWebApplicationManifestFile

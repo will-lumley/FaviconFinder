@@ -16,14 +16,6 @@ class URLParsingTests: XCTestCase {
     let appleAuUrl = URL(string: "https://apple.com/au")!
     let appleUrl   = URL(string: "https://apple.com")!
     
-    override func setUp() {
-
-    }
-
-    override func tearDown() {
-        
-    }
-    
     func testUrlWithoutSubdomains() {
         guard let strippedGmailUrl = self.gmailUrl.urlWithoutSubdomains else {
             XCTAssert(false, "\(self.gmailUrl) without subdomains returned nil.")

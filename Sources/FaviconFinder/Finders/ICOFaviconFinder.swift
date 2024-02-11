@@ -34,7 +34,7 @@ class ICOFaviconFinder: FaviconFinderProtocol {
         }
 
         // We have the URL, let's see if there's any valid image data here
-        let fullFaviconUrlData = try await FaviconURLRequest.dataTask(
+        let fullFaviconUrlData = try await FaviconURLSession.dataTask(
             with: faviconUrl,
             checkForMetaRefreshRedirect: self.configuration.checkForMetaRefreshRedirect
         ).data
@@ -55,7 +55,7 @@ class ICOFaviconFinder: FaviconFinderProtocol {
         }
 
         // We created a URL without the subdomains, let's check if there's a valid image there
-        let baseFaviconUrlData = try await FaviconURLRequest.dataTask(
+        let baseFaviconUrlData = try await FaviconURLSession.dataTask(
             with: faviconUrl,
             checkForMetaRefreshRedirect: self.configuration.checkForMetaRefreshRedirect
         ).data

@@ -15,7 +15,7 @@ class HTMLFaviconFinder: FaviconFinderProtocol {
     struct Reference {
         let rel: String
         let href: String
-        let sizes: String?
+        let sizeTag: String?
 
         let baseURL: URL
         let format: FaviconFormatType
@@ -39,13 +39,13 @@ class HTMLFaviconFinder: FaviconFinderProtocol {
     
     func find() async throws -> [FaviconURL] {
         // Download the web page at our URL
-        let urlResponse = try await FaviconURLRequest.dataTask(
+        let urlResponse = try await FaviconURLSession.dataTask(
             with: self.url,
             checkForMetaRefreshRedirect: self.configuration.checkForMetaRefreshRedirect
         )
 
         let data = urlResponse.data
-        let response = urlResponse.response
+        let response = urlResponse.rawResponse
         
         // Make sure we can parse the response into a string
         guard let htmlStr = String(data: data, encoding: response.encoding) else {
@@ -63,9 +63,8 @@ class HTMLFaviconFinder: FaviconFinderProtocol {
         // Get all the "link" favicon tags from our head
         let links = try self.links(from: head)
 
-        print("Links: \(links)")
         let faviconURLs = links.map {
-            FaviconURL(source: $0.baseURL, format: $0.format, sourceType: .html, sizeTag: $0.sizes)
+            FaviconURL(source: $0.baseURL, format: $0.format, sourceType: .html, sizeTag: $0.sizeTag)
         }
 
         return faviconURLs
@@ -91,7 +90,7 @@ private extension HTMLFaviconFinder {
         for link in try htmlHead.select("link") {
             let rel = try link.attr("rel")
             let href = try link.attr("href")
-            let sizes = try link.attr("sizes")
+            let sizeTag = try link.attr("sizes")
 
             // If this link's "rel" is something other than an accepted image format type, dismiss it
             guard (FaviconFormatType(rawValue: rel) != nil) else {
@@ -99,7 +98,7 @@ private extension HTMLFaviconFinder {
             }
 
             // Get the base URL from the href
-            guard let baseURL = self.baseUrl(from: htmlHead, with: href) else {
+            guard let baseURL = href.baseUrl(from: htmlHead, from: self.url) else {
                 continue
             }
 
@@ -113,7 +112,7 @@ private extension HTMLFaviconFinder {
                 .init(
                     rel: rel,
                     href: href,
-                    sizes: sizes,
+                    sizeTag: sizeTag,
                     baseURL: baseURL,
                     format: format
                 )
@@ -121,40 +120,6 @@ private extension HTMLFaviconFinder {
         }
 
         return links
-    }
-
-    /// Determines the URL that our favicon will come from with the provided `href`.
-    ///
-    /// If the provided `url` property of this class is relative, we will use the HTML Head given and
-    /// extrapolates the base URL from it.
-    ///
-    /// - Parameter head: The head element of the HTML we've extracted.
-    /// - Parameter href: The href of which this Favicon will come from.
-    /// - Returns: The URL that our Favicon will have come from if we use this href.
-    ///
-    func baseUrl(from head: Element, with href: String) -> URL? {
-        // If we don't have a http or https prepended to our href, prepend our base domain
-        // If we don't have a http or https prepended to our href, prepend our base domain
-        if Regex.testForHttpsOrHttp(input: href) == false {
-            let baseRef = {() -> URL in
-                // Try and get the base URL from a HTML tag if we can
-                if let baseRef = try? head.getElementsByTag("base").attr("href"), let baseRefUrl = URL(string: baseRef, relativeTo: self.url) {
-                    return baseRefUrl
-                }
-                
-                // We couldn't get the base URL from a HTML tag, so we'll use the base URL that we have on hand
-                else {
-                    return self.url
-                }
-            }
-
-            return URL(string: href, relativeTo: baseRef())
-        }
-        
-        // Our href is a proper URL, nevermind
-        else {
-            return URL(string: href)
-        }
     }
 
 }

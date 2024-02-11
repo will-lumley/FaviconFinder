@@ -28,7 +28,9 @@ extension FaviconSourceType {
         case .icon:                      self = .html
 
         // Web Application Manifest File
+        case .launcherIcon0_75x: self = .webApplicationManifestFile
         case .launcherIcon1x: self = .webApplicationManifestFile
+        case .launcherIcon1_5x: self = .webApplicationManifestFile
         case .launcherIcon2x: self = .webApplicationManifestFile
         case .launcherIcon3x: self = .webApplicationManifestFile
         case .launcherIcon4x: self = .webApplicationManifestFile

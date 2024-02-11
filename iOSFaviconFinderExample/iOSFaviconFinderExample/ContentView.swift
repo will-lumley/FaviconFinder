@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ContentView: View {
 
-    @State var urlStr = "https://mastodon.social/"
+    @State var urlStr = "https://googlechrome.github.io/samples/web-application-manifest"
     @ObservedObject var imageLoader = ImageLoader()
 
     var body: some View {
@@ -51,7 +51,7 @@ final class ImageLoader: ObservableObject {
         let favicon = try await FaviconFinder(
             url: url,
             configuration: .init(
-                preferredSource: .html,
+                preferredSource: .webApplicationManifestFile,
                 preferences: [
                     .html: FaviconFormatType.appleTouchIcon.rawValue,
                     .ico: "favicon.ico"
