@@ -8,7 +8,7 @@
 </p>
 <p align="center">
   <a href="https://github.com/apple/swift-package-manager"><img src="https://img.shields.io/badge/SPM-compatible-4BC51D.svg?style=flat" alt="SPM Compatible"></a>
-  <img src="https://img.shields.io/badge/Swift-5.5-orange.svg" alt="Swift 5.5">
+  <img src="https://img.shields.io/badge/Swift-5.9-orange.svg" alt="Swift 5.9">
   <a href="https://twitter.com/wlumley95">
     <img src="https://img.shields.io/badge/twitter-@wlumley95-blue.svg?style=flat" alt="Twitter">
   </a>
@@ -18,16 +18,15 @@ FaviconFinder is a small, pure Swift library designed for iOS, macOS and Linux a
 
 Why not just download the file that exists at `https://site.com/favicon.ico`? There are multiple places that a developer can place their favicon, not just at the root directory with the specific filename of `favicon.ico`. The favicon's address may be linked within the HTML header tags, or it may be within a web application manifest JSON file, or it could even be a file with a custom filename.
 
-FaviconFinder handles the dirty work for you and iterates through the numerous possible favicon locations, and simply delivers the image to you in a closure, once the image is found.
-
+FaviconFinder handles the dirty work for you and iterates through the numerous possible favicon locations, and simply delivers the image to you once found.
 
 FaviconFinder will:
 - [x] Detect the favicon in the root directory of the URL provided.
-- [x] Automatically check if the favicon is located within the root URL if the subdomain failed (Will check `https://site.com/favicon.ico` if `https://subdomain.site.com/favicon.ico` fails).
 - [x] Detect and parse the HTML at the URL for the declaration of the favicon.
 - [x] Resolve the favicon URL for you, even if it's a relative URL to the subdomain that you're querying.
 - [x] Allow you to prioritise which format of favicon you would like served.
 - [x] Detect and parse web application manifest JSON files for favicon locations.
+- [x] Automatically check if the favicon is located within the root URL if the subdomain failed (Will check `https://site.com/favicon.ico` if `https://subdomain.site.com/favicon.ico` fails).
 - [x] If you set `checkForMetaRefreshRedirect` to true, FaviconFinder will analyse the HTML for a meta refresh redirect tag. If such a tag is found, the URL in the tag is the URL that will be queried.
 
 To do:
@@ -35,34 +34,41 @@ To do:
 
 ## Usage
 
-FaviconFinder uses simple syntax to allow you to easily download the favicon you need, and get on with your project. Just insert this code into your project:
+FaviconFinder uses simple syntax to allow you to easily download the favicon you need, and get on with your project. Just insert this code into your project.
 ```swift
-    do {
-        let favicon = try await FaviconFinder(url: url).downloadFavicon()
+    let favicon = try await FaviconFinder(url: url)
+        .fetchFaviconURLs()
+        .download()
+        .largest()
 
-        print("URL of Favicon: \(favicon.url)")
-        DispatchQueue.main.async {
-            self.imageView.image = favicon.image
-        }
-    } catch let error {
-        print("Error: \(error)")
-    }
+    self.imageView.image = favicon.image
 ```
 
-Note that Swift on Linux does not support async/await concurrency. To this point, FaviconFinder has re-implemented it's inner workings using closures for Linux. As these re-implementations are wrapped in an `#if os(Linux)` statement, Linux users can use the same repo as their iOS/macOS counterparts, using the same logic.
+FaviconFinder will iterate through various sources of where the favicon might live, and will ensure that each source is inspected. Currently, the sources are:
+- As a file in the root directory of the URL.
+- Declared in the HTML header
+- Declared in the Web Application Manifest File
 
-Swift on Linux does not natively support image types, so the image is returned in the `data` property of `Favicon`.
+Once FaviconFinder has found all available favicons for a particular source, it will return an array of `FaviconURL`s.
+`FaviconURL` will contain the source URL for the image, and other metadata about the image that existed from where it pulled it from (ie. relevant HTML tags and such).
 
-Here is an example of using FaviconFinder in Swift on Linux.
+On the array of `FaviconURL`s, you can call `download()` which will download each `FaviconURL` and turn your array into an array of `Favicon`s.
+`Favicon` contains the image, its raw data, and the `FaviconURL` property.
 
-```swift
-        let faviconFinder = FaviconFinder(url: url)
-        faviconFinder.downloadFavicon { result in
-            print("Result: \(result)")
-        }
-```
+On the array of `Favicon`s, you can call:
 
-## Advanced Usage
+- `first()` if you don't care about the size of the favicon, you just want whichever
+- `largest()` if you want the largest favicon we found
+- `smallest()` if you want the smallest favicon we found
+
+FaviconFinder works with UIKit, SwiftUI, AppKit, and macOS Catalyst.
+
+FaviconFinder also supports Linux as a platform, and I have re-implemented parts of FaviconFinder to ensure that Linux is treated as a first-class platform.
+It's important to note that Swift on Linux doesn't natively support any `Image` format, so when you call download, the `data` itself is downloaded but there's no
+image type to cast the data to. Also dueo to this, `largest()` and `smallest()` aren't effective on Linux.
+
+
+## Advanced Usage & Configuration
 
 ### Preferential Downloading
 
@@ -78,7 +84,6 @@ Just like how you can specify which HTML favicon tag you'd prefer, you can set w
 
 Similarly, you can specify which JSON key you'd prefer when iterating through the web application manifest file. 
 
-
 For the `.ico` download type, you can request FaviconFinder searchs for a filename of your choosing.
 
 In addition, you can also let FaviconFinder know that you'd like the HTML of the website parsed and analysed for a meta-refresh-redirect tag, and query the new URL if found.
@@ -86,61 +91,68 @@ In addition, you can also let FaviconFinder know that you'd like the HTML of the
 Here's how you'd make that request:
 
 ```swift
-    do {
-        let favicon = try await FaviconFinder(
-            url: url, 
-            preferredType: .html, 
+    let favicon = try await FaviconFinder(
+        url: url,
+        configuration: .init(
+            preferredSource: .html,
             preferences: [
                 .html: FaviconFormatType.appleTouchIcon.rawValue,
                 .ico: "favicon.ico",
                 .webApplicationManifestFile: FaviconFormatType.launcherIcon4x.rawValue
             ]
-        ).downloadFavicon()
+        )
+    )
+        .fetchFaviconURLs()
+        .download()
+        .largest()
 
-        print("URL of Favicon: \(favicon.url)")
-        DispatchQueue.main.async {
-            self.imageView.image = favicon.image
-        }
-    } catch let error {
-        print("Error: \(error)")
-    }
+    self.imageView.image = favicon.image
 ```
 
 This allows you to control:
 - What type of download type FaviconFinder will use first
 - When iterating through each download type, what sub-type to look for. For the HTML download type, this allows you to prioritise different "rel" types. For the file.ico type, this allows you to choose the filename.
 
-If your desired download type doesn't exist for your URL (ie. you requested the favicon that exists as a file but there's no file), FaviconFinder will automatically try all other methods of favicon storage for you. 
+If your desired download type doesn't exist for your URL (ie. you requested the favicon that exists as a file but there's no file), FaviconFinder will automatically try all other methods of favicon storage for you.
 
-### Fetching without Downloading
+### Meta-Refresh Redirects
 
-If you would like FaviconFinder to fetch the favicon URL without also executing an image download, you can do so with the following parameter:
+When a site is moved from oldsite.com to newsite.com, it's common practice to have oldsite.com respond with a HTTP 301 Redirect, along with a URL to redirect to.
+In this example, `URLSession` (and by extension most libraries that fetch favicons) will natively re-request newsite.com once the HTTP 301 redirect is received.
+
+However there is a lesser-practiced (and frankly inferior) method of redirecting - and it's called the meta-refresh redirect.
+
+This is similar to the HTTP 301 Redirect, except it occurs in the front-end and the browser is expected to read & parse the HTML and send the user to the new URL that way.
+When `URLSession` encounters a HTTP request that points to a HTML file that contains a meta-refresh redirect, nothing happens.
+
+However with `FaviconFinder` you're in luck. If you set it to do so within the configuration, `FaviconFinder` will scan the HTML at the URL you provide it for any meta-refresh redirects to make sure that if a 
+meta-refresh redirect is encountered, you don't have to worry about it.
+
+It's important to note however that parsing and checking for this can take extra compute time, so by default it's set to off.
+
+Here is how you would use it.
 
 ```swift
-    do {
-        let favicon = try await FaviconFinder(
-            url: url, 
-            preferredType: .html, 
+    let favicon = try await FaviconFinder(
+        url: url,
+        configuration: .init(
+            preferredSource: .html,
             preferences: [
                 .html: FaviconFormatType.appleTouchIcon.rawValue,
                 .ico: "favicon.ico",
                 .webApplicationManifestFile: FaviconFormatType.launcherIcon4x.rawValue
             ],
-            downloadImage: false
-        ).downloadFavicon()
+            checkForMetaRefreshRedirect: true
+        )
+    )
+        .fetchFaviconURLs()
+        .download()
+        .largest()
 
-        print("URL of Favicon: \(favicon.url)")
-        DispatchQueue.main.async {
-            self.imageView.image = favicon.image
-        }
-    } catch let error {
-        print("Error: \(error)")
-    }
+    self.imageView.image = favicon.image
 ```
 
-When the parameter `downloadImage` is set to false, an image download will not occur and only the URL will be returned (wrapped in a Favicon struct).
-
-## Example Project
+## Example Projects
 
 To run the example project, clone the repo, and open the example Xcode Project in either the `iOSFaviconFinderExample`, or `macOSFaviconFinderExample`, depending on your build target.
 
@@ -160,7 +172,7 @@ To install it, simply add the dependency to your Package.Swift file:
 ```swift
 ...
 dependencies: [
-    .package(url: "https://github.com/will-lumley/FaviconFinder.git", from: "4.5.0"),
+    .package(url: "https://github.com/will-lumley/FaviconFinder.git", from: "5.0.0"),
 ],
 targets: [
     .target( name: "YourTarget", dependencies: ["FaviconFinder"]),
