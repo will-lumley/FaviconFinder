@@ -124,10 +124,9 @@ private extension WebApplicationManifestFaviconFinder {
     /// - Returns: A dictionary containing the key/value data contained in the manifest file
     ///
     func downloadManifestFile(with reference: ManifestFileReference) async throws -> Dictionary<String, Any> {
-        let response = try await URLSession.shared.data(from: reference.baseURL)
-
+        let response = try await FaviconURLSession.dataTask(with: reference.baseURL)
         do {
-            guard let manifestData = try JSONSerialization.jsonObject(with: response.0, options: .allowFragments) as? [String: Any] else {
+            guard let manifestData = try JSONSerialization.jsonObject(with: response.data, options: .allowFragments) as? [String: Any] else {
                 throw FaviconError.failedToDownloadWebApplicationManifestFile
             }
 
