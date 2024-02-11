@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct FaviconURL: Sendable {
+public struct FaviconURL {
     /// The url of the .ico or HTML page, of where the favicon was found
     public let source: URL
 
