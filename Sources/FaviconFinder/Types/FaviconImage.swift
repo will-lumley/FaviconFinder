@@ -49,12 +49,15 @@ public struct FaviconImage {
 #endif
 }
 
-#if !os(Linux)
 extension FaviconImage {
 
+#if os(Linux)
+    var size: CGFloat {
+        return CGFloat(0)
+    }
+#else
     var size: CGFloat {
         return self.image.size.width * self.image.size.height
     }
-
-}
 #endif
+}
