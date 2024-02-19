@@ -8,7 +8,7 @@
 </p>
 <p align="center">
   <a href="https://github.com/apple/swift-package-manager"><img src="https://img.shields.io/badge/SPM-compatible-4BC51D.svg?style=flat" alt="SPM Compatible"></a>
-  <img src="https://img.shields.io/badge/Swift-5.9-orange.svg" alt="Swift 5.9">
+  <img src="https://img.shields.io/badge/Swift-5.5-orange.svg" alt="Swift 5.5">
   <a href="https://twitter.com/wlumley95">
     <img src="https://img.shields.io/badge/twitter-@wlumley95-blue.svg?style=flat" alt="Twitter">
   </a>
