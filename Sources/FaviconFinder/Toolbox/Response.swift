@@ -8,7 +8,10 @@
 import Foundation
 
 #if os(Linux)
-
+import AsyncHTTPClient
+import FoundationNetworking
+import NIOCore
+import NIOHTTP1
 #endif
 
 struct Response {
@@ -20,21 +23,34 @@ struct Response {
 
     // MARK: - Lifecycle
     
+#if os(Linux)
+
+    init(_ rawResponse: (Data, HTTPHeaders)) {
+        self.data = rawResponse.0
+        
+        let responseHeaders = rawResponse.1
+        guard let contentType = responseHeaders["content-type"].first else {
+            self.textEncoding = .utf8
+            return
+        }
+
+        guard let range = contentType.range(of: "charset=") else {
+            self.textEncoding = .utf8
+            return
+        }
+        
+        let rawCharset = contentType[range.upperBound...]
+        self.textEncoding = String(rawCharset).encoding
+    }
+
+#else
+
     init(_ rawResponse: (Data, URLResponse)) {
         self.data = rawResponse.0
         self.textEncoding = rawResponse.1.encoding
     }
 
-    #if os(Linux)
-    init(data: Data, httpHeaders: HTTPHeaders) {
-        self.data = data
-        
-        let charset = self.responseHeaders["charset"]
-        fatalError("Charset: \(charset)")
-    }
-    #else
-    
-    #endif
+#endif
 
 }
 

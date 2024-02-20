@@ -7,6 +7,8 @@
 
 import Foundation
 
+#if !os(Linux)
+
 extension URLResponse {
 
     var encoding: String.Encoding {
@@ -14,17 +16,14 @@ extension URLResponse {
             return .utf8
         }
 
-        #if os(Linux)
-        return rawName.encoding
-        #else
         let cfName = CFStringConvertIANACharSetNameToEncoding(rawName as CFString)
 
         let constant = CFStringConvertEncodingToNSStringEncoding(cfName)
 
         let encoded = String.Encoding(rawValue: constant)
         return encoded
-        #endif
     }
 
 }
 
+#endif

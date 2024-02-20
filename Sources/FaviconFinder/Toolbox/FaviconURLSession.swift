@@ -7,6 +7,10 @@
 
 #if os(Linux)
 import AsyncHTTPClient
+import FoundationNetworking
+import NIOCore
+import NIOHTTP1
+import NIOFoundationCompat
 #endif
 
 import Foundation
@@ -56,11 +60,10 @@ private extension FaviconURLSession {
         let response = Response(try await URLSession.shared.data(from: url))
 
         let data = response.data
-        let rawResponse = response.rawResponse
 
         if checkForMetaRefreshRedirect {
             // Make sure we can parse the response into a string
-            guard let htmlStr = String(data: data, encoding: rawResponse.encoding) else {
+            guard let htmlStr = String(data: data, encoding: response.textEncoding) else {
                 return response
             }
             
@@ -121,7 +124,6 @@ private extension FaviconURLSession {
         else {
             return response
         }
-
     }
     
     #else
@@ -208,22 +210,18 @@ private extension FaviconURLSession {
 #if os(Linux)
 private extension URLSession {
 
-    func data(from url: URL) -> (Data, HTTPHeaders) {
+    func data(from url: URL) async throws -> (Data, HTTPHeaders) {
         let httpClient = HTTPClient(eventLoopGroupProvider: .singleton)
-        do {
-            var request = HTTPClientRequest(url: url)
-            let response = try await httpClient.execute(request, timeout: .seconds(30))
-            if response.status == .ok {
-                // handle response
-            } else {
-                // handle remote error
-            }
-        } catch {
-            // handle error
-        }
+        
+        let request = HTTPClientRequest(url: url.absoluteString)
+        
+        let response = try await httpClient.execute(request, timeout: .seconds(30))
+        let byteBuffer = try await response.body.collect(upTo: Int.max)
+        let data = Data(buffer: byteBuffer)
 
-        // It's important to shutdown the httpClient after all requests are done, even if one failed
-        try await httpClient.shutdown()    
+        try await httpClient.shutdown()
+
+        return (data, response.headers)
     }
 
 }
