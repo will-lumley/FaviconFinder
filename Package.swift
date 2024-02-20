@@ -11,10 +11,22 @@ let dependencies: [PackageDescription.Package.Dependency] = [
     // SwiftSoup is used to parse the HTML tree
     .package(url: "https://github.com/scinfu/SwiftSoup.git", from: "2.3.7")
 ]
+
+let targetDependencies: [Target.Dependency] = [
+    "SwiftSoup",
+    .product(name: "AsyncHTTPClient", package: "async-http-client")
+]
+
 #else
 let dependencies: [PackageDescription.Package.Dependency] = [
+    .package(url: "https://github.com/swift-server/async-http-client.git", from: "1.9.0"),
     // SwiftSoup is used to parse the HTML tree
     .package(url: "https://github.com/scinfu/SwiftSoup.git", from: "2.3.7")
+]
+
+let targetDependencies: [Target.Dependency] = [
+    "SwiftSoup",
+    .product(name: "AsyncHTTPClient", package: "async-http-client")
 ]
 #endif
 
@@ -33,11 +45,9 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages which this package depends on.
         .target(
             name: "FaviconFinder",
-            dependencies: [
-                "SwiftSoup",
-                .product(name: "AsyncHTTPClient", package: "async-http-client")
-            ]
+            dependencies: targetDependencies
         ),
+
         .testTarget(name: "FaviconFinderTests", dependencies: ["FaviconFinder"]),
     ]
 )

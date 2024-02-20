@@ -1,16 +1,40 @@
+//
+//  Response.swift
+//  FaviconFinder
+//
+//  Created by William Lumley on 20/2/2024.
+//
+
 import Foundation
 
-struct LinuxResponse {
+#if os(Linux)
+
+#endif
+
+struct Response {
+
+    // MARK: - Properties
+
     let data: Data
-    let responseHeaders: HTTPHeaders
-}
+    let textEncoding: String.Encoding
 
-extension LinuxResponse {
-
-    var encoding: String.Encoding {
-        let charset = self.responseHeaders["charset"]
-        fatalError("CharSet: \(charset)")
+    // MARK: - Lifecycle
+    
+    init(_ rawResponse: (Data, URLResponse)) {
+        self.data = rawResponse.0
+        self.textEncoding = rawResponse.1.encoding
     }
+
+    #if os(Linux)
+    init(data: Data, httpHeaders: HTTPHeaders) {
+        self.data = data
+        
+        let charset = self.responseHeaders["charset"]
+        fatalError("Charset: \(charset)")
+    }
+    #else
+    
+    #endif
 
 }
 

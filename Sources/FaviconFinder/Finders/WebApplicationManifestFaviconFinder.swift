@@ -42,10 +42,9 @@ class WebApplicationManifestFaviconFinder: FaviconFinderProtocol {
         )
 
         let data = response.data
-        let rawResponse = response.rawResponse
 
         // Make sure we can parse the response into a string
-        guard let htmlStr = String(data: data, encoding: rawResponse.encoding) else {
+        guard let htmlStr = String(data: data, encoding: response.textEncoding) else {
             throw FaviconError.failedToParseHTML
         }
 

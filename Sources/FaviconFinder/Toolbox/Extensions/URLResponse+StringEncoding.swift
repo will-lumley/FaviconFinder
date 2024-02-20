@@ -1,16 +1,11 @@
 //
 //  URLRequest+StringEncoding.swift
-//  Pods
+//  FaviconFinder
 //
 //  Created by William Lumley on 8/7/2022.
 //
 
 import Foundation
-
-#if os(Linux)
-import CoreFoundation
-import FoundationNetworking
-#endif
 
 extension URLResponse {
 
