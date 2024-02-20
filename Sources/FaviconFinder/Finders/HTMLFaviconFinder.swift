@@ -39,16 +39,15 @@ class HTMLFaviconFinder: FaviconFinderProtocol {
     
     func find() async throws -> [FaviconURL] {
         // Download the web page at our URL
-        let urlResponse = try await FaviconURLSession.dataTask(
+        let response = try await FaviconURLSession.dataTask(
             with: self.url,
             checkForMetaRefreshRedirect: self.configuration.checkForMetaRefreshRedirect
         )
 
-        let data = urlResponse.data
-        let response = urlResponse.rawResponse
-        
+        let data = response.data
+
         // Make sure we can parse the response into a string
-        guard let htmlStr = String(data: data, encoding: response.encoding) else {
+        guard let htmlStr = String(data: data, encoding: response.textEncoding) else {
             throw FaviconError.failedToParseHTML
         }
 
