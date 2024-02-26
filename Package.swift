@@ -19,14 +19,12 @@ let targetDependencies: [Target.Dependency] = [
 
 #else
 let dependencies: [PackageDescription.Package.Dependency] = [
-    .package(url: "https://github.com/swift-server/async-http-client.git", from: "1.9.0"),
     // SwiftSoup is used to parse the HTML tree
     .package(url: "https://github.com/scinfu/SwiftSoup.git", from: "2.3.7")
 ]
 
 let targetDependencies: [Target.Dependency] = [
     "SwiftSoup",
-    .product(name: "AsyncHTTPClient", package: "async-http-client")
 ]
 #endif
 
