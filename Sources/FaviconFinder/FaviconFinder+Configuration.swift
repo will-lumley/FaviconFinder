@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftSoup
 
 public extension FaviconFinder {
 
@@ -22,16 +23,20 @@ public extension FaviconFinder {
         /// Indicates if we should check for a meta-refresh-redirect tag in the HTML header
         public let checkForMetaRefreshRedirect: Bool
 
+        public let prefetchedHTML: Document?
+
         // MARK: - Lifecycle
 
         public init(
             preferredSource: FaviconSourceType = .html,
             preferences: [FaviconSourceType : String] = [:],
-            checkForMetaRefreshRedirect: Bool = false
+            checkForMetaRefreshRedirect: Bool = false,
+            prefetchedHTML: Document? = nil
         ) {
             self.preferredSource = preferredSource
             self.preferences = preferences
             self.checkForMetaRefreshRedirect = checkForMetaRefreshRedirect
+            self.prefetchedHTML = prefetchedHTML
         }
     }
 

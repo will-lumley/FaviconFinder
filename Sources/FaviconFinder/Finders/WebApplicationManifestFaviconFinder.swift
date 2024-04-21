@@ -35,21 +35,27 @@ class WebApplicationManifestFaviconFinder: FaviconFinderProtocol {
     }
 
     func find() async throws -> [FaviconURL] {
-        // Download the web page at our URL
-        let response = try await FaviconURLSession.dataTask(
-            with: self.url,
-            checkForMetaRefreshRedirect: self.configuration.checkForMetaRefreshRedirect
-        )
+        let html: Document
 
-        let data = response.data
+        if let prefetchedHTML = configuration.prefetchedHTML {
+            html = prefetchedHTML
+        } else {
+            // Download the web page at our URL
+            let response = try await FaviconURLSession.dataTask(
+                with: self.url,
+                checkForMetaRefreshRedirect: self.configuration.checkForMetaRefreshRedirect
+            )
 
-        // Make sure we can parse the response into a string
-        guard let htmlStr = String(data: data, encoding: response.textEncoding) else {
-            throw FaviconError.failedToParseHTML
+            let data = response.data
+
+            // Make sure we can parse the response into a string
+            guard let htmlStr = String(data: data, encoding: response.textEncoding) else {
+                throw FaviconError.failedToParseHTML
+            }
+
+            // Turn our HTML string as an XML document we can check out
+            html = try SwiftSoup.parse(htmlStr)
         }
-
-        // Turn our HTML string as an XML document we can check out
-        let html = try SwiftSoup.parse(htmlStr)
 
         // Get just the head of our HTML document
         guard let head = html.head() else {
