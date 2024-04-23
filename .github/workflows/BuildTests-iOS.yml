@@ -22,7 +22,7 @@ jobs:
       - name: Setup Swift
         uses: fwal/setup-swift@v1
         with:
-          swift-version: '5.8.0'
+          swift-version: '5.9.0'
 
       - name: Install xcpretty
         run: gem install xcpretty
