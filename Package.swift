@@ -17,15 +17,25 @@ let targetDependencies: [Target.Dependency] = [
     .product(name: "AsyncHTTPClient", package: "async-http-client")
 ]
 
+let plugins: [Target.PluginUsage] = [
+
+]
+
 #else
 let dependencies: [PackageDescription.Package.Dependency] = [
     // SwiftSoup is used to parse the HTML tree
-    .package(url: "https://github.com/scinfu/SwiftSoup.git", from: "2.3.7")
+    .package(url: "https://github.com/scinfu/SwiftSoup.git", from: "2.3.7"),
+    .package(url: "https://github.com/realm/SwiftLint.git", branch: "main")
 ]
 
 let targetDependencies: [Target.Dependency] = [
-    "SwiftSoup",
+    "SwiftSoup"
 ]
+
+let plugins: [Target.PluginUsage] = [
+    .plugin(name: "SwiftLintBuildToolPlugin", package: "SwiftLint")
+]
+
 #endif
 
 let package = Package(
@@ -35,7 +45,10 @@ let package = Package(
         // Products define the executables and libraries produced by a package, and make them visible to other packages.
         .library(
             name: "FaviconFinder",
-            targets: ["FaviconFinder"]),
+            targets: [
+                "FaviconFinder"
+            ]
+        ),
     ],
     dependencies: dependencies,
     targets: [
@@ -43,9 +56,15 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages which this package depends on.
         .target(
             name: "FaviconFinder",
-            dependencies: targetDependencies
+            dependencies: targetDependencies,
+            plugins: plugins
         ),
 
-        .testTarget(name: "FaviconFinderTests", dependencies: ["FaviconFinder"]),
+        .testTarget(
+            name: "FaviconFinderTests",
+            dependencies: [
+                "FaviconFinder"
+            ]
+        ),
     ]
 )

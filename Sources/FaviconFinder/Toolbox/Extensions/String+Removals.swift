@@ -15,13 +15,15 @@ extension String {
     /// - Parameter str: The string occurence which we're looking for
     public mutating func removeEverythingAfter(str: String) {
         let nsString = NSString(string: self)
-        
-        //This is the location/start-index of the occurence of str within our `self` string
+
+        // This is the location/start-index of the occurence of 
+        // str within our `self` string
         let locationOfOccurence = nsString.range(of: str).location
-        
-        //This is the range that makes up the index of the found occurence, 'till the end of the string
+
+        // This is the range that makes up the index of the found occurence, '
+        // til the end of the string
         let range = NSRange(location: locationOfOccurence, length: nsString.length - locationOfOccurence)
-        
+
         if range.location != NSNotFound {
             self = nsString.replacingCharacters(in: range, with: "")
         }

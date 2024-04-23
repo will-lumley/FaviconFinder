@@ -29,7 +29,7 @@ public extension FaviconFinder {
 
         public init(
             preferredSource: FaviconSourceType = .html,
-            preferences: [FaviconSourceType : String] = [:],
+            preferences: [FaviconSourceType: String] = [:],
             checkForMetaRefreshRedirect: Bool = false,
             prefetchedHTML: Document? = nil
         ) {

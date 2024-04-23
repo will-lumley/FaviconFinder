@@ -13,7 +13,7 @@ class ICOFaviconFinder: FaviconFinderProtocol {
 
     var url: URL
     var configuration: FaviconFinder.Configuration
-    
+
     var preferredType: String {
         self.configuration.preferences[.ico] ?? "favicon.ico"
     }

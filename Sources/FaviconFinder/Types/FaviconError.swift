@@ -23,10 +23,14 @@ public enum FaviconError: Error {
     case faviconImageIsNotDownloaded
 
     case invalidWebApplicationManifestFileUrl
+    // swiftlint:disable:next identifier_name
     case failedToConvertUrlResponseToHttpUrlResponse
-    case webApplicationManifestFileConainedNoIcons
 
+    // swiftlint:disable:next identifier_name
+    case webApplicationManifestFileConainedNoIcons
     case failedToFindWebApplicationManifestFile
+
+    // swiftlint:disable:next identifier_name
     case failedToDownloadWebApplicationManifestFile
     case failedToParseWebApplicationManifestFile
 }

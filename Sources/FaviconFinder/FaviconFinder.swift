@@ -8,18 +8,18 @@
 
 import Foundation
 
-public class FaviconFinder {
-    
+public final class FaviconFinder {
+
     // MARK: - Properties
-    
+
     /// The URL of the site we're trying to extract the Favicon from
     private let url: URL
-    
+
     /// Our configuration object
     private let configuration: FaviconFinder.Configuration
-    
+
     // MARK: - Lifecycle
-    
+
     public init(url: URL, configuration: FaviconFinder.Configuration = .defaultConfiguration) {
         self.url = url
         self.configuration = configuration

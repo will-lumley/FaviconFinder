@@ -11,7 +11,7 @@ import SwiftSoup
 class HTMLFaviconFinder: FaviconFinderProtocol {
 
     // MARK: - Types
-    
+
     struct Reference {
         let rel: String
         let href: String
@@ -20,23 +20,23 @@ class HTMLFaviconFinder: FaviconFinderProtocol {
         let baseURL: URL
         let format: FaviconFormatType
     }
-    
+
     // MARK: - Properties
-    
+
     var url: URL
     var configuration: FaviconFinder.Configuration
-    
+
     var preferredType: String {
         self.configuration.preferences[.html] ?? FaviconFormatType.appleTouchIcon.rawValue
     }
-    
+
     // MARK: - FaviconFinder
-    
+
     required init(url: URL, configuration: FaviconFinder.Configuration) {
         self.url = url
         self.configuration = configuration
     }
-    
+
     func find() async throws -> [FaviconURL] {
         let html: Document
 
@@ -74,7 +74,7 @@ class HTMLFaviconFinder: FaviconFinderProtocol {
 
         return faviconURLs
     }
-    
+
 }
 
 // MARK: - Private
@@ -98,7 +98,7 @@ private extension HTMLFaviconFinder {
             let sizeTag = try link.attr("sizes")
 
             // If this link's "rel" is something other than an accepted image format type, dismiss it
-            guard (FaviconFormatType(rawValue: rel) != nil) else {
+            guard FaviconFormatType(rawValue: rel) != nil else {
                 continue
             }
 

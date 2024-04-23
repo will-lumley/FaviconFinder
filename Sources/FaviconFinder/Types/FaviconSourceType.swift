@@ -16,7 +16,8 @@ public enum FaviconSourceType: CaseIterable {
 
 extension FaviconSourceType {
 
-    init(format: FaviconFormatType) { 
+    // swiftlint:disable:next cyclomatic_complexity
+    init(format: FaviconFormatType) {
         switch format {
         // ICO
         case .ico: self = .ico

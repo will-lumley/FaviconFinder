@@ -22,7 +22,7 @@ class WebApplicationManifestFaviconFinder: FaviconFinderProtocol {
 
     var url: URL
     var configuration: FaviconFinder.Configuration
-    
+
     var preferredType: String {
         self.configuration.preferences[.webApplicationManifestFile] ?? "manifest"
     }
@@ -125,16 +125,20 @@ private extension WebApplicationManifestFaviconFinder {
     /// - Parameter manifestFileReference: The now-native data from our HTML head that contains the manifest file data
     /// - Returns: A dictionary containing the key/value data contained in the manifest file
     ///
-    func downloadManifestFile(with reference: ManifestFileReference) async throws -> Dictionary<String, Any> {
+    func downloadManifestFile(
+        with reference: ManifestFileReference
+    ) async throws -> [String: Any] {
         let response = try await FaviconURLSession.dataTask(with: reference.baseURL)
         do {
-            guard let manifestData = try JSONSerialization.jsonObject(with: response.data, options: .allowFragments) as? [String: Any] else {
+            guard let manifestData = try JSONSerialization.jsonObject(
+                with: response.data,
+                options: .allowFragments
+            ) as? [String: Any] else {
                 throw FaviconError.failedToDownloadWebApplicationManifestFile
             }
 
             return manifestData
-        }
-        catch {
+        } catch {
             throw FaviconError.failedToParseWebApplicationManifestFile
         }
     }
