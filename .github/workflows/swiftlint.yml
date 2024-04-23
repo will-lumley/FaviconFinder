@@ -5,7 +5,7 @@ on:
     paths:
       - '.github/workflows/swiftlint.yml'
       - '.swiftlint.yml'
-      - '**/Sources/*.swift'
+      - 'Sources/**/*.swift'
 
 jobs:
   SwiftLint:
