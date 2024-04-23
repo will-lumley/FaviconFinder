@@ -9,8 +9,8 @@
 import AsyncHTTPClient
 import FoundationNetworking
 import NIOCore
-import NIOHTTP1
 import NIOFoundationCompat
+import NIOHTTP1
 #endif
 
 import Foundation
