@@ -26,5 +26,5 @@ class ArrayReorderTests: XCTestCase {
         array.moveElementToFront(4)
         XCTAssertEqual(array, [1, 2, 3])
     }
-    
+
 }

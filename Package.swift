@@ -64,7 +64,8 @@ let package = Package(
             name: "FaviconFinderTests",
             dependencies: [
                 "FaviconFinder"
-            ]
+            ],
+            plugins: plugins
         ),
     ]
 )

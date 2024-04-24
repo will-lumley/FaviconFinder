@@ -21,7 +21,7 @@ class URLParsingTests: XCTestCase {
             XCTAssert(false, "\(self.gmailUrl) without subdomains returned nil.")
             return
         }
-        
+
         XCTAssert(strippedGmailUrl == self.googleUrl, "Stripped Gmail URL returned \(strippedGmailUrl)")
     }
 
@@ -30,7 +30,7 @@ class URLParsingTests: XCTestCase {
             XCTAssert(false, "\(self.appleAuUrl) without scheme returned nil.")
             return
         }
-        
+
         XCTAssert(appleAuUrlWithoutScheme == "apple.com/au", "Stripped AppleAu URL returned \(appleAuUrlWithoutScheme)")
     }
 }

@@ -5,8 +5,8 @@
 //  Created by William Lumley on 11/2/2024.
 //
 
-import Foundation
 @testable import FaviconFinder
+import Foundation
 
 extension FaviconImage {
 

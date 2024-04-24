@@ -16,14 +16,14 @@ class RegexTests: XCTestCase {
     let plainWebsite = "google.com"
     let httpWebsite  = "http://google.com"
     let httpsWebsite = "https://google.com"
-    
+
     // MARK: - Tests
 
     func testRegexTest() {
         let regex = Regex("go+gle")
         XCTAssert(regex.test(input: "goooooogle"))
     }
-    
+=
     func testRegexTestForHttpsOrHttp() {
         XCTAssert(Regex.testForHttpsOrHttp(input: httpWebsite))
         XCTAssert(Regex.testForHttpsOrHttp(input: httpsWebsite))
