@@ -27,3 +27,6 @@ identifier_name:
 
 excluded:
   - .build
+  - iOSFaviconFinderExample
+  - macOSFaviconFinderExample
+  - LinuxFaviconFinderExample
