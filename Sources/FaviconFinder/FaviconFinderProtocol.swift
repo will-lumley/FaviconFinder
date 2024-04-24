@@ -16,8 +16,9 @@ protocol FaviconFinderProtocol {
     var configuration: FaviconFinder.Configuration { get set }
 
     /// The preferred type of Favicon. This is dependant on type.
-    /// For example, in`ICOFaviconFinder` the `preferredType` is a filename, for `WebApplicationManifestFaviconFinder` the
-    /// `preferredType` is the desired key in the JSON file, etc.
+    /// For example, in`ICOFaviconFinder` the `preferredType` is a filename, 
+    /// for `WebApplicationManifestFaviconFinder` the `preferredType`
+    /// is the desired key in the JSON file, etc.
     var preferredType: String { get }
 
     init(url: URL, configuration: FaviconFinder.Configuration)
@@ -25,4 +26,3 @@ protocol FaviconFinderProtocol {
     func find() async throws -> [FaviconURL]
 
 }
-

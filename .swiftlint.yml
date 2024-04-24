@@ -1,0 +1,32 @@
+# swiftlint_version: 0.54.0
+
+disabled_rules:
+  inclusive_language
+
+nesting:
+  type_level:
+    warning: 4
+
+file_length:
+  warning: 500
+
+function_body_length:
+  warning: 100
+
+opt_in_rules:
+  - first_where
+  - modifier_order
+  - sorted_imports
+
+file_length:
+  warning: 750
+
+identifier_name:
+  min_length:
+    warning: 1
+
+excluded:
+  - .build
+  - iOSFaviconFinderExample
+  - macOSFaviconFinderExample
+  - LinuxFaviconFinderExample

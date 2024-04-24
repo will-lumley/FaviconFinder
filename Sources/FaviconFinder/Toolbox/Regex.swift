@@ -15,26 +15,30 @@ class Regex {
 
     init(_ pattern: String) {
         self.pattern = pattern
-        
+
         do {
             self.expression = try NSRegularExpression(pattern: self.pattern, options: .caseInsensitive)
-        }
-        catch let error {
+        } catch let error {
             print("Could NOT form regex from: \(self.pattern) due to error: \(error)")
         }
     }
-    
+
     public func test(input: String) -> Bool {
         guard let expression = self.expression else {
             return false
         }
-        
-        let matches = expression.matches(in: input, options: .anchored, range: NSMakeRange(0, input.count))
+
+        let matches = expression.matches(
+            in: input,
+            options: .anchored,
+            range: .init(location: 0, length: input.count)
+        )
+
         return matches.count > 0
     }
 }
 
-//MARK: - Public
+// MARK: - Public
 
 extension Regex {
 
