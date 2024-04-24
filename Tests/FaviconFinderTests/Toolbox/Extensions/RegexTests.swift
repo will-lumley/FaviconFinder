@@ -23,7 +23,7 @@ class RegexTests: XCTestCase {
         let regex = Regex("go+gle")
         XCTAssert(regex.test(input: "goooooogle"))
     }
-=
+
     func testRegexTestForHttpsOrHttp() {
         XCTAssert(Regex.testForHttpsOrHttp(input: httpWebsite))
         XCTAssert(Regex.testForHttpsOrHttp(input: httpsWebsite))
