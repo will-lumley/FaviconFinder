@@ -25,7 +25,7 @@ let plugins: [Target.PluginUsage] = [
 let dependencies: [PackageDescription.Package.Dependency] = [
     // SwiftSoup is used to parse the HTML tree
     .package(url: "https://github.com/scinfu/SwiftSoup.git", from: "2.3.7"),
-    .package(url: "https://github.com/realm/SwiftLint.git", from: "0.55.1")
+    .package(url: "https://github.com/SimplyDanny/SwiftLintPlugins", from: "0.55.1")
 ]
 
 let targetDependencies: [Target.Dependency] = [
@@ -33,7 +33,7 @@ let targetDependencies: [Target.Dependency] = [
 ]
 
 let plugins: [Target.PluginUsage] = [
-    .plugin(name: "SwiftLintBuildToolPlugin", package: "SwiftLint")
+    .plugin(name: "SwiftLintBuildToolPlugin", package: "SwiftLintPlugins")
 ]
 
 #endif
