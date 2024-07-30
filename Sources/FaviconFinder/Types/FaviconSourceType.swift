@@ -12,6 +12,9 @@ public enum FaviconSourceType: CaseIterable {
     case html
     case ico
     case webApplicationManifestFile
+
+    /// This is used exclusively for testing
+    case mock
 }
 
 extension FaviconSourceType {
@@ -59,6 +62,11 @@ extension FaviconSourceType {
             )
         case .webApplicationManifestFile:
             return WebApplicationManifestFaviconFinder(
+                url: url,
+                configuration: configuration
+            )
+        case .mock:
+            return MockFaviconFinder(
                 url: url,
                 configuration: configuration
             )
