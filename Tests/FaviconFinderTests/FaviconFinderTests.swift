@@ -95,4 +95,34 @@ class FaviconFinderTests: XCTestCase {
         XCTAssertTrue(image.isValidImage)
     }
 
+    func testCancel() async throws {
+        let faviconFinder = try await FaviconFinder(
+            url: .google,
+            configuration: .init(preferredSource: .mock)
+        )
+
+        let expectation = expectation(description: "Task should be cancelled")
+
+        // Find the Favicon's in a separate Task
+        Task {
+            do {
+                _ = try await faviconFinder.fetchFaviconURLs()
+                XCTFail("Expected fetchFaviconURLs to be cancelled, but it completed")
+            } catch is CancellationError {
+                expectation.fulfill()
+            } catch {
+                XCTFail("Unexpected error: \(error)")
+            }
+        }
+
+        // Wait a moment to ensure the task starts
+        try await Task.sleep(nanoseconds: 1_000_000_000)
+
+        // Cancel the finding
+        faviconFinder.cancel()
+
+        // Wait for the expectation to be fulfilled
+        await fulfillment(of: [expectation], timeout: 5)
+    }
+
 }
