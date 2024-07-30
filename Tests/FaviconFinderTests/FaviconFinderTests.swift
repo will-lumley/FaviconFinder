@@ -96,7 +96,7 @@ class FaviconFinderTests: XCTestCase {
     }
 
     func testCancel() async throws {
-        let faviconFinder = try await FaviconFinder(
+        let faviconFinder = FaviconFinder(
             url: .google,
             configuration: .init(preferredSource: .mock)
         )

@@ -61,12 +61,10 @@ public extension FaviconFinder {
                     if faviconURLs.count > 0 {
                         return faviconURLs
                     }
-                }
-                catch is CancellationError {
+                } catch is CancellationError {
                     // The user has cancelled this, let's bubble this up
                     throw CancellationError()
-                }
-                catch {
+                } catch {
                     print("Failed to find Favicon [\(error)]. Trying next source type.")
                 }
             }
