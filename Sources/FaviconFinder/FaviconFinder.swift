@@ -18,6 +18,9 @@ public final class FaviconFinder {
     /// Our configuration object
     private let configuration: FaviconFinder.Configuration
 
+    /// The current task for fetching favicon URLs
+    private var currentTask: Task<[FaviconURL], Error>?
+
     // MARK: - Lifecycle
 
     public init(url: URL, configuration: FaviconFinder.Configuration = .defaultConfiguration) {
@@ -39,26 +42,43 @@ public extension FaviconFinder {
     /// made.
     /// - Returns: An array of FaviconURLs that contain the location of all the users favicons
     func fetchFaviconURLs() async throws -> [FaviconURL] {
-        // All of the sources we'll use to search for our favicon
-        var sources = FaviconSourceType.allCases
+        // Cancel any previous task
+        self.cancel()
 
-        // Get the users preferred source and move it to the front of the queue
-        sources.moveElementToFront(self.configuration.preferredSource)
+        // Create a new task for fetching favicon URLs
+        self.currentTask = Task {
+            // All of the sources we'll use to search for our favicon
+            var sources = FaviconSourceType.allCases
 
-        // Iterate through each source, trying to find the favicon
-        // in each source until we find it.
-        for source in sources {
-            do {
-                let faviconURLs = try await self.fetchFavicon(with: source)
-                if faviconURLs.count > 0 {
-                    return faviconURLs
+            // Get the users preferred source and move it to the front of the queue
+            sources.moveElementToFront(self.configuration.preferredSource)
+
+            // Iterate through each source, trying to find the favicon
+            // in each source until we find it.
+            for source in sources {
+                do {
+                    let faviconURLs = try await self.fetchFavicon(with: source)
+                    if faviconURLs.count > 0 {
+                        return faviconURLs
+                    }
+                } catch {
+                    print("Failed to find Favicon [\(error)]. Trying next source type.")
                 }
-            } catch {
-                print("Failed to find Favicon [\(error)]. Trying next source type.")
             }
+
+            throw FaviconError.failedToFindFavicon
         }
 
-        throw FaviconError.failedToFindFavicon
+        // Await the result of the current task
+        guard let currentTask else {
+            throw FaviconError.other
+        }
+        return try await currentTask.value
+    }
+
+    /// Cancels the ongoing favicon fetch task, if any.
+    func cancel() {
+        self.currentTask?.cancel()
     }
 
 }
