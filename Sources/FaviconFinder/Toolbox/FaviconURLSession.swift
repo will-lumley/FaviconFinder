@@ -55,12 +55,12 @@ private extension FaviconURLSession {
 
 #if os(Linux)
 
-    func linuxDataTask(
+    static func linuxDataTask(
         with url: URL,
         checkForMetaRefreshRedirect: Bool = false,
         httpHeaders: [String: String?]? = nil
     ) async throws -> Response {
-        let httpClient = HTTPClient(eventLoopGroupProvider: .createNew)
+        let httpClient = HTTPClient(eventLoopGroupProvider: .singleton)
         defer {
             try? httpClient.syncShutdown()
         }
@@ -79,7 +79,7 @@ private extension FaviconURLSession {
         request.headers = headers
 
         // Send the request
-        let response = try await httpClient.execute(request: request, timeout: .seconds(30))
+        let response = try await httpClient.execute(request, timeout: .seconds(30))
 
         // Collect the response body
         let byteBuffer = try await response.body.collect(upTo: Int.max)
@@ -112,7 +112,7 @@ private extension FaviconURLSession {
         }
 
         // Return the response with data and headers
-        return Response(data: data, headers: response.headers)
+        return Response((data, response.headers))
     }
 
     #else
