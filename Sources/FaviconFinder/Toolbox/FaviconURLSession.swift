@@ -31,7 +31,8 @@ class FaviconURLSession {
 
     static func dataTask(
         with url: URL,
-        checkForMetaRefreshRedirect: Bool = false
+        checkForMetaRefreshRedirect: Bool = false,
+        httpHeaders: [String?: String]? = nil
     ) async throws -> Response {
 #if os(Linux)
         try await linuxDataTask(
@@ -56,13 +57,27 @@ private extension FaviconURLSession {
 
     static func linuxDataTask(
         with url: URL,
-        checkForMetaRefreshRedirect: Bool = false
+        checkForMetaRefreshRedirect: Bool = false,
+        httpHeaders: [String?: String]? = nil
     ) async throws -> Response {
-        let response = Response(try await URLSession.shared.data(from: url))
+        // Create our request
+        var request = URLRequest(url: url)
 
-        let data = response.data
+        // If there's HTTP headers, add them
+        if let httpHeaders {
+            for (key, value) in httpHeaders {
+                request.setValue(key, forHTTPHeaderField: value)
+            }
+        }
+
+        // Fetch our response
+        let response = Response(
+            try await URLSession.shared.data(for: request)
+        )
 
         if checkForMetaRefreshRedirect {
+            let data = response.data
+
             // Make sure we can parse the response into a string
             guard let htmlStr = String(data: data, encoding: response.textEncoding) else {
                 return response
@@ -130,13 +145,29 @@ private extension FaviconURLSession {
 
     static func appleDataTask(
             with url: URL,
-            checkForMetaRefreshRedirect: Bool = false
+            checkForMetaRefreshRedirect: Bool = false,
+            httpHeaders: [String?: String]? = nil
         ) async throws -> Response {
-            let response = Response(try await URLSession.shared.data(from: url))
+            // Create our request
+            var request = URLRequest(url: url)
 
-            let data = response.data
+            // If there's HTTP headers, add them
+            if let httpHeaders {
+                for (key, value) in httpHeaders {
+                    request.setValue(key, forHTTPHeaderField: value)
+                }
+            }
 
+            // Fetch our response
+            let response = Response(
+                try await URLSession.shared.data(for: request)
+            )
+
+            // If the user wants to check for meta-refresh-redirect, do so and
+            // if we find a redirect, follow that up
             if checkForMetaRefreshRedirect {
+                let data = response.data
+
                 // Make sure we can parse the response into a string
                 guard let htmlStr = String(data: data, encoding: response.textEncoding) else {
                     return response
