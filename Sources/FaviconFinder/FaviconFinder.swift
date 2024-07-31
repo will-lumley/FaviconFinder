@@ -119,9 +119,10 @@ public extension Array where Element == FaviconURL {
     func download() async throws -> [Favicon] {
         var favicons = [Favicon]()
         for url in self {
-            favicons.append(
-                try await Favicon(url: url)
-            )
+            guard let favicon = try? await Favicon(url: url) else {
+                continue
+            }
+            favicons.append(favicon)
         }
 
         return favicons
