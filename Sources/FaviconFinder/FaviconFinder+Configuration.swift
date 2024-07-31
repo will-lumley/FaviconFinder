@@ -24,7 +24,7 @@ public extension FaviconFinder {
         public let checkForMetaRefreshRedirect: Bool
 
         /// The HTTP headers we'll pass along to our HTTP request
-        public let httpHeaders: [String?: String]?
+        public let httpHeaders: [String: String?]?
 
         public let prefetchedHTML: Document?
 
@@ -35,7 +35,7 @@ public extension FaviconFinder {
             preferences: [FaviconSourceType: String] = [:],
             checkForMetaRefreshRedirect: Bool = false,
             prefetchedHTML: Document? = nil,
-            httpHeaders: [String: String]? = nil
+            httpHeaders: [String: String?]? = nil
         ) {
             self.preferredSource = preferredSource
             self.preferences = preferences
