@@ -9,38 +9,28 @@ on:
       - main
 
 jobs:
-  lint:
-    name: Run SwiftLint
+  build:
     runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/realm/swiftlint:5.5-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+    - uses: actions/checkout@v1
+      with:
+        fetch-depth: 1
 
-      - name: Install Swift and Dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y git curl libssl-dev libcurl4-openssl-dev clang libicu-dev
-
-      - name: Install SwiftLint
-        run: |
-          git clone https://github.com/realm/SwiftLint.git
-          cd SwiftLint
-          swift build -c release
-          sudo cp .build/release/swiftlint /usr/local/bin/swiftlint
-
-      - name: Run SwiftLint and annotate
-        run: |
-          # Run SwiftLint and capture output
-          OUTPUT=$(swiftlint lint --reporter github-actions-logging)
-          
-          # Print the output so GitHub Actions can pick up annotations
-          echo "$OUTPUT"
-          
-          # Fail the job if any violations are found
-          if [ -n "$OUTPUT" ]; then
-            echo "SwiftLint violations found. Failing the action."
-            exit 1
-          else
-            echo "No SwiftLint violations found."
-          fi
+    - name: Run SwiftLint and annotate
+      run: |
+        # Run SwiftLint and capture output
+        OUTPUT=$(swiftlint lint --reporter github-actions-logging)
+        
+        # Print the output so GitHub Actions can pick up annotations
+        echo "$OUTPUT"
+        
+        # Fail the job if any violations are found
+        if [ -n "$OUTPUT" ]; then
+          echo "SwiftLint violations found. Failing the action."
+          exit 1
+        else
+          echo "No SwiftLint violations found."
+        fi
