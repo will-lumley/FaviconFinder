@@ -92,7 +92,6 @@ private extension FaviconURLSession {
             let html = try SwiftSoup.parse(htmlStr)
             if let head = html.head(),
                let httpEquiv = try head.getElementsByAttribute("http-equiv").whereAttr("http-equiv", equals: "refresh") {
-                
                 var redirectURLStr = try httpEquiv.attr("content").replacingOccurrences(of: "0;URL=", with: "")
                 let brandNewURL = Regex.testForHttpsOrHttp(input: redirectURLStr)
 
@@ -126,7 +125,6 @@ private extension FaviconURLSession {
 
     #else
 
-    // swiftlint:disable:next cyclomatic_complexity
     static func appleDataTask(
             with url: URL,
             checkForMetaRefreshRedirect: Bool = false,
