@@ -89,8 +89,9 @@ private extension FaviconURLSession {
         if checkForMetaRefreshRedirect {
             let htmlStr = String(data: data, encoding: .utf8) ?? ""
             let html = try SwiftSoup.parse(htmlStr)
-            if let head = html.head(),
-               let httpEquiv = try head.getElementsByAttribute("http-equiv").whereAttr("http-equiv", equals: "refresh") {
+            let httpEquiv = try head.getElementsByAttribute("http-equiv").whereAttr("http-equiv", equals: "refresh")
+
+            if let head = html.head(), let httpEquiv {
                 var redirectURLStr = try httpEquiv
                     .attr("content")
                     .replacingOccurrences(of: "0;URL=", with: "")
