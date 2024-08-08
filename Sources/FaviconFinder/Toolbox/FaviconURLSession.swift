@@ -55,6 +55,7 @@ private extension FaviconURLSession {
 
 #if os(Linux)
 
+    // swiftlint:disable:next cyclomatic_complexity
     static func linuxDataTask(
         with url: URL,
         checkForMetaRefreshRedirect: Bool = false,
@@ -96,7 +97,11 @@ private extension FaviconURLSession {
                 let brandNewURL = Regex.testForHttpsOrHttp(input: redirectURLStr)
 
                 if brandNewURL, let redirectURL = URL(string: redirectURLStr) {
-                    return try await linuxDataTask(with: redirectURL, checkForMetaRefreshRedirect: false, httpHeaders: httpHeaders)
+                    return try await linuxDataTask(
+                        with: redirectURL,
+                        checkForMetaRefreshRedirect: false,
+                        httpHeaders: httpHeaders
+                    )
                 } else {
                     let needsPrependingSlash = url.absoluteString.last != "/" && redirectURLStr.first != "/"
                     if needsPrependingSlash {
@@ -105,7 +110,11 @@ private extension FaviconURLSession {
                         redirectURLStr = "\(url.absoluteString)\(redirectURLStr)"
                     }
                     if let redirectURL = URL(string: redirectURLStr) {
-                        return try await linuxDataTask(with: redirectURL, checkForMetaRefreshRedirect: false, httpHeaders: httpHeaders)
+                        return try await linuxDataTask(
+                            with: redirectURL,
+                            checkForMetaRefreshRedirect: false,
+                            httpHeaders: httpHeaders
+                        )
                     }
                 }
             }
@@ -117,6 +126,7 @@ private extension FaviconURLSession {
 
     #else
 
+    // swiftlint:disable:next cyclomatic_complexity
     static func appleDataTask(
             with url: URL,
             checkForMetaRefreshRedirect: Bool = false,
