@@ -1,4 +1,4 @@
-name: SwiftLint
+name: SwiftLint - Linux
 
 on:
   push:
@@ -11,19 +11,23 @@ on:
 jobs:
   lint:
     name: Run SwiftLint
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: 3.0
+      - name: Install Swift and Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y git curl libssl-dev libcurl4-openssl-dev clang libicu-dev
 
       - name: Install SwiftLint
-        run: brew install swiftlint
+        run: |
+          git clone https://github.com/realm/SwiftLint.git
+          cd SwiftLint
+          swift build -c release
+          sudo cp .build/release/swiftlint /usr/local/bin/swiftlint
 
       - name: Run SwiftLint and annotate
         run: |
