@@ -23,6 +23,9 @@ public extension FaviconFinder {
         /// Indicates if we should check for a meta-refresh-redirect tag in the HTML header
         public let checkForMetaRefreshRedirect: Bool
 
+        /// The HTTP headers we'll pass along to our HTTP request
+        public let httpHeaders: [String: String?]?
+
         public let prefetchedHTML: Document?
 
         // MARK: - Lifecycle
@@ -31,12 +34,14 @@ public extension FaviconFinder {
             preferredSource: FaviconSourceType = .html,
             preferences: [FaviconSourceType: String] = [:],
             checkForMetaRefreshRedirect: Bool = false,
-            prefetchedHTML: Document? = nil
+            prefetchedHTML: Document? = nil,
+            httpHeaders: [String: String?]? = nil
         ) {
             self.preferredSource = preferredSource
             self.preferences = preferences
             self.checkForMetaRefreshRedirect = checkForMetaRefreshRedirect
             self.prefetchedHTML = prefetchedHTML
+            self.httpHeaders = httpHeaders
         }
     }
 
