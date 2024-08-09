@@ -87,38 +87,43 @@ private extension FaviconURLSession {
 
         // Check for meta-refresh redirect if needed
         if checkForMetaRefreshRedirect {
+            // swiftlint:disable:next non_optional_string_data_conversion
             guard let htmlStr = String(data: data, encoding: .utf8) else {
                 throw URLError(.badServerResponse)
             }
-
             let html = try SwiftSoup.parse(htmlStr)
 
-            // Extract the head element safely
-            if let head = html.head(), let httpEquiv = try head.getElementsByAttribute("http-equiv").whereAttr("http-equiv", equals: "refresh") {
-                var redirectURLStr = try httpEquiv
-                    .attr("content")
-                    .replacingOccurrences(of: "0;URL=", with: "")
-                let brandNewURL = Regex.testForHttpsOrHttp(input: redirectURLStr)
+            if let head = html.head() {
+                let httpEquiv = try head
+                    .getElementsByAttribute("http-equiv")
+                    .whereAttr("http-equiv", equals: "refresh")
 
-                if brandNewURL, let redirectURL = URL(string: redirectURLStr) {
-                    return try await linuxDataTask(
-                        with: redirectURL,
-                        checkForMetaRefreshRedirect: false,
-                        httpHeaders: httpHeaders
-                    )
-                } else {
-                    let needsPrependingSlash = url.absoluteString.last != "/" && redirectURLStr.first != "/"
-                    if needsPrependingSlash {
-                        redirectURLStr = "\(url.absoluteString)/\(redirectURLStr)"
-                    } else {
-                        redirectURLStr = "\(url.absoluteString)\(redirectURLStr)"
-                    }
-                    if let redirectURL = URL(string: redirectURLStr) {
+                if let httpEquiv {
+                    var redirectURLStr = try httpEquiv
+                        .attr("content")
+                        .replacingOccurrences(of: "0;URL=", with: "")
+                    let brandNewURL = Regex.testForHttpsOrHttp(input: redirectURLStr)
+
+                    if brandNewURL, let redirectURL = URL(string: redirectURLStr) {
                         return try await linuxDataTask(
                             with: redirectURL,
                             checkForMetaRefreshRedirect: false,
                             httpHeaders: httpHeaders
                         )
+                    } else {
+                        let needsPrependingSlash = url.absoluteString.last != "/" && redirectURLStr.first != "/"
+                        if needsPrependingSlash {
+                            redirectURLStr = "\(url.absoluteString)/\(redirectURLStr)"
+                        } else {
+                            redirectURLStr = "\(url.absoluteString)\(redirectURLStr)"
+                        }
+                        if let redirectURL = URL(string: redirectURLStr) {
+                            return try await linuxDataTask(
+                                with: redirectURL,
+                                checkForMetaRefreshRedirect: false,
+                                httpHeaders: httpHeaders
+                            )
+                        }
                     }
                 }
             }
