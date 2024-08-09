@@ -87,14 +87,14 @@ private extension FaviconURLSession {
 
         // Check for meta-refresh redirect if needed
         if checkForMetaRefreshRedirect {
-            // swiftlint:disable:next non_optional_string_data_conversion
             guard let htmlStr = String(data: data, encoding: .utf8) else {
                 throw URLError(.badServerResponse)
             }
-            let html = try SwiftSoup.parse(htmlStr)
-            let httpEquiv = try head.getElementsByAttribute("http-equiv").whereAttr("http-equiv", equals: "refresh")
 
-            if let head = html.head(), let httpEquiv {
+            let html = try SwiftSoup.parse(htmlStr)
+
+            // Extract the head element safely
+            if let head = html.head(), let httpEquiv = try head.getElementsByAttribute("http-equiv").whereAttr("http-equiv", equals: "refresh") {
                 var redirectURLStr = try httpEquiv
                     .attr("content")
                     .replacingOccurrences(of: "0;URL=", with: "")
