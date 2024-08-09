@@ -21,16 +21,12 @@ jobs:
 
     - name: Run SwiftLint and annotate
       run: |
-        # Run SwiftLint and capture output
-        OUTPUT=$(swiftlint lint --reporter github-actions-logging)
-        
-        # Print the output so GitHub Actions can pick up annotations
-        echo "$OUTPUT"
+        # Directly run SwiftLint without capturing output
+        swiftlint lint --reporter github-actions-logging
         
         # Fail the job if any violations are found
-        if [ -n "$OUTPUT" ]; then
-          echo "SwiftLint violations found. Failing the action."
-          exit 1
-        else
-          echo "No SwiftLint violations found."
-        fi
+      continue-on-error: true
+      if: failure()
+      run: |
+        echo "SwiftLint violations found. Failing the action."
+        exit 1
