@@ -13,9 +13,23 @@ class FaviconFinderTests: XCTestCase {
 
     // MARK: - Tests
 
+    func testURLs() async throws {
+        // Remove the URL that requires meta-refresh redirect
+        var testURLs = TestURL.allCases
+        testURLs.removeAll { $0 == .metaRefreshRedirect }
+        testURLs.removeAll { $0 == .nonUtf8Encoded }
+
+        // Iterate over each URL and ensure that they can be fetched
+        for url in testURLs {
+            print("Fetching \(url)")
+            try await self.fetch(url: url.url)
+            print("Fetched \(url)")
+        }
+    }
+
     func testIco() async throws {
         let favicon = try await FaviconFinder(
-            url: .google,
+            url: TestURL.google.url,
             configuration: .init(preferredSource: .ico)
         )
             .fetchFaviconURLs()
@@ -32,7 +46,7 @@ class FaviconFinderTests: XCTestCase {
 
     func testHtml() async throws {
         let favicon = try await FaviconFinder(
-            url: .w3Schools,
+            url: TestURL.w3Schools.url,
             configuration: .init(preferredSource: .html)
         )
             .fetchFaviconURLs()
@@ -49,7 +63,7 @@ class FaviconFinderTests: XCTestCase {
 
     func testWebApplicationManifestFile() async throws {
         let favicon = try await FaviconFinder(
-            url: .webApplicationManifest,
+            url: TestURL.webApplicationManifest.url,
             configuration: .init(preferredSource: .webApplicationManifestFile)
         )
             .fetchFaviconURLs()
@@ -66,7 +80,7 @@ class FaviconFinderTests: XCTestCase {
 
     func testCheckForMetaRefreshRedirect() async throws {
         let favicon = try await FaviconFinder(
-            url: .metaRefreshRedirect,
+            url: TestURL.metaRefreshRedirect.url,
             configuration: .init(
                 preferredSource: .html,
                 checkForMetaRefreshRedirect: true
@@ -85,7 +99,7 @@ class FaviconFinderTests: XCTestCase {
     }
 
     func testForeignEncoding() async throws {
-        let favicon = try await FaviconFinder(url: .nonUtf8Encoded)
+        let favicon = try await FaviconFinder(url: TestURL.nonUtf8Encoded.url)
             .fetchFaviconURLs()
             .download()
             .first()
@@ -97,7 +111,7 @@ class FaviconFinderTests: XCTestCase {
 
     func testCancel() async throws {
         let faviconFinder = FaviconFinder(
-            url: .google,
+            url: TestURL.google.url,
             configuration: .init(preferredSource: .mock)
         )
 
@@ -123,6 +137,21 @@ class FaviconFinderTests: XCTestCase {
 
         // Wait for the expectation to be fulfilled
         await fulfillment(of: [expectation], timeout: 5)
+    }
+
+}
+
+private extension FaviconFinderTests {
+
+    func fetch(url: URL) async throws {
+        let favicon = try await FaviconFinder(
+            url: url,
+            configuration: .init(preferredSource: .ico)
+        )
+            .fetchFaviconURLs()
+            .download()
+            .first()
+        XCTAssertNotNil(favicon.image)
     }
 
 }
