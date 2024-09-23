@@ -45,7 +45,7 @@ extension TestURL {
         case .metaRefreshRedirect:
             "https://www.sympy.org/"
         case .nonUtf8Encoded:
-            "https://www.sympy.org/"
+            "http://foodmate.net/"
         }
     }
 

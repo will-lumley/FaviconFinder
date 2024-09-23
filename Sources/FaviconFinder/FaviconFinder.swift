@@ -8,7 +8,7 @@
 
 import Foundation
 
-public final class FaviconFinder {
+public final class FaviconFinder: @unchecked Sendable {
 
     // MARK: - Properties
 
@@ -59,16 +59,22 @@ public extension FaviconFinder {
             // Iterate through each source, trying to find the favicon
             // in each source until we find it.
             for source in sources {
+                print("Trying with [\(source)] source")
                 do {
                     let finder = source.finder(url: url, configuration: config)
                     let faviconURLs = try await finder.find()
-
-                    if faviconURLs.count > 0 {
-                        return faviconURLs
-                    }
+                    return faviconURLs
                 } catch is CancellationError {
                     // The user has cancelled this, let's bubble this up
                     throw CancellationError()
+                } catch let error as NSError {
+                    // Check if the error is a URL cancellation error
+                    if error.domain == NSURLErrorDomain && error.code == NSURLErrorCancelled {
+                        // Map this to Swift's `CancellationError`
+                        throw CancellationError()
+                    } else {
+                        print("Failed to find Favicon [\(error)]. Trying next source type.")
+                    }
                 } catch {
                     print("Failed to find Favicon [\(error)]. Trying next source type.")
                 }

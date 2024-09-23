@@ -15,15 +15,18 @@ class ArrayReorderTests: XCTestCase {
         var array = [Int]()
 
         array = [1, 2, 3]
-        array.moveElementToFront(2)
+        array = array.movingElementToFront(2)
+
         XCTAssertEqual(array, [2, 1, 3])
 
         array = [1, 2, 3]
-        array.moveElementToFront(1)
+        array = array.movingElementToFront(1)
+
         XCTAssertEqual(array, [1, 2, 3])
 
         array = [1, 2, 3]
-        array.moveElementToFront(4)
+        array = array.movingElementToFront(4)
+
         XCTAssertEqual(array, [1, 2, 3])
     }
 
