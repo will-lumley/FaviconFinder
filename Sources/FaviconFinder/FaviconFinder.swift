@@ -54,6 +54,13 @@ public extension FaviconFinder {
             // All of the sources we'll use to search for our favicon
             // Get the users preferred source and move it to the front of the queue
             let preferredSource = config.preferredSource
+
+            // If this is a mock run, just do that
+            if preferredSource == .mock {
+                let finder = preferredSource.finder(url: url, configuration: config)
+                return try await finder.find()
+            }
+
             let sources = FaviconSourceType.allCases.movingElementToFront(preferredSource)
 
             // Iterate through each source, trying to find the favicon

@@ -1,8 +1,8 @@
 # swiftlint_version: 0.54.0
 
 disabled_rules:
-  inclusive_language
-  non_optional_string_data_conversion
+  - inclusive_language
+  - non_optional_string_data_conversion
 
 nesting:
   type_level:
