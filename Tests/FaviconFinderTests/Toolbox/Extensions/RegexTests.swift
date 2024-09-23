@@ -7,9 +7,9 @@
 //
 
 @testable import FaviconFinder
-import XCTest
+import Testing
 
-class RegexTests: XCTestCase {
+struct RegexTests {
 
     // MARK: - Properties
 
@@ -19,14 +19,16 @@ class RegexTests: XCTestCase {
 
     // MARK: - Tests
 
-    func testRegexTest() {
+    @Test("Test Regex")
+    func regexTest() {
         let regex = Regex("go+gle")
-        XCTAssert(regex.test(input: "goooooogle"))
+        #expect(regex.test(input: "goooooogle") == true)
     }
 
-    func testRegexTestForHttpsOrHttp() {
-        XCTAssert(Regex.testForHttpsOrHttp(input: httpWebsite))
-        XCTAssert(Regex.testForHttpsOrHttp(input: httpsWebsite))
-        XCTAssert(Regex.testForHttpsOrHttp(input: plainWebsite) == false)
+    @Test("Test Regex for HTTP or HTTPS")
+    func regexTestForHttpsOrHttp() {
+        #expect(Regex.testForHttpsOrHttp(input: httpWebsite) == true)
+        #expect(Regex.testForHttpsOrHttp(input: httpsWebsite) == true)
+        #expect(Regex.testForHttpsOrHttp(input: plainWebsite) == false)
     }
 }

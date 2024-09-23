@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import XCTest
+import Testing
 
 enum TestURL: CaseIterable {
     case google
@@ -22,7 +22,7 @@ enum TestURL: CaseIterable {
 extension TestURL {
 
     var url: URL {
-        guard let url = try? XCTUnwrap(URL(string: self.urlStr)) else {
+        guard let url = URL(string: self.urlStr) else {
             fatalError()
         }
         return url

@@ -7,30 +7,34 @@
 //
 
 import FaviconFinder
-import XCTest
+import Foundation
+import Testing
 
-class URLParsingTests: XCTestCase {
+struct URLParsingTests {
+
     let gmailUrl  = URL(string: "https://mail.google.com")!
     let googleUrl = URL(string: "https://google.com")!
 
     let appleAuUrl = URL(string: "https://apple.com/au")!
     let appleUrl   = URL(string: "https://apple.com")!
 
-    func testUrlWithoutSubdomains() {
+    @Test("URL Without Subdomains")
+    func urlWithoutSubdomains() {
         guard let strippedGmailUrl = self.gmailUrl.urlWithoutSubdomains else {
-            XCTAssert(false, "\(self.gmailUrl) without subdomains returned nil.")
+            Issue.record("\(self.gmailUrl) without subdomains returned nil.")
             return
         }
 
-        XCTAssert(strippedGmailUrl == self.googleUrl, "Stripped Gmail URL returned \(strippedGmailUrl)")
+        #expect(strippedGmailUrl == self.googleUrl)
     }
 
-    func testAbsoluteStringWithoutScheme() {
+    @Test("Test AbsoluteString Without Scheme")
+    func absoluteStringWithoutScheme() {
         guard let appleAuUrlWithoutScheme = self.appleAuUrl.absoluteStringWithoutScheme else {
-            XCTAssert(false, "\(self.appleAuUrl) without scheme returned nil.")
+            Issue.record("\(self.appleAuUrl) without subdomains returned nil.")
             return
         }
 
-        XCTAssert(appleAuUrlWithoutScheme == "apple.com/au", "Stripped AppleAu URL returned \(appleAuUrlWithoutScheme)")
+        #expect(appleAuUrlWithoutScheme == "apple.com/au")
     }
 }

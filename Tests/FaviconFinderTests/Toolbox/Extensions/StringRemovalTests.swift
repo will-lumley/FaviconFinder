@@ -7,14 +7,15 @@
 //
 
 import FaviconFinder
-import XCTest
+import Testing
 
-class StringRemovalTests: XCTestCase {
+struct StringRemovalTests {
 
-    func testRemoveEverythingAfter() {
+    @Test("Test Remove Everything After")
+    func removeEverythingAfter() {
         var str = "abcdef1234"
         str.removeEverythingAfter(str: "12")
 
-        XCTAssert(str == "abcdef", "RemoveEverythingAfter failed, str should be abcdef, but instead is \(str)")
+        #expect(str == "abcdef")
     }
 }
