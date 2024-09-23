@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum FaviconSourceType: CaseIterable {
+public enum FaviconSourceType: CaseIterable, Sendable {
     case html
     case ico
     case webApplicationManifestFile

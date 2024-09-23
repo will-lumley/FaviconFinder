@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Favicon {
+public struct Favicon: Sendable {
 
     // MARK: - Properties
 

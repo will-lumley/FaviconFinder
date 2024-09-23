@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum FaviconError: Error {
+public enum FaviconError: Error, Sendable {
     case emptyData
     case failedToParseHTML
     case failedToFindFavicon

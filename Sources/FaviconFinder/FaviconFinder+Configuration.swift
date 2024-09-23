@@ -10,7 +10,7 @@ import SwiftSoup
 
 public extension FaviconFinder {
 
-    struct Configuration {
+    struct Configuration: @unchecked Sendable {
 
         // MARK: - Properties
 
