@@ -1,4 +1,4 @@
-name: Unit Tests - macOS
+name: "[macOS] Unit Tests"
 
 on:
   push:
