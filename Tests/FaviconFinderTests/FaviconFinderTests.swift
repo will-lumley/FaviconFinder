@@ -144,7 +144,7 @@ struct FaviconFinderTests {
         faviconFinder.cancel()
 
         // Wait a couple seconds
-        try await Task.sleep(for: .seconds(2))
+        try await Task.sleep(nanoseconds: 2 * 1_000_000_000)
 
         // We got a CancellationError, meaning that we got a cancellation, yay
         #expect(caughtError is CancellationError)
