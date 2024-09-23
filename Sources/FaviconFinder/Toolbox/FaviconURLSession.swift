@@ -79,10 +79,10 @@ private extension FaviconURLSession {
         request.headers = headers
 
         // Send the request
-        let response = try await httpClient.execute(request, timeout: .seconds(30))
+        let response = try await httpClient.execute(request, timeout: .seconds(15))
 
         // Collect the response body
-        let byteBuffer = try await response.body.collect(upTo: Int.max)
+        let byteBuffer = try await response.body.collect(upTo: 2048 * 1024) // 2MB
         let data = Data(buffer: byteBuffer)
 
         // Check for meta-refresh redirect if needed
