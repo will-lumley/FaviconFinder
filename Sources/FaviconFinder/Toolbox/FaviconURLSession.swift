@@ -87,11 +87,9 @@ private extension FaviconURLSession {
 
         // Check for meta-refresh redirect if needed
         if checkForMetaRefreshRedirect {
-            // swiftlint:disable non_optional_string_data_conversion superfluous_disable_command blanket_disable_command
             guard let htmlStr = String(data: data, encoding: .utf8) else {
                 throw URLError(.badServerResponse)
             }
-            // swiftlint:enable non_optional_string_data_conversion
             let html = try SwiftSoup.parse(htmlStr)
 
             if let head = html.head() {
