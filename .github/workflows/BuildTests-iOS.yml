@@ -1,4 +1,4 @@
-name: \[iOS\] Unit Tests
+name: "[iOS] Unit Tests"
 
 on:
   push:
