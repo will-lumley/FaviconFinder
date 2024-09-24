@@ -72,6 +72,10 @@ class HTMLFaviconFinder: FaviconFinderProtocol {
             FaviconURL(source: $0.baseURL, format: $0.format, sourceType: .html, sizeTag: $0.sizeTag)
         }
 
+        if faviconURLs.isEmpty {
+            throw FaviconError.failedToFindFavicon
+        }
+
         return faviconURLs
     }
 

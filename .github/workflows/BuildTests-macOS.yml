@@ -1,4 +1,4 @@
-name: Unit Tests - macOS
+name: "[macOS] Unit Tests"
 
 on:
   push:
@@ -15,6 +15,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
+      - name: Setup Swift
+        uses: SwiftyLab/setup-swift@latest
+        with:
+          swift-version: '6.0'
 
       - name: Test
         run: swift test

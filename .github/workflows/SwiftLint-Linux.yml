@@ -1,4 +1,4 @@
-name: SwiftLint - Linux
+name: "[Linux] SwiftLint"
 
 on:
   push:

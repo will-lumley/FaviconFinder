@@ -25,7 +25,7 @@ public struct Image {
 }
 #endif
 
-public struct FaviconImage {
+public struct FaviconImage: @unchecked Sendable {
 
     // MARK: - Properties
 

@@ -7,24 +7,28 @@
 //
 
 @testable import FaviconFinder
-import XCTest
+import Testing
 
-class ArrayReorderTests: XCTestCase {
+struct ArrayReorderTests {
 
+    @Test("Reorder Elements")
     func testReorder() {
         var array = [Int]()
 
         array = [1, 2, 3]
-        array.moveElementToFront(2)
-        XCTAssertEqual(array, [2, 1, 3])
+        array = array.movingElementToFront(2)
+
+        #expect(array == [2, 1, 3])
 
         array = [1, 2, 3]
-        array.moveElementToFront(1)
-        XCTAssertEqual(array, [1, 2, 3])
+        array = array.movingElementToFront(1)
+
+        #expect(array == [1, 2, 3])
 
         array = [1, 2, 3]
-        array.moveElementToFront(4)
-        XCTAssertEqual(array, [1, 2, 3])
+        array = array.movingElementToFront(4)
+
+        #expect(array == [1, 2, 3])
     }
 
 }

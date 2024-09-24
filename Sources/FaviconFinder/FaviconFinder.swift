@@ -8,7 +8,7 @@
 
 import Foundation
 
-public final class FaviconFinder {
+public final class FaviconFinder: @unchecked Sendable {
 
     // MARK: - Properties
 
@@ -45,25 +45,43 @@ public extension FaviconFinder {
         // Cancel any previous task
         self.cancel()
 
+        // Copy configuration and url for outside of the Task
+        let config = self.configuration
+        let url = self.url
+
         // Create a new task for fetching favicon URLs
         self.currentTask = Task {
             // All of the sources we'll use to search for our favicon
-            var sources = FaviconSourceType.allCases
-
             // Get the users preferred source and move it to the front of the queue
-            sources.moveElementToFront(self.configuration.preferredSource)
+            let preferredSource = config.preferredSource
+
+            // If this is a mock run, just do that
+            if preferredSource == .mock {
+                let finder = preferredSource.finder(url: url, configuration: config)
+                return try await finder.find()
+            }
+
+            let sources = FaviconSourceType.allCases.movingElementToFront(preferredSource)
 
             // Iterate through each source, trying to find the favicon
             // in each source until we find it.
             for source in sources {
+                print("Trying with [\(source)] source")
                 do {
-                    let faviconURLs = try await self.fetchFavicon(with: source)
-                    if faviconURLs.count > 0 {
-                        return faviconURLs
-                    }
+                    let finder = source.finder(url: url, configuration: config)
+                    let faviconURLs = try await finder.find()
+                    return faviconURLs
                 } catch is CancellationError {
                     // The user has cancelled this, let's bubble this up
                     throw CancellationError()
+                } catch let error as NSError {
+                    // Check if the error is a URL cancellation error
+                    if error.domain == NSURLErrorDomain && error.code == NSURLErrorCancelled {
+                        // Map this to Swift's `CancellationError`
+                        throw CancellationError()
+                    } else {
+                        print("Failed to find Favicon [\(error)]. Trying next source type.")
+                    }
                 } catch {
                     print("Failed to find Favicon [\(error)]. Trying next source type.")
                 }
@@ -89,21 +107,6 @@ public extension FaviconFinder {
 // MARK: - Private
 
 private extension FaviconFinder {
-
-    /// Will use the provided `source` to find the websites Favicon.
-    ///
-    /// - Important: Will throw a `FaviconError` if an issue is encountered, or none is found.
-    ///
-    /// - Parameter source: The source that we should use to find the Favicon
-    /// - Returns: An array of FaviconURLs that contain the location of all the users favicons
-    func fetchFavicon(with source: FaviconSourceType) async throws -> [FaviconURL] {
-        // Setup the download, and get it to search for the URL
-        let finder = source.finder(
-            url: self.url,
-            configuration: self.configuration
-        )
-        return try await finder.find()
-    }
 
 }
 

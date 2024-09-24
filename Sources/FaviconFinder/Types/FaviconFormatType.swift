@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum FaviconFormatType: String, CaseIterable {
+public enum FaviconFormatType: String, CaseIterable, Sendable {
 
     // HTML Types
     case appleTouchIcon            = "apple-touch-icon"

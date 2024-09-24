@@ -8,13 +8,22 @@
 
 import Foundation
 
-public enum FaviconSourceType: CaseIterable {
+public enum FaviconSourceType: Sendable {
     case html
     case ico
     case webApplicationManifestFile
 
     /// This is used exclusively for testing
     case mock
+
+    static var allCases: [FaviconSourceType] {
+        [
+            .html,
+            .ico,
+            .webApplicationManifestFile
+        ]
+    }
+
 }
 
 extension FaviconSourceType {

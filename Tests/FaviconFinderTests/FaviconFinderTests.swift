@@ -7,15 +7,32 @@
 //
 
 @testable import FaviconFinder
-import XCTest
+import Foundation
+import Testing
 
-class FaviconFinderTests: XCTestCase {
+struct FaviconFinderTests {
 
     // MARK: - Tests
 
+    @Test("Test URLs")
+    func testURLs() async throws {
+        // Remove the URL that requires meta-refresh redirect
+        var testURLs = TestURL.allCases
+        testURLs.removeAll { $0 == .metaRefreshRedirect }
+        testURLs.removeAll { $0 == .nonUtf8Encoded }
+
+        // Iterate over each URL and ensure that they can be fetched
+        for url in testURLs {
+            print("Fetching \(url)")
+            try await self.fetch(url: url.url)
+            print("Fetched \(url)")
+        }
+    }
+
+    @Test("Test ICO Favicon")
     func testIco() async throws {
         let favicon = try await FaviconFinder(
-            url: .google,
+            url: TestURL.google.url,
             configuration: .init(preferredSource: .ico)
         )
             .fetchFaviconURLs()
@@ -23,16 +40,17 @@ class FaviconFinderTests: XCTestCase {
             .first()
 
         // Ensure that our favicon is actually valid
-        let image = try XCTUnwrap(favicon.image)
-        XCTAssertTrue(image.isValidImage)
+        let image = try #require(favicon.image)
+        #expect(image.isValidImage == true)
 
         // Ensure that our favicon was retrieved from the desired source
-        XCTAssertTrue(favicon.url.sourceType == .ico)
+        #expect(favicon.url.sourceType == .ico)
     }
 
+    @Test("Test HTML Favicon")
     func testHtml() async throws {
         let favicon = try await FaviconFinder(
-            url: .w3Schools,
+            url: TestURL.w3Schools.url,
             configuration: .init(preferredSource: .html)
         )
             .fetchFaviconURLs()
@@ -40,16 +58,17 @@ class FaviconFinderTests: XCTestCase {
             .first()
 
         // Ensure that our favicon is actually valid
-        let image = try XCTUnwrap(favicon.image)
-        XCTAssertTrue(image.isValidImage)
+        let image = try #require(favicon.image)
+        #expect(image.isValidImage == true)
 
         // Ensure that our favicon was retrieved from the desired source
-        XCTAssertTrue(favicon.url.sourceType == .html)
+        #expect(favicon.url.sourceType == .html)
     }
 
+    @Test("Test WebApplicationManifestFile Favicon")
     func testWebApplicationManifestFile() async throws {
         let favicon = try await FaviconFinder(
-            url: .webApplicationManifest,
+            url: TestURL.webApplicationManifest.url,
             configuration: .init(preferredSource: .webApplicationManifestFile)
         )
             .fetchFaviconURLs()
@@ -57,16 +76,17 @@ class FaviconFinderTests: XCTestCase {
             .first()
 
         // Ensure that our favicon is actually valid
-        let image = try XCTUnwrap(favicon.image)
-        XCTAssertTrue(image.isValidImage)
+        let image = try #require(favicon.image)
+        #expect(image.isValidImage == true)
 
         // Ensure that our favicon was retrieved from the desired source
-        XCTAssertTrue(favicon.url.sourceType == .webApplicationManifestFile)
+        #expect(favicon.url.sourceType == .webApplicationManifestFile)
     }
 
+    @Test("Test Meta Refresh Redirect Favicon")
     func testCheckForMetaRefreshRedirect() async throws {
         let favicon = try await FaviconFinder(
-            url: .metaRefreshRedirect,
+            url: TestURL.metaRefreshRedirect.url,
             configuration: .init(
                 preferredSource: .html,
                 checkForMetaRefreshRedirect: true
@@ -77,41 +97,43 @@ class FaviconFinderTests: XCTestCase {
             .first()
 
         // Ensure that our favicon is actually valid
-        let image = try XCTUnwrap(favicon.image)
-        XCTAssertTrue(image.isValidImage)
+        let image = try #require(favicon.image)
+        #expect(image.isValidImage == true)
 
         // Ensure that our favicon was retrieved from the desired source
-        XCTAssertTrue(favicon.url.sourceType == .html)
+        #expect(favicon.url.sourceType == .html)
     }
 
+    @Test("Test ForeignEncoding Favicon")
     func testForeignEncoding() async throws {
-        let favicon = try await FaviconFinder(url: .nonUtf8Encoded)
+        let favicon = try await FaviconFinder(url: TestURL.nonUtf8Encoded.url)
             .fetchFaviconURLs()
             .download()
             .first()
 
         // Ensure that our favicon is actually valid
-        let image = try XCTUnwrap(favicon.image)
-        XCTAssertTrue(image.isValidImage)
+        let image = try #require(favicon.image)
+        #expect(image.isValidImage == true)
     }
 
+    @Test("Test Cancel")
     func testCancel() async throws {
         let faviconFinder = FaviconFinder(
-            url: .google,
+            url: TestURL.google.url,
             configuration: .init(preferredSource: .mock)
         )
 
-        let expectation = expectation(description: "Task should be cancelled")
+        // We're expecting to catch an error, and we'll store it here
+        var caughtError: Error?
 
-        // Find the Favicon's in a separate Task
+        // Find the Favicon's in a separate Task, so we can cancel it
         Task {
             do {
                 _ = try await faviconFinder.fetchFaviconURLs()
-                XCTFail("Expected fetchFaviconURLs to be cancelled, but it completed")
-            } catch is CancellationError {
-                expectation.fulfill()
+                Issue.record("Expected fetchFaviconURLs to be cancelled, but it completed")
             } catch {
-                XCTFail("Unexpected error: \(error)")
+                // Store the error
+                caughtError = error
             }
         }
 
@@ -121,8 +143,27 @@ class FaviconFinderTests: XCTestCase {
         // Cancel the finding
         faviconFinder.cancel()
 
-        // Wait for the expectation to be fulfilled
-        await fulfillment(of: [expectation], timeout: 5)
+        // Wait a couple seconds
+        try await Task.sleep(nanoseconds: 2 * 1_000_000_000)
+
+        // We got a CancellationError, meaning that we got a cancellation, yay
+        #expect(caughtError is CancellationError)
+    }
+
+}
+
+private extension FaviconFinderTests {
+
+    func fetch(url: URL) async throws {
+        let favicon = try await FaviconFinder(
+            url: url,
+            configuration: .init(preferredSource: .ico)
+        )
+            .fetchFaviconURLs()
+            .download()
+            .first()
+
+        #expect(favicon.image != nil)
     }
 
 }
