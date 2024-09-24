@@ -114,11 +114,93 @@ private extension FaviconFinder {
 
 public extension Array where Element == FaviconURL {
 
+    /// Will iterate over each `FaviconURL` and analyse the `inferredSize`, and returns
+    /// the largest one.
+    ///
+    /// Notably, calling `largest()` on an array of `FaviconURL` instead of on an array of
+    /// `Favicon` means you can extrapolate the largest image without having to download all of them.
+    /// This comes with the drawbacks of
+    ///     1. Only being able to use this function appropriately if the source has set the sizeTags, either in the
+    ///       HTML or the WebApplicationManifestFile.
+    ///     2. Not being 100% certain, as the size in the sizeTags and the actual true size may be different due
+    ///       to the source being configured incorrectly.
+    ///
+    /// However there are plently of use cases where these drawbacks are worth it to get the largest image without
+    /// having to download them all, so here we are.
+    ///
+    /// - returns: A `FaviconURL` from the array of `FaviconURL`s that we deem to be the largest.
+    ///
+    func largest() async throws -> FaviconURL {
+        let largestFavicon = self
+            // Return true  if `a` is less than `b`
+            // Return false if `b` is less than `a`
+            .max { faviconA, faviconB in
+                guard let sizeA = faviconA.inferredSize else {
+                    return true
+                }
+                guard let sizeB = faviconB.inferredSize else {
+                    return false
+                }
+
+                let sizeAValue = sizeA.width * sizeA.height
+                let sizeBValue = sizeB.width * sizeB.height
+
+                return sizeAValue < sizeBValue
+            }
+
+        guard let largestFavicon else {
+            throw FaviconError.failedToFindFavicon
+        }
+        return largestFavicon
+    }
+
+    /// Will iterate over each `FaviconURL` and analyse the `inferredSize`, and returns
+    /// the smallest one.
+    ///
+    /// Notably, calling `smallest()` on an array of `FaviconURL` instead of on an array of
+    /// `Favicon` means you can extrapolate the smallest image without having to download all of them.
+    /// This comes with the drawbacks of
+    ///     1. Only being able to use this function appropriately if the source has set the sizeTags, either in the
+    ///       HTML or the WebApplicationManifestFile.
+    ///     2. Not being 100% certain, as the size in the sizeTags and the actual true size may be different due
+    ///       to the source being configured incorrectly.
+    ///
+    /// However there are plently of use cases where these drawbacks are worth it to get the smallest image without
+    /// having to download them all, so here we are.
+    ///
+    /// - returns: A `FaviconURL` from the array of `FaviconURL`s that we deem to be the smallest.
+    ///
+    func smallest() async throws -> FaviconURL {
+        let smallestFavicon = self
+            // Return true  if `a` is less than `b`
+            // Return false if `b` is less than `a`
+            .max { faviconA, faviconB in
+                guard let sizeA = faviconA.inferredSize else {
+                    return true
+                }
+                guard let sizeB = faviconB.inferredSize else {
+                    return false
+                }
+
+                let sizeAValue = sizeA.width * sizeA.height
+                let sizeBValue = sizeB.width * sizeB.height
+
+                return sizeAValue > sizeBValue
+            }
+
+        guard let smallestFavicon else {
+            throw FaviconError.failedToFindFavicon
+        }
+        return smallestFavicon
+
+    }
+
     /// Will iterate over each FaviconURL in our array, and initiate
     /// a `Favicon` instance after downloading the image data
     /// at the source specified by the FaviconURL.
     ///
-    /// - Returns: An array of `Favicon`, each containing the downloaded image data.
+    /// - returns: An array of `Favicon`, each containing the downloaded image data.
+    ///
     func download() async throws -> [Favicon] {
         var favicons = [Favicon]()
         for url in self {
@@ -135,6 +217,12 @@ public extension Array where Element == FaviconURL {
 
 // MARK: - [Favicon]
 
+/// Something important to note is that these functions require the `FaviconImage` to be downloaded (using the
+/// `download()` function first so comparison can take place.
+/// This is generally not advised unless you are in a situation where the size isn't indicated via HTML tags or WMAF
+/// tags.
+///
+///
 public extension Array where Element == Favicon {
 
     /// Will pull the first `Favicon` from the array
@@ -145,7 +233,8 @@ public extension Array where Element == Favicon {
     /// ensure that consistency can be kept, this function is provided to developers and an
     /// error will be thrown if the array is empty.
     ///
-    /// - Returns: The first `Favicon` in this array
+    /// - returns: The first `Favicon` in this array
+    ///
     func first() throws -> Favicon {
         guard let first = self.first else {
             throw FaviconError.failedToFindFavicon
@@ -156,7 +245,8 @@ public extension Array where Element == Favicon {
 
     /// Will pull the `Favicon` from the array that has the largest image size
     ///
-    /// - Returns: The `Favicon` that has the largest image
+    /// - returns: The `Favicon` that has the largest image
+    ///
     func largest() throws -> Favicon {
 
         // Find the Favicon with the largest image
@@ -178,12 +268,13 @@ public extension Array where Element == Favicon {
 
     /// Will pull the `Favicon` from the array that has the smallest image size
     ///
-    /// - Returns: The `Favicon` that has the smallest image
+    /// - returns: The `Favicon` that has the smallest image
+    ///
     func smallest() throws -> Favicon {
 
         // Find the Favicon with the smallest image
         let first = try self.first()
-        let largestImage = try self.reduce(first) { current, next in
+        let smallestImage = try self.reduce(first) { current, next in
             guard let currentImage = current.image, let nextImage = next.image else {
                 throw FaviconError.faviconImageIsNotDownloaded
             }
@@ -195,7 +286,7 @@ public extension Array where Element == Favicon {
             }
         }
 
-        return largestImage
+        return smallestImage
     }
 
 }
