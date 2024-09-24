@@ -62,7 +62,7 @@ private extension FaviconURLSession {
     ) async throws -> Response {
         let httpClient = HTTPClient(eventLoopGroupProvider: .singleton)
         defer {
-            try? httpClient.syncShutdown()
+            try? httpClient.shutdown()
         }
 
         // Convert headers to HTTPHeaders
