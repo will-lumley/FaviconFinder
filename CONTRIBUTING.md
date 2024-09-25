@@ -36,3 +36,9 @@ To submit a pull request (PR), please follow these steps:
 - **Documentation**: Update or create documentation for any new features or changes.
 
 ## License  By contributing to FaviconFinder, you agree that your contributions will be licensed under the MIT license.
+
+## Code of Conduct
+                                                           
+The Code of Conduct governs how we behave in public or in private whenever the project will be judged by our actions. We expect it to be honored by everyone who contributes to this project.
+
+See [CONDUCT.md](https://github.com/will-lumley/FaviconFinder/CONDUCT.md) for details.
