@@ -28,6 +28,9 @@ FaviconFinder will:
 - [x] Detect and parse web application manifest JSON files for favicon locations.
 - [x] Automatically check if the favicon is located within the root URL if the subdomain failed (Will check `https://site.com/favicon.ico` if `https://subdomain.site.com/favicon.ico` fails).
 - [x] If you set `checkForMetaRefreshRedirect` to true, FaviconFinder will analyse the HTML for a meta refresh redirect tag. If such a tag is found, the URL in the tag is the URL that will be queried.
+- [x] Sort favicons by size using the sizeTag metadata (either in HTML or the web app manifest) without downloading the images, allowing you to identify the largest or smallest favicon efficiently.
+- [x] Support pre-fetched HTML documents, so you can reuse HTML you’ve already downloaded instead of fetching it again.
+- [x] Cross-platform support for macOS, iOS, and Linux - and supports SwiftUI and UIKit, ensuring seamless integration across multiple environments and applications.
 
 To do:
 - [ ] Detect and parse web application Microsoft browser configuration XML.
@@ -183,6 +186,47 @@ let favicon = try await FaviconFinder(
 self.imageView.image = favicon.image
 ```
 
+### Sorting Favicon URLs by Size Without Downloading
+
+FaviconFinder includes functionality that allows you to determine the largest or smallest favicon available without needing to download all the images first. This is useful for optimising performance when you only need the largest or smallest image based on size metadata.
+
+By inspecting the size tags provided in the HTML or web application manifest file, FaviconFinder can sort through the available favicon URLs and select the one with the largest or smallest dimensions.
+
+To find the largest or smallest favicon URL without downloading the images:
+
+```swift
+let faviconURL = try await FaviconFinder(url: url)
+    .fetchFaviconURLs()
+    .largest()  // or .smallest()
+
+print("Largest Favicon URL: \(faviconURL.source)")
+```
+
+This will return the largest or smallest favicon based on the metadata in the size tag.
+
+Once you have identified the largest or smallest favicon URL, you can then proceed to download the actual image:
+
+```swift
+let largestFavicon = try await FaviconFinder(url: url)
+    .fetchFaviconURLs()
+    .largest()
+    .download()
+
+self.imageView.image = largestFavicon.image
+```
+
+There are pros and cons to using this approach.
+
+Advantages
+- No need to download all the images to determine which one is largest or smallest.
+- Optimises performance by focusing on the favicons that meet your size requirements.
+
+Limitations
+- The sizeTag metadata must be accurately set by the source (HTML or web app manifest).
+- The actual image size may differ if the source configuration is incorrect.
+
+This functionality allows you to efficiently sort favicon URLs by size and download only the favicons you need, making it a powerful tool for handling favicons in an optimised manner.
+
 ## Example Projects
 
 To run the example project, clone the repo, and open the example Xcode Project in either the `iOSFaviconFinderExample`, or `macOSFaviconFinderExample`, depending on your build target.
@@ -196,18 +240,18 @@ FaviconFinder is now written with Swift 6.0. This means we get to use `Swift Tes
 Swift 6.0 is supported from version `5.1.0` and up. If you need FaviconFinder in Swift 5.9 and below, please use version `5.0.4`.
 
 FaviconFinder now supports await/async concurrency, as seen in the examples below. Due to this, the most up to date version of FaviconFinder requires iOS 15.0 and macOS 12.0.
-If you need to support older versions of iOS or macOS, version 3.3.0 of FaviconFinder uses closures to call back the success/failure instead of await/async concurrency.
+If you need to support older versions of iOS or macOS, version `3.3.0` of FaviconFinder uses closures to call back the success/failure instead of await/async concurrency.
 
 ## Installation
 
 ### Swift Package Manager
-FaviconFinder is also available through [Swift Package Manager](https://github.com/apple/swift-package-manager). 
+FaviconFinder is available through [Swift Package Manager](https://github.com/apple/swift-package-manager). 
 To install it, simply add the dependency to your Package.Swift file:
 
 ```swift
 ...
 dependencies: [
-    .package(url: "https://github.com/will-lumley/FaviconFinder.git", from: "5.0.4"),
+    .package(url: "https://github.com/will-lumley/FaviconFinder.git", from: "5.1.0"),
 ],
 targets: [
     .target( name: "YourTarget", dependencies: ["FaviconFinder"]),
