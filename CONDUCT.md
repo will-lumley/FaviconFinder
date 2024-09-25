@@ -38,6 +38,4 @@ We expect it to be followed in spirit as much as in the letter.
 
 ---
 
-*The Alamofire Software Foundation Code of Conduct is licensed under the [Creative Commons Attribution-Share Alike 3.0 License](https://creativecommons.org/licenses/by-sa/3.0/us/).*
-
-*Some of the ideas and wording for the statements above were based on work by   [Mozilla](https://wiki.mozilla.org/Code_of_Conduct/Draft), [Ubuntu](http://www.ubuntu.com/about/about-ubuntu/conduct), and [Twitter](https://github.com/twitter/code-of-conduct). We thank them for their work and contributions to the open source community.*
+*Some of the ideas and wording for the statements above were based on work by   [Alamofire](https://github.com/Alamofire/Foundation/blob/master/CONDUCT.md), [Mozilla](https://wiki.mozilla.org/Code_of_Conduct/Draft), [Ubuntu](http://www.ubuntu.com/about/about-ubuntu/conduct), and [Twitter](https://github.com/twitter/code-of-conduct). We thank them for their work and contributions to the open source community.*
