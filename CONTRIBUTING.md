@@ -35,7 +35,9 @@ To submit a pull request (PR), please follow these steps:
 - **Tests**: Ensure that your code is covered by unit tests and that they all pass before submitting.
 - **Documentation**: Update or create documentation for any new features or changes.
 
-## License  By contributing to FaviconFinder, you agree that your contributions will be licensed under the MIT license.
+## License
+
+By contributing to FaviconFinder, you agree that your contributions will be licensed under the MIT license.
 
 ## Code of Conduct
                                                            
