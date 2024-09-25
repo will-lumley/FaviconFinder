@@ -8,7 +8,7 @@
 </p>
 <p align="center">
   <a href="https://github.com/apple/swift-package-manager"><img src="https://img.shields.io/badge/SPM-compatible-4BC51D.svg?style=flat" alt="SPM Compatible"></a>
-  <img src="https://img.shields.io/badge/Swift-5.5-orange.svg" alt="Swift 5.5">
+  <img src="https://img.shields.io/badge/Swift-6.0-orange.svg" alt="Swift 6.0">
   <a href="https://twitter.com/wlumley95">
     <img src="https://img.shields.io/badge/twitter-@wlumley95-blue.svg?style=flat" alt="Twitter">
   </a>
@@ -28,6 +28,9 @@ FaviconFinder will:
 - [x] Detect and parse web application manifest JSON files for favicon locations.
 - [x] Automatically check if the favicon is located within the root URL if the subdomain failed (Will check `https://site.com/favicon.ico` if `https://subdomain.site.com/favicon.ico` fails).
 - [x] If you set `checkForMetaRefreshRedirect` to true, FaviconFinder will analyse the HTML for a meta refresh redirect tag. If such a tag is found, the URL in the tag is the URL that will be queried.
+- [x] Sort favicons by size using the sizeTag metadata (either in HTML or the web app manifest) without downloading the images, allowing you to identify the largest or smallest favicon efficiently.
+- [x] Support pre-fetched HTML documents, so you can reuse HTML you’ve already downloaded instead of fetching it again.
+- [x] Cross-platform support for macOS, iOS, and Linux - and supports SwiftUI and UIKit, ensuring seamless integration across multiple environments and applications.
 
 To do:
 - [ ] Detect and parse web application Microsoft browser configuration XML.
@@ -65,20 +68,20 @@ FaviconFinder works with UIKit, SwiftUI, AppKit, and macOS Catalyst.
 
 FaviconFinder also supports Linux as a platform, and I have re-implemented parts of FaviconFinder to ensure that Linux is treated as a first-class platform.
 It's important to note that Swift on Linux doesn't natively support any `Image` format, so when you call download, the `data` itself is downloaded but there's no
-image type to cast the data to. Also dueo to this, `largest()` and `smallest()` aren't effective on Linux.
+image type to cast the data to. Also due to this, `largest()` and `smallest()` aren't effective on Linux.
 
 
 ## Advanced Usage & Configuration
 
 ### Preferential Downloading
 
-However if you're the type to want to have some fine-tuned control over what sort of favicon's we're after, you can do so.
+Now if you're the type to want to have some fine-tuned control over what sort of favicon's we're after, boy is this the library for you.
 
 FaviconFinder allows you to specify which download type you'd prefer (HTML, actual file, or web application manifest file), and then allows you to specify which favicon type you'd prefer for each download type.
 
-For example, you can specify that you'd prefer a HTML tag favicon, with the type of `appleTouchIcon`. FaviconFinder will then search through the HTML favicon tags for the `appleTouchIcon` type. If it cannot find the `appleTouchIcon` type, it will search for the other HTML favicon tag types.   
+For example, you can specify that you'd prefer a favicon that is declared within the from the HTML header file, and then within that request the the `appleTouchIcon` type. FaviconFinder will then search through the HTML favicon tags for the `appleTouchIcon` type. If it cannot find the `appleTouchIcon` type, it will search for the other HTML favicon tag types.   
 
-If the URL does not have a HTML tag that specifies the favicon, FaviconFinder will default to other download types, and will search the URL for each favicon download type until it finds one, or it'll return an error. 
+If the URL does not have a HTML tag that specifies the favicon, FaviconFinder will default to other download types, and will search the source for each favicon download type until it finds one, or it'll return an error. 
 
 Just like how you can specify which HTML favicon tag you'd prefer, you can set which filename you'd prefer when search for actual files. 
 
@@ -152,6 +155,78 @@ Here is how you would use it.
     self.imageView.image = favicon.image
 ```
 
+### Pre-Fetched HTML
+
+FaviconFinder allows you to pass a pre-fetched HTML document to avoid downloading the HTML multiple times or if you already have the HTML content available from another source. You can use the prefetchedHTML property in the configuration to pass this document.
+
+We use the Document type of SwiftSoup, as it has amazing HTML storing and parsing capabilities, allowing for easy manipulation and traversal of the document tree.
+
+This feature is useful when:
+- You have already downloaded the HTML document elsewhere in your app and want to reuse it.
+- You’re working with local HTML files or custom documents.
+- You want to optimise performance by reducing the number of HTTP requests.
+
+Here's how you can use it:
+
+```swift
+import SwiftSoup
+
+// Assuming you have already fetched and parsed the HTML
+let htmlString = "<html><head>...</head></html>"
+let document = try SwiftSoup.parse(htmlString)
+
+let favicon = try await FaviconFinder(
+    url: url,
+    configuration: .init(prefetchedHTML: document)
+)
+    .fetchFaviconURLs()
+    .download()
+    .largest()
+
+self.imageView.image = favicon.image
+```
+
+### Sorting Favicon URLs by Size Without Downloading
+
+FaviconFinder includes functionality that allows you to determine the largest or smallest favicon available without needing to download all the images first. This is useful for optimising performance when you only need the largest or smallest image based on size metadata.
+
+By inspecting the size tags provided in the HTML or web application manifest file, FaviconFinder can sort through the available favicon URLs and select the one with the largest or smallest dimensions.
+
+To find the largest or smallest favicon URL without downloading the images:
+
+```swift
+let faviconURL = try await FaviconFinder(url: url)
+    .fetchFaviconURLs()
+    .largest()  // or .smallest()
+
+print("Largest Favicon URL: \(faviconURL.source)")
+```
+
+This will return the largest or smallest favicon based on the metadata in the size tag.
+
+Once you have identified the largest or smallest favicon URL, you can then proceed to download the actual image:
+
+```swift
+let largestFavicon = try await FaviconFinder(url: url)
+    .fetchFaviconURLs()
+    .largest()
+    .download()
+
+self.imageView.image = largestFavicon.image
+```
+
+There are pros and cons to using this approach.
+
+Advantages
+- No need to download all the images to determine which one is largest or smallest.
+- Optimises performance by focusing on the favicons that meet your size requirements.
+
+Limitations
+- The sizeTag metadata must be accurately set by the source (HTML or web app manifest).
+- The actual image size may differ if the source configuration is incorrect.
+
+This functionality allows you to efficiently sort favicon URLs by size and download only the favicons you need, making it a powerful tool for handling favicons in an optimised manner.
+
 ## Example Projects
 
 To run the example project, clone the repo, and open the example Xcode Project in either the `iOSFaviconFinderExample`, or `macOSFaviconFinderExample`, depending on your build target.
@@ -160,19 +235,23 @@ Alternatively, if you're using this for a Linux project, you can open the exampl
 
 ## Requirements
 
+FaviconFinder is now written with Swift 6.0. This means we get to use `Swift Testing` over `XCTest`, but more importantly means FaviconFinder is now data-race safe and adheres to strict concurrency.
+
+Swift 6.0 is supported from version `5.1.0` and up. If you need FaviconFinder in Swift 5.9 and below, please use version `5.0.4`.
+
 FaviconFinder now supports await/async concurrency, as seen in the examples below. Due to this, the most up to date version of FaviconFinder requires iOS 15.0 and macOS 12.0.
-If you need to support older versions of iOS or macOS, version 3.3.0 of FaviconFinder uses closures to call back the success/failure instead of await/async concurrency.
+If you need to support older versions of iOS or macOS, version `3.3.0` of FaviconFinder uses closures to call back the success/failure instead of await/async concurrency.
 
 ## Installation
 
 ### Swift Package Manager
-FaviconFinder is also available through [Swift Package Manager](https://github.com/apple/swift-package-manager). 
+FaviconFinder is available through [Swift Package Manager](https://github.com/apple/swift-package-manager). 
 To install it, simply add the dependency to your Package.Swift file:
 
 ```swift
 ...
 dependencies: [
-    .package(url: "https://github.com/will-lumley/FaviconFinder.git", from: "5.0.4"),
+    .package(url: "https://github.com/will-lumley/FaviconFinder.git", from: "5.1.0"),
 ],
 targets: [
     .target( name: "YourTarget", dependencies: ["FaviconFinder"]),

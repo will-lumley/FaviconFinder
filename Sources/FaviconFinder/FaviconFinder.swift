@@ -37,10 +37,11 @@ public extension FaviconFinder {
     /// Will iterate through each of the source types we have available to us, and
     /// search for the websites favicon through there.
     ///
-    /// - Important: If the user has set a source preference in the Configuration, then
+    /// - important: If the user has set a source preference in the Configuration, then
     /// that source will be moved to the front of the queue in the hopes the preference can be
     /// made.
-    /// - Returns: An array of FaviconURLs that contain the location of all the users favicons
+    /// - returns: An array of FaviconURLs that contain the location of all the users favicons
+    ///
     func fetchFaviconURLs() async throws -> [FaviconURL] {
         // Cancel any previous task
         self.cancel()
@@ -66,7 +67,6 @@ public extension FaviconFinder {
             // Iterate through each source, trying to find the favicon
             // in each source until we find it.
             for source in sources {
-                print("Trying with [\(source)] source")
                 do {
                     let finder = source.finder(url: url, configuration: config)
                     let faviconURLs = try await finder.find()
@@ -80,10 +80,10 @@ public extension FaviconFinder {
                         // Map this to Swift's `CancellationError`
                         throw CancellationError()
                     } else {
-                        print("Failed to find Favicon [\(error)]. Trying next source type.")
+                        // print("Failed to find Favicon [\(error)]. Trying next source type.")
                     }
                 } catch {
-                    print("Failed to find Favicon [\(error)]. Trying next source type.")
+                    // print("Failed to find Favicon [\(error)]. Trying next source type.")
                 }
             }
 
@@ -100,102 +100,6 @@ public extension FaviconFinder {
     /// Cancels the ongoing favicon fetch task, if any.
     func cancel() {
         self.currentTask?.cancel()
-    }
-
-}
-
-// MARK: - Private
-
-private extension FaviconFinder {
-
-}
-
-// MARK: - [FaviconURL]
-
-public extension Array where Element == FaviconURL {
-
-    /// Will iterate over each FaviconURL in our array, and initiate
-    /// a `Favicon` instance after downloading the image data
-    /// at the source specified by the FaviconURL.
-    ///
-    /// - Returns: An array of `Favicon`, each containing the downloaded image data.
-    func download() async throws -> [Favicon] {
-        var favicons = [Favicon]()
-        for url in self {
-            guard let favicon = try? await Favicon(url: url) else {
-                continue
-            }
-            favicons.append(favicon)
-        }
-
-        return favicons
-    }
-
-}
-
-// MARK: - [Favicon]
-
-public extension Array where Element == Favicon {
-
-    /// Will pull the first `Favicon` from the array
-    ///
-    /// - Important: Why not jus use the `.first` computed variable that comes
-    /// with arrays? Because that variable returns `nil` if the array is empty. Throughout
-    /// this project, we throw an error if something has gone wrong rather than silently fail. To
-    /// ensure that consistency can be kept, this function is provided to developers and an
-    /// error will be thrown if the array is empty.
-    ///
-    /// - Returns: The first `Favicon` in this array
-    func first() throws -> Favicon {
-        guard let first = self.first else {
-            throw FaviconError.failedToFindFavicon
-        }
-
-        return first
-    }
-
-    /// Will pull the `Favicon` from the array that has the largest image size
-    ///
-    /// - Returns: The `Favicon` that has the largest image
-    func largest() throws -> Favicon {
-
-        // Find the Favicon with the largest image
-        let first = try self.first()
-        let largestImage = try self.reduce(first) { current, next in
-            guard let currentImage = current.image, let nextImage = next.image else {
-                throw FaviconError.faviconImageIsNotDownloaded
-            }
-
-            if currentImage.size > nextImage.size {
-                return current
-            } else {
-                return next
-            }
-        }
-
-        return largestImage
-    }
-
-    /// Will pull the `Favicon` from the array that has the smallest image size
-    ///
-    /// - Returns: The `Favicon` that has the smallest image
-    func smallest() throws -> Favicon {
-
-        // Find the Favicon with the smallest image
-        let first = try self.first()
-        let largestImage = try self.reduce(first) { current, next in
-            guard let currentImage = current.image, let nextImage = next.image else {
-                throw FaviconError.faviconImageIsNotDownloaded
-            }
-
-            if currentImage.size < nextImage.size {
-                return current
-            } else {
-                return next
-            }
-        }
-
-        return largestImage
     }
 
 }

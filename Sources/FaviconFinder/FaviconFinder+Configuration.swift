@@ -26,6 +26,8 @@ public extension FaviconFinder {
         /// The HTTP headers we'll pass along to our HTTP request
         public let httpHeaders: [String: String?]?
 
+        /// An optional prefetched HTML document that you can pass if you'd rather not FaviconFinder
+        /// do the HTML document downloading, or you have a local document.
         public let prefetchedHTML: Document?
 
         // MARK: - Lifecycle

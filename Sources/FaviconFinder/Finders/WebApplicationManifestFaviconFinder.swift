@@ -77,9 +77,15 @@ class WebApplicationManifestFaviconFinder: FaviconFinderProtocol {
 
         // And turn it into something we can work with
         let faviconURLs = rawIcons.compactMap { rawIcon -> FaviconURL? in
-            guard let rawFormat = rawIcon["src"] else { return nil }
-            guard let format = FaviconFormatType(rawValue: rawFormat) else { return nil }
-            guard let sizeTag = rawIcon["sizes"] else { return nil }
+            guard let rawFormat = rawIcon["src"] else {
+                return nil
+            }
+            guard let format = FaviconFormatType(rawValue: rawFormat) else {
+                return nil
+            }
+            guard let sizeTag = rawIcon["sizes"] else {
+                return nil
+            }
 
             let source = self.url.appendingPathComponent(rawFormat)
 
@@ -112,10 +118,14 @@ private extension WebApplicationManifestFaviconFinder {
             try $0.attr("rel") == self.preferredType
         }
 
-        guard let manifestFileAttr else { return nil }
+        guard let manifestFileAttr else {
+            return nil
+        }
         let rel = try manifestFileAttr.attr("rel")
         let href = try manifestFileAttr.attr("href")
-        guard let baseURL = href.baseUrl(from: htmlHead, from: self.url) else { return nil }
+        guard let baseURL = href.baseUrl(from: htmlHead, from: self.url) else {
+            return nil
+        }
 
         return ManifestFileReference(baseURL: baseURL, rel: rel, href: href)
     }
