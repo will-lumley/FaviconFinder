@@ -7,7 +7,16 @@
 
 import Foundation
 
-public struct FaviconURL: Sendable {
+public struct FaviconURL: Equatable, Sendable {
+
+    // MARK: - Types
+
+    public struct Size: Equatable, Sendable {
+        public let width: Double
+        public let height: Double
+    }
+
+    // MARK: - Properties
 
     /// The url of the .ico or HTML page, of where the favicon was found
     public let source: URL
@@ -30,9 +39,9 @@ public extension FaviconURL {
     /// Using the `sizeTag` this will return the indicated size of the image located at the URL.
     /// If `sizeTag` is `nil`, then `nil` will be returned.
     ///
-    /// - returns: The CGSize that is indicated in the `sizeTag`
+    /// - returns: The Size that is indicated in the `sizeTag`
     ///
-    var inferredSize: CGSize? {
+    var inferredSize: Size? {
         // Split the size tag components into their individual numbers
         guard let components = self.sizeTag?.split(separator: "x") else {
             return nil
@@ -52,7 +61,7 @@ public extension FaviconURL {
             return nil
         }
 
-        // Wrap it up in a pretty ~bow~ CGSize
+        // Wrap it up in a pretty ~bow~ Size
         return .init(width: width, height: height)
     }
 
