@@ -23,7 +23,10 @@ public final class FaviconFinder: @unchecked Sendable {
 
     // MARK: - Lifecycle
 
-    public init(url: URL, configuration: FaviconFinder.Configuration = .defaultConfiguration) {
+    public init(
+        url: URL,
+        configuration: FaviconFinder.Configuration = .defaultConfiguration
+    ) {
         self.url = url
         self.configuration = configuration
     }
@@ -67,6 +70,7 @@ public extension FaviconFinder {
             // Iterate through each source, trying to find the favicon
             // in each source until we find it.
             for source in sources {
+                print("Using source: [\(source)]")
                 do {
                     let finder = source.finder(url: url, configuration: config)
                     let faviconURLs = try await finder.find()
@@ -76,14 +80,14 @@ public extension FaviconFinder {
                     throw CancellationError()
                 } catch let error as NSError {
                     // Check if the error is a URL cancellation error
-                    if error.domain == NSURLErrorDomain && error.code == NSURLErrorCancelled {
-                        // Map this to Swift's `CancellationError`
+                    // Map this to Swift's `CancellationError`s
+                    if error.isCancelled {
                         throw CancellationError()
                     } else {
-                        // print("Failed to find Favicon [\(error)]. Trying next source type.")
+                        print("Failed to find Favicon [\(error)]. Trying next source type.")
                     }
                 } catch {
-                    // print("Failed to find Favicon [\(error)]. Trying next source type.")
+                    print("Failed to find Favicon [\(error)]. Trying next source type.")
                 }
             }
 
@@ -100,6 +104,16 @@ public extension FaviconFinder {
     /// Cancels the ongoing favicon fetch task, if any.
     func cancel() {
         self.currentTask?.cancel()
+    }
+
+}
+
+// MARK: - NSError
+
+private extension NSError {
+
+    var isCancelled: Bool {
+        self.code == NSURLErrorCancelled
     }
 
 }

@@ -11,7 +11,7 @@ import Testing
 
 struct FaviconURLTests {
 
-    @Test("Inferred Size - Size Creation", arguments: [
+    @Test("Inferred Size fro HTML Tag", arguments: [
         ("180x180", 180, 180),
         ("120x1080", 120, 1080),
         ("100.50x20.02", 100.50, 20.02)
@@ -25,40 +25,38 @@ struct FaviconURLTests {
             source: TestURL.google.url,
             format: .appleTouchIcon,
             sourceType: .html,
-            sizeTag: sizeTag
+            htmlSizeTag: sizeTag
         )
 
-        let inferredSize = try #require(testSubject.inferredSize)
-        #expect(inferredSize.width == rawWidth)
-        #expect(inferredSize.height == rawHeight)
+        #expect(testSubject.size == .init(width: rawWidth, height: rawHeight))
     }
 
-    @Test("Test Size Sorting")
+    @Test("FaviconURL Size Sorting")
     func testSizeSorting() async throws {
         let testSubject = [
             FaviconURL(
                 source: TestURL.google.url,
                 format: .appleTouchIcon,
                 sourceType: .html,
-                sizeTag: "100x100"
+                htmlSizeTag: "100x100"
             ),
             FaviconURL(
                 source: TestURL.google.url,
                 format: .appleTouchIcon,
                 sourceType: .html,
-                sizeTag: "180x180"
+                htmlSizeTag: "180x180"
             ),
             FaviconURL(
                 source: TestURL.google.url,
                 format: .appleTouchIcon,
                 sourceType: .html,
-                sizeTag: "181x181"
+                htmlSizeTag: "181x181"
             ),
             FaviconURL(
                 source: TestURL.google.url,
                 format: .appleTouchIcon,
                 sourceType: .html,
-                sizeTag: "150x150"
+                htmlSizeTag: "150x150"
             )
         ]
 

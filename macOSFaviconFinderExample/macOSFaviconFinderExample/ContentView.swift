@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ContentView: View {
 
-    @State var urlStr = "https://apple.com/au"
+    @State var urlStr = "https://ign.com"
     @ObservedObject var imageLoader = ImageLoader()
 
     var body: some View {
@@ -46,22 +46,13 @@ final class ImageLoader: ObservableObject {
     @Published private(set) var image: NSImage? = nil
     
     func load(url: URL) async throws {
-        let favicon = try await FaviconFinder(
-            url: url,
-            configuration: .init(
-                preferredSource: .html,
-                preferences: [
-                    .html: FaviconFormatType.appleTouchIcon.rawValue,
-                    .ico: "favicon.ico"
-                ]
-            )
-        )
+        let favicon = try await FaviconFinder(url: url)
             .fetchFaviconURLs()
             .download()
-            .first
-        
+            .largest()
+
         DispatchQueue.main.async {
-            self.image = favicon?.image?.image
+            self.image = favicon.image?.image
         }
     }
     

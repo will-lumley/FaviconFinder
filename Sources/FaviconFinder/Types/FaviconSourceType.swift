@@ -39,6 +39,8 @@ extension FaviconSourceType {
         case .appleTouchIconPrecomposed: self = .html
         case .shortcutIcon:              self = .html
         case .icon:                      self = .html
+        case .metaThumbnail:             self = .html
+        case .metaOpenGraphImage:        self = .html
 
         // Web Application Manifest File
         case .launcherIcon0_75x: self = .webApplicationManifestFile

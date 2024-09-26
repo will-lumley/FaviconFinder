@@ -41,7 +41,13 @@ class ICOFaviconFinder: FaviconFinderProtocol {
 
         // We found valid image data, woohoo!
         if (try? FaviconImage(data: fullFaviconUrlData)) != nil {
-            return [FaviconURL(source: faviconUrl, format: .ico, sourceType: .ico, sizeTag: nil)]
+            return [
+                FaviconURL(
+                    source: faviconUrl,
+                    format: .ico,
+                    sourceType: .ico
+                )
+            ]
         }
 
         // We couldn't find any image, so let's try the root domain (just in case it's hiding there)
@@ -62,7 +68,13 @@ class ICOFaviconFinder: FaviconFinderProtocol {
 
         if (try? FaviconImage(data: baseFaviconUrlData)) != nil {
             // We found valid image data, woohoo!
-            return [FaviconURL(source: rootURL, format: .ico, sourceType: .ico, sizeTag: nil)]
+            return [
+                FaviconURL(
+                    source: rootURL,
+                    format: .ico,
+                    sourceType: .ico
+                )
+            ]
         } else {
             // Well we couldn't find any valid image data at the provided URL, nor the root domain, game over.
             throw FaviconError.failedToFindFavicon
