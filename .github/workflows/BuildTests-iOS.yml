@@ -26,6 +26,9 @@ jobs:
 
       - name: Install xcpretty
         run: gem install xcpretty
+      
+      - name: Install Dependencies
+        run: xcodebuild -resolvePackageDependencies
 
       - name: Test
         run: xcodebuild test -scheme FaviconFinder -destination 'platform=iOS Simulator,name=iPhone 16,OS=latest' -skipPackagePluginValidation
