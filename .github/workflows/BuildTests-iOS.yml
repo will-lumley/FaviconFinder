@@ -18,9 +18,16 @@ jobs:
 
       - name: Install xcpretty
         run: gem install xcpretty
-      
+
+      - name: Setup Swift
+        uses: SwiftyLab/setup-swift@v1
+        with:
+          swift-version: '6.0'
+      - name: Check Xcode Version
+        run: xcodebuild -version
+
       - name: Install Dependencies
-        run: xcodebuild -resolvePackageDependencies
+        run: xcodebuild -resolvePackageDependencies -verbose
 
       - name: Test
         run: xcodebuild test -scheme FaviconFinder -destination 'platform=iOS Simulator,name=iPhone 16,OS=latest' -skipPackagePluginValidation
