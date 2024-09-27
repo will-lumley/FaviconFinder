@@ -33,7 +33,7 @@ jobs:
         run: xcodebuild -resolvePackageDependencies -verbose
 
       - name: Upload Xcode result bundle
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: xcresult
           path: "**/*.xcresult"
