@@ -27,7 +27,7 @@ jobs:
         run: xcodebuild -version
 
       - name: Install Dependencies
-        run: xcodebuild -resolvePackageDependencies -verbose
+        run: xcodebuild -resolvePackageDependencies -verbose -useNewBuildSystem YES
 
       - name: Test
         run: xcodebuild test -scheme FaviconFinder -destination 'platform=iOS Simulator,name=iPhone 16,OS=latest' -skipPackagePluginValidation
