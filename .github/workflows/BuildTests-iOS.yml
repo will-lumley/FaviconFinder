@@ -12,7 +12,6 @@ jobs:
   build:
     name: Build and Test (iOS)
     runs-on: macos-14
-    continue-on-error: true
 
     steps:
       - name: Checkout
@@ -33,11 +32,5 @@ jobs:
       - name: Install Dependencies
         run: xcodebuild -resolvePackageDependencies -verbose
 
-      - name: Upload Xcode result bundle
-        uses: actions/upload-artifact@v4
-        with:
-          name: xcresult
-          path: "**/*.xcresult"
-
-      # - name: Test
-      #   run: xcodebuild test -scheme FaviconFinder -destination 'platform=iOS Simulator,name=iPhone 16,OS=latest' -skipPackagePluginValidation
+      - name: Test
+        run: xcodebuild test -scheme FaviconFinder -destination 'platform=iOS Simulator,name=iPhone 16,OS=latest' -skipPackagePluginValidation
