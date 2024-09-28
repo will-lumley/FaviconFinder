@@ -58,10 +58,10 @@ final class ImageLoader: ObservableObject {
         )
             .fetchFaviconURLs()
             .download()
-            .first
-        
+            .largest()
+
         DispatchQueue.main.async {
-            self.image = favicon?.image?.image
+            self.image = favicon.image?.image
         }
     }
     

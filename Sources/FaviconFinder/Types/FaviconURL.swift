@@ -9,13 +9,6 @@ import Foundation
 
 public struct FaviconURL: Equatable, Sendable {
 
-    // MARK: - Types
-
-    public struct Size: Equatable, Sendable {
-        public let width: Double
-        public let height: Double
-    }
-
     // MARK: - Properties
 
     /// The url of the .ico or HTML page, of where the favicon was found
@@ -27,43 +20,40 @@ public struct FaviconURL: Equatable, Sendable {
     /// The source type of the favicon we extracted
     public let sourceType: FaviconSourceType
 
-    /// If the icon is from HTML/WAMF and we've been told it's size, we'll store that data here
-    public let sizeTag: String?
+    /// If the icon metadata tells us the size, we'll store it here
+    public let size: FaviconSize?
+
+    // MARK: - Lifecycle
+
+    public init(
+        source: URL,
+        format: FaviconFormatType,
+        sourceType: FaviconSourceType,
+        size: FaviconSize? = nil
+    ) {
+        self.source = source
+        self.format = format
+        self.sourceType = sourceType
+        self.size = size
+    }
+
+    public init(
+        source: URL,
+        format: FaviconFormatType,
+        sourceType: FaviconSourceType,
+        htmlSizeTag: String?
+    ) {
+        self.source = source
+        self.format = format
+        self.sourceType = sourceType
+        self.size = Self.inferredSize(from: htmlSizeTag)
+    }
 
 }
 
 // MARK: - Public
 
 public extension FaviconURL {
-
-    /// Using the `sizeTag` this will return the indicated size of the image located at the URL.
-    /// If `sizeTag` is `nil`, then `nil` will be returned.
-    ///
-    /// - returns: The Size that is indicated in the `sizeTag`
-    ///
-    var inferredSize: Size? {
-        // Split the size tag components into their individual numbers
-        guard let components = self.sizeTag?.split(separator: "x") else {
-            return nil
-        }
-
-        // Make sure we only got two components, or something has gone very wrong
-        guard components.count == 2 else {
-            return nil
-        }
-
-        // Grab the sizes as strings
-        let widthStr = components[0]
-        let heightStr = components[1]
-
-        // Let's convert those strings into doubles
-        guard let width = Double(widthStr), let height = Double(heightStr) else {
-            return nil
-        }
-
-        // Wrap it up in a pretty ~bow~ Size
-        return .init(width: width, height: height)
-    }
 
     /// Creates a `Favicon` instance with this `FaviconURL` information, which
     /// will kickstart a download of the relevant image data, and then returns this data
@@ -77,6 +67,45 @@ public extension FaviconURL {
         }
 
         return favicon
+    }
+
+}
+
+// MARK: - Private
+
+private extension FaviconURL {
+
+    /// Using the `sizeTag` this will return the indicated size of the image located at the URL.
+    /// If `sizeTag` is `nil`, then `nil` will be returned.
+    ///
+    /// - parameter htmlTag: A string from a HTML header file that represents the size. Formated in the following
+    /// way: 120x120
+    /// - returns: The Size that is indicated in the `sizeTag`
+    ///
+    static func inferredSize(from htmlTag: String?) -> FaviconSize? {
+        guard let htmlTag else {
+            return nil
+        }
+
+        // Split the size tag components into their individual numbers
+        let components = htmlTag.split(separator: "x")
+
+        // Make sure we only got two components, or something has gone wrong
+        guard components.count == 2 else {
+            return nil
+        }
+
+        // Grab the sizes as strings
+        let widthStr  = components[0]
+        let heightStr = components[1]
+
+        // Let's convert those strings into doubles
+        guard let width = Double(widthStr), let height = Double(heightStr) else {
+            return nil
+        }
+
+        // Wrap it up in a pretty ~bow~ Size
+        return .init(width: width, height: height)
     }
 
 }
@@ -106,17 +135,14 @@ public extension Array where Element == FaviconURL {
             // Return true  if `a` is less than `b`
             // Return false if `b` is less than `a`
             .max { faviconA, faviconB in
-                guard let sizeA = faviconA.inferredSize else {
+                guard let dimensionA = faviconA.size?.dimension else {
                     return true
                 }
-                guard let sizeB = faviconB.inferredSize else {
+                guard let dimensionB = faviconB.size?.dimension else {
                     return false
                 }
 
-                let sizeAValue = sizeA.width * sizeA.height
-                let sizeBValue = sizeB.width * sizeB.height
-
-                return sizeAValue < sizeBValue
+                return dimensionA < dimensionB
             }
 
         guard let largestFavicon else {
@@ -146,17 +172,14 @@ public extension Array where Element == FaviconURL {
             // Return true  if `a` is less than `b`
             // Return false if `b` is less than `a`
             .max { faviconA, faviconB in
-                guard let sizeA = faviconA.inferredSize else {
+                guard let dimensionA = faviconA.size?.dimension else {
                     return true
                 }
-                guard let sizeB = faviconB.inferredSize else {
+                guard let dimensionB = faviconB.size?.dimension else {
                     return false
                 }
 
-                let sizeAValue = sizeA.width * sizeA.height
-                let sizeBValue = sizeB.width * sizeB.height
-
-                return sizeAValue > sizeBValue
+                return dimensionA > dimensionB
             }
 
         guard let smallestFavicon else {

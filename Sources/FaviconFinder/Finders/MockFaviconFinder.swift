@@ -45,19 +45,19 @@ class MockFaviconFinder: FaviconFinderProtocol {
                 source: URL(string: "https://google.com")!,
                 format: .appleTouchIcon,
                 sourceType: .html,
-                sizeTag: "100x140"
+                htmlSizeTag: "100x140"
             ),
             .init(
                 source: URL(string: "https://apple.com")!,
                 format: .appleTouchIcon,
                 sourceType: .html,
-                sizeTag: "100x90"
+                htmlSizeTag: "100x90"
             ),
             .init(
                 source: URL(string: "https://facebook.com")!,
                 format: .appleTouchIcon,
                 sourceType: .html,
-                sizeTag: "100x90"
+                htmlSizeTag: "100x90"
             )
         ]
     }

@@ -93,7 +93,7 @@ class WebApplicationManifestFaviconFinder: FaviconFinderProtocol {
                 source: source,
                 format: format,
                 sourceType: .webApplicationManifestFile,
-                sizeTag: sizeTag
+                htmlSizeTag: sizeTag
             )
         }
 

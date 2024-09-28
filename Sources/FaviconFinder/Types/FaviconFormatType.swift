@@ -16,6 +16,10 @@ public enum FaviconFormatType: String, CaseIterable, Equatable, Sendable {
     case shortcutIcon              = "shortcut icon"
     case icon                      = "icon"
 
+    // OpenGraphic Types
+    case metaThumbnail             = "thumbnail"
+    case metaOpenGraphImage        = "og:image"
+
     // Filetype (ico)
     case ico = "ico"
 
