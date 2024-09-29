@@ -23,7 +23,12 @@ jobs:
 
       - name: Generate DocC
         run: |
-          swift package generate-documentation --target FaviconFinder --disable-indexing
+          swift package generate-documentation \
+          --target FaviconFinder \
+          --disable-indexing \
+          --transform-for-static-hosting \
+          --hosting-base-path FaviconFinder
+
           mkdir -p docs
           mv .build/plugins/Swift-DocC/outputs/FaviconFinder.doccarchive docs
     
