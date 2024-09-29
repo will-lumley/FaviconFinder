@@ -1,6 +1,24 @@
 ![FaviconFinder: Simple Favicon Finding](https://raw.githubusercontent.com/will-lumley/FaviconFinder/main/FaviconFinder.png)
 
+# Table of Contents
+
+1. [Introduction](#faviconfinder)
+2. [Usage](#usage)
+3. [Advanced Usage](#advanced-usage--configuration)
+   - [Preferential Downloading](#preferential-downloading)
+   - [Meta-Refresh Redirects](#meta-refresh-redirects)
+   - [Pre-Fetched HTML](#pre-fetched-html)
+   - [Sorting Favicon URLs by Size Without Downloading](#sorting-favicon-urls-by-size-without-downloading)
+4. [Example Projects](#example-projects)
+5. [Requirements](#requirements)
+6. [Installation](#installation)
+   - [Swift Package Manager](#swift-package-manager)
+   - [Cocoapods and Carthage](#cocoapods-and-carthage)
+7. [Author](#author)
+8. [License](#license)
+
 # FaviconFinder
+
 <p align="center">
   <img src="https://github.com/will-lumley/FaviconFinder/actions/workflows/BuildTests-iOS.yml/badge.svg?branch=main" alt="iOS - CI Status">
   <img src="https://github.com/will-lumley/FaviconFinder/actions/workflows/BuildTests-linux.yml/badge.svg?branch=main" alt="macOS - CI Status">
@@ -21,6 +39,7 @@ Why not just download the file that exists at `https://site.com/favicon.ico`? Th
 FaviconFinder handles the dirty work for you and iterates through the numerous possible favicon locations, and simply delivers the image to you once found.
 
 FaviconFinder will:
+
 - [x] Detect the favicon in the root directory of the URL provided.
 - [x] Detect and parse the HTML at the URL for the declaration of the favicon.
 - [x] Resolve the favicon URL for you, even if it's a relative URL to the subdomain that you're querying.
@@ -33,11 +52,13 @@ FaviconFinder will:
 - [x] Cross-platform support for macOS, iOS, and Linux - and supports SwiftUI and UIKit, ensuring seamless integration across multiple environments and applications.
 
 To do:
+
 - [ ] Detect and parse web application Microsoft browser configuration XML.
 
 ## Usage
 
 FaviconFinder uses simple syntax to allow you to easily download the favicon you need, and get on with your project. Just insert this code into your project.
+
 ```swift
     let favicon = try await FaviconFinder(url: url)
         .fetchFaviconURLs()
@@ -48,6 +69,7 @@ FaviconFinder uses simple syntax to allow you to easily download the favicon you
 ```
 
 FaviconFinder will iterate through various sources of where the favicon might live, and will ensure that each source is inspected. Currently, the sources are:
+
 - As a file in the root directory of the URL.
 - Declared in the HTML header
 - Declared in the Web Application Manifest File
@@ -70,7 +92,6 @@ FaviconFinder also supports Linux as a platform, and I have re-implemented parts
 It's important to note that Swift on Linux doesn't natively support any `Image` format, so when you call download, the `data` itself is downloaded but there's no
 image type to cast the data to. Also due to this, `largest()` and `smallest()` aren't effective on Linux.
 
-
 ## Advanced Usage & Configuration
 
 ### Preferential Downloading
@@ -79,13 +100,13 @@ Now if you're the type to want to have some fine-tuned control over what sort of
 
 FaviconFinder allows you to specify which download type you'd prefer (HTML, actual file, or web application manifest file), and then allows you to specify which favicon type you'd prefer for each download type.
 
-For example, you can specify that you'd prefer a favicon that is declared within the from the HTML header file, and then within that request the the `appleTouchIcon` type. FaviconFinder will then search through the HTML favicon tags for the `appleTouchIcon` type. If it cannot find the `appleTouchIcon` type, it will search for the other HTML favicon tag types.   
+For example, you can specify that you'd prefer a favicon that is declared within the from the HTML header file, and then within that request the the `appleTouchIcon` type. FaviconFinder will then search through the HTML favicon tags for the `appleTouchIcon` type. If it cannot find the `appleTouchIcon` type, it will search for the other HTML favicon tag types.
 
-If the URL does not have a HTML tag that specifies the favicon, FaviconFinder will default to other download types, and will search the source for each favicon download type until it finds one, or it'll return an error. 
+If the URL does not have a HTML tag that specifies the favicon, FaviconFinder will default to other download types, and will search the source for each favicon download type until it finds one, or it'll return an error.
 
-Just like how you can specify which HTML favicon tag you'd prefer, you can set which filename you'd prefer when search for actual files. 
+Just like how you can specify which HTML favicon tag you'd prefer, you can set which filename you'd prefer when search for actual files.
 
-Similarly, you can specify which JSON key you'd prefer when iterating through the web application manifest file. 
+Similarly, you can specify which JSON key you'd prefer when iterating through the web application manifest file.
 
 For the `.ico` download type, you can request FaviconFinder searchs for a filename of your choosing.
 
@@ -113,6 +134,7 @@ Here's how you'd make that request:
 ```
 
 This allows you to control:
+
 - What type of download type FaviconFinder will use first
 - When iterating through each download type, what sub-type to look for. For the HTML download type, this allows you to prioritise different "rel" types. For the file.ico type, this allows you to choose the filename.
 
@@ -128,7 +150,7 @@ However there is a lesser-practiced (and frankly inferior) method of redirecting
 This is similar to the HTTP 301 Redirect, except it occurs in the front-end and the browser is expected to read & parse the HTML and send the user to the new URL that way.
 When `URLSession` encounters a HTTP request that points to a HTML file that contains a meta-refresh redirect, nothing happens.
 
-However with `FaviconFinder` you're in luck. If you set it to do so within the configuration, `FaviconFinder` will scan the HTML at the URL you provide it for any meta-refresh redirects to make sure that if a 
+However with `FaviconFinder` you're in luck. If you set it to do so within the configuration, `FaviconFinder` will scan the HTML at the URL you provide it for any meta-refresh redirects to make sure that if a
 meta-refresh redirect is encountered, you don't have to worry about it.
 
 It's important to note however that parsing and checking for this can take extra compute time, so by default it's set to off.
@@ -162,6 +184,7 @@ FaviconFinder allows you to pass a pre-fetched HTML document to avoid downloadin
 We use the Document type of SwiftSoup, as it has amazing HTML storing and parsing capabilities, allowing for easy manipulation and traversal of the document tree.
 
 This feature is useful when:
+
 - You have already downloaded the HTML document elsewhere in your app and want to reuse it.
 - You’re working with local HTML files or custom documents.
 - You want to optimise performance by reducing the number of HTTP requests.
@@ -218,10 +241,12 @@ self.imageView.image = largestFavicon.image
 There are pros and cons to using this approach.
 
 Advantages
+
 - No need to download all the images to determine which one is largest or smallest.
 - Optimises performance by focusing on the favicons that meet your size requirements.
 
 Limitations
+
 - The sizeTag metadata must be accurately set by the source (HTML or web app manifest).
 - The actual image size may differ if the source configuration is incorrect.
 
@@ -245,7 +270,8 @@ If you need to support older versions of iOS or macOS, version `3.3.0` of Favico
 ## Installation
 
 ### Swift Package Manager
-FaviconFinder is available through [Swift Package Manager](https://github.com/apple/swift-package-manager). 
+
+FaviconFinder is available through [Swift Package Manager](https://github.com/apple/swift-package-manager).
 To install it, simply add the dependency to your Package.Swift file:
 
 ```swift
@@ -260,7 +286,8 @@ targets: [
 ```
 
 ### Cocoapods and Carthage
-FaviconFinder was previously available through CocoaPods and Carthage, however making the library available to all three Cocoapods, 
+
+FaviconFinder was previously available through CocoaPods and Carthage, however making the library available to all three Cocoapods,
 Carthage, and SPM (and functional to all three) was becoming troublesome. This, combined with the fact that SPM has seen a serious
 up-tick in adoption & functionality, has led me to remove support for CocoaPods and Carthage.
 
