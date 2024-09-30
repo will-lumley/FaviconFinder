@@ -1,25 +1,5 @@
 ![FaviconFinder: Simple Favicon Finding](https://raw.githubusercontent.com/will-lumley/FaviconFinder/main/FaviconFinder.png)
 
-# Table of Contents
-
-1. [Introduction](#faviconfinder)
-2. [Usage](#usage)
-3. [How it Works](#how-it-works)
-4. [Documentation](#documentation)
-5. [Advanced Usage](#advanced-usage--configuration)
-   - [Preferential Downloading](#preferential-downloading)
-   - [Meta-Refresh Redirects](#meta-refresh-redirects)
-   - [Pre-Fetched HTML](#pre-fetched-html)
-   - [Querying Favicons Behind Authentication](#querying-favicons-behind-authentication)
-   - [Sorting Favicon URLs by Size Without Downloading](#sorting-favicon-urls-by-size-without-downloading)
-6. [Example Projects](#example-projects)
-7. [Requirements](#requirements)
-8. [Installation](#installation)
-   - [Swift Package Manager](#swift-package-manager)
-   - [Cocoapods and Carthage](#cocoapods-and-carthage)
-9. [Author](#author)
-10. [License](#license)
-
 # FaviconFinder
 
 <p align="center">
@@ -53,6 +33,26 @@ FaviconFinder will:
 - [x] Sort favicons by size using the sizeTag metadata (either in HTML or the web app manifest) without downloading the images, allowing you to identify the largest or smallest favicon efficiently.
 - [x] Support pre-fetched HTML documents, so you can reuse HTML you’ve already downloaded instead of fetching it again.
 - [x] Cross-platform support for macOS, macOS Catalyst, iOS, and Linux - and supports SwiftUI, UIKit, and AppKit, ensuring seamless integration across multiple environments and applications.
+
+# Table of Contents
+
+1. [Introduction](#faviconfinder)
+2. [Usage](#usage)
+3. [How it Works](#how-it-works)
+4. [Documentation](#documentation)
+5. [Advanced Usage](#advanced-usage--configuration)
+   - [Preferential Downloading](#preferential-downloading)
+   - [Meta-Refresh Redirects](#meta-refresh-redirects)
+   - [Pre-Fetched HTML](#pre-fetched-html)
+   - [Querying Favicons Behind Authentication](#querying-favicons-behind-authentication)
+   - [Sorting Favicon URLs by Size Without Downloading](#sorting-favicon-urls-by-size-without-downloading)
+6. [Example Projects](#example-projects)
+7. [Requirements](#requirements)
+8. [Installation](#installation)
+   - [Swift Package Manager](#swift-package-manager)
+   - [Cocoapods and Carthage](#cocoapods-and-carthage)
+9. [Author](#author)
+10. [License](#license)
 
 ## Usage
 
