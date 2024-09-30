@@ -8,16 +8,29 @@
 import Foundation
 import SwiftSoup
 
+/// An extension to `String` that helps resolve relative URLs (`href` attributes)
+/// by determining the base URL using the HTML `<head>` element and the current URL context.
+///
 extension String {
 
-    /// Determines the URL that our favicon will come from with the provided `href`.
+    /// Resolves the base URL for a given `href` attribute by checking if it is relative or absolute.
     ///
-    /// If the provided `url` property of this class is relative, we will use the HTML Head given and
-    /// extrapolates the base URL from it.
+    /// If the `href` is relative, it uses the `<base>` tag in the provided HTML head (if available)
+    /// to determine the correct base URL. If no `<base>` tag is present, it uses the provided `url` as the base.
     ///
-    /// - Parameter head: The head element of the HTML we've extracted.
-    /// - Returns: The URL that our Favicon will have come from if we use this href.
+    /// - Parameters:
+    ///   - head: The `<head>` element of the HTML document. This is where the method looks for a `<base>` tag.
+    ///   - url: The base URL to use if no `<base>` tag is found, or to resolve relative URLs.
     ///
+    /// - Returns: A fully resolved `URL` object if successful, or `nil` if the `href` could not be resolved.
+    ///
+    /// - Example:
+    ///   ```swift
+    ///   let href = "/images/favicon.ico"
+    ///   let baseUrl = href.baseUrl(from: htmlHead, from: URL(string: "https://example.com")!)
+    ///   // baseUrl will resolve to "https://example.com/images/favicon.ico"
+    ///   ```
+    ///   
     func baseUrl(from head: SwiftSoup.Element, from url: URL) -> URL? {
         // If we don't have a http or https prepended to our href, prepend our base domain
         // If we don't have a http or https prepended to our href, prepend our base domain

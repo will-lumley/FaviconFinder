@@ -8,10 +8,22 @@
 import Foundation
 import SwiftSoup
 
-class HTMLFaviconFinder: FaviconFinderProtocol {
+/// `HTMLFaviconFinder` is responsible for extracting favicons from an HTML document.
+/// It conforms to the `FaviconFinderProtocol` and is responsible for parsing both
+/// `<link>` and `<meta>` tags in the HTML head to retrieve relevant favicon data.
+///
+/// This class supports fetching favicons via both standard HTML `<link>` elements
+/// (e.g., `<link rel="icon" href="...">`) and OpenGraph meta tags (e.g., `<meta property="og:image" content="...">`).
+///
+/// Use the `find()` method to start searching for favicons in an HTML document.
+///
+/// - Note: This class also supports handling meta-refresh redirects if enabled in the configuration.
+///
+final class HTMLFaviconFinder: FaviconFinderProtocol {
 
     // MARK: - Types
 
+    /// A structure representing a reference to a favicon found in an HTML `<link>` tag.
     struct HtmlReference {
         let rel: String
         let href: String
@@ -21,6 +33,7 @@ class HTMLFaviconFinder: FaviconFinderProtocol {
         let format: FaviconFormatType
     }
 
+    /// A structure representing a reference to a favicon found in an OpenGraph `<meta>` tag.
     struct OpenGraphicReference {
         let type: String
         let content: String
@@ -32,7 +45,11 @@ class HTMLFaviconFinder: FaviconFinderProtocol {
 
     // MARK: - Properties
 
+    /// The `URL` of the website for which the favicons are being searched.
     var url: URL
+
+    /// Configuration options for customizing the favicon search, including preferences
+    /// for which favicon types to search for and whether meta-refresh redirects should be handled.
     var configuration: FaviconFinder.Configuration
 
     var preferredType: String {
@@ -41,11 +58,30 @@ class HTMLFaviconFinder: FaviconFinderProtocol {
 
     // MARK: - FaviconFinder
 
+    /// Initialises a `HTMLFaviconFinder` instance.
+    ///
+    /// - Parameters:
+    ///   - url: The URL of the website to search for favicons.
+    ///   - configuration: A configuration object that contains user preferences and options.
+    ///
+    /// - Returns: A new `HTMLFaviconFinder` instance.
+    ///
     required init(url: URL, configuration: FaviconFinder.Configuration) {
         self.url = url
         self.configuration = configuration
     }
 
+    /// Finds favicons in the HTML document. This method looks for both
+    /// `<link>` and `<meta>` tags to identify any favicons.
+    ///
+    /// The method checks for a prefetched HTML document in the configuration;
+    /// if one isn't found, it fetches the HTML from the `url`.
+    ///
+    /// - Throws: `FaviconError.failedToParseHTML` if the HTML cannot be parsed.
+    /// - Throws: `FaviconError.failedToFindFavicon` if no favicons are found.
+    ///
+    /// - Returns: An array of `FaviconURL` instances representing the found favicons.
+    ///
     func find() async throws -> [FaviconURL] {
         let html: Document
 
@@ -111,12 +147,18 @@ class HTMLFaviconFinder: FaviconFinderProtocol {
 
 private extension HTMLFaviconFinder {
 
-    /// Will extrapolate all the "link" elements from the provided HTML header element, and
-    /// return the ones that correlate to favicon imgaes
+    /// Parses the `<link>` elements in the provided HTML head element
+    /// and returns references to any favicons found.
     ///
-    /// - parameter htmlHead: Our HTML header elelment
-    /// - returns: An array of "link" elements, formatted in our internal `Reference` struct
+    /// This method identifies favicon-related `<link>` tags, such as
+    /// those with `rel` attributes like `icon`, `apple-touch-icon`, etc.
     ///
+    /// - Parameter htmlHead: The HTML head element to parse.
+    ///
+    /// - Throws: Throws an error if the parsing fails.
+    ///
+    /// - Returns: An array of `HtmlReference` objects that correspond to favicons found in `<link>`
+    /// elements.
     func links(from htmlHead: Element) throws -> [HtmlReference] {
         // Where we're going to store our HTML favicons
         var links = [HtmlReference]()
@@ -158,11 +200,18 @@ private extension HTMLFaviconFinder {
         return links
     }
 
-    /// Will extrapolate all the "meta" elements from the provided HTML header element, and
-    /// return the ones that correlate to favicon imgaes
+    /// Parses the `<meta>` elements in the provided HTML head element
+    /// and returns references to any OpenGraph favicons found.
     ///
-    /// - parameter htmlHead: Our HTML header elelment
-    /// - returns: An array of "link" elements, formatted in our internal `Reference` struct
+    /// This method identifies OpenGraph-related `<meta>` tags, such as
+    /// those with `property` attributes like `og:image`.
+    ///
+    /// - Parameter htmlHead: The HTML head element to parse.
+    ///
+    /// - Throws: Throws an error if the parsing fails.
+    ///
+    /// - Returns: An array of `OpenGraphicReference` objects that correspond to favicons found in
+    /// `<meta>` elements.
     ///
     func metas(from htmlHead: Element) throws -> [OpenGraphicReference] {
         // Where we're going to store our HTML favicons

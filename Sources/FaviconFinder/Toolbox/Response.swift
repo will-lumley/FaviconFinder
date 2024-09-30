@@ -14,17 +14,29 @@ import NIOCore
 import NIOHTTP1
 #endif
 
+/// The Response struct is designed to wrap around the raw HTTP response data and provide a consistent way to
+/// handle responses across platforms (both Linux and Apple).
+/// It abstracts away platform-specific differences, like text encoding and response handling, making it easier to
+/// work with HTTP responses in a cross-platform manner.
+///
 struct Response {
 
     // MARK: - Properties
 
+    /// Stores the raw response data.
     let data: Data
+
+    /// The text encoding used in the response, defaulting to UTF-8 if not specified.
     let textEncoding: String.Encoding
 
     // MARK: - Lifecycle
 
 #if os(Linux)
 
+    /// Initializes the `Response` object with raw response data and headers on Linux.
+    ///
+    /// - Parameter rawResponse: A tuple containing the response `Data` and `HTTPHeaders`.
+    ///
     init(_ rawResponse: (Data, HTTPHeaders)) {
         self.data = rawResponse.0
 
@@ -45,6 +57,10 @@ struct Response {
 
 #else
 
+    /// Initializes the `Response` object with raw response data and a `URLResponse` on Apple platforms.
+    ///
+    /// - Parameter rawResponse: A tuple containing the response `Data` and `URLResponse`.
+    ///
     init(_ rawResponse: (Data, URLResponse)) {
         self.data = rawResponse.0
         self.textEncoding = rawResponse.1.encoding
@@ -56,6 +72,11 @@ struct Response {
 
 // MARK: - String
 
+/// The extension on String provides a method to convert a charset string (e.g., utf-8, iso-8859-1) into a
+/// String.Encoding value.
+/// This is important for handling various text encodings across platforms, especially on Linux where
+/// NSStringEncoding is not available.
+///
 private extension String {
 
     /// We need to manually convert our string to String.Encoding
@@ -64,6 +85,7 @@ private extension String {
     ///
     /// - Returns: The String.Encoding enum that our string represents. Will
     /// return .utf8 is no known equivalent is found.
+    /// 
     var encoding: String.Encoding {
         switch self {
         case "us-ascii":

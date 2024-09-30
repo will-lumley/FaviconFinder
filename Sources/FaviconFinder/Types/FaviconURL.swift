@@ -7,6 +7,8 @@
 
 import Foundation
 
+/// `FaviconURL` represents a URL where a favicon can be found, along with its associated
+/// metadata like format, size, and source type.
 public struct FaviconURL: Equatable, Sendable {
 
     // MARK: - Properties
@@ -25,6 +27,14 @@ public struct FaviconURL: Equatable, Sendable {
 
     // MARK: - Lifecycle
 
+    /// Initializes a `FaviconURL` with the specified parameters.
+    ///
+    /// - Parameters:
+    ///   - source: The URL where the favicon is located.
+    ///   - format: The format of the favicon.
+    ///   - sourceType: The type of source where the favicon was found.
+    ///   - size: The size of the favicon, if known.
+    ///
     public init(
         source: URL,
         format: FaviconFormatType,
@@ -37,6 +47,14 @@ public struct FaviconURL: Equatable, Sendable {
         self.size = size
     }
 
+    /// Initializes a `FaviconURL` using an HTML size tag to infer the favicon size.
+    ///
+    /// - Parameters:
+    ///   - source: The URL where the favicon is located.
+    ///   - format: The format of the favicon.
+    ///   - sourceType: The type of source where the favicon was found.
+    ///   - htmlSizeTag: The size tag extracted from HTML metadata, formatted as "120x120".
+    ///
     public init(
         source: URL,
         format: FaviconFormatType,
@@ -55,11 +73,11 @@ public struct FaviconURL: Equatable, Sendable {
 
 public extension FaviconURL {
 
-    /// Creates a `Favicon` instance with this `FaviconURL` information, which
-    /// will kickstart a download of the relevant image data, and then returns this data
-    /// and other relevant metadata in the `Favicon` struct.
+    /// Downloads the favicon at the `source` URL and creates a `Favicon` instance with the downloaded data.
     ///
-    /// - returns: A `Favicon`, that contains the downloaded image data.
+    /// - Returns: A `Favicon` containing the downloaded image data.
+    ///
+    /// - Throws: `FaviconError.failedToDownloadFavicon` if the download fails.
     ///
     func download() async throws -> Favicon {
         guard let favicon = try? await Favicon(url: self) else {
@@ -75,12 +93,10 @@ public extension FaviconURL {
 
 private extension FaviconURL {
 
-    /// Using the `sizeTag` this will return the indicated size of the image located at the URL.
-    /// If `sizeTag` is `nil`, then `nil` will be returned.
+    /// Infers the size of the favicon from an HTML size tag (e.g., "120x120").
     ///
-    /// - parameter htmlTag: A string from a HTML header file that represents the size. Formated in the following
-    /// way: 120x120
-    /// - returns: The Size that is indicated in the `sizeTag`
+    /// - Parameter htmlTag: A string representing the size from an HTML tag.
+    /// - Returns: A `FaviconSize` instance representing the dimensions, or `nil` if parsing fails.
     ///
     static func inferredSize(from htmlTag: String?) -> FaviconSize? {
         guard let htmlTag else {
@@ -128,7 +144,7 @@ public extension Array where Element == FaviconURL {
     /// However there are plently of use cases where these drawbacks are worth it to get the largest image without
     /// having to download them all, so here we are.
     ///
-    /// - returns: A `FaviconURL` from the array of `FaviconURL`s that we deem to be the largest.
+    /// - Returns: A `FaviconURL` from the array of `FaviconURL`s that we deem to be the largest.
     ///
     func largest() async throws -> FaviconURL {
         let largestFavicon = self
@@ -165,7 +181,7 @@ public extension Array where Element == FaviconURL {
     /// However there are plently of use cases where these drawbacks are worth it to get the smallest image without
     /// having to download them all, so here we are.
     ///
-    /// - returns: A `FaviconURL` from the array of `FaviconURL`s that we deem to be the smallest.
+    /// - Returns: A `FaviconURL` from the array of `FaviconURL`s that we deem to be the smallest.
     ///
     func smallest() async throws -> FaviconURL {
         let smallestFavicon = self
@@ -193,7 +209,7 @@ public extension Array where Element == FaviconURL {
     /// a `Favicon` instance after downloading the image data
     /// at the source specified by the FaviconURL.
     ///
-    /// - returns: An array of `Favicon`, each containing the downloaded image data.
+    /// - Returns: An array of `Favicon`, each containing the downloaded image data.
     ///
     func download() async throws -> [Favicon] {
         var favicons = [Favicon]()

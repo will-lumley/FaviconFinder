@@ -8,9 +8,16 @@
 
 import Foundation
 
+/// An extension to `URL` that provides utilities for manipulating and parsing URLs,
+/// such as removing subdomains, stripping the scheme, and defining recognized TLDs.
+///
 extension URL {
 
-    /// A list of possible domain components that we recognise as TLDs
+    /// A list of possible domain components that we recognize as TLDs (top-level domains).
+    ///
+    /// These are used when attempting to extract the root domain from a URL.
+    /// - Returns: An array of TLD strings.
+    ///
     public var tlds: [String] {
         return [
             "com",
@@ -20,7 +27,18 @@ extension URL {
         ]
     }
 
-    /// https://stackoverflow.com/questions/17101227/how-to-extract-and-remove-scheme-name-from-nsurl
+    /// Removes the URL scheme (e.g., "https") from the URL string, leaving the rest of the URL intact.
+    ///
+    /// - Returns: A string representing the URL without its scheme, or `nil` if the scheme doesn't exist.
+    ///
+    /// - Note: This came from here: https://stackoverflow.com/questions/17101227/how-to-extract-and-remove-scheme-name-from-nsurl
+    ///
+    /// - Example:
+    ///   ```swift
+    ///   let url = URL(string: "https://example.com/path")!
+    ///   let stripped = url.absoluteStringWithoutScheme
+    ///   // stripped is "example.com/path"
+    ///   ```
     public var absoluteStringWithoutScheme: String? {
         guard let scheme = self.scheme else {
             return nil
@@ -33,9 +51,19 @@ extension URL {
         return urlStr
     }
 
-    /// Attempts to create a URL by removing the subdomains from self.
-    /// For example, emailer.netflix.com/foobar would be netflix.com
-    /// - Returns: Nil if removing the subdomains was not possible, otherwise the new URL is returned
+    /// Attempts to create a new URL by removing the subdomains from the current URL.
+    ///
+    /// For example, `https://emailer.netflix.com/foobar` would become `https://netflix.com`.
+    ///
+    /// - Returns: A new URL without subdomains, or `nil` if it couldn't be generated.
+    ///
+    /// - Example:
+    ///   ```swift
+    ///   let url = URL(string: "https://subdomain.example.com")!
+    ///   let rootUrl = url.urlWithoutSubdomains
+    ///   // rootUrl is "https://example.com"
+    ///   ```
+    ///   
     public var urlWithoutSubdomains: URL? {
         // Remove the scheme
         guard var urlStr = self.absoluteStringWithoutScheme else {
