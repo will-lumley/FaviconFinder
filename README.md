@@ -4,18 +4,20 @@
 
 1. [Introduction](#faviconfinder)
 2. [Usage](#usage)
-3. [Advanced Usage](#advanced-usage--configuration)
+3. [Documentation](#documentation)
+4. [Advanced Usage](#advanced-usage--configuration)
    - [Preferential Downloading](#preferential-downloading)
    - [Meta-Refresh Redirects](#meta-refresh-redirects)
    - [Pre-Fetched HTML](#pre-fetched-html)
+   - [Querying Favicons Behind Authentication](#querying-favicons-behind-authentication)
    - [Sorting Favicon URLs by Size Without Downloading](#sorting-favicon-urls-by-size-without-downloading)
-4. [Example Projects](#example-projects)
-5. [Requirements](#requirements)
-6. [Installation](#installation)
+5. [Example Projects](#example-projects)
+6. [Requirements](#requirements)
+7. [Installation](#installation)
    - [Swift Package Manager](#swift-package-manager)
    - [Cocoapods and Carthage](#cocoapods-and-carthage)
-7. [Author](#author)
-8. [License](#license)
+8. [Author](#author)
+9. [License](#license)
 
 # FaviconFinder
 
@@ -49,11 +51,7 @@ FaviconFinder will:
 - [x] If you set `checkForMetaRefreshRedirect` to true, FaviconFinder will analyse the HTML for a meta refresh redirect tag. If such a tag is found, the URL in the tag is the URL that will be queried.
 - [x] Sort favicons by size using the sizeTag metadata (either in HTML or the web app manifest) without downloading the images, allowing you to identify the largest or smallest favicon efficiently.
 - [x] Support pre-fetched HTML documents, so you can reuse HTML you’ve already downloaded instead of fetching it again.
-- [x] Cross-platform support for macOS, iOS, and Linux - and supports SwiftUI and UIKit, ensuring seamless integration across multiple environments and applications.
-
-To do:
-
-- [ ] Detect and parse web application Microsoft browser configuration XML.
+- [x] Cross-platform support for macOS, macOS Catalyst, iOS, and Linux - and supports SwiftUI, UIKit, and AppKit, ensuring seamless integration across multiple environments and applications.
 
 ## Usage
 
@@ -91,6 +89,11 @@ FaviconFinder works with UIKit, SwiftUI, AppKit, and macOS Catalyst.
 FaviconFinder also supports Linux as a platform, and I have re-implemented parts of FaviconFinder to ensure that Linux is treated as a first-class platform.
 It's important to note that Swift on Linux doesn't natively support any `Image` format, so when you call download, the `data` itself is downloaded but there's no
 image type to cast the data to. Also due to this, `largest()` and `smallest()` aren't effective on Linux.
+
+## Documentation
+
+While this README provides a basic rundown of FaviconFinder, how to use it and what it can do, a much more thorough documentation can be found here:
+https://will-lumley.github.io/FaviconFinder/documentation/faviconfinder/
 
 ## Advanced Usage & Configuration
 
@@ -208,6 +211,35 @@ let favicon = try await FaviconFinder(
 
 self.imageView.image = favicon.image
 ```
+
+### Querying Favicons Behind Authentication
+
+In some cases, favicons might be stored behind an authentication layer or require custom HTTP headers to access, such as API tokens or cookies for user sessions. FaviconFinder supports querying favicons using custom HTTP headers, allowing you to fetch favicons even if they require authentication.
+
+To specify custom HTTP headers, you can pass them in the Configuration object when initializing FaviconFinder. These headers will be sent with every HTTP request FaviconFinder makes, ensuring that the favicon can be accessed even if it’s behind an authentication layer.
+
+Below is an example of how to set up a request using custom HTTP headers to access favicons that require authentication (e.g., using a bearer token):
+
+```swift
+let headers = [
+    "Authorization": "Bearer your_token_here",
+    "Cookie": "session_id=your_session_id_here"
+]
+
+let favicon = try await FaviconFinder(
+    url: url,
+    configuration: .init(
+        httpHeaders: headers
+    )
+)
+    .fetchFaviconURLs()
+    .download()
+    .largest()
+
+self.imageView.image = favicon.image
+```
+
+By providing custom HTTP headers, you can handle more advanced scenarios where favicons are restricted or protected behind security layers, ensuring that FaviconFinder remains flexible and functional in a variety of environments.
 
 ### Sorting Favicon URLs by Size Without Downloading
 
