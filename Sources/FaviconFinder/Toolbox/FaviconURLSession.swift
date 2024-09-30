@@ -16,19 +16,42 @@ import NIOHTTP1
 import Foundation
 import SwiftSoup
 
-/// Why is having our own wrapper around `URLSession` necessary? Great question. Usually I'd be very against
-/// something like this, but I believe that in this use-case it's necessary for a number of reasons.
+/// The `FaviconURLSession` class wraps `URLSession` to provide consistent behavior for downloading favicons,
+/// with support for handling meta-refresh redirects and bridging async functionality
+/// for both Apple and Linux platforms.
 ///
-/// 1. Having all our Favicon download's come through this object allows for us to check for a 
-/// meta-refresh redirect. `URLSession` doesn't check for meta-refresh redirect's so having
-/// it here allows for the caller to not worry about such logic.
+/// - Why a wrapper around `URLSession`?
+///   1. **Meta-refresh redirects**: `URLSession` does not handle meta-refresh redirects. This wrapper ensures
+///      such redirects are handled appropriately, allowing the caller to ignore such details.
+///   2. **Cross-platform support**: On Linux, `FoundationNetworking` doesn't support async/await functionality.
+///      This wrapper handles the differences between Apple and Linux platforms, abstracting away the complexity
+///      for the caller.
 ///
-/// 2. The `URLSession` that comes with Linux (ie. `FoundationNetworking`) doesn't support `async await`
-/// functionality, instead relying on archaic closures. Having this handled in `FaviconURLRequest` is neat so the
-/// caller doesn't have to worry about handling the two different types of `URLSession` calls.
+/// The `dataTask` function supports HTTP headers and optional checking for meta-refresh redirects.
 ///
-class FaviconURLSession {
+/// - Parameters:
+///   - url: The URL to send the request to.
+///   - checkForMetaRefreshRedirect: A Boolean indicating whether to check for meta-refresh redirects in the HTML.
+///     Defaults to `false`.
+///   - httpHeaders: Optional HTTP headers to include in the request.
+///
+final class FaviconURLSession {
 
+    /// Downloads data from the provided URL, optionally checking for meta-refresh redirects
+    /// and handling cross-platform differences between Apple and Linux.
+    ///
+    /// - Parameters:
+    ///   - url: The URL from which to download the data.
+    ///   - checkForMetaRefreshRedirect: A Boolean indicating whether to check for
+    ///   meta-refresh redirects in the response.
+    ///     Defaults to `false`.
+    ///   - httpHeaders: Optional dictionary of HTTP headers to include in the request.
+    ///     The keys represent header field names, and the values are their respective values.
+    ///
+    /// - Returns: A `Response` object containing the data and headers of the response.
+    ///
+    /// - Throws: Throws if the network request fails or if meta-refresh redirect processing fails.
+    ///
     static func dataTask(
         with url: URL,
         checkForMetaRefreshRedirect: Bool = false,
@@ -55,6 +78,21 @@ private extension FaviconURLSession {
 
 #if os(Linux)
 
+    /// Downloads data from the provided URL, optionally checking for meta-refresh redirects
+    /// and handling cross-platform differences between Apple and Linux.
+    ///
+    /// - Parameters:
+    ///   - url: The URL from which to download the data.
+    ///   - checkForMetaRefreshRedirect: A Boolean indicating whether to check for
+    ///   meta-refresh redirects in the response.
+    ///     Defaults to `false`.
+    ///   - httpHeaders: Optional dictionary of HTTP headers to include in the request.
+    ///     The keys represent header field names, and the values are their respective values.
+    ///
+    /// - Returns: A `Response` object containing the data and headers of the response.
+    ///
+    /// - Throws: Throws if the network request fails or if meta-refresh redirect processing fails.
+    ///
     static func linuxDataTask(
         with url: URL,
         checkForMetaRefreshRedirect: Bool = false,
@@ -134,8 +172,21 @@ private extension FaviconURLSession {
 
     #else
 
-    // swiftlint:disable:next cyclomatic_complexity
-    static func appleDataTask(
+    /// Downloads data from the provided URL, optionally checking for meta-refresh redirects
+    /// and handling cross-platform differences between Apple and Linux.
+    ///
+    /// - Parameters:
+    ///   - url: The URL from which to download the data.
+    ///   - checkForMetaRefreshRedirect: A Boolean indicating whether to check for
+    ///   meta-refresh redirects in the response.
+    ///     Defaults to `false`.
+    ///   - httpHeaders: Optional dictionary of HTTP headers to include in the request.
+    ///     The keys represent header field names, and the values are their respective values.
+    ///
+    /// - Returns: A `Response` object containing the data and headers of the response.
+    ///
+    /// - Throws: Throws if the network request fails or if meta-refresh redirect processing fails.
+    static func appleDataTask( // swiftlint:disable:this cyclomatic_complexity
             with url: URL,
             checkForMetaRefreshRedirect: Bool = false,
             httpHeaders: [String: String?]? = nil
@@ -241,8 +292,18 @@ private extension FaviconURLSession {
 // MARK: - Linux Specific URLSession Override
 
 #if os(Linux)
+
+/// A custom extension of `URLSession` to support asynchronous network requests on Linux using NIO's `HTTPClient`.
 private extension URLSession {
 
+    /// Allows a convenient async/await implementation of a network call on Linux.
+    ///
+    /// - Note: This function is only available on Linux systems, as `URLSession` on Linux lacks `async/await` support.
+    /// - Parameters:
+    ///   - url: The URL to download data from.
+    /// - Returns: A tuple containing the downloaded data and the HTTP headers from the response.
+    /// - Throws: Throws an error if the network request fails or if the response data cannot be collected.
+    ///
     func data(from url: URL) async throws -> (Data, HTTPHeaders) {
         let httpClient = HTTPClient(eventLoopGroupProvider: .singleton)
 
@@ -262,18 +323,21 @@ private extension URLSession {
 
 // MARK: - SwiftSoup.Elements
 
+/// Filters an array of `Elements` (from SwiftSoup) to find the first element with the specified attribute and value.
 private extension Elements {
 
+    /// Finds an attribute that matches the condition in an array of Elements
+    ///
+    /// - Parameters:
+    ///   - attribute: The attribute to search for (e.g., "http-equiv").
+    ///   - value: The value the attribute must equal (e.g., "refresh").
+    /// - Returns: The first `Element` that matches the attribute and value, or `nil` if no such element is found.
+    /// - Throws: Throws an error if an element's attribute cannot be accessed.
+    ///
     func whereAttr(_ attribute: String, equals value: String) throws -> Element? {
         for element in self where try element.attr(attribute) == value {
             return element
         }
-
-//        for element in self {
-//            if try element.attr(attribute) == value {
-//                return element
-//            }
-//        }
 
         return nil
     }

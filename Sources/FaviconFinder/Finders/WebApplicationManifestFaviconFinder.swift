@@ -8,10 +8,28 @@
 import Foundation
 import SwiftSoup
 
-class WebApplicationManifestFaviconFinder: FaviconFinderProtocol {
+/// `WebApplicationManifestFaviconFinder` is responsible for finding favicons defined in
+/// the web application manifest file of a website. It conforms to the `FaviconFinderProtocol`
+/// and searches for icons specified in the "icons" array within the manifest JSON file.
+///
+/// This class first looks for a `<link rel="manifest">` tag in the HTML document, which points
+/// to the web application manifest file. After retrieving the manifest, it parses the file
+/// to extract favicon information.
+///
+/// Use the `find()` method to start searching for favicons in the web application manifest.
+///
+/// - Note: This class also supports handling meta-refresh redirects if enabled in the configuration.
+///
+final class WebApplicationManifestFaviconFinder: FaviconFinderProtocol {
 
     // MARK: - Types
 
+    /// A structure representing a reference to the web application manifest file found in the HTML document.
+    ///
+    /// - `baseURL`: The base URL of the manifest file.
+    /// - `rel`: The "rel" attribute value of the manifest tag (typically "manifest").
+    /// - `href`: The URL path to the manifest file.
+    ///
     struct ManifestFileReference {
         let baseURL: URL
         let rel: String
@@ -20,20 +38,47 @@ class WebApplicationManifestFaviconFinder: FaviconFinderProtocol {
 
     // MARK: - Properties
 
+    /// The URL of the website for which the web application manifest favicons are being searched.
     var url: URL
+
+    /// Configuration options for customizing the favicon search, including preferences
+    /// for which favicon types to search for and whether meta-refresh redirects should be handled.
     var configuration: FaviconFinder.Configuration
 
+    /// The preferred type for manifest file lookup, which defaults to `"manifest"` if no preference is specified.
     var preferredType: String {
         self.configuration.preferences[.webApplicationManifestFile] ?? "manifest"
     }
 
     // MARK: - FaviconFinder
 
+    /// Initializes a `WebApplicationManifestFaviconFinder` instance.
+    ///
+    /// - Parameters:
+    ///   - url: The URL of the website to search for favicons in the web application manifest.
+    ///   - configuration: A configuration object that contains user preferences and options.
+    ///
+    /// - Returns: A new `WebApplicationManifestFaviconFinder` instance.
+    ///
     required init(url: URL, configuration: FaviconFinder.Configuration) {
         self.url = url
         self.configuration = configuration
     }
 
+    /// Finds favicons by looking for the web application manifest file in the HTML `<link>` tags.
+    ///
+    /// This method searches for a `<link rel="manifest">` tag in the HTML document to
+    /// retrieve the manifest file. It then extracts favicon information from the manifest's
+    /// "icons" array, returning an array of `FaviconURL` instances.
+    ///
+    /// - Throws:
+    ///   - `FaviconError.failedToFindWebApplicationManifestFile` if the manifest file cannot be found.
+    ///   - `FaviconError.failedToDownloadWebApplicationManifestFile` if the manifest file cannot be downloaded.
+    ///   - `FaviconError.failedToParseWebApplicationManifestFile` if the manifest file cannot be parsed.
+    ///   - `FaviconError.webApplicationManifestFileConainedNoIcons` if the manifest file contains no icons.
+    ///
+    /// - Returns: An array of `FaviconURL` instances representing the favicons found in the manifest file.
+    ///
     func find() async throws -> [FaviconURL] {
         let html: Document
 
@@ -106,12 +151,13 @@ class WebApplicationManifestFaviconFinder: FaviconFinderProtocol {
 
 private extension WebApplicationManifestFaviconFinder {
 
-    /// Will iterate through' all the "link" elements from the provided HTML header element, and
-    /// return the one that has the "rel" as "manifest"
+    /// Searches the provided HTML head element for a `<link>` tag that references the manifest file.
     ///
-    /// - Throws: Throws an error if there is an issue iterating through the HTML header
-    /// - Parameter htmlHead: Our HTML header elelment
-    /// - Returns: A `ManifestFileReference` struct containing the data contained in the "manifest" tag
+    /// - Parameter htmlHead: The HTML head element to parse for the manifest file reference.
+    ///
+    /// - Throws: Throws an error if there is an issue parsing the HTML head.
+    ///
+    /// - Returns: A `ManifestFileReference` object containing the data found in the "manifest" tag.
     ///
     func manifestFileReference(from htmlHead: Element) throws -> ManifestFileReference? {
         let manifestFileAttr = try htmlHead.select("link").first {
@@ -130,10 +176,15 @@ private extension WebApplicationManifestFaviconFinder {
         return ManifestFileReference(baseURL: baseURL, rel: rel, href: href)
     }
 
-    /// Fetches and parses the manifest file from the reference provided
+    /// Downloads and parses the web application manifest file from the provided `ManifestFileReference`.
     ///
-    /// - Parameter manifestFileReference: The now-native data from our HTML head that contains the manifest file data
-    /// - Returns: A dictionary containing the key/value data contained in the manifest file
+    /// - Parameter manifestFileReference: The reference pointing to the web application manifest file.
+    ///
+    /// - Throws:
+    ///   - `FaviconError.failedToDownloadWebApplicationManifestFile` if the manifest file cannot be downloaded.
+    ///   - `FaviconError.failedToParseWebApplicationManifestFile` if the manifest file cannot be parsed.
+    ///
+    /// - Returns: A dictionary representing the parsed manifest file.
     ///
     func downloadManifestFile(
         with reference: ManifestFileReference

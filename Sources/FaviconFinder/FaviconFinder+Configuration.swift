@@ -10,28 +10,61 @@ import SwiftSoup
 
 public extension FaviconFinder {
 
+    /// The `Configuration` struct contains settings and preferences for the `FaviconFinder`.
+    /// It allows users to customize how the favicon is retrieved, including preferences for specific
+    /// sources, custom HTTP headers, and more.
+    ///
     struct Configuration: @unchecked Sendable {
 
         // MARK: - Properties
 
-        /// Which download type our user would prefer to use
+        /// The user's preferred source type for fetching the favicon.
+        ///
+        /// This can be set to prioritize fetching from a specific source
+        /// such as `.html`, `.ico`, or `.webApplicationManifestFile`.
+        /// Defaults to `.html`.
+        ///
         public let preferredSource: FaviconSourceType
 
-        /// Which preferences the user has for each source type
+        /// Preferences for specific favicon source types.
+        ///
+        /// This allows users to specify preferences for each source type.
+        /// For example, a preference could define the desired file or link type for each source.
         public let preferences: [FaviconSourceType: String]
 
-        /// Indicates if we should check for a meta-refresh-redirect tag in the HTML header
+        /// Determines whether or not the HTML should be checked for a `meta-refresh-redirect` tag.
+        ///
+        /// When this is enabled, `FaviconFinder` will inspect the HTML header for meta-refresh redirects
+        /// and follow the redirect if found.
+        /// Defaults to `false`.
         public let checkForMetaRefreshRedirect: Bool
 
-        /// The HTTP headers we'll pass along to our HTTP request
+        /// HTTP headers to pass along with the HTTP request when fetching the favicon.
+        ///
+        /// This allows users to specify custom HTTP headers, such as user-agent or authorization tokens.
         public let httpHeaders: [String: String?]?
 
-        /// An optional prefetched HTML document that you can pass if you'd rather not FaviconFinder
-        /// do the HTML document downloading, or you have a local document.
+        /// A prefetched HTML document that can be passed in if the user already has the HTML.
+        ///
+        /// If set, `FaviconFinder` will use this document instead of downloading the HTML
+        /// from the specified URL.
+        /// Useful when working with local HTML documents or when the HTML is already available in memory.
         public let prefetchedHTML: Document?
 
         // MARK: - Lifecycle
 
+        /// Initializes a new configuration object.
+        ///
+        /// - Parameters:
+        ///   - preferredSource: The preferred source for fetching the favicon. Defaults to `.html`.
+        ///   - preferences: A dictionary mapping each source type to a specific preference.
+        ///   Defaults to an empty dictionary.
+        ///   - checkForMetaRefreshRedirect: A boolean indicating whether to check for
+        ///   meta-refresh-redirect tags. Defaults to `false`.
+        ///   - prefetchedHTML: A pre-downloaded HTML document to use instead of fetching HTML from the
+        ///   network. Defaults to `nil`.
+        ///   - httpHeaders: HTTP headers to use when making requests. Defaults to `nil`.
+        ///
         public init(
             preferredSource: FaviconSourceType = .html,
             preferences: [FaviconSourceType: String] = [:],
@@ -51,6 +84,11 @@ public extension FaviconFinder {
 
 public extension FaviconFinder.Configuration {
 
+    /// Provides the default configuration for `FaviconFinder`.
+    ///
+    /// This configuration uses `.html` as the preferred source type, with no additional preferences,
+    /// meta-refresh checking disabled, and no pre-downloaded HTML.
+    /// 
     static var defaultConfiguration: FaviconFinder.Configuration {
         .init()
     }

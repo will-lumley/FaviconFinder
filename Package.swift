@@ -25,6 +25,7 @@ let plugins: [Target.PluginUsage] = [
 let dependencies: [PackageDescription.Package.Dependency] = [
     // SwiftSoup is used to parse the HTML tree
     .package(url: "https://github.com/scinfu/SwiftSoup.git", from: "2.3.7"),
+    .package(url: "https://github.com/apple/swift-docc-plugin", from: "1.4.3"),
     .package(url: "https://github.com/SimplyDanny/SwiftLintPlugins", from: "0.55.1")
 ]
 
@@ -40,7 +41,12 @@ let plugins: [Target.PluginUsage] = [
 
 let package = Package(
     name: "FaviconFinder",
-    platforms: [.iOS(.v15), .macOS(.v12), .watchOS(.v8), .tvOS(.v15)],
+    platforms: [
+        .iOS(.v15),
+        .macOS(.v12),
+        .watchOS(.v8),
+        .tvOS(.v15)
+    ],
     products: [
         .library(
             name: "FaviconFinder",

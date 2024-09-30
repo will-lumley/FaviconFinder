@@ -8,21 +8,31 @@
 
 import Foundation
 
+/// `FaviconFinder` is responsible for locating favicons from a given website URL.
+///
+/// It manages the process of searching for favicons across different sources such as HTML, raw files,
+/// and Web Application Manifest files.
 public final class FaviconFinder: @unchecked Sendable {
 
     // MARK: - Properties
 
-    /// The URL of the site we're trying to extract the Favicon from
+    /// The URL of the site we're trying to extract the Favicon from.
     private let url: URL
 
-    /// Our configuration object
+    /// Configuration object containing preferences and settings for the favicon search.
     private let configuration: FaviconFinder.Configuration
 
-    /// The current task for fetching favicon URLs
+    /// The current task used to fetch favicon URLs. Can be cancelled if needed.
     private var currentTask: Task<[FaviconURL], Error>?
 
     // MARK: - Lifecycle
 
+    /// Initializes a new instance of `FaviconFinder`.
+    ///
+    /// - Parameters:
+    ///   - url: The URL of the website where the favicon will be searched for.
+    ///   - configuration: The configuration settings for the search. Defaults to `.defaultConfiguration`.
+    ///
     public init(
         url: URL,
         configuration: FaviconFinder.Configuration = .defaultConfiguration
@@ -37,13 +47,15 @@ public final class FaviconFinder: @unchecked Sendable {
 
 public extension FaviconFinder {
 
-    /// Will iterate through each of the source types we have available to us, and
-    /// search for the websites favicon through there.
+    /// Initiates the search for favicon URLs using available sources.
     ///
-    /// - important: If the user has set a source preference in the Configuration, then
-    /// that source will be moved to the front of the queue in the hopes the preference can be
-    /// made.
-    /// - returns: An array of FaviconURLs that contain the location of all the users favicons
+    /// - Important: If the user has set a source preference in the configuration,
+    /// that source will be prioritized first.
+    ///
+    /// - Returns: An array of `FaviconURL` instances representing the locations of the favicons found.
+    ///
+    /// - Throws: Throws a `FaviconError.failedToFindFavicon` if no favicons could be found.
+    /// - Throws: A `CancellationError` if the task is cancelled by the user.
     ///
     func fetchFaviconURLs() async throws -> [FaviconURL] {
         // Cancel any previous task
@@ -101,7 +113,7 @@ public extension FaviconFinder {
         return try await currentTask.value
     }
 
-    /// Cancels the ongoing favicon fetch task, if any.
+    /// Cancels the current favicon fetching task if one is active.
     func cancel() {
         self.currentTask?.cancel()
     }
@@ -112,6 +124,7 @@ public extension FaviconFinder {
 
 private extension NSError {
 
+    /// Checks if the error represents a cancellation.
     var isCancelled: Bool {
         self.code == NSURLErrorCancelled
     }

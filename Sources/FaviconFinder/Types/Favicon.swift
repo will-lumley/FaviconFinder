@@ -7,6 +7,20 @@
 
 import Foundation
 
+/// `Favicon` represents the downloaded favicon image along with metadata.
+///
+/// This struct encapsulates the favicon's image and the URL from which it was retrieved.
+/// When initialized, it automatically downloads the favicon from the provided `FaviconURL`.
+///
+/// - Properties:
+///   - `image`: The downloaded favicon image, which may be `nil` if the download fails.
+///   - `url`: The URL from which the favicon was retrieved, encapsulated in a `FaviconURL`.
+///
+/// - Lifecycle:
+///   - `init(url: FaviconURL)`: Initializes the `Favicon` by downloading the image at the given `FaviconURL`.
+///
+/// - Throws: Throws `FaviconError.invalidImage` if the image cannot be downloaded or parsed
+///
 public struct Favicon: Sendable {
 
     // MARK: - Properties
@@ -38,11 +52,12 @@ public struct Favicon: Sendable {
 
 // MARK: - [Favicon]
 
-/// Something important to note is that these functions require the `FaviconImage` to be downloaded (using the
-/// `download()` function first so comparison can take place.
-/// This is generally not advised unless you are in a situation where the size isn't indicated via HTML tags or WMAF
-/// tags.
+/// Extension on `[Favicon]` providing additional utility functions to fetch
+/// the first, largest, or smallest favicon from an array of `Favicon` objects.
 ///
+/// - Important: These functions require that the `FaviconImage` has been downloaded
+/// before comparison can be done. If the size is indicated by HTML tags or WMAF,
+/// downloading may not be necessary.
 ///
 public extension Array where Element == Favicon {
 
@@ -54,7 +69,7 @@ public extension Array where Element == Favicon {
     /// ensure that consistency can be kept, this function is provided to developers and an
     /// error will be thrown if the array is empty.
     ///
-    /// - returns: The first `Favicon` in this array
+    /// - Returns: The first `Favicon` in this array
     ///
     func first() throws -> Favicon {
         guard let first = self.first else {
@@ -64,9 +79,10 @@ public extension Array where Element == Favicon {
         return first
     }
 
-    /// Will pull the `Favicon` from the array that has the largest image size
+    /// Returns the `Favicon` with the largest image in the array.
     ///
-    /// - returns: The `Favicon` that has the largest image
+    /// - Throws: `FaviconError.faviconImageIsNotDownloaded` if any `Favicon` in the array has no image.
+    /// - Returns: The `Favicon` with the largest image size.
     ///
     func largest() throws -> Favicon {
 
@@ -87,10 +103,11 @@ public extension Array where Element == Favicon {
         return largestImage
     }
 
-    /// Will pull the `Favicon` from the array that has the smallest image size
+    /// Returns the `Favicon` with the smallest image in the array.
     ///
-    /// - returns: The `Favicon` that has the smallest image
-    ///
+    /// - Throws: `FaviconError.faviconImageIsNotDownloaded` if any `Favicon` in the array has no image.
+    /// - Returns: The `Favicon` with the smallest image size.
+    /// 
     func smallest() throws -> Favicon {
 
         // Find the Favicon with the smallest image
