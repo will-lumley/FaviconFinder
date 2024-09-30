@@ -4,20 +4,21 @@
 
 1. [Introduction](#faviconfinder)
 2. [Usage](#usage)
-3. [Documentation](#documentation)
-4. [Advanced Usage](#advanced-usage--configuration)
+3. [How it Works](#how-it-works)
+4. [Documentation](#documentation)
+5. [Advanced Usage](#advanced-usage--configuration)
    - [Preferential Downloading](#preferential-downloading)
    - [Meta-Refresh Redirects](#meta-refresh-redirects)
    - [Pre-Fetched HTML](#pre-fetched-html)
    - [Querying Favicons Behind Authentication](#querying-favicons-behind-authentication)
    - [Sorting Favicon URLs by Size Without Downloading](#sorting-favicon-urls-by-size-without-downloading)
-5. [Example Projects](#example-projects)
-6. [Requirements](#requirements)
-7. [Installation](#installation)
+6. [Example Projects](#example-projects)
+7. [Requirements](#requirements)
+8. [Installation](#installation)
    - [Swift Package Manager](#swift-package-manager)
    - [Cocoapods and Carthage](#cocoapods-and-carthage)
-8. [Author](#author)
-9. [License](#license)
+9. [Author](#author)
+10. [License](#license)
 
 # FaviconFinder
 
@@ -89,6 +90,32 @@ FaviconFinder works with UIKit, SwiftUI, AppKit, and macOS Catalyst.
 FaviconFinder also supports Linux as a platform, and I have re-implemented parts of FaviconFinder to ensure that Linux is treated as a first-class platform.
 It's important to note that Swift on Linux doesn't natively support any `Image` format, so when you call download, the `data` itself is downloaded but there's no
 image type to cast the data to. Also due to this, `largest()` and `smallest()` aren't effective on Linux.
+
+## How it Works
+
+FaviconFinder simplifies the process of locating and retrieving favicons by automating the search through the various places where a favicon can be defined. Since favicons can exist in multiple locations, FaviconFinder systematically queries each potential source, following a priority order that you can customise.
+
+**Key Steps**
+1. HTML Header Query and Parsing
+FaviconFinder begins by querying the URL you provide. It then inspects the HTML of the webpage and looks for any favicon declarations in the `<link>` or `<meta>` tags within the header of the downloaded HTML file. This can include favicons specified as standard icons (`<link rel="icon">`), Apple touch icons (`<link rel="apple-touch-icon">`), or others defined within the Open Graph metadata.
+
+2.	Fallback to the Favicon File
+If no favicon is found within the HTML, FaviconFinder checks for the traditional favicon location at the root of the domain (https://site.com/favicon.ico). This is the default location where many sites place their favicons, so this check is a quick and effective fallback. If none is found here, FaviconFinder will check if the URL provided is a subdomain (ie. https://example.site.com), and if it is, will query the root domain (ie. https://site.com).
+
+3.	Fallback to the Web Application Manifest File
+For sites that utilise a web application manifest (manifest.json), FaviconFinder parses the JSON file to look for any icons defined specifically for progressive web applications. These are often found in mobile-optimised websites or applications and provide higher-resolution favicons.
+
+4.	Meta-Refresh Redirects (Optional)
+Some websites may use meta-refresh redirects instead of server-side HTTP redirects. If enabled in the configuration, FaviconFinder will inspect the HTML for these meta-refresh redirects and follow them to retrieve the favicon from the redirected URL.
+
+5.	Favicon Size Sorting
+FaviconFinder extracts size metadata from the HTML or web application manifest to sort favicons by their dimensions (e.g., 120x120, 32x32). This allows you to easily determine the largest or smallest favicon without downloading every image, saving bandwidth and improving performance.
+
+6.	Customisation and Preferences
+FaviconFinder allows you to customise how it searches for favicons. You can prioritise certain favicon types (e.g., Apple touch icons, .ico files) and even provide pre-fetched HTML or custom HTTP headers for authentication, giving you full control over how the library interacts with the site.
+
+7.	Cross-Platform Compatibility
+FaviconFinder is designed to work across macOS, iOS, and Linux. It adjusts its methods depending on the platform, so you can use it seamlessly whether you’re working in SwiftUI, UIKit, or AppKit. On Linux, FaviconFinder ensures compatibility even though the platform lacks native image handling, using data-driven methods instead.
 
 ## Documentation
 
