@@ -19,7 +19,8 @@ extension String {
     /// If the substring is found, the string is truncated up to the point of the substring.
     /// If the substring is not found, the original string remains unchanged.
     ///
-    /// - Parameter str: The substring to search for. Everything after this substring, including the substring itself, will be removed.
+    /// - Parameter str: The substring to search for. Everything after this substring,
+    /// including the substring itself, will be removed.
     ///
     /// - Example:
     ///   ```swift

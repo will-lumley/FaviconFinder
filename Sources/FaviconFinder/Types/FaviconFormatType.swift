@@ -45,13 +45,13 @@ public enum FaviconFormatType: String, CaseIterable, Equatable, Sendable {
 
     /// Represents the `launcher-icon-0-75x.png` in a Web Application Manifest File, which is used in
     /// progressive web apps for icons at different scales.
-    case launcherIcon0_75x = "launcher-icon-0-75x.png" // swiftlint:disable:this identifier_name
+    case launcherIcon0_75x = "launcher-icon-0-75x.png"
 
     /// Represents the `launcher-icon-1x.png` in a Web Application Manifest File, for icons used at 1x scale.
     case launcherIcon1x = "launcher-icon-1x.png"
 
     /// Represents the `launcher-icon-1-5x.png` in a Web Application Manifest File, for icons used at 1.5x scale.
-    case launcherIcon1_5x = "launcher-icon-1-5x.png" // swiftlint:disable:this identifier_name
+    case launcherIcon1_5x = "launcher-icon-1-5x.png"
 
     /// Represents the `launcher-icon-2x.png` in a Web Application Manifest File, for icons used at 2x scale.
     case launcherIcon2x = "launcher-icon-2x.png"

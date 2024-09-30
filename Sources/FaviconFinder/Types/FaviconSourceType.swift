@@ -41,7 +41,7 @@ extension FaviconSourceType {
     ///
     /// - Parameter format: The `FaviconFormatType` used to determine the source type.
     ///
-    init(format: FaviconFormatType) {
+    init(format: FaviconFormatType) { // swiftlint:disable:this cyclomatic_complexity
         switch format {
         // ICO
         case .ico: self = .ico

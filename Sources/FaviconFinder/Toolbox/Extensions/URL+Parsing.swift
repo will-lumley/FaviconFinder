@@ -31,8 +31,6 @@ extension URL {
     ///
     /// - Returns: A string representing the URL without its scheme, or `nil` if the scheme doesn't exist.
     ///
-    /// - Note: This came from here: https://stackoverflow.com/questions/17101227/how-to-extract-and-remove-scheme-name-from-nsurl
-    ///
     /// - Example:
     ///   ```swift
     ///   let url = URL(string: "https://example.com/path")!

@@ -16,7 +16,8 @@ extension URLResponse {
 
     /// Determines the string encoding of the response based on the `textEncodingName` property.
     ///
-    /// - Returns: A `String.Encoding` value representing the encoding of the response. If no encoding is provided in the response, `.utf8` is returned by default.
+    /// - Returns: A `String.Encoding` value representing the encoding of the response.
+    /// If no encoding is provided in the response, `.utf8` is returned by default.
     ///
     /// - Example:
     ///   ```swift
@@ -25,7 +26,7 @@ extension URLResponse {
     ///       // encoding is the encoding for the response, or UTF-8 if not specified
     ///   }
     ///   ```
-    ///   
+    ///
     var encoding: String.Encoding {
         guard let rawName = self.textEncodingName else {
             return .utf8

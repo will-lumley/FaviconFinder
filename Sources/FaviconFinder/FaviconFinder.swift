@@ -49,7 +49,8 @@ public extension FaviconFinder {
 
     /// Initiates the search for favicon URLs using available sources.
     ///
-    /// - Important: If the user has set a source preference in the configuration, that source will be prioritized first.
+    /// - Important: If the user has set a source preference in the configuration,
+    /// that source will be prioritized first.
     ///
     /// - Returns: An array of `FaviconURL` instances representing the locations of the favicons found.
     ///

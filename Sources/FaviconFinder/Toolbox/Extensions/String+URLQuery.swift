@@ -7,7 +7,8 @@
 
 import Foundation
 
-/// An extension to `String` that provides a method to extract the value of a specific query parameter from a URL string.
+/// An extension to `String` that provides a method to extract the value of a specific query parameter
+/// from a URL string.
 ///
 extension String {
 

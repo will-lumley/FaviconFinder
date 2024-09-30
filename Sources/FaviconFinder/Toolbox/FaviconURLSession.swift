@@ -17,7 +17,8 @@ import Foundation
 import SwiftSoup
 
 /// The `FaviconURLSession` class wraps `URLSession` to provide consistent behavior for downloading favicons,
-/// with support for handling meta-refresh redirects and bridging async functionality for both Apple and Linux platforms.
+/// with support for handling meta-refresh redirects and bridging async functionality
+/// for both Apple and Linux platforms.
 ///
 /// - Why a wrapper around `URLSession`?
 ///   1. **Meta-refresh redirects**: `URLSession` does not handle meta-refresh redirects. This wrapper ensures
@@ -41,7 +42,8 @@ final class FaviconURLSession {
     ///
     /// - Parameters:
     ///   - url: The URL from which to download the data.
-    ///   - checkForMetaRefreshRedirect: A Boolean indicating whether to check for meta-refresh redirects in the response.
+    ///   - checkForMetaRefreshRedirect: A Boolean indicating whether to check for
+    ///   meta-refresh redirects in the response.
     ///     Defaults to `false`.
     ///   - httpHeaders: Optional dictionary of HTTP headers to include in the request.
     ///     The keys represent header field names, and the values are their respective values.
@@ -81,7 +83,8 @@ private extension FaviconURLSession {
     ///
     /// - Parameters:
     ///   - url: The URL from which to download the data.
-    ///   - checkForMetaRefreshRedirect: A Boolean indicating whether to check for meta-refresh redirects in the response.
+    ///   - checkForMetaRefreshRedirect: A Boolean indicating whether to check for
+    ///   meta-refresh redirects in the response.
     ///     Defaults to `false`.
     ///   - httpHeaders: Optional dictionary of HTTP headers to include in the request.
     ///     The keys represent header field names, and the values are their respective values.
@@ -174,7 +177,8 @@ private extension FaviconURLSession {
     ///
     /// - Parameters:
     ///   - url: The URL from which to download the data.
-    ///   - checkForMetaRefreshRedirect: A Boolean indicating whether to check for meta-refresh redirects in the response.
+    ///   - checkForMetaRefreshRedirect: A Boolean indicating whether to check for
+    ///   meta-refresh redirects in the response.
     ///     Defaults to `false`.
     ///   - httpHeaders: Optional dictionary of HTTP headers to include in the request.
     ///     The keys represent header field names, and the values are their respective values.
@@ -182,8 +186,7 @@ private extension FaviconURLSession {
     /// - Returns: A `Response` object containing the data and headers of the response.
     ///
     /// - Throws: Throws if the network request fails or if meta-refresh redirect processing fails.
-    // swiftlint:disable:next cyclomatic_complexity
-    static func appleDataTask(
+    static func appleDataTask( // swiftlint:disable:this cyclomatic_complexity
             with url: URL,
             checkForMetaRefreshRedirect: Bool = false,
             httpHeaders: [String: String?]? = nil
