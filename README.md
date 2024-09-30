@@ -93,6 +93,7 @@ image type to cast the data to. Also due to this, `largest()` and `smallest()` a
 ## Documentation
 
 While this README provides a basic rundown of FaviconFinder, how to use it and what it can do, a much more thorough documentation can be found here:
+
 https://will-lumley.github.io/FaviconFinder/documentation/faviconfinder/
 
 ## Advanced Usage & Configuration
