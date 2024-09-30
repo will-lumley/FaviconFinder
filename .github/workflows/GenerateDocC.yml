@@ -30,8 +30,10 @@ jobs:
           --hosting-base-path FaviconFinder
 
           mkdir -p docs
-          mv .build/plugins/Swift-DocC/outputs/FaviconFinder.doccarchive docs
-    
+          mv .build/plugins/Swift-DocC/outputs/FaviconFinder.doccarchive/* docs/
+
+          
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
