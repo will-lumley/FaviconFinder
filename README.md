@@ -100,23 +100,15 @@ https://will-lumley.github.io/FaviconFinder/documentation/faviconfinder/
 
 ### Preferential Downloading
 
-Now if you're the type to want to have some fine-tuned control over what sort of favicon's we're after, boy is this the library for you.
+If you want fine-tuned control over the type of favicon you’re looking for, FaviconFinder lets you specify your preferences with ease. You can choose which favicon source you’d prefer to query first—whether it’s HTML, an actual file, or a web application manifest file—and even specify which favicon type you’d like for each source.
 
-FaviconFinder allows you to specify which download type you'd prefer (HTML, actual file, or web application manifest file), and then allows you to specify which favicon type you'd prefer for each download type.
+For example, you might prefer a favicon declared in the HTML header and specifically want the appleTouchIcon type. FaviconFinder will search the HTML for that specific tag, but if it’s not found, it will automatically search for other HTML favicon types.
 
-For example, you can specify that you'd prefer a favicon that is declared within the from the HTML header file, and then within that request the the `appleTouchIcon` type. FaviconFinder will then search through the HTML favicon tags for the `appleTouchIcon` type. If it cannot find the `appleTouchIcon` type, it will search for the other HTML favicon tag types.
+If a specified download type (e.g., HTML or .ico) isn’t available, FaviconFinder will automatically try other available methods, and if none are found, it will return an error.
 
-If the URL does not have a HTML tag that specifies the favicon, FaviconFinder will default to other download types, and will search the source for each favicon download type until it finds one, or it'll return an error.
+You can also request that FaviconFinder checks for meta-refresh redirects in the HTML, allowing it to follow any redirects and query the correct URL.
 
-Just like how you can specify which HTML favicon tag you'd prefer, you can set which filename you'd prefer when search for actual files.
-
-Similarly, you can specify which JSON key you'd prefer when iterating through the web application manifest file.
-
-For the `.ico` download type, you can request FaviconFinder searchs for a filename of your choosing.
-
-In addition, you can also let FaviconFinder know that you'd like the HTML of the website parsed and analysed for a meta-refresh-redirect tag, and query the new URL if found.
-
-Here's how you'd make that request:
+Here’s an example of how to configure your preferences:
 
 ```swift
     let favicon = try await FaviconFinder(
@@ -138,11 +130,10 @@ Here's how you'd make that request:
 ```
 
 This allows you to control:
+- The preferred download source type FaviconFinder should use first.
+- The specific sub-type to prioritize within each download type (e.g., HTML rel types, filenames for .ico files, or keys in the web application manifest file).
 
-- What type of download type FaviconFinder will use first
-- When iterating through each download type, what sub-type to look for. For the HTML download type, this allows you to prioritise different "rel" types. For the file.ico type, this allows you to choose the filename.
-
-If your desired download type doesn't exist for your URL (ie. you requested the favicon that exists as a file but there's no file), FaviconFinder will automatically try all other methods of favicon storage for you.
+If your preferred download type isn’t available at the URL (e.g., there’s no file or no HTML tag specifying the favicon), FaviconFinder will try other sources until it finds a valid favicon or returns an error.
 
 ### Meta-Refresh Redirects
 
