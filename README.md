@@ -329,7 +329,7 @@ To install it, simply add the dependency to your Package.Swift file:
 ```swift
 ...
 dependencies: [
-    .package(url: "https://github.com/will-lumley/FaviconFinder.git", from: "5.1.1"),
+    .package(url: "https://github.com/will-lumley/FaviconFinder.git", from: "5.1.2"),
 ],
 targets: [
     .target( name: "YourTarget", dependencies: ["FaviconFinder"]),
