@@ -304,6 +304,23 @@ Limitations
 
 This functionality allows you to efficiently sort favicon URLs by size and download only the favicons you need, making it a powerful tool for handling favicons in an optimised manner.
 
+### Header & Hero Images
+
+There are times where you would like to fetch the header or hero image from a URL. You can let FaviconFinder know that you want it to do this with the `acceptHeaderImage` parameter in the configuration.
+With the default value set to `false`, this parameter is an opt-in one.
+
+You can use it as so:
+
+```swift
+let favicon = try await FaviconFinder(
+    url: url,
+    configuration: .init(acceptHeaderImage: true)
+)
+    .fetchFaviconURLs()
+    .download()
+    .largest()
+```
+
 ## Example Projects
 
 To run the example project, clone the repo, and open the example Xcode Project in either the `iOSFaviconFinderExample`, or `macOSFaviconFinderExample`, depending on your build target.
@@ -329,7 +346,7 @@ To install it, simply add the dependency to your Package.Swift file:
 ```swift
 ...
 dependencies: [
-    .package(url: "https://github.com/will-lumley/FaviconFinder.git", from: "5.1.2"),
+    .package(url: "https://github.com/will-lumley/FaviconFinder.git", from: "5.1.4"),
 ],
 targets: [
     .target( name: "YourTarget", dependencies: ["FaviconFinder"]),
