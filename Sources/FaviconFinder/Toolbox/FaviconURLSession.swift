@@ -47,6 +47,8 @@ final class FaviconURLSession {
     ///     Defaults to `false`.
     ///   - httpHeaders: Optional dictionary of HTTP headers to include in the request.
     ///     The keys represent header field names, and the values are their respective values.
+    ///   - recursionDepth: How many calls deep we currently are into redirecting
+    ///   - maxDepth: The maximum amount of calls deep we'll go before calling it a day and returning an error
     ///
     /// - Returns: A `Response` object containing the data and headers of the response.
     ///
@@ -55,7 +57,9 @@ final class FaviconURLSession {
     static func dataTask(
         with url: URL,
         checkForMetaRefreshRedirect: Bool = false,
-        httpHeaders: [String?: String]? = nil
+        httpHeaders: [String?: String]? = nil,
+        recursionDepth: Int = 0,
+        maxDepth: Int = 5
     ) async throws -> Response {
 #if os(Linux)
         try await linuxDataTask(
@@ -88,6 +92,8 @@ private extension FaviconURLSession {
     ///     Defaults to `false`.
     ///   - httpHeaders: Optional dictionary of HTTP headers to include in the request.
     ///     The keys represent header field names, and the values are their respective values.
+    ///   - recursionDepth: How many calls deep we currently are into redirecting
+    ///   - maxDepth: The maximum amount of calls deep we'll go before calling it a day and returning an error
     ///
     /// - Returns: A `Response` object containing the data and headers of the response.
     ///
@@ -96,8 +102,14 @@ private extension FaviconURLSession {
     static func linuxDataTask(
         with url: URL,
         checkForMetaRefreshRedirect: Bool = false,
-        httpHeaders: [String: String?]? = nil
+        httpHeaders: [String: String?]? = nil,
+        recursionDepth: Int = 0,
+        maxDepth: Int = 5
     ) async throws -> Response {
+        guard recursionDepth < maxDepth else {
+            throw URLError(.redirectToNonExistentLocation)
+        }
+
         let httpClient = HTTPClient(eventLoopGroupProvider: .singleton)
         defer {
             try? httpClient.shutdown()
@@ -158,7 +170,8 @@ private extension FaviconURLSession {
                             return try await linuxDataTask(
                                 with: redirectURL,
                                 checkForMetaRefreshRedirect: false,
-                                httpHeaders: httpHeaders
+                                httpHeaders: httpHeaders,
+                                recursionDepth: recursionDepth + 1
                             )
                         }
                     }
@@ -182,6 +195,8 @@ private extension FaviconURLSession {
     ///     Defaults to `false`.
     ///   - httpHeaders: Optional dictionary of HTTP headers to include in the request.
     ///     The keys represent header field names, and the values are their respective values.
+    ///   - recursionDepth: How many calls deep we currently are into redirecting
+    ///   - maxDepth: The maximum amount of calls deep we'll go before calling it a day and returning an error
     ///
     /// - Returns: A `Response` object containing the data and headers of the response.
     ///
@@ -189,8 +204,14 @@ private extension FaviconURLSession {
     static func appleDataTask( // swiftlint:disable:this cyclomatic_complexity
             with url: URL,
             checkForMetaRefreshRedirect: Bool = false,
-            httpHeaders: [String: String?]? = nil
+            httpHeaders: [String: String?]? = nil,
+            recursionDepth: Int = 0,
+            maxDepth: Int = 5
         ) async throws -> Response {
+            guard recursionDepth < maxDepth else {
+                throw URLError(.redirectToNonExistentLocation)
+            }
+
             // Create our request
             var request = URLRequest(url: url)
 
