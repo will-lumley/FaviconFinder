@@ -222,16 +222,26 @@ private extension HTMLFaviconFinder {
             var property = try meta.attr("property")
             let content = try meta.attr("content")
 
+            var format = FaviconFormatType(rawValue: property)
+
             // If this link's "property" is something other than an accepted image
             // format type, dismiss it
-            if FaviconFormatType(rawValue: property) == nil {
+            if format == nil {
 
                 // Okay so "property" gave us nothing, let's try name
                 property = try meta.attr("name")
-                if FaviconFormatType(rawValue: property) == nil {
+                format = FaviconFormatType(rawValue: property)
+                if format == nil {
                     // Still nothing, onto the next one
                     continue
                 }
+            }
+
+            // If this is a header image AND we don't accept header images,
+            // then we'll bail out
+            let isHeaderImage = format == .metaOpenGraphImage
+            if isHeaderImage && configuration.acceptHeaderImage == false {
+                continue
             }
 
             // Get the base URL from the href
