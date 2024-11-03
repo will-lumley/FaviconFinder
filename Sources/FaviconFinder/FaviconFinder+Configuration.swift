@@ -39,17 +39,20 @@ public extension FaviconFinder {
         /// Defaults to `false`.
         public let checkForMetaRefreshRedirect: Bool
 
-        /// HTTP headers to pass along with the HTTP request when fetching the favicon.
-        ///
-        /// This allows users to specify custom HTTP headers, such as user-agent or authorization tokens.
-        public let httpHeaders: [String: String?]?
-
         /// A prefetched HTML document that can be passed in if the user already has the HTML.
         ///
         /// If set, `FaviconFinder` will use this document instead of downloading the HTML
         /// from the specified URL.
         /// Useful when working with local HTML documents or when the HTML is already available in memory.
         public let prefetchedHTML: Document?
+
+        /// HTTP headers to pass along with the HTTP request when fetching the favicon.
+        ///
+        /// This allows users to specify custom HTTP headers, such as user-agent or authorization tokens.
+        public let httpHeaders: [String: String?]?
+
+        /// Determines whether we'll include a websites header image as a valid image to fetch
+        public let acceptHeaderImage: Bool
 
         // MARK: - Lifecycle
 
@@ -64,19 +67,22 @@ public extension FaviconFinder {
         ///   - prefetchedHTML: A pre-downloaded HTML document to use instead of fetching HTML from the
         ///   network. Defaults to `nil`.
         ///   - httpHeaders: HTTP headers to use when making requests. Defaults to `nil`.
+        ///   - acceptHeaderImage: Determines whether we'll include a websites header image as a valid image to fetch.
         ///
         public init(
             preferredSource: FaviconSourceType = .html,
             preferences: [FaviconSourceType: String] = [:],
             checkForMetaRefreshRedirect: Bool = false,
             prefetchedHTML: Document? = nil,
-            httpHeaders: [String: String?]? = nil
+            httpHeaders: [String: String?]? = nil,
+            acceptHeaderImage: Bool = false
         ) {
             self.preferredSource = preferredSource
             self.preferences = preferences
             self.checkForMetaRefreshRedirect = checkForMetaRefreshRedirect
             self.prefetchedHTML = prefetchedHTML
             self.httpHeaders = httpHeaders
+            self.acceptHeaderImage = acceptHeaderImage
         }
     }
 

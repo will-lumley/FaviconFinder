@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ContentView: View {
 
-    @State var urlStr = "https://apple.com/au"
+    @State var urlStr = "https://www.plinky.app"
     @ObservedObject var imageLoader = ImageLoader()
 
     var body: some View {
@@ -52,8 +52,9 @@ final class ImageLoader: ObservableObject {
                 preferredSource: .html,
                 preferences: [
                     .html: FaviconFormatType.appleTouchIcon.rawValue,
-                    .ico: "favicon.ico"
-                ]
+                    .ico: "favicon.ico",
+                ],
+                acceptHeaderImage: false
             )
         )
             .fetchFaviconURLs()
