@@ -11,8 +11,8 @@
   <a href="https://github.com/apple/swift-package-manager"><img src="https://img.shields.io/badge/SPM-compatible-4BC51D.svg?style=flat" alt="SPM Compatible"></a>
   <img src="https://img.shields.io/badge/Swift-5.10-orange.svg" alt="Swift 5.10">
   <img src="https://img.shields.io/badge/Swift-6.0-orange.svg" alt="Swift 6.0">
-  <a href="https://twitter.com/wlumley95">
-    <img src="https://img.shields.io/badge/twitter-@wlumley95-blue.svg?style=flat" alt="Twitter">
+  <a href="https://bsky.app/profile/will-lumley.bsky.social">
+    <img src="https://img.shields.io/badge/Bluesky-0285FF?logo=bluesky&logoColor=fff" alt="Bluesky">
   </a>
 </p>
 
@@ -97,25 +97,25 @@ image type to cast the data to. Also due to this, `largest()` and `smallest()` a
 FaviconFinder simplifies the process of locating and retrieving favicons by automating the search through the various places where a favicon can be defined. Since favicons can exist in multiple locations, FaviconFinder systematically queries each potential source, following a priority order that you can customise.
 
 **Key Steps**
-1. HTML Header Query and Parsing
+1. **HTML Header Query and Parsing** <br />
 FaviconFinder begins by querying the URL you provide. It then inspects the HTML of the webpage and looks for any favicon declarations in the `<link>` or `<meta>` tags within the header of the downloaded HTML file. This can include favicons specified as standard icons (`<link rel="icon">`), Apple touch icons (`<link rel="apple-touch-icon">`), or others defined within the Open Graph metadata.
 
-2.	Fallback to the Favicon File
+2.	**Fallback to the Favicon File** <br />
 If no favicon is found within the HTML, FaviconFinder checks for the traditional favicon location at the root of the domain (https://site.com/favicon.ico). This is the default location where many sites place their favicons, so this check is a quick and effective fallback. If none is found here, FaviconFinder will check if the URL provided is a subdomain (ie. https://example.site.com), and if it is, will query the root domain (ie. https://site.com).
 
-3.	Fallback to the Web Application Manifest File
+3.	**Fallback to the Web Application Manifest File** <br />
 For sites that utilise a web application manifest (manifest.json), FaviconFinder parses the JSON file to look for any icons defined specifically for progressive web applications. These are often found in mobile-optimised websites or applications and provide higher-resolution favicons.
 
-4.	Meta-Refresh Redirects (Optional)
+4.	**Meta-Refresh Redirects (Optional)** <br />
 Some websites may use meta-refresh redirects instead of server-side HTTP redirects. If enabled in the configuration, FaviconFinder will inspect the HTML for these meta-refresh redirects and follow them to retrieve the favicon from the redirected URL.
 
-5.	Favicon Size Sorting
+5.	**Favicon Size Sorting** <br />
 FaviconFinder extracts size metadata from the HTML or web application manifest to sort favicons by their dimensions (e.g., 120x120, 32x32). This allows you to easily determine the largest or smallest favicon without downloading every image, saving bandwidth and improving performance.
 
-6.	Customisation and Preferences
+6.	**Customisation and Preferences** <br />
 FaviconFinder allows you to customise how it searches for favicons. You can prioritise certain favicon types (e.g., Apple touch icons, .ico files) and even provide pre-fetched HTML or custom HTTP headers for authentication, giving you full control over how the library interacts with the site.
 
-7.	Cross-Platform Compatibility
+7.	**Cross-Platform Compatibility** <br />
 FaviconFinder is designed to work across macOS, iOS, and Linux. It adjusts its methods depending on the platform, so you can use it seamlessly whether you’re working in SwiftUI, UIKit, or AppKit. On Linux, FaviconFinder ensures compatibility even though the platform lacks native image handling, using data-driven methods instead.
 
 ## Documentation
@@ -356,7 +356,7 @@ targets: [
 
 ### Cocoapods and Carthage
 
-FaviconFinder was previously available through CocoaPods and Carthage, however making the library available to all three Cocoapods,
+FaviconFinder was previously available through CocoaPods and Carthage, however making the library available to all three, Cocoapods,
 Carthage, and SPM (and functional to all three) was becoming troublesome. This, combined with the fact that SPM has seen a serious
 up-tick in adoption & functionality, has led me to remove support for CocoaPods and Carthage.
 
