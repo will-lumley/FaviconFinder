@@ -12,7 +12,7 @@
   <img src="https://img.shields.io/badge/Swift-5.10-orange.svg" alt="Swift 5.10">
   <img src="https://img.shields.io/badge/Swift-6.0-orange.svg" alt="Swift 6.0">
   <a href="https://bsky.app/profile/will-lumley.bsky.social">
-    <img src="https://img.shields.io/badge/Bluesky-0285FF?logo=bluesky&logoColor=fff" alt="Bluesky">
+    <img src="https://img.shields.io/badge/Bluesky-0285FF?logo=bluesky&logoColor=fff&label=will-lumley" alt="Bluesky">
   </a>
 </p>
 
