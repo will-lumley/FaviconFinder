@@ -4,37 +4,37 @@
 import PackageDescription
 
 #if os(Linux)
-let dependencies: [PackageDescription.Package.Dependency] = [
-    // URLSession on Linux is notoriously unreliable and freezes, so this is used instead (only for Linux)
-    .package(url: "https://github.com/swift-server/async-http-client.git", from: "1.22.0"),
+    let dependencies: [PackageDescription.Package.Dependency] = [
+        // URLSession on Linux is notoriously unreliable and freezes, so this is used instead (only for Linux)
+        .package(url: "https://github.com/swift-server/async-http-client.git", from: "1.22.0"),
 
-    // SwiftSoup is used to parse the HTML tree
-    .package(url: "https://github.com/scinfu/SwiftSoup.git", from: "2.3.7")
-]
+        // SwiftSoup is used to parse the HTML tree
+        .package(url: "https://github.com/scinfu/SwiftSoup.git", from: "2.9.5")
+    ]
 
-let targetDependencies: [Target.Dependency] = [
-    "SwiftSoup",
-    .product(name: "AsyncHTTPClient", package: "async-http-client")
-]
+    let targetDependencies: [Target.Dependency] = [
+        "SwiftSoup",
+        .product(name: "AsyncHTTPClient", package: "async-http-client")
+    ]
 
-let plugins: [Target.PluginUsage] = [
+    let plugins: [Target.PluginUsage] = [
 
-]
+        ]
 
 #else
-let dependencies: [PackageDescription.Package.Dependency] = [
-    // SwiftSoup is used to parse the HTML tree
-    .package(url: "https://github.com/scinfu/SwiftSoup.git", from: "2.3.7"),
-    .package(url: "https://github.com/apple/swift-docc-plugin", from: "1.4.3")
-]
+    let dependencies: [PackageDescription.Package.Dependency] = [
+        // SwiftSoup is used to parse the HTML tree
+        .package(url: "https://github.com/scinfu/SwiftSoup.git", from: "2.9.5"),
+        .package(url: "https://github.com/apple/swift-docc-plugin", from: "1.4.3")
+    ]
 
-let targetDependencies: [Target.Dependency] = [
-    "SwiftSoup"
-]
+    let targetDependencies: [Target.Dependency] = [
+        "SwiftSoup"
+    ]
 
-let plugins: [Target.PluginUsage] = [
+    let plugins: [Target.PluginUsage] = [
 
-]
+        ]
 
 #endif
 
