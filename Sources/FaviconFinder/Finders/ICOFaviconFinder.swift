@@ -98,7 +98,7 @@ final class ICOFaviconFinder: FaviconFinderProtocol {
 
         // We created a URL without the subdomains, let's check if there's a valid image there
         let baseFaviconUrlData = try await FaviconURLSession.dataTask(
-            with: faviconUrl,
+            with: rootURL,
             checkForMetaRefreshRedirect: self.configuration.checkForMetaRefreshRedirect
         ).data
 
