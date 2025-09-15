@@ -41,7 +41,7 @@ let plugins: [Target.PluginUsage] = [
 let package = Package(
     name: "FaviconFinder",
     platforms: [
-        .iOS(.v15),
+        .iOS(.v18),
         .macOS(.v12),
         .watchOS(.v8),
         .tvOS(.v15)
