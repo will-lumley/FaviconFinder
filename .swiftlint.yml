@@ -9,9 +9,6 @@ nesting:
   type_level:
     warning: 4
 
-file_length:
-  warning: 500
-
 function_body_length:
   warning: 100
 
