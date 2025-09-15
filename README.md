@@ -10,7 +10,7 @@
 <p align="center">
   <a href="https://github.com/apple/swift-package-manager"><img src="https://img.shields.io/badge/SPM-compatible-4BC51D.svg?style=flat" alt="SPM Compatible"></a>
   <img src="https://img.shields.io/badge/Swift-5.10-orange.svg" alt="Swift 5.10">
-  <img src="https://img.shields.io/badge/Swift-6.0-orange.svg" alt="Swift 6.0">
+  <img src="https://img.shields.io/badge/Swift-6.2-orange.svg" alt="Swift 6.2">
   <a href="https://bsky.app/profile/will-lumley.bsky.social">
     <img src="https://img.shields.io/badge/Bluesky-0285FF?logo=bluesky&logoColor=fff&label=will-lumley" alt="Bluesky">
   </a>
@@ -108,6 +108,7 @@ For sites that utilise a web application manifest (manifest.json), FaviconFinder
 
 4.	**Meta-Refresh Redirects (Optional)** <br />
 Some websites may use meta-refresh redirects instead of server-side HTTP redirects. If enabled in the configuration, FaviconFinder will inspect the HTML for these meta-refresh redirects and follow them to retrieve the favicon from the redirected URL.
+It's worthwhile to note that FaviconFinder will prevent itself from falling into a recursive loop if a redirect directs to a site that then redirects to the original site.
 
 5.	**Favicon Size Sorting** <br />
 FaviconFinder extracts size metadata from the HTML or web application manifest to sort favicons by their dimensions (e.g., 120x120, 32x32). This allows you to easily determine the largest or smallest favicon without downloading every image, saving bandwidth and improving performance.
@@ -329,9 +330,9 @@ Alternatively, if you're using this for a Linux project, you can open the exampl
 
 ## Requirements
 
-FaviconFinder is now written with Swift 6.0. This means we get to use `Swift Testing` over `XCTest`, but more importantly means FaviconFinder is now data-race safe and adheres to strict concurrency.
+FaviconFinder is now written with Swift 6. This means we get to use `Swift Testing` over `XCTest`, but more importantly means FaviconFinder is now data-race safe and adheres to strict concurrency.
 
-Swift 6.0 is supported from version `5.1.0` and up. If you need FaviconFinder in Swift 5.9 and below, please use version `5.0.4`.
+Swift 6 is supported from version `5.1.0` and up. If you need FaviconFinder in Swift 5.9 and below, please use version `5.0.4`.
 
 FaviconFinder now supports await/async concurrency, as seen in the examples below. Due to this, the most up to date version of FaviconFinder requires iOS 15.0 and macOS 12.0.
 If you need to support older versions of iOS or macOS, version `3.3.0` of FaviconFinder uses closures to call back the success/failure instead of await/async concurrency.
@@ -346,7 +347,7 @@ To install it, simply add the dependency to your Package.Swift file:
 ```swift
 ...
 dependencies: [
-    .package(url: "https://github.com/will-lumley/FaviconFinder.git", from: "5.1.4"),
+    .package(url: "https://github.com/will-lumley/FaviconFinder.git", from: "5.1.5"),
 ],
 targets: [
     .target( name: "YourTarget", dependencies: ["FaviconFinder"]),
