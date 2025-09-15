@@ -26,12 +26,6 @@ jobs:
       - name: Install xcpretty
         run: gem install xcpretty
 
-      - name: Setup Swift
-        uses: SwiftyLab/setup-swift@v1
-        with:
-          swift-version: "6.2.0"
-          cache-snapshot: "false"
-
       - name: Check Xcode Version
         run: xcodebuild -version
 
