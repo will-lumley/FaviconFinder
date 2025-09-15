@@ -1,4 +1,4 @@
-// swift-tools-version:6.0.0
+// swift-tools-version:6.2.0
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -41,7 +41,7 @@ let plugins: [Target.PluginUsage] = [
 let package = Package(
     name: "FaviconFinder",
     platforms: [
-        .iOS(.v15),
+        .iOS(.v18),
         .macOS(.v12),
         .watchOS(.v8),
         .tvOS(.v15)

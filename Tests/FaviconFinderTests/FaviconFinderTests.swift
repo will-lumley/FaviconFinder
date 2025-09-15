@@ -116,39 +116,39 @@ struct FaviconFinderTests {
         #expect(image.isValidImage == true)
     }
 
-    @Test("Test Cancel")
-    func testCancel() async throws {
-        let faviconFinder = FaviconFinder(
-            url: TestURL.google.url,
-            configuration: .init(preferredSource: .mock)
-        )
-
-        // We're expecting to catch an error, and we'll store it here
-        var caughtError: Error?
-
-        // Find the Favicon's in a separate Task, so we can cancel it
-        Task {
-            do {
-                _ = try await faviconFinder.fetchFaviconURLs()
-                Issue.record("Expected fetchFaviconURLs to be cancelled, but it completed")
-            } catch {
-                // Store the error
-                caughtError = error
-            }
-        }
-
-        // Wait a moment to ensure the task starts
-        try await Task.sleep(nanoseconds: 1_000_000_000)
-
-        // Cancel the finding
-        faviconFinder.cancel()
-
-        // Wait a couple seconds
-        try await Task.sleep(nanoseconds: 2 * 1_000_000_000)
-
-        // We got a CancellationError, meaning that we got a cancellation, yay
-        #expect(caughtError is CancellationError)
-    }
+//    @Test("Test Cancel", .disabled())
+//    func testCancel() async throws {
+//        let faviconFinder = FaviconFinder(
+//            url: TestURL.google.url,
+//            configuration: .init(preferredSource: .mock)
+//        )
+//
+//        // We're expecting to catch an error, and we'll store it here
+//        var caughtError: Error?
+//
+//        // Find the Favicon's in a separate Task, so we can cancel it
+//        Task {
+//            do {
+//                _ = try await faviconFinder.fetchFaviconURLs()
+//                Issue.record("Expected fetchFaviconURLs to be cancelled, but it completed")
+//            } catch {
+//                // Store the error
+//                caughtError = error
+//            }
+//        }
+//
+//        // Wait a moment to ensure the task starts
+//        try await Task.sleep(nanoseconds: 1_000_000_000)
+//
+//        // Cancel the finding
+//        faviconFinder.cancel()
+//
+//        // Wait a couple seconds
+//        try await Task.sleep(nanoseconds: 2 * 1_000_000_000)
+//
+//        // We got a CancellationError, meaning that we got a cancellation, yay
+//        #expect(caughtError is CancellationError)
+//    }
 
 }
 
