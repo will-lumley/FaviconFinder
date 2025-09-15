@@ -29,10 +29,10 @@ jobs:
         run: |
           # Run SwiftLint and capture output
           OUTPUT=$(swiftlint lint --reporter github-actions-logging)
-          
+
           # Print the output so GitHub Actions can pick up annotations
           echo "$OUTPUT"
-          
+
           # Fail the job if any violations are found
           if [ -n "$OUTPUT" ]; then
             echo "SwiftLint violations found. Failing the action."

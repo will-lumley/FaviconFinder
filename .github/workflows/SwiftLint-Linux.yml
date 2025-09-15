@@ -15,11 +15,11 @@ jobs:
       image: ghcr.io/realm/swiftlint:latest
 
     steps:
-    - uses: actions/checkout@v1
-      with:
-        fetch-depth: 1
+      - uses: actions/checkout@v1
+        with:
+          fetch-depth: 1
 
-    - name: Run SwiftLint and annotate
-      run: |
-        # Run SwiftLint and fail the job if any violations are found
-        swiftlint lint --reporter github-actions-logging || exit 1
+      - name: Run SwiftLint and annotate
+        run: |
+          # Run SwiftLint and fail the job if any violations are found
+          swiftlint lint --reporter github-actions-logging || exit 1
