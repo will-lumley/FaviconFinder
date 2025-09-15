@@ -34,7 +34,7 @@ import PackageDescription
 
     let plugins: [Target.PluginUsage] = [
 
-        ]
+    ]
 
 #endif
 
