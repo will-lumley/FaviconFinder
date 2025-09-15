@@ -9,12 +9,12 @@ import PackageDescription
         .package(url: "https://github.com/swift-server/async-http-client.git", from: "1.22.0"),
 
         // SwiftSoup is used to parse the HTML tree
-        .package(url: "https://github.com/scinfu/SwiftSoup.git", from: "2.9.5"),
+        .package(url: "https://github.com/scinfu/SwiftSoup.git", from: "2.9.5")
     ]
 
     let targetDependencies: [Target.Dependency] = [
         "SwiftSoup",
-        .product(name: "AsyncHTTPClient", package: "async-http-client"),
+        .product(name: "AsyncHTTPClient", package: "async-http-client")
     ]
 
     let plugins: [Target.PluginUsage] = [
@@ -25,7 +25,7 @@ import PackageDescription
     let dependencies: [PackageDescription.Package.Dependency] = [
         // SwiftSoup is used to parse the HTML tree
         .package(url: "https://github.com/scinfu/SwiftSoup.git", from: "2.9.5"),
-        .package(url: "https://github.com/apple/swift-docc-plugin", from: "1.4.3"),
+        .package(url: "https://github.com/apple/swift-docc-plugin", from: "1.4.3")
     ]
 
     let targetDependencies: [Target.Dependency] = [
@@ -44,7 +44,7 @@ let package = Package(
         .iOS(.v18),
         .macOS(.v12),
         .watchOS(.v8),
-        .tvOS(.v15),
+        .tvOS(.v15)
     ],
     products: [
         .library(
@@ -68,6 +68,6 @@ let package = Package(
                 "FaviconFinder"
             ],
             plugins: plugins
-        ),
+        )
     ]
 )
