@@ -14,6 +14,9 @@
   <a href="https://bsky.app/profile/will-lumley.bsky.social">
     <img src="https://img.shields.io/badge/Bluesky-0285FF?logo=bluesky&logoColor=fff&label=will-lumley" alt="Bluesky">
   </a>
+  <a href="https://mastodon.social/@wlumley">
+    <img src="https://img.shields.io/badge/Mastodon-@wlumley-6364FF?logo=mastodon&logoColor=fff" alt="Mastodon">
+  </a>
 </p>
 
 FaviconFinder is a small, pure Swift library designed for iOS, macOS and Linux applications that allows you to detect favicons used by a website.
