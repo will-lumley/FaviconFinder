@@ -1,8 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Bash(swift -e 'import Foundation; print\\(NSNotFound\\); let s = NSString\\(string: \"abc\"\\); print\\(s.range\\(of: \"xyz\"\\).location\\); print\\(s.range\\(of: \"\"\\).location\\)')",
-      "Bash(swift *)"
-    ]
-  }
-}
