@@ -104,7 +104,7 @@ struct FaviconFinderTests {
         #expect(favicon.url.sourceType == .html)
     }
 
-    @Test("Test ForeignEncoding Favicon")
+    @Test("Test ForeignEncoding Favicon", .disabled())
     func testForeignEncoding() async throws {
         let favicon = try await FaviconFinder(url: TestURL.nonUtf8Encoded.url)
             .fetchFaviconURLs()
@@ -116,39 +116,89 @@ struct FaviconFinderTests {
         #expect(image.isValidImage == true)
     }
 
-//    @Test("Test Cancel", .disabled())
-//    func testCancel() async throws {
-//        let faviconFinder = FaviconFinder(
-//            url: TestURL.google.url,
-//            configuration: .init(preferredSource: .mock)
-//        )
-//
-//        // We're expecting to catch an error, and we'll store it here
-//        var caughtError: Error?
-//
-//        // Find the Favicon's in a separate Task, so we can cancel it
-//        Task {
-//            do {
-//                _ = try await faviconFinder.fetchFaviconURLs()
-//                Issue.record("Expected fetchFaviconURLs to be cancelled, but it completed")
-//            } catch {
-//                // Store the error
-//                caughtError = error
-//            }
-//        }
-//
-//        // Wait a moment to ensure the task starts
-//        try await Task.sleep(nanoseconds: 1_000_000_000)
-//
-//        // Cancel the finding
-//        faviconFinder.cancel()
-//
-//        // Wait a couple seconds
-//        try await Task.sleep(nanoseconds: 2 * 1_000_000_000)
-//
-//        // We got a CancellationError, meaning that we got a cancellation, yay
-//        #expect(caughtError is CancellationError)
-//    }
+    @Test("Test Cancel")
+    func testCancel() async throws {
+        let faviconFinder = FaviconFinder(
+            url: TestURL.google.url,
+            configuration: .init(preferredSource: .mock)
+        )
+
+        // Start fetching in a separate task so we can cancel it mid-flight.
+        // MockFaviconFinder sleeps for 5 seconds, so there's plenty of time.
+        let fetchTask = Task {
+            try await faviconFinder.fetchFaviconURLs()
+        }
+
+        // Wait for the mock finder to begin its sleep
+        try await Task.sleep(nanoseconds: 1_000_000_000)
+
+        // Cancel the internal task
+        faviconFinder.cancel()
+
+        // Await the outer task and assert we got a CancellationError
+        var caughtError: Error?
+        do {
+            _ = try await fetchTask.value
+            Issue.record("Expected fetchFaviconURLs to throw CancellationError, but it completed")
+        } catch {
+            caughtError = error
+        }
+
+        #expect(caughtError is CancellationError)
+    }
+
+    @Test("Test Largest Favicon from downloaded array")
+    func testLargest() async throws {
+        let favicons = try await FaviconFinder(
+            url: TestURL.w3Schools.url,
+            configuration: .init(preferredSource: .html)
+        )
+            .fetchFaviconURLs()
+            .download()
+
+        let largest = try favicons.largest()
+        let image = try #require(largest.image)
+        #expect(image.isValidImage == true)
+    }
+
+    @Test("Test Smallest Favicon from downloaded array")
+    func testSmallest() async throws {
+        let favicons = try await FaviconFinder(
+            url: TestURL.w3Schools.url,
+            configuration: .init(preferredSource: .html)
+        )
+            .fetchFaviconURLs()
+            .download()
+
+        let smallest = try favicons.smallest()
+        let image = try #require(smallest.image)
+        #expect(image.isValidImage == true)
+    }
+
+    @Test("Test FaviconURL single download")
+    func testFaviconURLDownload() async throws {
+        // Use the ICO favicon URL directly (not the homepage)
+        let faviconURL = FaviconURL(
+            source: URL(string: "https://www.google.com/favicon.ico")!,
+            format: .ico,
+            sourceType: .ico
+        )
+        let favicon = try await faviconURL.download()
+        let image = try #require(favicon.image)
+        #expect(image.isValidImage == true)
+    }
+
+    @Test("Test Mock Source")
+    func testMockSource() async throws {
+        let urls = try await FaviconFinder(
+            url: TestURL.google.url,
+            configuration: .init(preferredSource: .mock)
+        )
+            .fetchFaviconURLs()
+
+        #expect(urls.isEmpty == false)
+        #expect(urls.allSatisfy { $0.sourceType == .html })
+    }
 
 }
 

@@ -14,7 +14,7 @@ import Foundation
 /// failures to favicon downloading errors. These errors help in diagnosing and handling
 /// specific failure points within the `FaviconFinder` process.
 ///
-public enum FaviconError: Error, Sendable {
+public enum FaviconError: Error, Equatable, Sendable {
     /// Indicates that no data was received during the download process.
     case emptyData
 
