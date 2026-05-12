@@ -65,7 +65,8 @@ let package = Package(
         .testTarget(
             name: "FaviconFinderTests",
             dependencies: [
-                "FaviconFinder"
+                "FaviconFinder",
+                "SwiftSoup"
             ],
             plugins: plugins
         )

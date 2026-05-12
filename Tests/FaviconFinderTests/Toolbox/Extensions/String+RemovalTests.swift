@@ -18,4 +18,20 @@ struct StringRemovalTests {
 
         #expect(str == "abcdef")
     }
+
+    @Test("Substring not found leaves string unchanged")
+    func removeEverythingAfterNotFound() {
+        var str = "abcdef"
+        str.removeEverythingAfter(str: "xyz")
+
+        #expect(str == "abcdef")
+    }
+
+    @Test("Removes from first occurrence when substring appears multiple times")
+    func removeEverythingAfterFirstOccurrence() {
+        var str = "aabcbc"
+        str.removeEverythingAfter(str: "b")
+
+        #expect(str == "aa")
+    }
 }

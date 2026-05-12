@@ -25,6 +25,18 @@ struct RegexTests {
         #expect(regex.test(input: "goooooogle") == true)
     }
 
+    @Test("Test Regex no match")
+    func regexNoMatch() {
+        let regex = Regex("go+gle")
+        #expect(regex.test(input: "apple") == false)
+    }
+
+    @Test("Invalid regex pattern returns false without crashing")
+    func invalidPattern() {
+        let regex = Regex("[invalid")
+        #expect(regex.test(input: "anything") == false)
+    }
+
     @Test("Test Regex for HTTP or HTTPS")
     func regexTestForHttpsOrHttp() {
         #expect(Regex.testForHttpsOrHttp(input: httpWebsite) == true)

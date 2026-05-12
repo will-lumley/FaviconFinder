@@ -31,4 +31,18 @@ struct ArrayReorderTests {
         #expect(array == [1, 2, 3])
     }
 
+    @Test("Moving element in empty array returns empty array")
+    func testReorderEmpty() {
+        let empty = [Int]()
+        let result = empty.movingElementToFront(1)
+        #expect(result == [])
+    }
+
+    @Test("Moving element in single-element array is unchanged")
+    func testReorderSingleElement() {
+        let array = [42]
+        let result = array.movingElementToFront(42)
+        #expect(result == [42])
+    }
+
 }
