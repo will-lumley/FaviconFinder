@@ -57,7 +57,10 @@ struct WebApplicationManifestFaviconFinderTests {
         let config = FaviconFinder.Configuration(
             preferences: [.webApplicationManifestFile: "custom-manifest"]
         )
-        let finder = WebApplicationManifestFaviconFinder(url: baseURL, configuration: config)
+        let finder = WebApplicationManifestFaviconFinder(
+            url: baseURL,
+            configuration: config
+        )
         #expect(finder.preferredType == "custom-manifest")
     }
 
