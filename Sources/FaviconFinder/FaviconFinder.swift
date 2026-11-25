@@ -82,7 +82,9 @@ public extension FaviconFinder {
             // Iterate through each source, trying to find the favicon
             // in each source until we find it.
             for source in sources {
-                print("Using source: [\(source)]")
+                if ProcessInfo.processInfo.environment["FAVICON_FINDER_IGNORE_INFO_PRINTS"] != "1" {
+                    print("Using source: [\(source)]")
+                }
                 do {
                     let finder = source.finder(url: url, configuration: config)
                     let faviconURLs = try await finder.find()
@@ -96,10 +98,14 @@ public extension FaviconFinder {
                     if error.isCancelled {
                         throw CancellationError()
                     } else {
-                        print("Failed to find Favicon [\(error)]. Trying next source type.")
+                        if ProcessInfo.processInfo.environment["FAVICON_FINDER_IGNORE_ERROR_PRINTS"] != "1" {
+                            print("Failed to find Favicon [\(error)]. Trying next source type.")
+                        }
                     }
                 } catch {
-                    print("Failed to find Favicon [\(error)]. Trying next source type.")
+                    if ProcessInfo.processInfo.environment["FAVICON_FINDER_IGNORE_ERROR_PRINTS"] != "1" {
+                        print("Failed to find Favicon [\(error)]. Trying next source type.")
+                    }
                 }
             }
 
