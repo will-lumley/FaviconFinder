@@ -29,7 +29,9 @@ final class Regex {
         do {
             self.expression = try NSRegularExpression(pattern: self.pattern, options: .caseInsensitive)
         } catch let error {
-            print("Could NOT form regex from: \(self.pattern) due to error: \(error)")
+            if ProcessInfo.processInfo.environment["FAVICON_FINDER_IGNORE_ERROR_PRINTS"] != "1" {
+                print("Could NOT form regex from: \(self.pattern) due to error: \(error)")
+            }
         }
     }
 
